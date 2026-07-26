@@ -1,0 +1,710 @@
+---
+openapi: "3.0.0"
+info:
+  version: "1.0.0"
+  title: "Ordnance Survey Download API"
+  description: "This api provides access to the OS products that are available to\
+    \ download."
+servers:
+- url: "https://api.os.uk/downloads/v1/"
+paths:
+  /products:
+    get:
+      summary: "Returns a list of the OpenData products that are available to download."
+      tags:
+      - "OpenData"
+      parameters:
+      - in: "query"
+        name: "expanded"
+        schema:
+          type: "boolean"
+        allowEmptyValue: true
+        description: "When specified, the full details of each product will be returned."
+      responses:
+        "200":
+          description: "Successful response."
+          content:
+            application/json:
+              schema:
+                type: "array"
+                items:
+                  $ref: "#/components/schemas/Product"
+  /products/{productId}:
+    get:
+      summary: "Returns details about a specific OpenData product."
+      tags:
+      - "OpenData"
+      parameters:
+      - in: "path"
+        name: "productId"
+        schema:
+          type: "string"
+        required: true
+        description: "The id of the product."
+      responses:
+        "200":
+          description: "Successful response."
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Product"
+        "404":
+          $ref: "#/components/responses/NotFoundError"
+  /products/{productId}/downloads:
+    get:
+      summary: "Returns a list of downloads for a specific OpenData product, or redirects\
+        \ to the actual download if requested."
+      tags:
+      - "OpenData"
+      parameters:
+      - in: "path"
+        name: "productId"
+        schema:
+          type: "string"
+        required: true
+        description: "The id of the product."
+      - in: "query"
+        name: "fileName"
+        schema:
+          type: "string"
+        description: "Filter the list of downloads to only include those with this\
+          \ file name."
+      - in: "query"
+        name: "format"
+        schema:
+          type: "string"
+        description: "Filter the list of downloads to only include those with this\
+          \ format."
+      - in: "query"
+        name: "subformat"
+        schema:
+          type: "string"
+        description: "Filter the list of downloads to only include those with this\
+          \ subformat."
+      - in: "query"
+        name: "area"
+        schema:
+          $ref: "#/components/schemas/Area"
+        description: "Filter the list of downloads to only include those which cover\
+          \ this area."
+      - in: "query"
+        name: "redirect"
+        schema:
+          type: "boolean"
+        allowEmptyValue: true
+        description: "When included, if the selected downloads list contains exactly\
+          \ one download, redirect to the download location."
+      responses:
+        "200":
+          description: "Successful response."
+          content:
+            application/json:
+              schema:
+                type: "array"
+                items:
+                  $ref: "#/components/schemas/ProductDownload"
+        "307":
+          description: "Returned when the 'redirect' parameter was supplied, and there\
+            \ was exactly one matching download."
+          headers:
+            Location:
+              schema:
+                type: "string"
+              description: "Direct URL for the download file."
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ProductDownload"
+        "404":
+          $ref: "#/components/responses/NotFoundError"
+  /products/{productId}/images/{index}:
+    get:
+      summary: "Returns a HTTP redirect, pointing to thumbnail images for the specified\
+        \ OpenData product."
+      tags:
+      - "OpenData"
+      parameters:
+      - in: "path"
+        name: "productId"
+        schema:
+          type: "string"
+        required: true
+        description: "The id of the product."
+      - in: "path"
+        name: "index"
+        schema:
+          type: "integer"
+        required: true
+        description: "The index of the image to be retrieved. Valid values are from\
+          \ 0 to (Product.imageCount-1)."
+      - in: "query"
+        name: "large"
+        schema:
+          type: "boolean"
+        allowEmptyValue: true
+        description: "When set, the image that is returned will be a larger version."
+      responses:
+        "200":
+          description: "Successful response."
+          content:
+            image/jpeg:
+              schema:
+                type: "string"
+                format: "binary"
+        "307":
+          description: "This response is a redirect to the actual image location."
+          headers:
+            Location:
+              schema:
+                type: "string"
+              description: "Direct URL for the product image."
+        "404":
+          $ref: "#/components/responses/NotFoundError"
+  /dataPackages:
+    get:
+      summary: "List the data packages that are available to you."
+      tags:
+      - "Data Packages"
+      security:
+      - OAuth2: []
+      - APIKeyQuery: []
+      - APIKeyHeader: []
+      responses:
+        "200":
+          description: "A list of data packages."
+          content:
+            application/json:
+              schema:
+                type: "array"
+                items:
+                  $ref: "#/components/schemas/DataPackage"
+        "401":
+          $ref: "#/components/responses/UnauthorizedError"
+  /dataPackages/{dataPackageId}:
+    get:
+      summary: "Get a specific data package."
+      tags:
+      - "Data Packages"
+      security:
+      - OAuth2: []
+      - APIKeyQuery: []
+      - APIKeyHeader: []
+      parameters:
+      - $ref: "#/components/parameters/dataPackageId"
+      responses:
+        "200":
+          description: "A data package."
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/DataPackage"
+        "401":
+          $ref: "#/components/responses/UnauthorizedError"
+        "404":
+          $ref: "#/components/responses/NotFoundError"
+  /dataPackages/{dataPackageId}/versions:
+    get:
+      summary: "Get the list of versions for a specific data package."
+      tags:
+      - "Data Packages"
+      security:
+      - OAuth2: []
+      - APIKeyQuery: []
+      - APIKeyHeader: []
+      parameters:
+      - $ref: "#/components/parameters/dataPackageId"
+      responses:
+        "200":
+          description: "A list of data package versions."
+          content:
+            application/json:
+              schema:
+                type: "array"
+                items:
+                  $ref: "#/components/schemas/DataPackageVersionSummary"
+        "401":
+          $ref: "#/components/responses/UnauthorizedError"
+        "404":
+          $ref: "#/components/responses/NotFoundError"
+  /dataPackages/{dataPackageId}/versions/{versionId}:
+    get:
+      summary: "Get a specific data package version, including details of the files\
+        \ that are available to download."
+      tags:
+      - "Data Packages"
+      security:
+      - OAuth2: []
+      - APIKeyQuery: []
+      - APIKeyHeader: []
+      parameters:
+      - $ref: "#/components/parameters/dataPackageId"
+      - name: "versionId"
+        in: "path"
+        description: "The id of the data package version, or the string 'latest'."
+        required: true
+        schema:
+          type: "string"
+      responses:
+        "200":
+          description: "A data package version, including download details."
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/DataPackageVersion"
+        "401":
+          $ref: "#/components/responses/UnauthorizedError"
+        "404":
+          $ref: "#/components/responses/NotFoundError"
+  /dataPackages/{dataPackageId}/versions/{versionId}/downloads:
+    get:
+      summary: "Get a specific file from a data package version."
+      tags:
+      - "Data Packages"
+      security:
+      - OAuth2: []
+      - APIKeyQuery: []
+      - APIKeyHeader: []
+      parameters:
+      - $ref: "#/components/parameters/dataPackageId"
+      - name: "versionId"
+        in: "path"
+        description: "The id of the data package version."
+        required: true
+        schema:
+          type: "string"
+      - name: "fileName"
+        in: "query"
+        description: "The name of the file."
+        required: true
+        schema:
+          type: "string"
+      responses:
+        "307":
+          description: "A redirect to the actual file data."
+          headers:
+            Location:
+              schema:
+                type: "string"
+                format: "uri"
+              description: "Direct URL for the download file."
+        "401":
+          $ref: "#/components/responses/UnauthorizedError"
+        "404":
+          $ref: "#/components/responses/NotFoundError"
+tags:
+- name: "OpenData"
+  description: "Operations providing access to OpenData products."
+- name: "Data Packages"
+  description: "Operations providing access to data packages.\nTo access data packages\
+    \ you must supply a valid API key or OAuth 2 access token.\n"
+components:
+  securitySchemes:
+    OAuth2:
+      type: "oauth2"
+      flows:
+        clientCredentials:
+          tokenUrl: "https://api.os.uk/oauth2/token/v1"
+          scopes: {}
+    APIKeyQuery:
+      type: "apiKey"
+      in: "query"
+      name: "key"
+    APIKeyHeader:
+      type: "apiKey"
+      in: "header"
+      name: "key"
+  responses:
+    UnauthorizedError:
+      description: "The API key or OAuth 2 access token is missing or invalid."
+      content:
+        application/json:
+          schema:
+            type: "object"
+            required:
+            - "message"
+            properties:
+              message:
+                type: "string"
+                example: "Invalid APIKey"
+    NotFoundError:
+      description: "The request does not match any known content.\nThe response will\
+        \ contain a human readable message, and may also contain links to help you\n\
+        navigate to other API endpoints.\n"
+      content:
+        application/json:
+          schema:
+            type: "object"
+            required:
+            - "message"
+            properties:
+              message:
+                type: "string"
+              dataPackagesUrl:
+                type: "string"
+                format: "uri"
+              downloadCatalogueUrl:
+                type: "string"
+                format: "uri"
+              productUrl:
+                type: "string"
+                format: "uri"
+              productDownloadsUrl:
+                type: "string"
+                format: "uri"
+  parameters:
+    dataPackageId:
+      name: "dataPackageId"
+      in: "path"
+      description: "The id of the data package."
+      required: true
+      schema:
+        type: "string"
+  schemas:
+    ThirdPartyInfo:
+      type: "object"
+      description: "Information about the data provider for third-party products."
+      required:
+      - "dataProvider"
+      - "supportingInfo"
+      - "alsoAvailable"
+      - "supportEmail"
+      properties:
+        dataProvider:
+          type: "object"
+          required:
+          - "name"
+          - "shortName"
+          - "homepage"
+          - "logoUrl"
+          properties:
+            name:
+              type: "string"
+            shortName:
+              type: "string"
+            homepage:
+              type: "string"
+            logoUrl:
+              type: "string"
+              format: "uri"
+        supportingInfo:
+          type: "array"
+          minItems: 0
+          items:
+            type: "object"
+            required:
+            - "name"
+            - "link"
+            properties:
+              name:
+                type: "string"
+              link:
+                type: "string"
+                format: "uri"
+        alsoAvailable:
+          type: "array"
+          minItems: 0
+          items:
+            type: "object"
+            required:
+            - "name"
+            - "link"
+            properties:
+              name:
+                type: "string"
+              link:
+                type: "string"
+                format: "uri"
+        supportEmail:
+          type: "string"
+          format: "email"
+    Product:
+      type: "object"
+      description: "Information about a product made available through this API."
+      required:
+      - "id"
+      - "name"
+      - "description"
+      - "version"
+      - "url"
+      properties:
+        id:
+          type: "string"
+        name:
+          type: "string"
+        description:
+          type: "array"
+          minItems: 1
+          items:
+            type: "string"
+        version:
+          type: "string"
+          pattern: "^/d{4}-/d{2}$"
+        thirdPartyInfo:
+          $ref: "#/components/schemas/ThirdPartyInfo"
+        url:
+          type: "string"
+        documentationUrl:
+          type: "string"
+        areas:
+          type: "array"
+          items:
+            $ref: "#/components/schemas/Area"
+        dataStructures:
+          type: "array"
+          items:
+            type: "string"
+            enum:
+            - "Raster"
+            - "Vector"
+        category:
+          type: "string"
+        categories:
+          type: "array"
+          items:
+            type: "string"
+        formats:
+          type: "array"
+          items:
+            $ref: "#/components/schemas/Format"
+        imageCount:
+          type: "integer"
+        imageTemplate:
+          type: "string"
+        downloadsUrl:
+          type: "string"
+          format: "uri"
+        warning:
+          type: "string"
+        endOfLife:
+          type: "string"
+          pattern: "^/d{4}-/d{2}-/d{2}$"
+    Format:
+      type: "object"
+      description: "Information about the format that a download is available in."
+      required:
+      - "format"
+      properties:
+        format:
+          type: "string"
+          description: "File format used for the download."
+        subformat:
+          type: "string"
+          description: "Optional subformat, used when a product is available in more\
+            \ than one style."
+    Download:
+      type: "object"
+      description: "Information about a specific download file that is made available\
+        \ through this API.\n"
+      required:
+      - "url"
+      - "fileName"
+      properties:
+        url:
+          description: "Getting this URL will return a HTTP redirect to the actual\
+            \ data."
+          type: "string"
+          format: "uri"
+        fileName:
+          description: "The name of the file."
+          type: "string"
+          example: "data.zip"
+        size:
+          description: "The file size, in bytes."
+          type: "integer"
+          example: 1234
+        md5:
+          description: "A MD5 checksum of the file data. This can be used to verify\
+            \ the integrity of the data once you have downloaded it."
+          type: "string"
+          example: "2f9dd13abd56140afa3b5621e8864f59"
+    ProductDownload:
+      description: "Information about a specific OpenData file that is made available\
+        \ through this API.\n"
+      allOf:
+      - $ref: "#/components/schemas/Download"
+      - type: "object"
+        required:
+        - "area"
+        - "format"
+        properties:
+          area:
+            $ref: "#/components/schemas/Area"
+          format:
+            description: "This describes the format of the data."
+            type: "string"
+            example: "GML"
+          subformat:
+            description: "This describes the subformat of the data."
+            type: "string"
+            example: "3"
+    Area:
+      type: "string"
+      description: "This describes the geographical area that a download covers.\n\
+        GB is all of Great Britain, while codes like 'HP' cover National Grid Reference\
+        \ squares.\n"
+      enum:
+      - "GB"
+      - "HP"
+      - "HT"
+      - "HU"
+      - "HW"
+      - "HX"
+      - "HY"
+      - "HZ"
+      - "NA"
+      - "NB"
+      - "NC"
+      - "ND"
+      - "NF"
+      - "NG"
+      - "NH"
+      - "NJ"
+      - "NK"
+      - "NL"
+      - "NM"
+      - "NN"
+      - "NO"
+      - "NR"
+      - "NS"
+      - "NT"
+      - "NU"
+      - "NW"
+      - "NX"
+      - "NY"
+      - "NZ"
+      - "OV"
+      - "SD"
+      - "SE"
+      - "TA"
+      - "SH"
+      - "SJ"
+      - "SK"
+      - "TF"
+      - "TG"
+      - "SM"
+      - "SN"
+      - "SO"
+      - "SP"
+      - "TL"
+      - "TM"
+      - "SR"
+      - "SS"
+      - "ST"
+      - "SU"
+      - "TQ"
+      - "TR"
+      - "SV"
+      - "SW"
+      - "SX"
+      - "SY"
+      - "SZ"
+      - "TV"
+    DataPackage:
+      type: "object"
+      description: "A data package provides access to OS products that are not OpenData.\
+        \ If you have access to to products that\nare available as data packages then\
+        \ you can create new data packages using the OS Data Hub. Once you have set\n\
+        up your data packages you can use this API to access them.\n"
+      required:
+      - "id"
+      - "name"
+      - "url"
+      - "createdOn"
+      - "productId"
+      - "productName"
+      - "versions"
+      properties:
+        id:
+          type: "string"
+          example: "0040046952"
+        name:
+          type: "string"
+          example: "Southampton Addresses"
+        url:
+          type: "string"
+          format: "uri"
+          example: "https://api.os.uk/downloads/v1/dataPackages/0040046952"
+        createdOn:
+          type: "string"
+          format: "date"
+          example: "2021-01-20"
+        productId:
+          type: "string"
+          example: "ABPOSTSLA"
+        productName:
+          type: "string"
+          example: "AddressBase"
+        versions:
+          type: "array"
+          items:
+            $ref: "#/components/schemas/DataPackageVersionSummary"
+    DataPackageVersionSummary:
+      type: "object"
+      description: "Summary information about a data package version.\n"
+      required:
+      - "id"
+      - "url"
+      - "createdOn"
+      - "reason"
+      - "supplyType"
+      - "productVersion"
+      - "productFormat"
+      properties:
+        id:
+          type: "string"
+          example: "110012"
+        url:
+          type: "string"
+          format: "uri"
+          example: "https://api.os.uk/downloads/v1/dataPackages/0040046952/versions/110012"
+        createdOn:
+          type: "string"
+          format: "date"
+          example: "2021-04-01"
+        reason:
+          type: "string"
+          enum:
+          - "INITIAL"
+          - "UPDATE"
+          - "EXPANSION"
+          - "RESUPPLY"
+          - "ONLINE_ORDER"
+        supplyType:
+          type: "string"
+          enum:
+          - "FULL"
+          - "COU"
+        productVersion:
+          type: "string"
+          example: "E37 December 2015 Update"
+        format:
+          type: "string"
+          example: "CSV"
+        dataPackageUrl:
+          type: "string"
+          format: "uri"
+          example: "https://api.os.uk/downloads/v1/dataPackages/0040046952"
+    DataPackageVersion:
+      description: "Detailed information about a data package version, including a\
+        \ list of the files available to download.\n"
+      allOf:
+      - $ref: "#/components/schemas/DataPackageVersionSummary"
+      - type: "object"
+        required:
+        - "downloads"
+        properties:
+          nextVersionUrl:
+            description: "Only populated if there is a newer version of the data package."
+            type: "string"
+            format: "uri"
+            example: "https://api.os.uk/downloads/v1/dataPackages/0040046952/versions/110013"
+          previousVersionUrl:
+            description: "Only populated if there is an older version of the data\
+              \ package."
+            type: "string"
+            format: "uri"
+            example: "https://api.os.uk/downloads/v1/dataPackages/0040046952/versions/110011"
+          downloads:
+            type: "array"
+            items:
+              $ref: "#/components/schemas/Download"

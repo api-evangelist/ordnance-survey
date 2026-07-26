@@ -1,0 +1,2391 @@
+{
+  "openapi" : "3.0.1",
+  "info" : {
+    "title" : "OS NGD API - Tiles",
+    "version" : "v1.8"
+  },
+  "servers" : [ {
+    "description" : "NGD OGC API - Tiles server",
+    "url" : "https://api.os.uk/maps/vector/ngd/ota/v1"
+  } ],
+  "paths" : {
+    "/" : {
+      "get" : {
+        "operationId" : "getLandingPage",
+        "responses" : {
+          "200" : {
+            "content" : {
+              "application/json" : {
+                "example" : {
+                  "title" : "OS NGD API",
+                  "description" : "Ordnance Survey National Geographic Database API",
+                  "links" : [ {
+                    "href" : "http://data.example.org/",
+                    "rel" : "self",
+                    "type" : "application/json",
+                    "title" : "this document"
+                  }, {
+                    "href" : "http://data.example.org/api?f=json",
+                    "rel" : "service-desc",
+                    "type" : "application/vnd.oai.openapi+json;version=3.0",
+                    "title" : "the API definition"
+                  }, {
+                    "href" : "http://data.example.org/api",
+                    "rel" : "service-doc",
+                    "type" : "text/html",
+                    "title" : "the API documentation"
+                  }, {
+                    "href" : "http://data.example.org/conformance",
+                    "rel" : "conformance",
+                    "type" : "application/json",
+                    "title" : "OGC API conformance classes implemented by this service"
+                  }, {
+                    "href" : "http://data.example.org/collections",
+                    "rel" : "data",
+                    "type" : "application/json",
+                    "title" : "Information about the collections"
+                  } ]
+                },
+                "schema" : {
+                  "$ref" : "#/components/schemas/landingPage"
+                }
+              }
+            },
+            "description" : "The landing page provides links to the API definition (link relation `service-desc`, in this case path `/api`), to the Conformance declaration (path `/conformance`, link relation `conformance`), and to the Collections of geospatial data (path `/collections`, link relation `data`)."
+          },
+          "400" : {
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/exceptionDto"
+                }
+              }
+            },
+            "description" : "The request was not supported."
+          },
+          "404" : {
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/exceptionDto"
+                }
+              }
+            },
+            "description" : "The requested resource does not exist on the server. For example, a path parameter had an incorrect value."
+          },
+          "405" : {
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/exceptionDto"
+                }
+              }
+            },
+            "description" : "The HTTP method requested is not supported. This endpoint only supports 'GET' requests."
+          },
+          "406" : {
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/exceptionDto"
+                }
+              }
+            },
+            "description" : "A request header value was not supported."
+          },
+          "500" : {
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/exceptionDto"
+                }
+              }
+            },
+            "description" : "A server error occurred."
+          },
+          "504" : {
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/exceptionDto"
+                }
+              }
+            },
+            "description" : "Gateway Timeout."
+          }
+        },
+        "summary" : "Retrieve the OS NGD API – Tiles landing page for this service.",
+        "tags" : [ "Landing Page" ]
+      }
+    },
+    "/conformance" : {
+      "get" : {
+        "operationId" : "getConformance",
+        "responses" : {
+          "200" : {
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/getConformance_200_response"
+                }
+              }
+            },
+            "description" : "The URIs of all conformance classes supported by the server"
+          },
+          "400" : {
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/exceptionDto"
+                }
+              }
+            },
+            "description" : "The request was not supported."
+          },
+          "404" : {
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/exceptionDto"
+                }
+              }
+            },
+            "description" : "The requested resource does not exist on the server. For example, a path parameter had an incorrect value."
+          },
+          "405" : {
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/exceptionDto"
+                }
+              }
+            },
+            "description" : "The HTTP method requested is not supported. This endpoint only supports 'GET' requests."
+          },
+          "406" : {
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/exceptionDto"
+                }
+              }
+            },
+            "description" : "A request header value was not supported."
+          },
+          "500" : {
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/exceptionDto"
+                }
+              }
+            },
+            "description" : "A server error occurred."
+          },
+          "504" : {
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/exceptionDto"
+                }
+              }
+            },
+            "description" : "Gateway Timeout."
+          }
+        },
+        "summary" : "Retrieve the set of OS NGD API – Tiles conformance classes that are supported by this service.",
+        "tags" : [ "Landing Page" ]
+      }
+    },
+    "/collections" : {
+      "get" : {
+        "operationId" : "getCollectionsList",
+        "responses" : {
+          "200" : {
+            "content" : {
+              "application/json" : {
+                "example" : {
+                  "links" : [ {
+                    "href" : "http://data.example.org/collections",
+                    "rel" : "self",
+                    "type" : "application/json",
+                    "title" : "All collections"
+                  } ],
+                  "collections" : [ {
+                    "id" : "buildingpart",
+                    "title" : "Building Part",
+                    "description" : "Polygon feature representing a building.",
+                    "extent" : {
+                      "spatial" : {
+                        "bbox" : [ [ -8.82, 49.79, 1.92, 60.94 ] ]
+                      },
+                      "temporal" : {
+                        "interval" : [ [ "2022-08-27T00:00:00Z", null ] ]
+                      }
+                    },
+                    "links" : [ {
+                      "href" : "http://data.example.org/collections/buildingpart/items",
+                      "rel" : "items",
+                      "type" : "application/geo+json",
+                      "title" : "Building Part"
+                    } ]
+                  } ]
+                },
+                "schema" : {
+                  "$ref" : "#/components/schemas/collections"
+                }
+              },
+              "text/html" : {
+                "schema" : {
+                  "type" : "string"
+                }
+              }
+            },
+            "description" : "The collections of (mostly geospatial) data available from this API. The dataset contains one or more collections. This resource provides information about and access to the collections. The response contains the list of collections. Each collection is accessible via one or more OGC API set of specifications, for which a link to relevant accessible resources, e.g. /collections/{collectionId}/(items, coverage, map, tiles...) is provided, with the corresponding relation type, as well as key information about the collection. This information includes:\n* a local identifier for the collection that is unique for the dataset;\n* a list of coordinate reference systems (CRS) in which data may be returned by the server. The first CRS is the default coordinate reference system (the default is always WGS 84 with axis order longitude/latitude);\n* an optional title and description for the collection;\n* an optional extent that can be used to provide an indication of the spatial and temporal extent of the collection - typically derived from the data;\n* for collections accessible via the Features or Records API, an optional indicator about the type of the items in the collection (the default value, if the indicator is not provided, is 'feature')."
+          },
+          "400" : {
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/exceptionDto"
+                }
+              }
+            },
+            "description" : "The request was not supported."
+          },
+          "404" : {
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/exceptionDto"
+                }
+              }
+            },
+            "description" : "The requested resource does not exist on the server. For example, a path parameter had an incorrect value."
+          },
+          "405" : {
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/exceptionDto"
+                }
+              }
+            },
+            "description" : "The HTTP method requested is not supported. This endpoint only supports 'GET' requests."
+          },
+          "406" : {
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/exceptionDto"
+                }
+              }
+            },
+            "description" : "A request header value was not supported."
+          },
+          "500" : {
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/exceptionDto"
+                }
+              }
+            },
+            "description" : "A server error occurred."
+          },
+          "504" : {
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/exceptionDto"
+                }
+              }
+            },
+            "description" : "Gateway Timeout."
+          }
+        },
+        "summary" : "Retrieve the list of geospatial data collections available from this service.",
+        "tags" : [ "Data Collections" ]
+      }
+    },
+    "/collections/{collectionId}" : {
+      "get" : {
+        "operationId" : "getCollection",
+        "parameters" : [ {
+          "description" : "Local identifier of a collection",
+          "in" : "path",
+          "name" : "collectionId",
+          "required" : true,
+          "schema" : {
+            "$ref" : "#/components/schemas/AllCollections"
+          }
+        } ],
+        "responses" : {
+          "200" : {
+            "content" : {
+              "application/json" : {
+                "example" : {
+                  "id" : "buildingpart",
+                  "title" : "Building Part",
+                  "description" : "Polygon feature representing a building.",
+                  "extent" : {
+                    "spatial" : {
+                      "bbox" : [ [ -8.82, 49.79, 1.92, 60.94 ] ]
+                    },
+                    "temporal" : {
+                      "interval" : [ [ "2022-08-27T00:00:00Z", null ] ]
+                    }
+                  },
+                  "links" : [ {
+                    "href" : "http://data.example.org/collections/buildingpart/items",
+                    "rel" : "items",
+                    "type" : "application/geo+json",
+                    "title" : "Building Part"
+                  } ]
+                },
+                "schema" : {
+                  "$ref" : "#/components/schemas/collectionInfo"
+                }
+              }
+            },
+            "description" : "Information about a particular collection of (mostly geospatial) data available from this API. The collection is accessible via one or more OGC API set of specifications, for which a link to relevant accessible resources, e.g. /collections/{collectionId}/(items, coverage, map, tiles...) is contained in the response, with the corresponding relation type, as well as key information about the collection. This information includes:\n* a local identifier for the collection that is unique for the dataset;\n* a list of coordinate reference systems (CRS) in which data may be returned by the server. The first CRS is the default coordinate reference system (the default is always WGS 84 with axis order longitude/latitude);\n* an optional title and description for the collection;\n* an optional extent that can be used to provide an indication of the spatial and temporal extent of the collection - typically derived from the data;\n* for collections accessible via the Features or Records API, an optional indicator about the type of the items in the collection (the default value, if the indicator is not provided, is 'feature')."
+          },
+          "400" : {
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/exceptionDto"
+                }
+              }
+            },
+            "description" : "The request was not supported."
+          },
+          "404" : {
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/exceptionDto"
+                }
+              }
+            },
+            "description" : "The requested resource does not exist on the server. For example, a path parameter had an incorrect value."
+          },
+          "405" : {
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/exceptionDto"
+                }
+              }
+            },
+            "description" : "The HTTP method requested is not supported. This endpoint only supports 'GET' requests."
+          },
+          "406" : {
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/exceptionDto"
+                }
+              }
+            },
+            "description" : "A request header value was not supported."
+          },
+          "500" : {
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/exceptionDto"
+                }
+              }
+            },
+            "description" : "A server error occurred."
+          },
+          "504" : {
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/exceptionDto"
+                }
+              }
+            },
+            "description" : "Gateway Timeout."
+          }
+        },
+        "summary" : "Retrieve the description of a collection available from this service.",
+        "tags" : [ "Data Collections" ]
+      }
+    },
+    "/tilematrixsets" : {
+      "get" : {
+        "operationId" : "getTileMatrixSetsList",
+        "responses" : {
+          "200" : {
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/getTileMatrixSetsList_200_response"
+                }
+              }
+            },
+            "description" : "List of tile matrix sets (tiling schemes)."
+          },
+          "400" : {
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/exceptionDto"
+                }
+              }
+            },
+            "description" : "The request was not supported."
+          },
+          "404" : {
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/exceptionDto"
+                }
+              }
+            },
+            "description" : "The requested resource does not exist on the server. For example, a path parameter had an incorrect value."
+          },
+          "405" : {
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/exceptionDto"
+                }
+              }
+            },
+            "description" : "The HTTP method requested is not supported. This endpoint only supports 'GET' requests."
+          },
+          "406" : {
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/exceptionDto"
+                }
+              }
+            },
+            "description" : "A request header value was not supported."
+          },
+          "500" : {
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/exceptionDto"
+                }
+              }
+            },
+            "description" : "A server error occurred."
+          },
+          "504" : {
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/exceptionDto"
+                }
+              }
+            },
+            "description" : "Gateway Timeout."
+          }
+        },
+        "summary" : "Retrieve the list of available tiling schemes (tile matrix sets)",
+        "tags" : [ "Tiling Schemes" ]
+      }
+    },
+    "/tilematrixsets/{tileMatrixSetId}" : {
+      "get" : {
+        "operationId" : "getTileMatrixSet",
+        "parameters" : [ {
+          "allowEmptyValue" : false,
+          "description" : "Identifier for a supported TileMatrixSet",
+          "in" : "path",
+          "name" : "tileMatrixSetId",
+          "required" : true,
+          "schema" : {
+            "$ref" : "#/components/schemas/TileMatrixSets"
+          }
+        } ],
+        "responses" : {
+          "200" : {
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/tileMatrixSet"
+                }
+              }
+            },
+            "description" : "tile matrix set"
+          },
+          "400" : {
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/exceptionDto"
+                }
+              }
+            },
+            "description" : "The request was not supported."
+          },
+          "404" : {
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/exceptionDto"
+                }
+              }
+            },
+            "description" : "The requested resource does not exist on the server. For example, a path parameter had an incorrect value."
+          },
+          "405" : {
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/exceptionDto"
+                }
+              }
+            },
+            "description" : "The HTTP method requested is not supported. This endpoint only supports 'GET' requests."
+          },
+          "406" : {
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/exceptionDto"
+                }
+              }
+            },
+            "description" : "A request header value was not supported."
+          },
+          "500" : {
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/exceptionDto"
+                }
+              }
+            },
+            "description" : "A server error occurred."
+          },
+          "504" : {
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/exceptionDto"
+                }
+              }
+            },
+            "description" : "Gateway Timeout."
+          }
+        },
+        "summary" : "Retrieve the definition of the specified tiling scheme (tile matrix set)",
+        "tags" : [ "Tiling Schemes" ]
+      }
+    },
+    "/collections/{collectionId}/tiles" : {
+      "get" : {
+        "operationId" : ".collection.vector.getTileSetsList",
+        "parameters" : [ {
+          "description" : "Local identifier of a collection",
+          "in" : "path",
+          "name" : "collectionId",
+          "required" : true,
+          "schema" : {
+            "$ref" : "#/components/schemas/AllCollections"
+          }
+        } ],
+        "responses" : {
+          "200" : {
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/_collection_vector_getTileSetsList_200_response"
+                }
+              }
+            },
+            "description" : "List of available tilesets."
+          },
+          "400" : {
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/exceptionDto"
+                }
+              }
+            },
+            "description" : "The request was not supported."
+          },
+          "404" : {
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/exceptionDto"
+                }
+              }
+            },
+            "description" : "The requested resource does not exist on the server. For example, a path parameter had an incorrect value."
+          },
+          "405" : {
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/exceptionDto"
+                }
+              }
+            },
+            "description" : "The HTTP method requested is not supported. This endpoint only supports 'GET' requests."
+          },
+          "406" : {
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/exceptionDto"
+                }
+              }
+            },
+            "description" : "A request header value was not supported."
+          },
+          "500" : {
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/exceptionDto"
+                }
+              }
+            },
+            "description" : "A server error occurred."
+          },
+          "504" : {
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/exceptionDto"
+                }
+              }
+            },
+            "description" : "Gateway Timeout."
+          }
+        },
+        "summary" : "Retrieve a list of available vector tilesets for the specified collection.",
+        "tags" : [ "Tile Sets" ]
+      }
+    },
+    "/collections/{collectionId}/tiles/{tileMatrixSetId}" : {
+      "get" : {
+        "operationId" : ".collection.vector.getTileSet",
+        "parameters" : [ {
+          "description" : "Local identifier of a collection",
+          "in" : "path",
+          "name" : "collectionId",
+          "required" : true,
+          "schema" : {
+            "$ref" : "#/components/schemas/AllCollections"
+          }
+        }, {
+          "allowEmptyValue" : false,
+          "description" : "Identifier for a supported TileMatrixSet",
+          "in" : "path",
+          "name" : "tileMatrixSetId",
+          "required" : true,
+          "schema" : {
+            "$ref" : "#/components/schemas/TileSets"
+          }
+        } ],
+        "responses" : {
+          "200" : {
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/tileSet"
+                }
+              }
+            },
+            "description" : "Description of the tileset"
+          },
+          "400" : {
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/exceptionDto"
+                }
+              }
+            },
+            "description" : "The request was not supported."
+          },
+          "404" : {
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/exceptionDto"
+                }
+              }
+            },
+            "description" : "The requested resource does not exist on the server. For example, a path parameter had an incorrect value."
+          },
+          "405" : {
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/exceptionDto"
+                }
+              }
+            },
+            "description" : "The HTTP method requested is not supported. This endpoint only supports 'GET' requests."
+          },
+          "406" : {
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/exceptionDto"
+                }
+              }
+            },
+            "description" : "A request header value was not supported."
+          },
+          "500" : {
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/exceptionDto"
+                }
+              }
+            },
+            "description" : "A server error occurred."
+          },
+          "504" : {
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/exceptionDto"
+                }
+              }
+            },
+            "description" : "Gateway Timeout."
+          }
+        },
+        "summary" : "Retrieve the vector tileset metadata for the specified collection and tiling scheme (tile matrix set)",
+        "tags" : [ "Tile Sets" ]
+      }
+    },
+    "/collections/{collectionId}/tiles/{tileMatrixSetId}/{tileMatrix}/{tileRow}/{tileCol}" : {
+      "get" : {"security":[{"api-key":[],"api-key-header":[],"oauth2":[]}],
+        "operationId" : ".collection.vector.getTile",
+        "parameters" : [ {
+          "description" : "Identifier selecting one of the scales defined in the TileMatrixSet and representing the scaleDenominator the tile.",
+          "example" : "15",
+          "in" : "path",
+          "name" : "tileMatrix",
+          "required" : true,
+          "schema" : {
+            "type" : "string"
+          }
+        }, {
+          "description" : "Row index of the tile on the selected TileMatrix.",
+          "example" : 11179,
+          "in" : "path",
+          "name" : "tileRow",
+          "required" : true,
+          "schema" : {
+            "minimum" : 0,
+            "type" : "integer"
+          }
+        }, {
+          "description" : "Column index of the tile on the selected TileMatrix.",
+          "example" : 16558,
+          "in" : "path",
+          "name" : "tileCol",
+          "required" : true,
+          "schema" : {
+            "minimum" : 0,
+            "type" : "integer"
+          }
+        }, {
+          "description" : "Local identifier of a collection",
+          "in" : "path",
+          "name" : "collectionId",
+          "required" : true,
+          "schema" : {
+            "$ref" : "#/components/schemas/AllCollections"
+          }
+        }, {
+          "allowEmptyValue" : false,
+          "description" : "Identifier for a supported TileMatrixSet",
+          "in" : "path",
+          "name" : "tileMatrixSetId",
+          "required" : true,
+          "schema" : {
+            "$ref" : "#/components/schemas/TileSets"
+          }
+        } ],
+        "responses" : {
+          "200" : {
+            "content" : {
+              "application/octet-stream" : {
+                "schema" : {
+                  "format" : "binary",
+                  "type" : "string"
+                }
+              }
+            },
+            "description" : "A vector tile returned as a response."
+          },
+          "400" : {
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/exceptionDto"
+                }
+              }
+            },
+            "description" : "The request was not supported."
+          },
+          "404" : {
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/exceptionDto"
+                }
+              }
+            },
+            "description" : "The requested resource does not exist on the server. For example, a path parameter had an incorrect value."
+          },
+          "405" : {
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/exceptionDto"
+                }
+              }
+            },
+            "description" : "The HTTP method requested is not supported. This endpoint only supports 'GET' requests."
+          },
+          "406" : {
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/exceptionDto"
+                }
+              }
+            },
+            "description" : "A request header value was not supported."
+          },
+          "500" : {
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/exceptionDto"
+                }
+              }
+            },
+            "description" : "A server error occurred."
+          },
+          "504" : {
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/exceptionDto"
+                }
+              }
+            },
+            "description" : "Gateway Timeout."
+          }
+        },
+        "summary" : "Retrieve a vector tile from a collection.",
+        "tags" : [ "Vector Tiles" ]
+      }
+    },
+    "/collections/{collectionId}/tiles/{tileMatrix}/{tileRow}/{tileCol}" : {
+      "get" : {"security":[{"api-key":[],"api-key-header":[],"oauth2":[]}],
+        "operationId" : "3857.collection.vector.getTile",
+        "parameters" : [ {
+          "description" : "Identifier selecting one of the scales defined in the TileMatrixSet and representing the scaleDenominator the tile.",
+          "example" : "15",
+          "in" : "path",
+          "name" : "tileMatrix",
+          "required" : true,
+          "schema" : {
+            "type" : "string"
+          }
+        }, {
+          "description" : "Row index of the tile on the selected TileMatrix.",
+          "example" : 11179,
+          "in" : "path",
+          "name" : "tileRow",
+          "required" : true,
+          "schema" : {
+            "minimum" : 0,
+            "type" : "integer"
+          }
+        }, {
+          "description" : "Column index of the tile on the selected TileMatrix.",
+          "example" : 16558,
+          "in" : "path",
+          "name" : "tileCol",
+          "required" : true,
+          "schema" : {
+            "minimum" : 0,
+            "type" : "integer"
+          }
+        }, {
+          "description" : "Local identifier of a collection",
+          "in" : "path",
+          "name" : "collectionId",
+          "required" : true,
+          "schema" : {
+            "$ref" : "#/components/schemas/AllCollections"
+          }
+        } ],
+        "responses" : {
+          "200" : {
+            "content" : {
+              "application/octet-stream" : {
+                "schema" : {
+                  "format" : "binary",
+                  "type" : "string"
+                }
+              }
+            },
+            "description" : "A vector tile returned as a response."
+          },
+          "400" : {
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/exceptionDto"
+                }
+              }
+            },
+            "description" : "The request was not supported."
+          },
+          "404" : {
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/exceptionDto"
+                }
+              }
+            },
+            "description" : "The requested resource does not exist on the server. For example, a path parameter had an incorrect value."
+          },
+          "405" : {
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/exceptionDto"
+                }
+              }
+            },
+            "description" : "The HTTP method requested is not supported. This endpoint only supports 'GET' requests."
+          },
+          "406" : {
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/exceptionDto"
+                }
+              }
+            },
+            "description" : "A request header value was not supported."
+          },
+          "500" : {
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/exceptionDto"
+                }
+              }
+            },
+            "description" : "A server error occurred."
+          },
+          "504" : {
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/exceptionDto"
+                }
+              }
+            },
+            "description" : "Gateway Timeout."
+          }
+        },
+        "summary" : "Retrieve a vector tile from a collection for Web Mercator Quad EPSG: 3857 tile matrix set.",
+        "tags" : [ "Vector Tiles" ]
+      }
+    },
+    "/collections/{collectionId}/styles" : {
+      "get" : {
+        "operationId" : "getStylesList",
+        "parameters" : [ {
+          "description" : "Local identifier of a collection",
+          "in" : "path",
+          "name" : "collectionId",
+          "required" : true,
+          "schema" : {
+            "$ref" : "#/components/schemas/AllCollections"
+          }
+        } ],
+        "responses" : {
+          "200" : {
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/getStylesList_200_response"
+                }
+              }
+            },
+            "description" : "List of available styles."
+          },
+          "400" : {
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/exceptionDto"
+                }
+              }
+            },
+            "description" : "The request was not supported."
+          },
+          "404" : {
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/exceptionDto"
+                }
+              }
+            },
+            "description" : "The requested resource does not exist on the server. For example, a path parameter had an incorrect value."
+          },
+          "405" : {
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/exceptionDto"
+                }
+              }
+            },
+            "description" : "The HTTP method requested is not supported. This endpoint only supports 'GET' requests."
+          },
+          "406" : {
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/exceptionDto"
+                }
+              }
+            },
+            "description" : "A request header value was not supported."
+          },
+          "500" : {
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/exceptionDto"
+                }
+              }
+            },
+            "description" : "A server error occurred."
+          },
+          "504" : {
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/exceptionDto"
+                }
+              }
+            },
+            "description" : "Gateway Timeout."
+          }
+        },
+        "summary" : "Retrieve the list of styles available from this service.",
+        "tags" : [ "Styles" ]
+      }
+    },
+    "/collections/{collectionId}/styles/{styleId}" : {
+      "get" : {
+        "operationId" : "getStyleRoot",
+        "parameters" : [ {
+          "description" : "Local identifier of a collection",
+          "in" : "path",
+          "name" : "collectionId",
+          "required" : true,
+          "schema" : {
+            "$ref" : "#/components/schemas/AllCollections"
+          }
+        }, {
+          "description" : "An identifier representing a specific style.",
+          "in" : "path",
+          "name" : "styleId",
+          "required" : true,
+          "schema" : {
+            "$ref" : "#/components/schemas/Styles"
+          }
+        } ],
+        "responses" : {
+          "200" : {
+            "content" : {
+              "*/*" : {
+                "schema" : {
+                  "type" : "object"
+                }
+              }
+            },
+            "description" : "OK"
+          },
+          "400" : {
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/exceptionDto"
+                }
+              }
+            },
+            "description" : "The request was not supported."
+          },
+          "404" : {
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/exceptionDto"
+                }
+              }
+            },
+            "description" : "The requested resource does not exist on the server. For example, a path parameter had an incorrect value."
+          },
+          "405" : {
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/exceptionDto"
+                }
+              }
+            },
+            "description" : "The HTTP method requested is not supported. This endpoint only supports 'GET' requests."
+          },
+          "406" : {
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/exceptionDto"
+                }
+              }
+            },
+            "description" : "A request header value was not supported."
+          },
+          "500" : {
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/exceptionDto"
+                }
+              }
+            },
+            "description" : "A server error occurred."
+          },
+          "504" : {
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/exceptionDto"
+                }
+              }
+            },
+            "description" : "Gateway Timeout."
+          }
+        },
+        "summary" : "Root level properties of a style specify the map's layers, tile sources and other resources, and default values for the initial camera position when not specified elsewhere.",
+        "tags" : [ "Styles" ]
+      }
+    },
+    "/collections/{collectionId}/styles/{styleId}/{resourceBaseName}/**" : {
+      "get" : {
+        "operationId" : "getStyleResources",
+        "parameters" : [ {
+          "description" : "Local identifier of a collection",
+          "in" : "path",
+          "name" : "collectionId",
+          "required" : true,
+          "schema" : {
+            "$ref" : "#/components/schemas/AllCollections"
+          }
+        }, {
+          "description" : "An identifier representing a specific style.",
+          "in" : "path",
+          "name" : "styleId",
+          "required" : true,
+          "schema" : {
+            "$ref" : "#/components/schemas/Styles"
+          }
+        }, {
+          "description" : "Styling resourece base name.",
+          "example" : "sprites",
+          "in" : "path",
+          "name" : "resourceBaseName",
+          "required" : true,
+          "schema" : {
+            "type" : "string"
+          }
+        } ],
+        "responses" : {
+          "200" : {
+            "content" : {
+              "*/*" : {
+                "schema" : {
+                  "type" : "object"
+                }
+              }
+            },
+            "description" : "OK"
+          },
+          "400" : {
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/exceptionDto"
+                }
+              }
+            },
+            "description" : "The request was not supported."
+          },
+          "404" : {
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/exceptionDto"
+                }
+              }
+            },
+            "description" : "The requested resource does not exist on the server. For example, a path parameter had an incorrect value."
+          },
+          "405" : {
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/exceptionDto"
+                }
+              }
+            },
+            "description" : "The HTTP method requested is not supported. This endpoint only supports 'GET' requests."
+          },
+          "406" : {
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/exceptionDto"
+                }
+              }
+            },
+            "description" : "A request header value was not supported."
+          },
+          "500" : {
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/exceptionDto"
+                }
+              }
+            },
+            "description" : "A server error occurred."
+          },
+          "504" : {
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/exceptionDto"
+                }
+              }
+            },
+            "description" : "Gateway Timeout."
+          }
+        },
+        "summary" : "Styling resources such as fonts and sprites",
+        "tags" : [ "Styles" ]
+      }
+    }
+  },
+  "components" : {"securitySchemes":{"api-key":{"type":"apiKey","name":"key","in":"query"},"api-key-header":{"type":"apiKey","name":"key","in":"header"},"oauth2":{"type":"oauth2","name":"oauth2","flows":{"clientCredentials":{"tokenUrl":"https://api.os.uk/oauth2/token/v1","scopes":{}}}}},
+    "parameters" : {
+      "collectionId-all" : {
+        "description" : "Local identifier of a collection",
+        "in" : "path",
+        "name" : "collectionId",
+        "required" : true,
+        "schema" : {
+          "$ref" : "#/components/schemas/AllCollections"
+        }
+      },
+      "tileMatrix" : {
+        "description" : "Identifier selecting one of the scales defined in the TileMatrixSet and representing the scaleDenominator the tile.",
+        "example" : "15",
+        "in" : "path",
+        "name" : "tileMatrix",
+        "required" : true,
+        "schema" : {
+          "type" : "string"
+        }
+      },
+      "tileRow" : {
+        "description" : "Row index of the tile on the selected TileMatrix.",
+        "example" : 11179,
+        "in" : "path",
+        "name" : "tileRow",
+        "required" : true,
+        "schema" : {
+          "minimum" : 0,
+          "type" : "integer"
+        }
+      },
+      "tileCol" : {
+        "description" : "Column index of the tile on the selected TileMatrix.",
+        "example" : 16558,
+        "in" : "path",
+        "name" : "tileCol",
+        "required" : true,
+        "schema" : {
+          "minimum" : 0,
+          "type" : "integer"
+        }
+      },
+      "tileMatrixSetId" : {
+        "allowEmptyValue" : false,
+        "description" : "Identifier for a supported TileMatrixSet",
+        "in" : "path",
+        "name" : "tileMatrixSetId",
+        "required" : true,
+        "schema" : {
+          "$ref" : "#/components/schemas/TileMatrixSets"
+        }
+      },
+      "styleId" : {
+        "description" : "An identifier representing a specific style.",
+        "in" : "path",
+        "name" : "styleId",
+        "required" : true,
+        "schema" : {
+          "$ref" : "#/components/schemas/Styles"
+        }
+      },
+      "tileSetId" : {
+        "allowEmptyValue" : false,
+        "description" : "Identifier for a supported TileMatrixSet",
+        "in" : "path",
+        "name" : "tileMatrixSetId",
+        "required" : true,
+        "schema" : {
+          "$ref" : "#/components/schemas/TileSets"
+        }
+      },
+      "resourceBaseName" : {
+        "description" : "Styling resourece base name.",
+        "example" : "sprites",
+        "in" : "path",
+        "name" : "resourceBaseName",
+        "required" : true,
+        "schema" : {
+          "type" : "string"
+        }
+      }
+    },
+    "responses" : {
+      "NotFound" : {
+        "$ref" : "#/components/responses/rNotFound"
+      },
+      "NotAcceptable" : {
+        "$ref" : "#/components/responses/rNotAcceptable"
+      },
+      "ServerError" : {
+        "$ref" : "#/components/responses/rServerError"
+      },
+      "InvalidParameter" : {
+        "$ref" : "#/components/responses/rInvalidParameter"
+      },
+      "Exception" : {
+        "$ref" : "#/components/responses/rException"
+      },
+      "LandingPage" : {
+        "$ref" : "#/components/responses/rLandingPage"
+      },
+      "Conformance" : {
+        "$ref" : "#/components/responses/rConformance"
+      },
+      "CollectionsList" : {
+        "$ref" : "#/components/responses/rCollectionsList"
+      },
+      "Collection" : {
+        "$ref" : "#/components/responses/rCollection"
+      },
+      "TileSetsList" : {
+        "$ref" : "#/components/responses/rTileSetsList"
+      },
+      "TileSet" : {
+        "$ref" : "#/components/responses/rTileSet"
+      },
+      "TileMatrixSetsList" : {
+        "$ref" : "#/components/responses/rTileMatrixSetsList"
+      },
+      "TileMatrixSet" : {
+        "$ref" : "#/components/responses/rTileMatrixSet"
+      },
+      "rLandingPage" : {
+        "content" : {
+          "application/json" : {
+            "example" : {
+              "title" : "OS NGD API",
+              "description" : "Ordnance Survey National Geographic Database API",
+              "links" : [ {
+                "href" : "http://data.example.org/",
+                "rel" : "self",
+                "type" : "application/json",
+                "title" : "this document"
+              }, {
+                "href" : "http://data.example.org/api?f=json",
+                "rel" : "service-desc",
+                "type" : "application/vnd.oai.openapi+json;version=3.0",
+                "title" : "the API definition"
+              }, {
+                "href" : "http://data.example.org/api",
+                "rel" : "service-doc",
+                "type" : "text/html",
+                "title" : "the API documentation"
+              }, {
+                "href" : "http://data.example.org/conformance",
+                "rel" : "conformance",
+                "type" : "application/json",
+                "title" : "OGC API conformance classes implemented by this service"
+              }, {
+                "href" : "http://data.example.org/collections",
+                "rel" : "data",
+                "type" : "application/json",
+                "title" : "Information about the collections"
+              } ]
+            },
+            "schema" : {
+              "$ref" : "#/components/schemas/landingPage"
+            }
+          }
+        },
+        "description" : "The landing page provides links to the API definition (link relation `service-desc`, in this case path `/api`), to the Conformance declaration (path `/conformance`, link relation `conformance`), and to the Collections of geospatial data (path `/collections`, link relation `data`)."
+      },
+      "rBadRequest" : {
+        "content" : {
+          "application/json" : {
+            "schema" : {
+              "$ref" : "#/components/schemas/exceptionDto"
+            }
+          }
+        },
+        "description" : "The request was not supported."
+      },
+      "rNotFound" : {
+        "content" : {
+          "application/json" : {
+            "schema" : {
+              "$ref" : "#/components/schemas/exceptionDto"
+            }
+          }
+        },
+        "description" : "The requested resource does not exist on the server. For example, a path parameter had an incorrect value."
+      },
+      "rMethodNotAllowed" : {
+        "content" : {
+          "application/json" : {
+            "schema" : {
+              "$ref" : "#/components/schemas/exceptionDto"
+            }
+          }
+        },
+        "description" : "The HTTP method requested is not supported. This endpoint only supports 'GET' requests."
+      },
+      "rNotAcceptable" : {
+        "content" : {
+          "application/json" : {
+            "schema" : {
+              "$ref" : "#/components/schemas/exceptionDto"
+            }
+          }
+        },
+        "description" : "A request header value was not supported."
+      },
+      "rServerError" : {
+        "content" : {
+          "application/json" : {
+            "schema" : {
+              "$ref" : "#/components/schemas/exceptionDto"
+            }
+          }
+        },
+        "description" : "A server error occurred."
+      },
+      "rGatewayTimeout" : {
+        "content" : {
+          "application/json" : {
+            "schema" : {
+              "$ref" : "#/components/schemas/exceptionDto"
+            }
+          }
+        },
+        "description" : "Gateway Timeout."
+      },
+      "rConformance" : {
+        "content" : {
+          "application/json" : {
+            "schema" : {
+              "$ref" : "#/components/schemas/getConformance_200_response"
+            }
+          }
+        },
+        "description" : "The URIs of all conformance classes supported by the server"
+      },
+      "rCollectionsList" : {
+        "content" : {
+          "application/json" : {
+            "example" : {
+              "links" : [ {
+                "href" : "http://data.example.org/collections",
+                "rel" : "self",
+                "type" : "application/json",
+                "title" : "All collections"
+              } ],
+              "collections" : [ {
+                "id" : "buildingpart",
+                "title" : "Building Part",
+                "description" : "Polygon feature representing a building.",
+                "extent" : {
+                  "spatial" : {
+                    "bbox" : [ [ -8.82, 49.79, 1.92, 60.94 ] ]
+                  },
+                  "temporal" : {
+                    "interval" : [ [ "2022-08-27T00:00:00Z", null ] ]
+                  }
+                },
+                "links" : [ {
+                  "href" : "http://data.example.org/collections/buildingpart/items",
+                  "rel" : "items",
+                  "type" : "application/geo+json",
+                  "title" : "Building Part"
+                } ]
+              } ]
+            },
+            "schema" : {
+              "$ref" : "#/components/schemas/collections"
+            }
+          },
+          "text/html" : {
+            "schema" : {
+              "type" : "string"
+            }
+          }
+        },
+        "description" : "The collections of (mostly geospatial) data available from this API. The dataset contains one or more collections. This resource provides information about and access to the collections. The response contains the list of collections. Each collection is accessible via one or more OGC API set of specifications, for which a link to relevant accessible resources, e.g. /collections/{collectionId}/(items, coverage, map, tiles...) is provided, with the corresponding relation type, as well as key information about the collection. This information includes:\n* a local identifier for the collection that is unique for the dataset;\n* a list of coordinate reference systems (CRS) in which data may be returned by the server. The first CRS is the default coordinate reference system (the default is always WGS 84 with axis order longitude/latitude);\n* an optional title and description for the collection;\n* an optional extent that can be used to provide an indication of the spatial and temporal extent of the collection - typically derived from the data;\n* for collections accessible via the Features or Records API, an optional indicator about the type of the items in the collection (the default value, if the indicator is not provided, is 'feature')."
+      },
+      "rCollection" : {
+        "content" : {
+          "application/json" : {
+            "example" : {
+              "id" : "buildingpart",
+              "title" : "Building Part",
+              "description" : "Polygon feature representing a building.",
+              "extent" : {
+                "spatial" : {
+                  "bbox" : [ [ -8.82, 49.79, 1.92, 60.94 ] ]
+                },
+                "temporal" : {
+                  "interval" : [ [ "2022-08-27T00:00:00Z", null ] ]
+                }
+              },
+              "links" : [ {
+                "href" : "http://data.example.org/collections/buildingpart/items",
+                "rel" : "items",
+                "type" : "application/geo+json",
+                "title" : "Building Part"
+              } ]
+            },
+            "schema" : {
+              "$ref" : "#/components/schemas/collectionInfo"
+            }
+          }
+        },
+        "description" : "Information about a particular collection of (mostly geospatial) data available from this API. The collection is accessible via one or more OGC API set of specifications, for which a link to relevant accessible resources, e.g. /collections/{collectionId}/(items, coverage, map, tiles...) is contained in the response, with the corresponding relation type, as well as key information about the collection. This information includes:\n* a local identifier for the collection that is unique for the dataset;\n* a list of coordinate reference systems (CRS) in which data may be returned by the server. The first CRS is the default coordinate reference system (the default is always WGS 84 with axis order longitude/latitude);\n* an optional title and description for the collection;\n* an optional extent that can be used to provide an indication of the spatial and temporal extent of the collection - typically derived from the data;\n* for collections accessible via the Features or Records API, an optional indicator about the type of the items in the collection (the default value, if the indicator is not provided, is 'feature')."
+      },
+      "rTileMatrixSetsList" : {
+        "content" : {
+          "application/json" : {
+            "schema" : {
+              "$ref" : "#/components/schemas/getTileMatrixSetsList_200_response"
+            }
+          }
+        },
+        "description" : "List of tile matrix sets (tiling schemes)."
+      },
+      "rTileMatrixSet" : {
+        "content" : {
+          "application/json" : {
+            "schema" : {
+              "$ref" : "#/components/schemas/tileMatrixSet"
+            }
+          }
+        },
+        "description" : "tile matrix set"
+      },
+      "rTileSetsList" : {
+        "content" : {
+          "application/json" : {
+            "schema" : {
+              "$ref" : "#/components/schemas/_collection_vector_getTileSetsList_200_response"
+            }
+          }
+        },
+        "description" : "List of available tilesets."
+      },
+      "rTileSet" : {
+        "content" : {
+          "application/json" : {
+            "schema" : {
+              "$ref" : "#/components/schemas/tileSet"
+            }
+          }
+        },
+        "description" : "Description of the tileset"
+      },
+      "rVectorTile" : {
+        "content" : {
+          "application/octet-stream" : {
+            "schema" : {
+              "format" : "binary",
+              "type" : "string"
+            }
+          }
+        },
+        "description" : "A vector tile returned as a response."
+      },
+      "rStylesList" : {
+        "content" : {
+          "application/json" : {
+            "schema" : {
+              "$ref" : "#/components/schemas/getStylesList_200_response"
+            }
+          }
+        },
+        "description" : "List of available styles."
+      },
+      "rInvalidParameter" : {
+        "content" : {
+          "application/json" : {
+            "schema" : {
+              "$ref" : "#/components/schemas/exceptionDto"
+            }
+          }
+        },
+        "description" : "A query parameter has an invalid value."
+      },
+      "rException" : {
+        "content" : {
+          "application/json" : {
+            "schema" : {
+              "$ref" : "#/components/schemas/exceptionDto"
+            }
+          }
+        },
+        "description" : "An error occured."
+      }
+    },
+    "schemas" : {
+      "confClasses" : {
+        "properties" : {
+          "conformsTo" : {
+            "items" : {
+              "type" : "string"
+            },
+            "type" : "array"
+          }
+        },
+        "required" : [ "conformsTo" ],
+        "type" : "object"
+      },
+      "link" : {
+        "properties" : {
+          "href" : {
+            "description" : "Supplies the URI to a remote resource (or resource fragment).",
+            "example" : "http://data.example.com/buildingpart/123",
+            "type" : "string"
+          },
+          "rel" : {
+            "description" : "The type or semantics of the relation.",
+            "example" : "alternate",
+            "type" : "string"
+          },
+          "type" : {
+            "description" : "A hint indicating what the media type of the result of dereferencing the link should be.",
+            "example" : "application/geo+json",
+            "type" : "string"
+          },
+          "templated" : {
+            "description" : "This flag set to true if the link is a URL template.",
+            "type" : "boolean"
+          },
+          "varBase" : {
+            "description" : "A base path to retrieve semantic information about the variables used in URL template.",
+            "example" : "/ogcapi/vars/",
+            "type" : "string"
+          },
+          "hreflang" : {
+            "description" : "A hint indicating what the language of the result of dereferencing the link should be.",
+            "example" : "en",
+            "type" : "string"
+          },
+          "title" : {
+            "description" : "Used to label the destination of a link such that it can be used as a human-readable identifier.",
+            "example" : "Building Part",
+            "type" : "string"
+          },
+          "length" : {
+            "type" : "integer"
+          }
+        },
+        "required" : [ "href", "rel" ],
+        "type" : "object"
+      },
+      "landingPage" : {
+        "properties" : {
+          "title" : {
+            "description" : "While a title is not required, implementors are strongly advised to include one.",
+            "example" : "OS NGD API",
+            "title" : "The title of the API.",
+            "type" : "string"
+          },
+          "description" : {
+            "example" : "Ordnance Survey National Geographic Database API.",
+            "type" : "string"
+          },
+          "attribution" : {
+            "description" : "The `attribution` should be short and intended for presentation to a user, for example, in a corner of a map. Parts of the text can be links to other resources if additional information is needed. The string can include HTML markup.",
+            "title" : "attribution for the API",
+            "type" : "string"
+          },
+          "links" : {
+            "items" : {
+              "$ref" : "#/components/schemas/link"
+            },
+            "type" : "array"
+          }
+        },
+        "required" : [ "links" ],
+        "type" : "object"
+      },
+      "exception" : {
+        "description" : "JSON schema for exceptions based on RFC 7807",
+        "properties" : {
+          "type" : {
+            "type" : "string"
+          },
+          "title" : {
+            "type" : "string"
+          },
+          "status" : {
+            "type" : "integer"
+          },
+          "detail" : {
+            "type" : "string"
+          },
+          "instance" : {
+            "type" : "string"
+          },
+          "code" : {
+            "type" : "integer"
+          },
+          "description" : {
+            "type" : "string"
+          },
+          "help" : {
+            "type" : "string"
+          }
+        },
+        "required" : [ "type" ],
+        "title" : "Exception Schema",
+        "type" : "object"
+      },
+      "collections" : {
+        "properties" : {
+          "links" : {
+            "items" : {
+              "$ref" : "#/components/schemas/link"
+            },
+            "type" : "array"
+          },
+          "collections" : {
+            "items" : {
+              "$ref" : "#/components/schemas/collectionInfo"
+            },
+            "type" : "array"
+          }
+        },
+        "required" : [ "collections", "links" ],
+        "type" : "object"
+      },
+      "collectionInfo" : {
+        "properties" : {
+          "id" : {
+            "description" : "identifier of the collection used, for example, in URIs",
+            "example" : "buildingpart",
+            "type" : "string"
+          },
+          "title" : {
+            "description" : "human readable title of the collection",
+            "example" : "Building Part",
+            "type" : "string"
+          },
+          "description" : {
+            "description" : "a description of the data in the collection",
+            "example" : "Polygon feature representing a building.",
+            "type" : "string"
+          },
+          "links" : {
+            "example" : [ {
+              "href" : "http://data.example.org/collections/buildingpart",
+              "rel" : "self",
+              "type" : "application/json",
+              "title" : "Building Part"
+            } ],
+            "items" : {
+              "$ref" : "#/components/schemas/link"
+            },
+            "type" : "array"
+          },
+          "extent" : {
+            "$ref" : "#/components/schemas/extent-uad"
+          }
+        },
+        "required" : [ "id", "links" ],
+        "type" : "object"
+      },
+      "extent" : {
+        "description" : "The extent of the data in the collection. In the Core only spatial and temporal\nextents are specified. Extensions may add additional members to represent other\nextents, for example, thermal or pressure ranges.\n\nThe first item in the array describes the overall extent of\nthe data. All subsequent items describe more precise extents,\ne.g., to identify clusters of data.\nClients only interested in the overall extent will only need to\naccess the first item in each array.",
+        "properties" : {
+          "spatial" : {
+            "$ref" : "#/components/schemas/extent_spatial"
+          }
+        },
+        "type" : "object"
+      },
+      "extent-uad" : {
+        "allOf" : [ {
+          "$ref" : "#/components/schemas/extent"
+        }, {
+          "type" : "object"
+        } ],
+        "description" : "The extent module only addresses spatial and temporal extents. This module extends extent by specifying how\nintervals and crs properties can be used to specify additional geometries.",
+        "title" : "Extent with Uniform Additional Dimensions Schema"
+      },
+      "crs" : {
+        "description" : "Reference to one coordinate reference system (CRS)",
+        "format" : "uri",
+        "title" : "CRS",
+        "type" : "string"
+      },
+      "DataType" : {
+        "description" : "Type of data",
+        "enum" : [ "map", "vector", "coverage" ],
+        "type" : "string"
+      },
+      "tileSet" : {
+        "allOf" : [ {
+          "$ref" : "#/components/schemas/tileSet-item"
+        }, {
+          "type" : "object"
+        } ],
+        "description" : "A resource describing a tileset based on the OGC TileSet Metadata Standard. At least one of the 'TileMatrixSet',  or a link with 'rel' http://www.opengis.net/def/rel/ogc/1.0/tiling-scheme",
+        "properties" : {
+          "description" : {
+            "description" : "Brief narrative description of this tile set",
+            "type" : "string"
+          },
+          "tileMatrixSetLimits" : {
+            "description" : "Limits for the TileRow and TileCol values for each TileMatrix in the tileMatrixSet. If missing, there are no limits other that the ones imposed by the TileMatrixSet. If present the TileMatrices listed are limited and the rest not available at all",
+            "items" : {
+              "$ref" : "#/components/schemas/tileMatrixLimits"
+            },
+            "type" : "array"
+          },
+          "layers" : {
+            "items" : {
+              "$ref" : "#/components/schemas/geospatialData"
+            },
+            "minItems" : 1,
+            "type" : "array"
+          },
+          "boundingBox" : {
+            "allOf" : [ {
+              "$ref" : "#/components/schemas/BoundingBox2D"
+            } ]
+          }
+        },
+        "required" : [ "crs", "dataType", "links" ],
+        "title" : "Tile Set Metadata",
+        "type" : "object"
+      },
+      "tileSet-item" : {
+        "description" : "A minimal tileset element for use within a list of tilesets linking to full description of those tilesets.",
+        "properties" : {
+          "id" : {
+            "description" : "identifier of the tile matrix set",
+            "example" : "3857",
+            "type" : "string"
+          },
+          "title" : {
+            "description" : "A title for this tileset",
+            "type" : "string"
+          },
+          "dataType" : {
+            "allOf" : [ {
+              "$ref" : "#/components/schemas/DataType"
+            } ]
+          },
+          "crs" : {
+            "allOf" : [ {
+              "$ref" : "#/components/schemas/crs"
+            } ]
+          },
+          "tileMatrixSetURI" : {
+            "description" : "Reference to a Tile Matrix Set on an offical source for Tile Matrix Sets such as the OGC NA definition server (http://www.opengis.net/def/tms/). Required if the tile matrix set is registered on an open official source.",
+            "format" : "uri",
+            "type" : "string"
+          },
+          "links" : {
+            "description" : "Links to related resources. A 'self' link to the tileset as well as a 'http://www.opengis.net/def/rel/ogc/1.0/tiling-scheme' link to a definition of the TileMatrixSet are required.",
+            "items" : {
+              "$ref" : "#/components/schemas/link"
+            },
+            "type" : "array"
+          }
+        },
+        "required" : [ "crs", "dataType", "links" ],
+        "title" : "Tile Set Metadata item",
+        "type" : "object"
+      },
+      "tileMatrixSet" : {
+        "description" : "A definition of a tile matrix set following the Tile Matrix Set standard. For tileset metadata, such a description (in `tileMatrixSet` property) is only required for offline use, as an alternative to a link with a `http://www.opengis.net/def/rel/ogc/1.0/tiling-scheme` relation type.",
+        "properties" : {
+          "title" : {
+            "description" : "Title of this tile matrix set, normally used for display to a human",
+            "type" : "string"
+          },
+          "id" : {
+            "description" : "Tile matrix set identifier. Implementation of 'identifier'",
+            "type" : "string"
+          },
+          "uri" : {
+            "description" : "Reference to an official source for this tileMatrixSet",
+            "format" : "uri",
+            "type" : "string"
+          },
+          "orderedAxes" : {
+            "items" : {
+              "type" : "string"
+            },
+            "minItems" : 1,
+            "type" : "array"
+          },
+          "crs" : {
+            "allOf" : [ {
+              "$ref" : "#/components/schemas/crs"
+            } ]
+          },
+          "wellKnownScaleSet" : {
+            "description" : "Reference to a well-known scale set",
+            "format" : "uri",
+            "type" : "string"
+          },
+          "tileMatrices" : {
+            "description" : "Describes scale levels and its tile matrices",
+            "items" : {
+              "$ref" : "#/components/schemas/tileMatrix"
+            },
+            "type" : "array"
+          }
+        },
+        "required" : [ "crs", "tileMatrices" ],
+        "title" : "Tile Matrix Set Definition",
+        "type" : "object"
+      },
+      "tileMatrixSet-item" : {
+        "description" : "A minimal tile matrix set element for use within a list of tile matrix sets linking to a full definition.",
+        "properties" : {
+          "id" : {
+            "description" : "Optional local tile matrix set identifier, e.g. for use as unspecified `{tileMatrixSetId}` parameter. Implementation of 'identifier'",
+            "type" : "string"
+          },
+          "title" : {
+            "description" : "Title of this tile matrix set, normally used for display to a human",
+            "type" : "string"
+          },
+          "uri" : {
+            "description" : "Reference to an official source for this tileMatrixSet",
+            "format" : "uri",
+            "type" : "string"
+          },
+          "crs" : {
+            "allOf" : [ {
+              "description" : "Coordinate Reference System (CRS)",
+              "type" : "object"
+            }, {
+              "$ref" : "#/components/schemas/crs"
+            } ]
+          },
+          "links" : {
+            "description" : "Links to related resources. A 'self' link to the tile matrix set definition is required.",
+            "items" : {
+              "$ref" : "#/components/schemas/link"
+            },
+            "type" : "array"
+          }
+        },
+        "required" : [ "links" ],
+        "title" : "Tile Matrix Set Item",
+        "type" : "object"
+      },
+      "tileMatrixLimits" : {
+        "description" : "The limits for an individual tile matrix of a TileSet's TileMatrixSet, as defined in the OGC 2D TileMatrixSet and TileSet Metadata Standard",
+        "properties" : {
+          "tileMatrix" : {
+            "type" : "string"
+          },
+          "minTileRow" : {
+            "minimum" : 0,
+            "type" : "integer"
+          },
+          "maxTileRow" : {
+            "minimum" : 0,
+            "type" : "integer"
+          },
+          "minTileCol" : {
+            "minimum" : 0,
+            "type" : "integer"
+          },
+          "maxTileCol" : {
+            "minimum" : 0,
+            "type" : "integer"
+          }
+        },
+        "required" : [ "maxTileCol", "maxTileRow", "minTileCol", "minTileRow", "tileMatrix" ],
+        "title" : "TileMatrixLimits",
+        "type" : "object"
+      },
+      "BoundingBox2D" : {
+        "description" : "Minimum bounding rectangle surrounding a 2D resource in the CRS indicated elsewhere",
+        "properties" : {
+          "lowerLeft" : {
+            "description" : "A 2D Point in the CRS indicated elsewhere",
+            "items" : {
+              "type" : "number"
+            },
+            "maxItems" : 2,
+            "minItems" : 2,
+            "type" : "array"
+          },
+          "upperRight" : {
+            "description" : "A 2D Point in the CRS indicated elsewhere",
+            "items" : {
+              "type" : "number"
+            },
+            "maxItems" : 2,
+            "minItems" : 2,
+            "type" : "array"
+          },
+          "crs" : {
+            "$ref" : "#/components/schemas/crs"
+          }
+        },
+        "required" : [ "lowerLeft", "upperRight" ],
+        "type" : "object"
+      },
+      "style-item" : {
+        "properties" : {
+          "id" : {
+            "type" : "string"
+          },
+          "title" : {
+            "type" : "string"
+          },
+          "links" : {
+            "items" : {
+              "$ref" : "#/components/schemas/link"
+            },
+            "type" : "array"
+          }
+        },
+        "required" : [ "id", "links" ],
+        "type" : "object"
+      },
+      "exceptionDto" : {
+        "description" : "JSON schema for exceptions based on RFC 7807",
+        "properties" : {
+          "type" : {
+            "type" : "string"
+          },
+          "title" : {
+            "type" : "string"
+          },
+          "status" : {
+            "type" : "integer"
+          },
+          "detail" : {
+            "type" : "string"
+          },
+          "instance" : {
+            "type" : "string"
+          },
+          "code" : {
+            "type" : "integer"
+          },
+          "description" : {
+            "type" : "string"
+          },
+          "help" : {
+            "type" : "string"
+          }
+        },
+        "required" : [ "type" ],
+        "title" : "Exception Schema",
+        "type" : "object"
+      },
+      "AllCollections" : {
+        "enum" : [ "ngd-base", "asu-bdy", "wtr-ctch", "trn-ntwk-railway", "wtr-tidalboundary" ],
+        "type" : "string"
+      },
+      "TileMatrixSets" : {
+        "enum" : [ "3857", "27700" ],
+        "type" : "string"
+      },
+      "TileSets" : {
+        "enum" : [ "3857", "27700" ],
+        "type" : "string"
+      },
+      "Styles" : {
+        "enum" : [ "3857", "27700", "road-27700", "road-3857", "light-27700", "light-3857", "blackwhite-27700", "blackwhite-3857" ],
+        "type" : "string"
+      },
+      "geospatialData" : {
+        "properties" : {
+          "description" : {
+            "description" : "Brief narrative description of this tile matrix set, normally available for display to a human",
+            "type" : "string"
+          },
+          "id" : {
+            "description" : "Unique identifier of the Layer. Implementation of 'identifier'",
+            "type" : "string"
+          },
+          "dataType" : {
+            "allOf" : [ {
+              "$ref" : "#/components/schemas/DataType"
+            } ]
+          },
+          "geometryType" : {
+            "type" : "string"
+          },
+          "maxTileMatrix" : {
+            "description" : "TileMatrix identifier associated with the minScaleDenominator",
+            "type" : "string"
+          },
+          "minTileMatrix" : {
+            "description" : "TileMatrix identifier associated with the maxScaleDenominator",
+            "type" : "string"
+          },
+          "propertiesSchema" : {
+            "$ref" : "#/components/schemas/geospatialData_propertiesSchema"
+          }
+        },
+        "required" : [ "dataType", "id" ],
+        "type" : "object"
+      },
+      "tileMatrix" : {
+        "description" : "A tile matrix, usually corresponding to a particular zoom level of a TileMatrixSet.",
+        "properties" : {
+          "id" : {
+            "description" : "Identifier selecting one of the scales defined in the TileMatrixSet and representing the scaleDenominator the tile. Implementation of 'identifier'",
+            "type" : "string"
+          },
+          "scaleDenominator" : {
+            "description" : "Scale denominator of this tile matrix",
+            "type" : "number"
+          },
+          "cellSize" : {
+            "description" : "Cell size of this tile matrix",
+            "type" : "number"
+          },
+          "cornerOfOrigin" : {
+            "default" : "topLeft",
+            "description" : "The corner of the tile matrix (_topLeft_ or _bottomLeft_) used as the origin for numbering tile rows and columns. This corner is also a corner of the (0, 0) tile.",
+            "enum" : [ "topLeft", "bottomLeft" ],
+            "type" : "string"
+          },
+          "pointOfOrigin" : {
+            "description" : "Precise position in CRS coordinates of the corner of origin (e.g. the top-left corner) for this tile matrix. This position is also a corner of the (0, 0) tile. In previous version, this was 'topLeftCorner' and 'cornerOfOrigin' did not exist.",
+            "items" : {
+              "type" : "number"
+            },
+            "maxItems" : 2,
+            "minItems" : 2,
+            "type" : "array"
+          },
+          "tileWidth" : {
+            "description" : "Width of each tile of this tile matrix in pixels",
+            "format" : "integer",
+            "minimum" : 1,
+            "multipleOf" : 1,
+            "type" : "number"
+          },
+          "tileHeight" : {
+            "description" : "Height of each tile of this tile matrix in pixels",
+            "format" : "integer",
+            "minimum" : 1,
+            "multipleOf" : 1,
+            "type" : "number"
+          },
+          "matrixHeight" : {
+            "description" : "Width of the matrix (number of tiles in width)",
+            "format" : "integer",
+            "minimum" : 1,
+            "multipleOf" : 1,
+            "type" : "number"
+          },
+          "matrixWidth" : {
+            "description" : "Height of the matrix (number of tiles in height)",
+            "format" : "integer",
+            "minimum" : 1,
+            "multipleOf" : 1,
+            "type" : "number"
+          }
+        },
+        "required" : [ "cellSize", "id", "matrixHeight", "matrixWidth", "pointOfOrigin", "scaleDenominator", "tileHeight", "tileWidth" ],
+        "type" : "object"
+      },
+      "propertiesSchema" : {
+        "description" : "Attributes of the features or rangetypes of a coverage. Defined by a subset of the JSON Schema for the properties of a feature",
+        "properties" : {
+          "type" : {
+            "enum" : [ "object" ],
+            "type" : "string"
+          },
+          "properties" : {
+            "additionalProperties" : {
+              "$ref" : "#/components/schemas/propertiesSchema_properties_value"
+            },
+            "default" : { },
+            "type" : "object"
+          }
+        },
+        "required" : [ "properties", "type" ],
+        "type" : "object"
+      },
+      "getConformance_200_response" : {
+        "allOf" : [ {
+          "$ref" : "#/components/schemas/confClasses"
+        } ],
+        "example" : {
+          "conformsTo" : [ "http://www.opengis.net/spec/ogcapi-common-1/1.0/conf/core", "http://www.opengis.net/spec/ogcapi-common-1/1.0/conf/json", "http://www.opengis.net/spec/ogcapi-common-1/1.0/conf/html", "http://www.opengis.net/spec/ogcapi-common-1/1.0/conf/oas30", "http://www.opengis.net/spec/ogcapi-common-2/1.0/conf/collections", "http://www.opengis.net/spec/ogcapi-tiles-1/1.0/conf/core", "http://www.opengis.net/spec/ogcapi-tiles-1/1.0/conf/tileset", "http://www.opengis.net/spec/ogcapi-tiles-1/1.0/conf/tilesets-list", "http://www.opengis.net/spec/ogcapi-tiles-1/1.0/conf/geodata-tilesets", "http://www.opengis.net/spec/ogcapi-tiles-1/1.0/conf/dataset-tilesets", "http://www.opengis.net/spec/ogcapi-tiles-1/1.0/conf/geodata-selection", "http://www.opengis.net/spec/ogcapi-tiles-1/1.0/conf/jpeg", "http://www.opengis.net/spec/ogcapi-tiles-1/1.0/conf/png", "http://www.opengis.net/spec/ogcapi-tiles-1/1.0/conf/mvt", "http://www.opengis.net/spec/ogcapi-tiles-1/1.0/conf/geojson", "http://www.opengis.net/spec/ogcapi-tiles-1/1.0/conf/tiff", "http://www.opengis.net/spec/ogcapi-tiles-1/1.0/conf/netcdf" ]
+        }
+      },
+      "getTileMatrixSetsList_200_response" : {
+        "properties" : {
+          "tileMatrixSets" : {
+            "items" : {
+              "$ref" : "#/components/schemas/tileMatrixSet-item"
+            },
+            "type" : "array"
+          }
+        },
+        "type" : "object"
+      },
+      "_collection_vector_getTileSetsList_200_response" : {
+        "properties" : {
+          "links" : {
+            "items" : {
+              "$ref" : "#/components/schemas/link"
+            },
+            "type" : "array"
+          },
+          "tilesets" : {
+            "items" : {
+              "$ref" : "#/components/schemas/tileSet-item"
+            },
+            "type" : "array"
+          }
+        },
+        "required" : [ "tilesets" ],
+        "type" : "object"
+      },
+      "getStylesList_200_response" : {
+        "properties" : {
+          "links" : {
+            "items" : {
+              "$ref" : "#/components/schemas/link"
+            },
+            "type" : "array"
+          },
+          "styles" : {
+            "items" : {
+              "$ref" : "#/components/schemas/style-item"
+            },
+            "type" : "array"
+          }
+        },
+        "required" : [ "styles" ],
+        "type" : "object"
+      },
+      "extent_spatial" : {
+        "description" : "The spatial extent of the data in the collection.",
+        "properties" : {
+          "bbox" : {
+            "description" : "One or more bounding boxes that describe the spatial extent of the dataset.\nIn the Core only a single bounding box is supported.\n\nExtensions may support additional areas.\nThe first bounding box describes the overall spatial\nextent of the data. All subsequent bounding boxes describe\nmore precise bounding boxes, e.g., to identify clusters of data.\nClients only interested in the overall spatial extent will\nonly need to access the first item in each array.",
+            "items" : {
+              "description" : "Each bounding box is provided as four or six numbers, depending on\nwhether the coordinate reference system includes a vertical axis\n(height or depth):\n\n* Lower left corner, coordinate axis 1\n* Lower left corner, coordinate axis 2\n* Minimum value, coordinate axis 3 (optional)\n* Upper right corner, coordinate axis 1\n* Upper right corner, coordinate axis 2\n* Maximum value, coordinate axis 3 (optional)\n\nIf the value consists of four numbers, the coordinate reference system is\nWGS 84 longitude/latitude (http://www.opengis.net/def/crs/OGC/1.3/CRS84)\nunless a different coordinate reference system is specified in a parameter `bbox-crs`.\n\nIf the value consists of six numbers, the coordinate reference system is WGS 84\nlongitude/latitude/ellipsoidal height (http://www.opengis.net/def/crs/OGC/0/CRS84h)\nunless a different coordinate reference system is specified in a parameter `bbox-crs`.\n\nFor WGS 84 longitude/latitude the values are in most cases the sequence of\nminimum longitude, minimum latitude, maximum longitude and maximum latitude.\nHowever, in cases where the box spans the antimeridian the first value\n(west-most box edge) is larger than the third value (east-most box edge).\n\nIf the vertical axis is included, the third and the sixth number are\nthe bottom and the top of the 3-dimensional bounding box.\n\nIf a feature has multiple spatial geometry properties, it is the decision of the\nserver whether only a single spatial geometry property is used to determine\nthe extent or all relevant geometries.",
+              "example" : [ -180, -90, 180, 90 ],
+              "items" : {
+                "type" : "number"
+              },
+              "maxItems" : 4,
+              "minItems" : 4,
+              "type" : "array"
+            },
+            "minItems" : 1,
+            "type" : "array"
+          },
+          "crs" : {
+            "default" : "http://www.opengis.net/def/crs/EPSG/0/3857",
+            "description" : "Coordinate reference system of the coordinates in the spatial extent\n(property `bbox`). The default reference system is WGS 84 longitude/latitude.\nIn the Core the only other supported coordinate reference system is\nWGS 84 longitude/latitude/ellipsoidal height for coordinates with height.\nExtensions may support additional coordinate reference systems and add\nadditional enum values.",
+            "enum" : [ "http://www.opengis.net/def/crs/EPSG/0/3857", "http://www.opengis.net/def/crs/EPSG/0/3857h", "http://www.opengis.net/def/crs/OGC/1.3/CRS84", "http://www.opengis.net/def/crs/OGC/0/CRS84h" ],
+            "type" : "string"
+          }
+        },
+        "type" : "object"
+      },
+      "geospatialData_propertiesSchema" : {
+        "allOf" : [ {
+          "description" : "Properties represented by the features in this layer. Can be the attributes of a feature dataset (datatype=geometries) or the rangeType of a coverage (datatype=coverage)",
+          "type" : "object"
+        }, {
+          "$ref" : "#/components/schemas/propertiesSchema"
+        } ]
+      },
+      "propertiesSchema_properties_value" : {
+        "description" : "No property names are defined but any property name they should be described by JSON Schema. So 'additionalProperties' implements 'name'.",
+        "properties" : {
+          "type" : {
+            "enum" : [ "array", "boolean", "integer", "null", "number", "object", "string" ],
+            "type" : "string"
+          },
+          "enum" : {
+            "description" : "Implements 'acceptedValues'",
+            "items" : {
+              "type" : "object"
+            },
+            "minItems" : 1,
+            "type" : "array",
+            "uniqueItems" : true
+          }
+        },
+        "type" : "object"
+      }
+    }
+  }
+}

@@ -1,0 +1,273 @@
+aid: ordnance-survey
+name: Ordnance Survey
+review:
+  question: Does Ordnance Survey expose a real, reachable public developer surface for
+    UK property data, and what does a developer have to sign or join to use it?
+  answer: true
+  date: '2026-07-26'
+  reviewer: API Evangelist
+  homeMarket: United Kingdom
+  tier: land-registry-govt
+sectorPosture:
+  resoPosture: >-
+    No RESO reference found. Ordnance Survey is Great Britain's national mapping
+    agency, not an MLS or listing platform. Nothing in the OS estate references the
+    Real Estate Standards Organization: no RESO Web API certification, no RESO Data
+    Dictionary version, no listing in the RESO certification directory, no OData
+    service root and no $metadata document anywhere under api.os.uk, and no Universal
+    Property Identifier (UPI). The UK equivalent of a universal property identifier
+    is OS's own Unique Property Reference Number (UPRN) — a national, government-issued
+    identifier that predates and is independent of RESO's UPI, and which OS publishes
+    as free open data (OS Open UPRN). A targeted site-scoped search for RESO across
+    os.uk returned only OS API documentation pages and no RESO content.
+  resoCertified: false
+  resoEvidence:
+    - probe: site-scoped web search for "Ordnance Survey" + RESO on os.uk
+      result: no RESO pages; results were OS Places / OS Features / OS APIs docs only
+    - probe: enumerated every api.os.uk grouping (maps, features, search, downloads, positioning)
+      result: OGC API and REST/RPC services only; no OData service root, no $metadata
+  accessGate: self-serve
+  accessGateDetail: >-
+    A developer signs up for a free OS Data Hub account at https://osdatahub.os.uk/
+    (HTTP 200, live, public — not a member login), creates a project, and is issued a
+    project API key and secret from the dashboard. Three plans exist. The OS OpenData
+    Plan is free with unlimited usage over open datasets. The Premium Plan is also
+    self-serve and carries a free allowance of premium API transactions up to
+    £1,000 per month before charges begin, and includes OpenData access. The Public
+    Sector Plan is the only gated tier: it is exclusive to members of the Public Sector
+    Geospatial Agreement (PSGA) and gives free unlimited access to open and premium
+    data. There is no MLS membership, no board or association requirement, no IDX/VOW
+    licence, no broker sponsorship, and no partner deal required for the self-serve
+    tiers. Premium products (AddressBase Premium behind OS Places API, OS MasterMap
+    behind OS Features API and the Vector Tile API, and premium NGD collections) are
+    commercially licensed under OS terms and metered — licensed, but obtainable by
+    anyone who signs up and pays.
+  openData: true
+  openDataDetail: >-
+    Genuinely open and callable with no key at all. GET https://api.os.uk/downloads/v1/products
+    returned HTTP 200 anonymously and listed 26 open products: OS Open UPRN, OS Open TOID,
+    OS Open USRN, OS Open Names, OS Open Linked Identifiers, OS Open Roads, OS Open Rivers,
+    OS Open Greenspace, OS Open Built Up Areas, OS Open Zoomstack, OS OpenMap - Local,
+    Code-Point Open, Boundary-Line, MiniScale, GB Overview Maps, OS Terrain 50,
+    OS VectorMap District, 1:250 000 Scale Colour Raster, and nine BGS/UKHSA third-party
+    open datasets. GET /products/OpenUPRN and /products/OpenUPRN/downloads also returned
+    200 anonymously with direct zip URLs (osopenuprn_202606_csv.zip, 617,876,071 bytes,
+    md5 published). OS documents OS Open UPRN as "an open dataset". The exact licence
+    text (commonly cited as the Open Government Licence for OS OpenData) was NOT confirmed
+    on any page probed in this pass — the product JSON carries no licence field and the
+    OS Open UPRN overview page does not state one — so it is recorded here as unverified
+    rather than asserted.
+  authModel: >-
+    API key or OAuth 2.0 client credentials. Both harvested OpenAPI families declare the
+    same three schemes: apiKey named "key" in query, apiKey named "key" in header, and
+    oauth2 clientCredentials with tokenUrl https://api.os.uk/oauth2/token/v1 and an empty
+    scopes object (no named scopes are published). GET on the token URL returned 404
+    text/plain, consistent with a POST-only token endpoint. There is no OpenID Connect
+    discovery: GET https://api.os.uk/.well-known/openid-configuration returned HTTP 200
+    application/json but the body is the generic api.os.uk landing document, not an OIDC
+    configuration — api.os.uk answers unmatched paths with that landing doc, so the 200 is
+    not evidence of OIDC. No SAML, no member-portal federation.
+  marketSeamNote: >-
+    The UK has no MLS and no industry-mandated machine-readable listing contract. Residential
+    listings are controlled by the Rightmove/Zoopla portal duopoly and reach those portals
+    through agency CRM software. The counterweight is public-sector open data, and Ordnance
+    Survey supplies one half of it — the addressing and geometry spine (UPRN, TOID, USRN,
+    AddressBase, OS NGD) — with HM Land Registry supplying the ownership and price-paid half.
+    OS is a government-owned company that sells licensed products, so the privatised-registry
+    pattern is present, but it is partial and disclosed: the identifiers themselves (UPRN,
+    TOID, USRN) and the small-scale mapping are given away free, while the detailed address
+    and topography products they identify are sold.
+findings:
+  developerPortal:
+    url: https://osdatahub.os.uk/
+    status: 200
+    confirmed: true
+    note: >-
+      Live self-serve OS Data Hub. The legacy portal at developer.ordnancesurvey.co.uk
+      returns 200 after redirecting to
+      https://www.ordnancesurvey.co.uk/developers/os-apis-developer-portal, a page that
+      states the old developer portal is discontinued and directs new users to the OS Data Hub.
+  documentation:
+    url: https://docs.os.uk/os-apis
+    status: 200
+    note: >-
+      GitBook-hosted. Agent-friendly: every page is available as Markdown by appending .md,
+      and an index is published at https://docs.os.uk/os-apis/llms.txt (200, 19,664 bytes)
+      with a full corpus at https://docs.os.uk/os-apis/llms-full.txt (200, 477,253 bytes).
+  apiRoot:
+    url: https://api.os.uk/
+    status: 200
+    note: >-
+      A hypermedia landing document titled "Welcome to Ordnance Survey's APIs" with
+      api-grouping links to /maps, /features, /search, /downloads, /positioning. The same
+      document is served at https://api.os.uk/openapi.json (200) despite the filename — it
+      is a link document, NOT an OpenAPI definition, and was not saved as a spec.
+specsHarvested:
+  - file: openapi/ordnance-survey-ngd-features-openapi.json
+    sourceURL: https://api.os.uk/features/ngd/ofa/v1/api
+    httpStatus: 200
+    contentType: application/vnd.oai.openapi+json;version=3.0
+    bytes: 37932
+    fetched: '2026-07-26'
+    openapi: 3.0.1
+    title: OS NGD API – Features
+    version: v1.8.1
+    paths: 8
+    server: https://api.os.uk/features/ngd/ofa/v1
+    parsed: true
+    note: Served anonymously; no API key needed to read the contract.
+  - file: openapi/ordnance-survey-ngd-tiles-openapi.json
+    sourceURL: https://api.os.uk/maps/vector/ngd/ota/v1/api
+    httpStatus: 200
+    contentType: application/vnd.oai.openapi+json;version=3.0
+    bytes: 87479
+    fetched: '2026-07-26'
+    openapi: 3.0.1
+    title: OS NGD API - Tiles
+    version: v1.8
+    paths: 13
+    server: https://api.os.uk/maps/vector/ngd/ota/v1
+    parsed: true
+  - file: openapi/ordnance-survey-downloads-openapi.yaml
+    sourceURL: https://api.os.uk/downloads/v1/openapi.yaml
+    httpStatus: 200
+    contentType: application/yaml
+    bytes: 20074
+    fetched: '2026-07-26'
+    openapi: 3.0.0
+    title: Ordnance Survey Download API
+    version: 1.0.0
+    paths: 9
+    server: https://api.os.uk/downloads/v1/
+    parsed: true
+    note: Advertised as a service-endpoint link from https://api.os.uk/downloads.
+  - file: openapi/ordnance-survey-osnet-openapi.yaml
+    sourceURL: https://api.os.uk/positioning/osnet/v1/openapi.yaml
+    httpStatus: 200
+    contentType: application/yaml;charset=UTF-8
+    bytes: 26350
+    fetched: '2026-07-26'
+    openapi: 3.0.0
+    title: OS Net API
+    version: 1.6.0
+    paths: 10
+    server: https://api.os.uk/positioning/osnet/v1
+    parsed: true
+probes:
+  - url: https://www.ordnancesurvey.co.uk/
+    status: 200
+  - url: https://osdatahub.os.uk/
+    status: 200
+  - url: https://api.os.uk/
+    status: 200
+  - url: https://docs.os.uk/
+    status: 200
+    note: redirects to https://docs.os.uk/welcome
+  - url: https://developer.ordnancesurvey.co.uk/
+    status: 200
+    note: redirects to ordnancesurvey.co.uk/developers/os-apis-developer-portal; portal discontinued
+  - url: https://api.os.uk/openapi.json
+    status: 200
+    note: hypermedia landing document, not an OpenAPI definition
+  - url: https://api.os.uk/features/ngd/ofa/v1/api
+    status: 200
+    note: OpenAPI 3.0.1 — harvested
+  - url: https://api.os.uk/maps/vector/ngd/ota/v1/api
+    status: 200
+    note: OpenAPI 3.0.1 — harvested
+  - url: https://api.os.uk/downloads/v1/openapi.yaml
+    status: 200
+    note: OpenAPI 3.0.0 — harvested
+  - url: https://api.os.uk/positioning/osnet/v1/openapi.yaml
+    status: 200
+    note: OpenAPI 3.0.0 — harvested
+  - url: https://api.os.uk/downloads/v1/products
+    status: 200
+    note: anonymous, 26 open products
+  - url: https://api.os.uk/downloads/v1/products/OpenUPRN/downloads
+    status: 200
+    note: anonymous, direct zip URLs with md5 and size
+  - url: https://api.os.uk/features/v1/wfs?service=WFS&request=GetCapabilities
+    status: 401
+    note: WFS requires a key; capabilities not readable anonymously
+  - url: https://api.os.uk/search/places/v1/openapi.yaml
+    status: 401
+    note: >-
+      NOT evidence of a spec — a deliberate control probe of a nonsense path
+      (https://api.os.uk/search/places/v1/zzznotreal) also returned 401, so the gateway
+      401s every unauthenticated path under /search. No OpenAPI is claimed for the
+      Places, Names, Match & Cleanse, or Linked Identifiers APIs.
+  - url: https://api.os.uk/search/names/v1/openapi.yaml
+    status: 401
+  - url: https://api.os.uk/search/match/v1/openapi.yaml
+    status: 401
+  - url: https://api.os.uk/search/links/v1/openapi.yaml
+    status: 401
+  - url: https://api.os.uk/oauth2/token/v1
+    status: 404
+    note: GET 404 text/plain; POST-only client-credentials token endpoint per the specs
+  - url: https://api.os.uk/.well-known/openid-configuration
+    status: 200
+    note: returns the generic api.os.uk landing document, NOT an OIDC configuration
+  - url: https://docs.os.uk/os-apis/llms.txt
+    status: 200
+  - url: https://docs.os.uk/os-apis/llms-full.txt
+    status: 200
+  - url: https://github.com/OrdnanceSurvey
+    status: 200
+    note: 173 public repos, "Britain's mapping agency"
+  - url: https://pypi.org/project/osdatahub/
+    status: 200
+    note: official Python SDK
+  - url: https://labs.os.uk/
+    status: 200
+surfaceInventory:
+  documentedAPIs: 12
+  specsPublished: 4
+  webhooks:
+    present: false
+    note: No webhook, event, or callback surface is documented for any OS API; the model is
+      request/response plus bulk download. Absence is the finding.
+  asyncapi:
+    present: false
+    note: No streaming, WebSocket, or messaging surface documented.
+  graphql:
+    present: false
+  mcp:
+    present: false
+    note: No MCP server published; the agent-facing surface OS does publish is llms.txt /
+      llms-full.txt and Markdown-negotiated docs.
+  sdks:
+    - name: osdatahub (Python)
+      url: https://github.com/OrdnanceSurvey/osdatahub
+      note: Official OS Python package, on PyPI, actively updated (2026-07-22).
+    - name: osbng-py / osbng-r
+      note: Official British National Grid indexing packages for Python and R.
+  postman:
+    present: false
+    note: https://www.postman.com/ordnancesurvey returned 200 but the page did not resolve
+      to a confirmed public OS workspace; no Postman collection is claimed.
+  demoCode:
+    - https://github.com/OrdnanceSurvey/OS-Data-Hub-API-Demos
+    - https://github.com/OrdnanceSurvey/os-data-hub-tutorials
+    - https://labs.os.uk/public/os-data-hub-examples/
+sources:
+  - url: https://osdatahub.os.uk/
+    type: DeveloperPortal
+    note: Self-serve signup, project creation, API key issuance.
+  - url: https://docs.os.uk/os-apis
+    type: Documentation
+    note: Names all 12 APIs; Markdown and llms.txt variants available.
+  - url: https://api.os.uk/
+    type: APIReference
+    note: Hypermedia root enumerating every OS API grouping.
+  - url: https://docs.os.uk/os-apis/accessing-os-apis/oauth-2-api
+    type: Documentation
+    note: OAuth 2 client-credentials pattern, backend-proxy guidance, no data-layer scoping.
+  - url: https://docs.os.uk/os-apis/accessing-os-apis/os-places-api
+    type: Documentation
+    note: AddressBase Premium coverage for UK, Jersey, Guernsey, Isle of Man; daily updates.
+  - url: https://www.ordnancesurvey.co.uk/developers/os-data-hub
+    type: Documentation
+    note: Plan names and terms — OS OpenData Plan (free, unlimited), Premium Plan (free
+      premium transactions up to £1,000 per month), Public Sector Plan (PSGA members only).

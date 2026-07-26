@@ -1,0 +1,249 @@
+aid: ordnance-survey
+url: https://raw.githubusercontent.com/api-evangelist/ordnance-survey/refs/heads/main/apis.yml
+name: Ordnance Survey
+kind: company
+description: 'Ordnance Survey is Great Britain''s national mapping agency, a government-owned
+  company that maintains the addressing and mapping layer the UK property market runs on -
+  the Unique Property Reference Number (UPRN), the TOID, AddressBase, and the OS National
+  Geographic Database. The UK has no MLS; residential listings sit behind the Rightmove/Zoopla
+  duopoly and agency CRM software, so the open layer in this market is public-sector rather
+  than private, and OS is one half of it alongside HM Land Registry. Its API posture is unusually
+  honest for this sector - the OS Data Hub is a self-serve developer portal with real machine-readable
+  contracts, including OGC-conformant OpenAPI 3.0 documents served live and anonymously at
+  api.os.uk for OS NGD API - Features and Tiles, plus published OpenAPI for the OS Downloads
+  and OS Net APIs. The split that matters is licensing, not reachability: OS OpenData products
+  (OS Open UPRN, OS Open TOID, Code-Point Open, OS Open Names, Boundary-Line, OS Open Linked
+  Identifiers) are free and downloadable with no API key at all through the OS Downloads API,
+  while the premium addressing and mapping products behind OS Places API, OS Features API,
+  and the NGD collections require a paid Premium plan or Public Sector Geospatial Agreement
+  (PSGA) membership. RESO plays no part here - the Real Estate Standards Organization standards
+  are a US MLS construct and appear nowhere in the OS estate. Home market is the United Kingdom.'
+image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/icons/groq.png
+tags:
+- Real Estate
+- United Kingdom
+- Land Registry
+- Geospatial
+- Addressing
+- Open Data
+- Property Data
+- PropTech
+- Government
+- Mapping
+created: '2026-07-26'
+modified: '2026-07-26'
+specificationVersion: '0.19'
+apis:
+- aid: ordnance-survey:os-ngd-api-features
+  name: OS NGD API - Features
+  description: OGC API - Features conformant access to the OS National Geographic Database,
+    serving building, land, address, and transport feature collections as GeoJSON. The OpenAPI
+    3.0.1 description is served live and anonymously at /api.
+  humanURL: https://docs.os.uk/os-apis/accessing-os-apis/os-ngd-api-features
+  baseURL: https://api.os.uk/features/ngd/ofa/v1
+  tags:
+  - Features
+  - OGC API
+  - Geospatial
+  - Property Data
+  properties:
+  - type: OpenAPI
+    url: openapi/ordnance-survey-ngd-features-openapi.json
+  - type: Documentation
+    url: https://docs.os.uk/os-apis/accessing-os-apis/os-ngd-api-features
+  - type: APIReference
+    url: https://api.os.uk/features/ngd/ofa/v1/api
+- aid: ordnance-survey:os-ngd-api-tiles
+  name: OS NGD API - Tiles
+  description: OGC API - Tiles conformant vector tile service over the OS National Geographic
+    Database, including tile matrix sets and styles. The OpenAPI 3.0.1 description is served
+    live and anonymously at /api.
+  humanURL: https://docs.os.uk/os-apis/accessing-os-apis/os-ngd-api-tiles
+  baseURL: https://api.os.uk/maps/vector/ngd/ota/v1
+  tags:
+  - Tiles
+  - OGC API
+  - Vector Tiles
+  - Mapping
+  properties:
+  - type: OpenAPI
+    url: openapi/ordnance-survey-ngd-tiles-openapi.json
+  - type: Documentation
+    url: https://docs.os.uk/os-apis/accessing-os-apis/os-ngd-api-tiles
+  - type: APIReference
+    url: https://api.os.uk/maps/vector/ngd/ota/v1/api
+- aid: ordnance-survey:os-downloads-api
+  name: OS Downloads API
+  description: Automated bulk download of OS OpenData and OS Premium datasets. The OpenData
+    half of this API answers anonymously with no key - 26 open products including OS Open
+    UPRN, OS Open TOID, Code-Point Open, OS Open Names, and Boundary-Line, each with direct
+    zip download URLs.
+  humanURL: https://docs.os.uk/os-apis/accessing-os-apis/os-downloads-api
+  baseURL: https://api.os.uk/downloads/v1
+  tags:
+  - Downloads
+  - Open Data
+  - Bulk Data
+  - Addressing
+  properties:
+  - type: OpenAPI
+    url: openapi/ordnance-survey-downloads-openapi.yaml
+  - type: Documentation
+    url: https://docs.os.uk/os-apis/accessing-os-apis/os-downloads-api
+  - type: APIReference
+    url: https://api.os.uk/downloads/v1/openapi.yaml
+- aid: ordnance-survey:os-net-api
+  name: OS Net API
+  description: High-precision GNSS data from the OS Net network of continuously operating
+    reference stations across Great Britain, including station metadata, health, and RINEX
+    observation files.
+  humanURL: https://docs.os.uk/os-apis/accessing-os-apis/os-net-api
+  baseURL: https://api.os.uk/positioning/osnet/v1
+  tags:
+  - Positioning
+  - GNSS
+  - Surveying
+  properties:
+  - type: OpenAPI
+    url: openapi/ordnance-survey-osnet-openapi.yaml
+  - type: Documentation
+    url: https://docs.os.uk/os-apis/accessing-os-apis/os-net-api
+  - type: APIReference
+    url: https://api.os.uk/positioning/osnet/v1/openapi.yaml
+- aid: ordnance-survey:os-places-api
+  name: OS Places API
+  description: Address search and geocoding over AddressBase Premium - every UPRN in the United
+    Kingdom, Jersey, Guernsey, and the Isle of Man, with current, provisional, and historic
+    address records and TOID cross-references. Premium or PSGA licensed; no OpenAPI is published.
+  humanURL: https://docs.os.uk/os-apis/accessing-os-apis/os-places-api
+  baseURL: https://api.os.uk/search/places/v1
+  tags:
+  - Addressing
+  - Geocoding
+  - UPRN
+  - Property Data
+  properties:
+  - type: Documentation
+    url: https://docs.os.uk/os-apis/accessing-os-apis/os-places-api
+- aid: ordnance-survey:os-names-api
+  name: OS Names API
+  description: A geographic directory of identifiable places, roads, and settlements in Great
+    Britain, with find and nearest operations.
+  humanURL: https://docs.os.uk/os-apis/accessing-os-apis/os-names-api
+  baseURL: https://api.os.uk/search/names/v1
+  tags:
+  - Search
+  - Gazetteer
+  - Geospatial
+  properties:
+  - type: Documentation
+    url: https://docs.os.uk/os-apis/accessing-os-apis/os-names-api
+- aid: ordnance-survey:os-linked-identifiers-api
+  name: OS Linked Identifiers API
+  description: Resolves the relationships between properties, streets, and OS MasterMap identifiers
+    - UPRN to TOID to USRN - which is the join key between OS data, HM Land Registry records,
+    and local authority property data.
+  humanURL: https://docs.os.uk/os-apis/accessing-os-apis/os-linked-identifiers-api
+  baseURL: https://api.os.uk/search/links/v1
+  tags:
+  - Identifiers
+  - UPRN
+  - TOID
+  - Property Data
+  properties:
+  - type: Documentation
+    url: https://docs.os.uk/os-apis/accessing-os-apis/os-linked-identifiers-api
+- aid: ordnance-survey:os-match-and-cleanse-api
+  name: OS Match & Cleanse API
+  description: Matches and cleanses supplied address strings against OS authoritative addressing
+    data, returning a matched AddressBase record and confidence score.
+  humanURL: https://docs.os.uk/os-apis/accessing-os-apis/os-match-and-cleanse-api
+  baseURL: https://api.os.uk/search/match/v1
+  tags:
+  - Addressing
+  - Data Quality
+  - Matching
+  properties:
+  - type: Documentation
+    url: https://docs.os.uk/os-apis/accessing-os-apis/os-match-and-cleanse-api
+- aid: ordnance-survey:os-features-api
+  name: OS Features API
+  description: OGC Web Feature Service (WFS 2.0.0) over OS MasterMap and premium feature data,
+    with getCapabilities, describeFeatureType, and getFeature operations plus a product archive.
+    XML/WFS rather than OpenAPI.
+  humanURL: https://docs.os.uk/os-apis/accessing-os-apis/os-features-api
+  baseURL: https://api.os.uk/features/v1/wfs
+  tags:
+  - WFS
+  - OGC
+  - Features
+  - Geospatial
+  properties:
+  - type: Documentation
+    url: https://docs.os.uk/os-apis/accessing-os-apis/os-features-api
+- aid: ordnance-survey:os-maps-api
+  name: OS Maps API
+  description: Pre-rendered raster map tiles in multiple OS styles, served as OGC WMTS and
+    as ZXY tiles.
+  humanURL: https://docs.os.uk/os-apis/accessing-os-apis/os-maps-api
+  baseURL: https://api.os.uk/maps/raster/v1
+  tags:
+  - Mapping
+  - Raster Tiles
+  - WMTS
+  properties:
+  - type: Documentation
+    url: https://docs.os.uk/os-apis/accessing-os-apis/os-maps-api
+- aid: ordnance-survey:os-vector-tile-api
+  name: OS Vector Tile API
+  description: Vector tile service delivering detailed OS MasterMap data as styleable vector
+    tiles.
+  humanURL: https://docs.os.uk/os-apis/accessing-os-apis/os-vector-tile-api
+  baseURL: https://api.os.uk/maps/vector/v1/vts
+  tags:
+  - Mapping
+  - Vector Tiles
+  properties:
+  - type: Documentation
+    url: https://docs.os.uk/os-apis/accessing-os-apis/os-vector-tile-api
+- aid: ordnance-survey:os-oauth2-api
+  name: OS OAuth 2 API
+  description: OAuth 2.0 client credentials token service issuing time-limited access tokens
+    for OS Data Hub APIs, so project API keys need not be embedded in browser code. The token
+    URL is https://api.os.uk/oauth2/token/v1 and no named scopes are published.
+  humanURL: https://docs.os.uk/os-apis/accessing-os-apis/oauth-2-api
+  baseURL: https://api.os.uk/oauth2/token/v1
+  tags:
+  - Authentication
+  - OAuth2
+  properties:
+  - type: Documentation
+    url: https://docs.os.uk/os-apis/accessing-os-apis/oauth-2-api
+  - type: Authentication
+    url: https://docs.os.uk/os-apis/core-concepts/authentication
+common:
+- type: Website
+  url: https://www.ordnancesurvey.co.uk/
+- type: DeveloperPortal
+  url: https://osdatahub.os.uk/
+- type: Documentation
+  url: https://docs.os.uk/os-apis
+- type: Authentication
+  url: https://docs.os.uk/os-apis/core-concepts/authentication
+- type: GettingStarted
+  url: https://docs.os.uk/os-apis/core-concepts/getting-started-with-an-api-project
+- type: RateLimits
+  url: https://docs.os.uk/os-apis/core-concepts/rate-limiting-policy
+- type: Plans
+  url: https://osdatahub.os.uk/plans
+- type: OpenData
+  url: https://api.os.uk/downloads/v1/products
+- type: GitHubOrganization
+  url: https://github.com/OrdnanceSurvey
+- type: SDK
+  url: https://github.com/OrdnanceSurvey/osdatahub
+- type: LLMsTxt
+  url: https://docs.os.uk/os-apis/llms.txt
+maintainers:
+- FN: Kin Lane
+  email: kin@apievangelist.com
