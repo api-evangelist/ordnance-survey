@@ -1,0 +1,34 @@
+generated: '2026-07-26'
+method: probed
+source: live DNS/TLS/HTTP probes of apis.yml + OpenAPI hosts
+hosts:
+- host: www.ordnancesurvey.co.uk
+  https: true
+  tls_version: TLSv1.3
+  cert_expires: Jan  5 23:59:59 2027 GMT
+  hsts: true
+  hsts_max_age: 15768000
+- host: docs.os.uk
+  https: true
+  tls_version: TLSv1.3
+  cert_expires: Oct 14 11:25:42 2026 GMT
+  hsts: true
+  hsts_max_age: 31536000
+- host: api.os.uk
+  https: true
+  tls_version: TLSv1.2
+  cert_expires: Jan  8 23:59:59 2027 GMT
+  hsts: false
+domains:
+- domain: ordnancesurvey.co.uk
+  dnssec: false
+  caa: []
+  spf: true
+  dmarc: true
+  dmarc_policy: reject
+- domain: os.uk
+  dnssec: false
+  caa: []
+  spf: true
+  dmarc: true
+  dmarc_policy: reject

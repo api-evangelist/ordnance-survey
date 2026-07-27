@@ -1,0 +1,171 @@
+# OS APIs
+
+## OS APIs
+
+- [Introduction to OS APIs](https://docs.os.uk/os-apis/readme.md): Explore application programming interface (API) references, getting started guides and code examples for developing with OS APIs.
+- [Getting started with an API project](https://docs.os.uk/os-apis/core-concepts/getting-started-with-an-api-project.md): Learn how to create new API projects in the OS Data Hub; find your API Key, secret & endpoint address(es); regenerate an API Key; delete an API project; remove APIs from projects, & monitor API usage.
+- [Authentication](https://docs.os.uk/os-apis/core-concepts/authentication.md)
+- [Error codes](https://docs.os.uk/os-apis/core-concepts/error-codes.md)
+- [Rate-limiting policy](https://docs.os.uk/os-apis/core-concepts/rate-limiting-policy.md)
+- [OS API branding](https://docs.os.uk/os-apis/core-concepts/os-api-branding.md)
+- [Styling OS NGD Data](https://docs.os.uk/os-apis/core-concepts/styling-os-ngd-data.md): Access resources for styling OS NGD data provided by the OS NGD APIs.
+- [Creating a custom style for OS NGD API – Tiles](https://docs.os.uk/os-apis/core-concepts/styling-os-ngd-data/creating-a-custom-style-for-os-ngd-api-tiles.md)
+- [FAQs](https://docs.os.uk/os-apis/core-concepts/faqs.md): Frequently asked questions on OS APIs.
+- [Planned maintenance](https://docs.os.uk/os-apis/service-and-data-status/planned-maintenance.md): This page provides details of planned maintenance events for the OS APIs.
+- [Change Log](https://docs.os.uk/os-apis/service-and-data-status/change-log.md): Change log for the OS APIs documentation site.
+- [OS NGD API – Features](https://docs.os.uk/os-apis/accessing-os-apis/os-ngd-api-features.md)
+- [What data is available](https://docs.os.uk/os-apis/accessing-os-apis/os-ngd-api-features/what-data-is-available.md)
+- [Getting started](https://docs.os.uk/os-apis/accessing-os-apis/os-ngd-api-features/getting-started.md)
+- [GIS software](https://docs.os.uk/os-apis/accessing-os-apis/os-ngd-api-features/getting-started/gis-software.md)
+- [Cadcorp SIS](https://docs.os.uk/os-apis/accessing-os-apis/os-ngd-api-features/getting-started/gis-software/cadcorp-sis.md): Accessing OS NGD data with OS NGD API – Features via Cadcorp SIS
+- [ESRI ArcGIS Online](https://docs.os.uk/os-apis/accessing-os-apis/os-ngd-api-features/getting-started/gis-software/esri-arcgis-online.md): Accessing OS NGD data with OS NGD API – Features via ESRI ArcGIS Online
+- [ESRI ArcGIS Pro](https://docs.os.uk/os-apis/accessing-os-apis/os-ngd-api-features/getting-started/gis-software/esri-arcgis-pro.md): Accessing OS NGD data with OS NGD API – Features via ESRI ArcGIS Pro
+- [QGIS](https://docs.os.uk/os-apis/accessing-os-apis/os-ngd-api-features/getting-started/gis-software/qgis.md): Accessing OS NGD data with OS NGD API – Features via QGIS
+- [Libraries](https://docs.os.uk/os-apis/accessing-os-apis/os-ngd-api-features/getting-started/libraries.md)
+- [Leaflet](https://docs.os.uk/os-apis/accessing-os-apis/os-ngd-api-features/getting-started/libraries/leaflet.md)
+- [MapLibre GL JS](https://docs.os.uk/os-apis/accessing-os-apis/os-ngd-api-features/getting-started/libraries/maplibre-gl-js.md)
+- [OpenLayers](https://docs.os.uk/os-apis/accessing-os-apis/os-ngd-api-features/getting-started/libraries/openlayers.md)
+- [Python (Geopandas)](https://docs.os.uk/os-apis/accessing-os-apis/os-ngd-api-features/getting-started/libraries/python-geopandas.md)
+- [Technical specification](https://docs.os.uk/os-apis/accessing-os-apis/os-ngd-api-features/technical-specification.md)
+- [Landing page](https://docs.os.uk/os-apis/accessing-os-apis/os-ngd-api-features/technical-specification/landing-page.md)
+- [Conformance](https://docs.os.uk/os-apis/accessing-os-apis/os-ngd-api-features/technical-specification/conformance.md)
+- [Collections](https://docs.os.uk/os-apis/accessing-os-apis/os-ngd-api-features/technical-specification/collections.md)
+- [Collection](https://docs.os.uk/os-apis/accessing-os-apis/os-ngd-api-features/technical-specification/collection.md)
+- [Schema](https://docs.os.uk/os-apis/accessing-os-apis/os-ngd-api-features/technical-specification/schema.md)
+- [Queryables](https://docs.os.uk/os-apis/accessing-os-apis/os-ngd-api-features/technical-specification/queryables.md)
+- [Features](https://docs.os.uk/os-apis/accessing-os-apis/os-ngd-api-features/technical-specification/features.md)
+- [Feature](https://docs.os.uk/os-apis/accessing-os-apis/os-ngd-api-features/technical-specification/feature.md)
+- [OS NGD API – Tiles](https://docs.os.uk/os-apis/accessing-os-apis/os-ngd-api-tiles.md)
+- [What data is available?](https://docs.os.uk/os-apis/accessing-os-apis/os-ngd-api-tiles/what-data-is-available.md)
+- [Zoom levels](https://docs.os.uk/os-apis/accessing-os-apis/os-ngd-api-tiles/zoom-levels.md)
+- [Getting started](https://docs.os.uk/os-apis/accessing-os-apis/os-ngd-api-tiles/getting-started.md)
+- [GIS software](https://docs.os.uk/os-apis/accessing-os-apis/os-ngd-api-tiles/getting-started/gis-software.md)
+- [Cadcorp SIS](https://docs.os.uk/os-apis/accessing-os-apis/os-ngd-api-tiles/getting-started/gis-software/cadcorp-sis.md)
+- [QGIS](https://docs.os.uk/os-apis/accessing-os-apis/os-ngd-api-tiles/getting-started/gis-software/qgis.md)
+- [Libraries](https://docs.os.uk/os-apis/accessing-os-apis/os-ngd-api-tiles/getting-started/libraries.md)
+- [Leaflet](https://docs.os.uk/os-apis/accessing-os-apis/os-ngd-api-tiles/getting-started/libraries/leaflet.md)
+- [MapLibre GL JS](https://docs.os.uk/os-apis/accessing-os-apis/os-ngd-api-tiles/getting-started/libraries/maplibre-gl-js.md)
+- [OpenLayers](https://docs.os.uk/os-apis/accessing-os-apis/os-ngd-api-tiles/getting-started/libraries/openlayers.md)
+- [Technical specification](https://docs.os.uk/os-apis/accessing-os-apis/os-ngd-api-tiles/technical-specification.md)
+- [Landing page](https://docs.os.uk/os-apis/accessing-os-apis/os-ngd-api-tiles/technical-specification/landing-page.md)
+- [Conformance](https://docs.os.uk/os-apis/accessing-os-apis/os-ngd-api-tiles/technical-specification/conformance.md)
+- [Collections](https://docs.os.uk/os-apis/accessing-os-apis/os-ngd-api-tiles/technical-specification/collections.md)
+- [Collection](https://docs.os.uk/os-apis/accessing-os-apis/os-ngd-api-tiles/technical-specification/collection.md)
+- [Tile matrix sets](https://docs.os.uk/os-apis/accessing-os-apis/os-ngd-api-tiles/technical-specification/tile-matrix-sets.md)
+- [Tiles](https://docs.os.uk/os-apis/accessing-os-apis/os-ngd-api-tiles/technical-specification/tiles.md)
+- [Styles](https://docs.os.uk/os-apis/accessing-os-apis/os-ngd-api-tiles/technical-specification/styles.md)
+- [OS Features API](https://docs.os.uk/os-apis/accessing-os-apis/os-features-api.md)
+- [OS Product Archive](https://docs.os.uk/os-apis/accessing-os-apis/os-features-api/os-product-archive.md)
+- [What data is available?](https://docs.os.uk/os-apis/accessing-os-apis/os-features-api/what-data-is-available.md)
+- [Getting started](https://docs.os.uk/os-apis/accessing-os-apis/os-features-api/getting-started.md)
+- [ArcGIS Online](https://docs.os.uk/os-apis/accessing-os-apis/os-features-api/getting-started/arcgis-online.md): Accessing OS Features API via ESRI ArcGIS Online
+- [ArcGIS Pro](https://docs.os.uk/os-apis/accessing-os-apis/os-features-api/getting-started/arcgis-pro.md): Accessing OS Features API via ESRI ArcGIS Pro
+- [ArcMap](https://docs.os.uk/os-apis/accessing-os-apis/os-features-api/getting-started/arcmap.md): Accessing OS Features API via ESRI ArcMap
+- [Cadcorp SIS](https://docs.os.uk/os-apis/accessing-os-apis/os-features-api/getting-started/cadcorp-sis.md): Accessing OS Features API via Cadcorp SIS
+- [MapInfo Pro](https://docs.os.uk/os-apis/accessing-os-apis/os-features-api/getting-started/mapinfo-pro.md): Accessing OS Features API via MapInfo Pro
+- [QGIS](https://docs.os.uk/os-apis/accessing-os-apis/os-features-api/getting-started/qgis.md): Accessing OS Features API via QGIS
+- [Technical specification](https://docs.os.uk/os-apis/accessing-os-apis/os-features-api/technical-specification.md)
+- [getCapabilities](https://docs.os.uk/os-apis/accessing-os-apis/os-features-api/technical-specification/getcapabilities.md)
+- [describeFeatureType](https://docs.os.uk/os-apis/accessing-os-apis/os-features-api/technical-specification/describefeaturetype.md)
+- [getFeature](https://docs.os.uk/os-apis/accessing-os-apis/os-features-api/technical-specification/getfeature.md)
+- [Filtering](https://docs.os.uk/os-apis/accessing-os-apis/os-features-api/technical-specification/filtering.md)
+- [Paging](https://docs.os.uk/os-apis/accessing-os-apis/os-features-api/technical-specification/paging.md)
+- [Empty values](https://docs.os.uk/os-apis/accessing-os-apis/os-features-api/technical-specification/empty-values.md)
+- [OS Vector Tile API](https://docs.os.uk/os-apis/accessing-os-apis/os-vector-tile-api.md)
+- [What data is available?](https://docs.os.uk/os-apis/accessing-os-apis/os-vector-tile-api/what-data-is-available.md)
+- [Getting started](https://docs.os.uk/os-apis/accessing-os-apis/os-vector-tile-api/getting-started.md)
+- [ESRI ArcGIS Pro](https://docs.os.uk/os-apis/accessing-os-apis/os-vector-tile-api/getting-started/esri-arcgis-pro.md): Accessing OS Vector Tile API via ESRI ArcGIS Pro
+- [Cadcorp SIS](https://docs.os.uk/os-apis/accessing-os-apis/os-vector-tile-api/getting-started/cadcorp-sis.md): Accessing OS Vector Tile API via Cadcorp SIS
+- [QGIS](https://docs.os.uk/os-apis/accessing-os-apis/os-vector-tile-api/getting-started/qgis.md): Accessing OS Vector Tile API via QGIS
+- [Create a web application using the OS Vector Tile API](https://docs.os.uk/os-apis/accessing-os-apis/os-vector-tile-api/getting-started/create-a-web-application-using-the-os-vector-tile-api.md)
+- [Technical specification](https://docs.os.uk/os-apis/accessing-os-apis/os-vector-tile-api/technical-specification.md)
+- [Service metadata](https://docs.os.uk/os-apis/accessing-os-apis/os-vector-tile-api/technical-specification/service-metadata.md)
+- [Stylesheet](https://docs.os.uk/os-apis/accessing-os-apis/os-vector-tile-api/technical-specification/stylesheet.md)
+- [Tile request](https://docs.os.uk/os-apis/accessing-os-apis/os-vector-tile-api/technical-specification/tile-request.md)
+- [OS Maps API](https://docs.os.uk/os-apis/accessing-os-apis/os-maps-api.md)
+- [Layers and styles](https://docs.os.uk/os-apis/accessing-os-apis/os-maps-api/layers-and-styles.md): Find out what zoom levels are available for the two projections used by the API, plus the four styles available for the maps: Road, Outdoor, Light and Leisure.
+- [Getting started](https://docs.os.uk/os-apis/accessing-os-apis/os-maps-api/getting-started.md)
+- [ESRI ArcGIS Online](https://docs.os.uk/os-apis/accessing-os-apis/os-maps-api/getting-started/arcgis-online.md): Accessing OS Maps API via ESRI ArcGIS Online
+- [ESRI ArcGIS Pro](https://docs.os.uk/os-apis/accessing-os-apis/os-maps-api/getting-started/arcgis-pro.md): Accessing OS Maps API via ESRI ArcGIS Pro
+- [ESRI ArcMap](https://docs.os.uk/os-apis/accessing-os-apis/os-maps-api/getting-started/arcmap.md): Accessing OS Maps API via ESRI ArcMap
+- [Cadcorp SIS](https://docs.os.uk/os-apis/accessing-os-apis/os-maps-api/getting-started/cadcorp-sis.md): Accessing OS Maps API via Cadcorp SIS
+- [MapInfo Pro](https://docs.os.uk/os-apis/accessing-os-apis/os-maps-api/getting-started/mapinfo-pro.md): Accessing OS Maps API via MapInfo Pro
+- [QGIS](https://docs.os.uk/os-apis/accessing-os-apis/os-maps-api/getting-started/qgis.md): Accessing OS Maps API via QGIS
+- [Technical specification](https://docs.os.uk/os-apis/accessing-os-apis/os-maps-api/technical-specification.md)
+- [ZXY](https://docs.os.uk/os-apis/accessing-os-apis/os-maps-api/technical-specification/zxy.md)
+- [WMTS](https://docs.os.uk/os-apis/accessing-os-apis/os-maps-api/technical-specification/wmts.md)
+- [OS Places API](https://docs.os.uk/os-apis/accessing-os-apis/os-places-api.md)
+- [Getting started with example queries using Node.js](https://docs.os.uk/os-apis/accessing-os-apis/os-places-api/getting-started-with-example-queries-using-node.js.md)
+- [Technical specification](https://docs.os.uk/os-apis/accessing-os-apis/os-places-api/technical-specification.md)
+- [Find](https://docs.os.uk/os-apis/accessing-os-apis/os-places-api/technical-specification/find.md)
+- [Postcode](https://docs.os.uk/os-apis/accessing-os-apis/os-places-api/technical-specification/postcode.md)
+- [UPRN](https://docs.os.uk/os-apis/accessing-os-apis/os-places-api/technical-specification/uprn.md)
+- [Nearest](https://docs.os.uk/os-apis/accessing-os-apis/os-places-api/technical-specification/nearest.md)
+- [BBOX](https://docs.os.uk/os-apis/accessing-os-apis/os-places-api/technical-specification/bbox.md)
+- [Radius](https://docs.os.uk/os-apis/accessing-os-apis/os-places-api/technical-specification/radius.md)
+- [Polygon](https://docs.os.uk/os-apis/accessing-os-apis/os-places-api/technical-specification/polygon.md)
+- [Datasets](https://docs.os.uk/os-apis/accessing-os-apis/os-places-api/datasets.md)
+- [Code lists](https://docs.os.uk/os-apis/accessing-os-apis/os-places-api/code-lists.md)
+- [OS Names API](https://docs.os.uk/os-apis/accessing-os-apis/os-names-api.md)
+- [Getting started with example queries using Node.js](https://docs.os.uk/os-apis/accessing-os-apis/os-names-api/getting-started-with-example-queries-using-node.js.md)
+- [Technical specification](https://docs.os.uk/os-apis/accessing-os-apis/os-names-api/technical-specification.md)
+- [Find](https://docs.os.uk/os-apis/accessing-os-apis/os-names-api/technical-specification/find.md)
+- [Nearest](https://docs.os.uk/os-apis/accessing-os-apis/os-names-api/technical-specification/nearest.md)
+- [Code list](https://docs.os.uk/os-apis/accessing-os-apis/os-names-api/code-list.md)
+- [OS Linked Identifiers API](https://docs.os.uk/os-apis/accessing-os-apis/os-linked-identifiers-api.md)
+- [What data is available?](https://docs.os.uk/os-apis/accessing-os-apis/os-linked-identifiers-api/what-data-is-available.md)
+- [Getting started with implementing a look-up application](https://docs.os.uk/os-apis/accessing-os-apis/os-linked-identifiers-api/getting-started-with-implementing-a-look-up-application.md)
+- [Technical specification](https://docs.os.uk/os-apis/accessing-os-apis/os-linked-identifiers-api/technical-specification.md)
+- [Identifier](https://docs.os.uk/os-apis/accessing-os-apis/os-linked-identifiers-api/technical-specification/identifier.md)
+- [Identifier types](https://docs.os.uk/os-apis/accessing-os-apis/os-linked-identifiers-api/technical-specification/identifier-types.md)
+- [Feature types](https://docs.os.uk/os-apis/accessing-os-apis/os-linked-identifiers-api/technical-specification/feature-types.md)
+- [Product version information](https://docs.os.uk/os-apis/accessing-os-apis/os-linked-identifiers-api/technical-specification/product-version-information.md)
+- [OS Downloads API](https://docs.os.uk/os-apis/accessing-os-apis/os-downloads-api.md)
+- [Getting started](https://docs.os.uk/os-apis/accessing-os-apis/os-downloads-api/getting-started.md)
+- [Automating OS OpenData downloads](https://docs.os.uk/os-apis/accessing-os-apis/os-downloads-api/getting-started/automating-os-opendata-downloads.md)
+- [Automating OS Premium data downloads](https://docs.os.uk/os-apis/accessing-os-apis/os-downloads-api/getting-started/automating-os-premium-data-downloads.md)
+- [Technical specification](https://docs.os.uk/os-apis/accessing-os-apis/os-downloads-api/technical-specification.md)
+- [OpenData products](https://docs.os.uk/os-apis/accessing-os-apis/os-downloads-api/technical-specification/opendata-products.md)
+- [OpenData product details](https://docs.os.uk/os-apis/accessing-os-apis/os-downloads-api/technical-specification/opendata-product-details.md)
+- [Download an OpenData product](https://docs.os.uk/os-apis/accessing-os-apis/os-downloads-api/technical-specification/download-an-opendata-product.md)
+- [OpenData product image](https://docs.os.uk/os-apis/accessing-os-apis/os-downloads-api/technical-specification/opendata-product-image.md)
+- [Data packages](https://docs.os.uk/os-apis/accessing-os-apis/os-downloads-api/technical-specification/data-packages.md)
+- [Data package ID](https://docs.os.uk/os-apis/accessing-os-apis/os-downloads-api/technical-specification/data-package-id.md)
+- [Data package version](https://docs.os.uk/os-apis/accessing-os-apis/os-downloads-api/technical-specification/data-package-version.md)
+- [Data package version ID](https://docs.os.uk/os-apis/accessing-os-apis/os-downloads-api/technical-specification/data-package-version-id.md)
+- [Download a data package](https://docs.os.uk/os-apis/accessing-os-apis/os-downloads-api/technical-specification/download-a-data-package.md)
+- [OS Net API](https://docs.os.uk/os-apis/accessing-os-apis/os-net-api.md)
+- [Getting started](https://docs.os.uk/os-apis/accessing-os-apis/os-net-api/getting-started.md)
+- [Technical specification](https://docs.os.uk/os-apis/accessing-os-apis/os-net-api/technical-specification.md)
+- [Stations](https://docs.os.uk/os-apis/accessing-os-apis/os-net-api/technical-specification/stations.md)
+- [Rinex](https://docs.os.uk/os-apis/accessing-os-apis/os-net-api/technical-specification/rinex.md)
+- [Models](https://docs.os.uk/os-apis/accessing-os-apis/os-net-api/technical-specification/models.md)
+- [OAuth 2 API](https://docs.os.uk/os-apis/accessing-os-apis/oauth-2-api.md)
+- [Getting started](https://docs.os.uk/os-apis/accessing-os-apis/oauth-2-api/getting-started.md)
+- [Technical specification](https://docs.os.uk/os-apis/accessing-os-apis/oauth-2-api/technical-specification.md)
+- [OS Match & Cleanse API (withdrawn)](https://docs.os.uk/os-apis/accessing-os-apis/os-match-and-cleanse-api.md)
+- [End of Life Information](https://docs.os.uk/os-apis/accessing-os-apis/os-match-and-cleanse-api/end-of-life-information.md)
+- [Getting started with an example match query using Node.js](https://docs.os.uk/os-apis/accessing-os-apis/os-match-and-cleanse-api/getting-started-with-an-example-match-query-using-node.js.md)
+- [Technical specification](https://docs.os.uk/os-apis/accessing-os-apis/os-match-and-cleanse-api/technical-specification.md)
+- [Datasets](https://docs.os.uk/os-apis/accessing-os-apis/os-match-and-cleanse-api/datasets.md)
+- [Code lists](https://docs.os.uk/os-apis/accessing-os-apis/os-match-and-cleanse-api/code-lists.md)
+- [OS API Wrappers](https://docs.os.uk/os-apis/additional-resources/os-api-wrappers.md)
+- [Accessibility](https://docs.os.uk/os-apis/extra-links/accessibility.md)
+- [Contact us](https://docs.os.uk/os-apis/extra-links/contact-us.md): Signposting on how to contact us if you have feedback on any of the documentation for our APIs.
+- [Terms and conditions](https://docs.os.uk/os-apis/extra-links/terms-and-conditions.md)
+
+
+---
+
+# Agent Instructions
+This documentation is published with GitBook. GitBook is the documentation platform designed so that both humans and AI agents can read, navigate, and reason over technical content effectively. Learn more at gitbook.com.
+
+## Querying This Documentation
+If you need additional information, you can query the documentation dynamically by asking a question.
+Perform an HTTP GET request on a page URL with the `ask` query parameter:
+```
+GET https://docs.os.uk/os-apis/readme.md?ask=<question>
+```
+The question should be specific, self-contained, and written in natural language.
+The response will contain a direct answer to the question and relevant excerpts and sources from the documentation.
+Use this mechanism when the answer is not explicitly present in the current page, you need clarification or additional context, or you want to retrieve related documentation sections.

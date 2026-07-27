@@ -1,0 +1,56 @@
+specification: API Commons Rate Limits
+specificationVersion: '0.1'
+provider: Ordnance Survey
+providerId: ordnance-survey
+generated: '2026-07-26'
+method: searched
+created: '2026-07-26'
+modified: '2026-07-26'
+tags:
+  - Rate Limiting
+  - Geospatial
+  - Open Data
+description: >-
+  Ordnance Survey publishes a single estate-wide rate-limiting policy. Limits
+  are transactions per minute, enforced PER API and PER API PROJECT, and differ
+  between live-mode and development-mode projects. Exceeding a limit returns
+  429 until the rate falls back under the threshold. OS documents no
+  RateLimit-* or Retry-After response headers and no per-plan quota table.
+sources:
+  - https://docs.os.uk/os-apis/core-concepts/rate-limiting-policy
+  - https://docs.os.uk/os-apis/core-concepts/error-codes
+headers:
+  requestId: null
+  rateLimitRemaining: null
+  retryAfter: null
+responseCodes:
+  throttled: 429
+limits:
+  - name: Live-mode project
+    scope: per API per project
+    metric: transactions_per_minute
+    limit: 600
+    timeFrame: minute
+    note: Each API in a live project can perform up to 600 transactions per minute.
+  - name: Development-mode project
+    scope: per API per project
+    metric: transactions_per_minute
+    limit: 50
+    timeFrame: minute
+    note: Each API in a development (dev) project can handle a maximum of 50 transactions per minute.
+  - name: OS Places API Partner trial
+    scope: per API Key across an account
+    metric: transactions_per_minute
+    limit: 50
+    timeFrame: minute
+    note: >-
+      Enforced for the duration of the OS Places API Partner trial and applies
+      to all projects with an OS Places API Key across an account.
+guidance: >-
+  "If the rate limit for an API is exceeded, subsequent requests will be
+  rejected (429) until the rate falls below the allowed threshold. It's
+  important to design your application to handle these errors gracefully."
+gaps:
+  - No documented Retry-After or RateLimit-* headers, so back-off must be blind.
+  - No published concurrency limit, daily quota or burst allowance.
+  - Download volume limits for OS Downloads API bulk transfers are not published.

@@ -1,0 +1,900 @@
+{
+  "x-apievangelist-provenance": {
+    "generated": "2026-07-26",
+    "method": "searched",
+    "source": "https://api.os.uk/ and every rel=api-grouping document reachable from it",
+    "note": "Ordnance Survey serves a machine-readable link index (title/description/links[] with rel=self|landing-page|api-grouping|service-endpoint|documentation) at the api.os.uk root and at every API grouping path. This is the provider's own API catalogue. It is NOT served at /.well-known/api-catalog: api.os.uk answers 200 with this same landing document for any unknown path, so /.well-known/* probes are catch-all responses rather than real discovery documents."
+  },
+  "documents": [
+    {
+      "url": "https://api.os.uk/",
+      "document": {
+        "title": "Welcome to Ordnance Survey's APIs",
+        "description": "Access geospatial data made available by OS under one of the following categories : mapping / features / search / download / positioning.",
+        "links": [
+          {
+            "href": "https://api.os.uk/",
+            "rel": "self",
+            "type": "application/json",
+            "title": "Self link",
+            "description": "This document."
+          },
+          {
+            "href": "https://api.os.uk/maps",
+            "rel": "api-grouping",
+            "type": "application/json",
+            "title": "OS Mapping APIs",
+            "description": "The available Mapping APIs offered by Ordnance Survey. These are provided in a range of forms including : Web Map Tile Services and Vector Tile Services."
+          },
+          {
+            "href": "https://api.os.uk/features",
+            "rel": "api-grouping",
+            "type": "application/json",
+            "title": "OS Features APIs",
+            "description": "The available Features APIs offered by Ordnance Survey."
+          },
+          {
+            "href": "https://api.os.uk/search",
+            "rel": "api-grouping",
+            "type": "application/json",
+            "title": "OS Search APIs",
+            "description": "The available Search APIs offered by Ordnance Survey. These are provided as RESTful or Remote Procedure Call services."
+          },
+          {
+            "href": "https://api.os.uk/downloads",
+            "rel": "api-grouping",
+            "type": "application/json",
+            "title": "OS Downloads API",
+            "description": "The available Download APIs offered by Ordnance Survey. These provide access to bulk data through RESTful services."
+          },
+          {
+            "href": "https://api.os.uk/positioning",
+            "rel": "api-grouping",
+            "type": "application/json",
+            "title": "OS Positioning APIs",
+            "description": "The available Positioning APIs offered by Ordnance Survey."
+          }
+        ]
+      }
+    },
+    {
+      "url": "https://api.os.uk/maps",
+      "document": {
+        "title": "OS Mapping APIs",
+        "description": "The available Mapping APIs offered by Ordnance Survey. These are provided in a range of forms including : Web Map Tile Services and Vector Tile Services.",
+        "links": [
+          {
+            "href": "https://api.os.uk/",
+            "rel": "landing-page",
+            "type": "application/json",
+            "title": "Welcome to Ordnance Survey's APIs",
+            "description": "The landing page document."
+          },
+          {
+            "href": "https://api.os.uk/maps/vector",
+            "rel": "api-grouping",
+            "type": "application/json",
+            "title": "OS Vector Tiles APIs",
+            "description": "The available Vector Tile APIs offered by Ordnance Survey."
+          },
+          {
+            "href": "https://api.os.uk/maps/raster",
+            "documentation": "https://osdatahub.os.uk/docs/wmts/overview",
+            "service-description": "https://api.os.uk/maps/raster/v1/wmts",
+            "rel": "api-grouping",
+            "type": "application/json",
+            "title": "OS Maps API",
+            "description": "Get started for free and integrate Ordnance Survey's up-to-date, detailed maps in your apps, enabling your customers to make location-based decisions with confidence, removing the overhead of managing complex datasets yourself."
+          }
+        ]
+      }
+    },
+    {
+      "url": "https://api.os.uk/features",
+      "document": {
+        "title": "OS Features APIs",
+        "description": "The available Features APIs offered by Ordnance Survey.",
+        "links": [
+          {
+            "href": "https://api.os.uk/",
+            "rel": "landing-page",
+            "type": "application/json",
+            "title": "Welcome to Ordnance Survey's APIs",
+            "description": "The landing page document."
+          },
+          {
+            "href": "https://api.os.uk/features/ngd",
+            "documentation": "https://osdatahub.os.uk/docs/ofa/overview",
+            "service-description": "https://api.os.uk/features/ngd/ofa/v1",
+            "rel": "api-grouping",
+            "type": "application/json",
+            "title": "OS NGD API – Features",
+            "description": "The endpoints for the NGD Features API"
+          },
+          {
+            "href": "https://api.os.uk/features/v1",
+            "documentation": "https://osdatahub.os.uk/docs/wfs/overview",
+            "service-description": "https://api.os.uk/features/v1/wfs",
+            "rel": "api-grouping",
+            "type": "application/json",
+            "title": "WFS",
+            "description": "The endpoints for the WFS Features API"
+          }
+        ]
+      }
+    },
+    {
+      "url": "https://api.os.uk/search",
+      "document": {
+        "title": "OS Search APIs",
+        "description": "The available Search APIs offered by Ordnance Survey. These are provided as RESTful or Remote Procedure Call services.",
+        "links": [
+          {
+            "href": "https://api.os.uk/",
+            "rel": "landing-page",
+            "type": "application/json",
+            "title": "Welcome to Ordnance Survey's APIs",
+            "description": "Access geospatial data made available by OS under one of the following categories : mapping / features / search / download."
+          },
+          {
+            "href": "https://api.os.uk/search/names",
+            "rel": "api-grouping",
+            "type": "application/json",
+            "title": "OS Names API",
+            "description": "A geographic directory containing basic information about identifiable places."
+          },
+          {
+            "href": "https://api.os.uk/search/links",
+            "rel": "api-grouping",
+            "type": "application/json",
+            "title": "OS Linked Identifiers API",
+            "description": "Allows you to access the valuable relationships between properties, streets and OS MasterMap identifiers for free."
+          },
+          {
+            "href": "https://api.os.uk/search/places",
+            "rel": "api-grouping",
+            "type": "application/json",
+            "title": "OS Places API",
+            "description": "Identify addresses accurately with OS Places API."
+          },
+          {
+            "href": "https://api.os.uk/search/match",
+            "rel": "api-grouping",
+            "type": "application/json",
+            "title": "OS Match & Cleanse API",
+            "description": "Instant, reliable search results to make deduping and cleansing address data easier for your business."
+          }
+        ]
+      }
+    },
+    {
+      "url": "https://api.os.uk/downloads",
+      "document": {
+        "title": "OS Downloads API",
+        "description": "The available Download APIs offered by Ordnance Survey. These provide access to bulk data through RESTful services.",
+        "links": [
+          {
+            "href": "https://api.os.uk/",
+            "rel": "landing-page",
+            "type": "application/json",
+            "title": "Welcome to Ordnance Survey's APIs",
+            "description": "The landing page document."
+          },
+          {
+            "href": "https://api.os.uk/downloads/v1/openapi.yaml",
+            "rel": "service-endpoint",
+            "type": "application/yaml",
+            "title": "OS Downloads API specification",
+            "description": "Returns a yaml file that describes the OS Downloads API using OpenAPI version 3.0.0."
+          },
+          {
+            "href": "https://api.os.uk/downloads/v1/products",
+            "rel": "service-endpoint",
+            "type": "application/json",
+            "title": "OS Downloads API Products List",
+            "description": "Returns a list of the OS OpenData products that are available to download."
+          },
+          {
+            "href": "https://api.os.uk/downloads/v1/dataPackages",
+            "rel": "service-endpoint",
+            "type": "application/json",
+            "title": "OS Downloads API Data Packages List",
+            "description": "Returns a list of the Data Packages that are available to download."
+          },
+          {
+            "href": "https://osdatahub.os.uk/docs/downloads/overview",
+            "rel": "documentation",
+            "type": "text/html",
+            "title": "OS Downloads API: Overview",
+            "description": "An overview of the OS Downloads API describing what you can and can not do with the API."
+          },
+          {
+            "href": "https://osdatahub.os.uk/docs/downloads/gettingStarted",
+            "rel": "documentation",
+            "type": "text/html",
+            "title": "OS Downloads API: Getting started guide",
+            "description": "A walkthrough of how to get set up with the OS Downloads API including examples of implementation using NodeJS."
+          },
+          {
+            "href": "https://osdatahub.os.uk/docs/downloads/technicalSpecification",
+            "rel": "documentation",
+            "type": "text/html",
+            "title": "OS Downloads API: Technical specification",
+            "description": "Document providing the technical details of the API and methods you can use to call it."
+          }
+        ]
+      }
+    },
+    {
+      "url": "https://api.os.uk/positioning",
+      "document": {
+        "title": "OS Positioning APIs",
+        "description": "Access positioning APIs and data offered by Ordnance Survey.",
+        "links": [
+          {
+            "href": "https://api.os.uk/",
+            "rel": "landing-page",
+            "type": "application/json",
+            "title": "Welcome to Ordnance Survey's APIs",
+            "description": "The landing page document."
+          },
+          {
+            "href": "https://api.os.uk/positioning/osnet",
+            "rel": "api-grouping",
+            "type": "application/json",
+            "title": "OS Net API",
+            "description": "An API to access positioning data from the OS Net system"
+          }
+        ]
+      }
+    },
+    {
+      "url": "https://api.os.uk/maps/vector",
+      "document": {
+        "title": "OS Vector Tile APIs",
+        "description": "The available Vector Tile APIs offered by Ordnance Survey.",
+        "links": [
+          {
+            "href": "https://api.os.uk/maps",
+            "rel": "landing-page",
+            "type": "application/json",
+            "title": "OS Mapping APIs",
+            "description": "This page defines the available mapping APIs provided by Ordnance Survey. These can be used for a range of backdrop & contextual mappings."
+          },
+          {
+            "href": "https://api.os.uk/maps/vector/v1",
+            "documentation": "https://osdatahub.os.uk/docs/vts/overview",
+            "service-description": "https://api.os.uk/maps/vector/v1/vts",
+            "rel": "api-grouping",
+            "type": "application/json",
+            "title": "OS Vector Tile API",
+            "description": "OS Vector Tile API is a vector tile service providing detailed Ordnance Survey data as a customisable basemap. It can be used with most web mapping libraries including Mapbox GL JS, Leaflet, OpenLayers and ArcGIS API for JavaScript."
+          },
+          {
+            "href": "https://api.os.uk/maps/vector/ngd",
+            "documentation": "https://osdatahub.os.uk/docs/ota/overview",
+            "service-description": "https://api.os.uk/maps/vector/ngd/ota/v1",
+            "rel": "api-grouping",
+            "type": "application/json",
+            "title": "OS NGD API – Tiles",
+            "description": "OS NGD API – Tiles is a vector tile service powered by the OS National Geographic Database (OS NGD). It provides a detailed and customisable basemap based on the OGC API – Tiles standard to help you create stunning and interactive web maps."
+          }
+        ]
+      }
+    },
+    {
+      "url": "https://api.os.uk/maps/raster",
+      "document": {
+        "title": "OS Maps API",
+        "description": "Get started for free and integrate Ordnance Survey's up-to-date, detailed maps in your apps, enabling your customers to make location-based decisions with confidence, removing the overhead of managing complex datasets yourself.",
+        "links": [
+          {
+            "href": "https://api.os.uk/maps",
+            "rel": "api-grouping",
+            "type": "application/json",
+            "title": "OS Mapping APIs",
+            "description": "This page defines the available mapping APIs provided by Ordnance Survey. These can be used for a range of backdrop & contextual mappings."
+          },
+          {
+            "href": "https://api.os.uk/maps/raster/v1/wmts",
+            "rel": "service-endpoint",
+            "type": [
+              "application/xml",
+              "image/png"
+            ],
+            "title": "OS Maps API - WMTS",
+            "description": "The endpoint for the Web Map Tile Service implementation of OS Maps API."
+          },
+          {
+            "href": "https://api.os.uk/maps/raster/v1/zxy",
+            "rel": "api-grouping",
+            "type": "application/json",
+            "title": "OS Maps API - ZXY",
+            "description": "ZXY raster service endpoint."
+          },
+          {
+            "href": "https://osdatahub.os.uk/docs/wmts/overview",
+            "rel": "documentation",
+            "type": "text/html",
+            "title": "OS Maps API: Overview",
+            "description": "Provides a descriptive overview of the API."
+          },
+          {
+            "href": "https://osdatahub.os.uk/docs/wmts/gettingStarted",
+            "rel": "documentation",
+            "type": "text/html",
+            "title": "OS Maps API: Getting started guide",
+            "description": "A guide to getting set up with OS Maps API walking through the specifics of set up and using the API through Ordnance Survey demo applications."
+          },
+          {
+            "href": "https://osdatahub.os.uk/docs/wmts/technicalSpecification",
+            "rel": "documentation",
+            "type": "text/html",
+            "title": "OS Maps API: Technical specification",
+            "description": "Document providing the technical details of the API and methods you can use to call it."
+          }
+        ]
+      }
+    },
+    {
+      "url": "https://api.os.uk/features/ngd",
+      "document": {
+        "title": "OS NGD API – Features",
+        "description": "The endpoints for the NGD Features API",
+        "links": [
+          {
+            "href": "https://api.os.uk/features",
+            "rel": "api-grouping",
+            "type": "application/json",
+            "title": "OS Features APIs",
+            "description": "This page defines the available features APIs provided by Ordnance Survey."
+          },
+          {
+            "href": "https://api.os.uk/features/ngd/ofa/v1/",
+            "rel": "service-endpoint",
+            "type": "application/json",
+            "title": "OS NGD API – Features",
+            "description": "The endpoint for the Ordnance Survey National Geographic Database API – Features."
+          },
+          {
+            "href": "https://osdatahub.os.uk/docs/ofa/overview",
+            "rel": "documentation",
+            "type": "text/html",
+            "title": "OS NGD API – Features: Overview",
+            "description": "An overview of the OS NGD API – Features describing what you can and can not do with the API."
+          },
+          {
+            "href": "https://osdatahub.os.uk/docs/ofa/gettingStarted",
+            "rel": "documentation",
+            "type": "text/html",
+            "title": "OS NGD API – Features: Getting started guide",
+            "description": "A guide to getting set up with the OS NGD API – Features walking through the specifics of set up and using the API through Ordnance Survey demo applications."
+          },
+          {
+            "href": "https://osdatahub.os.uk/docs/ofa/technicalSpecification",
+            "rel": "documentation",
+            "type": "text/html",
+            "title": "OS NGD API – Features: Technical specification",
+            "description": "Document providing the technical details of the API and methods you can use to call it."
+          }
+        ]
+      }
+    },
+    {
+      "url": "https://api.os.uk/features/v1",
+      "document": {
+        "title": "OS Features API",
+        "description": "The endpoints for the WFS Features API",
+        "links": [
+          {
+            "href": "https://api.os.uk/features",
+            "rel": "api-grouping",
+            "type": "application/json",
+            "title": "OS Features APIs",
+            "description": "This page defines the available features APIs provided by Ordnance Survey."
+          },
+          {
+            "href": "https://api.os.uk/features/v1/wfs",
+            "rel": "service-endpoint",
+            "type": "application/xml",
+            "title": "WFS",
+            "description": "The endpoint for the Web Feature Service OS Features API."
+          },
+          {
+            "href": "https://api.os.uk/features/v1/wfs/archive",
+            "rel": "service-endpoint",
+            "type": "application/xml",
+            "title": "WFS - Product Archive",
+            "description": "The endpoint to access the Product Archive through the Web Feature Service OS Features API."
+          },
+          {
+            "href": "https://osdatahub.os.uk/docs/wfs/overview",
+            "rel": "documentation",
+            "type": "text/html",
+            "title": "OS Features API: Overview",
+            "description": "An overview of the OS Features API describing what you can and can not do with the API."
+          },
+          {
+            "href": "https://osdatahub.os.uk/docs/wfs/gettingStarted",
+            "rel": "documentation",
+            "type": "text/html",
+            "title": "OS Features API: Getting started guide",
+            "description": "A guide to getting set up with the OS Features API walking through the specifics of set up and using the API through Ordnance Survey demo applications."
+          },
+          {
+            "href": "https://osdatahub.os.uk/docs/wfs/technicalSpecification",
+            "rel": "documentation",
+            "type": "text/html",
+            "title": "OS Features API: Technical specification",
+            "description": "Document providing the technical details of the API and methods you can use to call it."
+          }
+        ]
+      }
+    },
+    {
+      "url": "https://api.os.uk/search/names",
+      "document": {
+        "title": "OS Names API",
+        "description": "A geographic directory containing basic information about identifiable places.",
+        "links": [
+          {
+            "href": "https://api.os.uk/search",
+            "rel": "api-grouping",
+            "type": "application/json",
+            "title": "OS Search APIs",
+            "description": "The available Search APIs offered by Ordnance Survey. These are provided as RESTful or Remote Procedure Call services."
+          },
+          {
+            "href": "https://api.os.uk/search/names/v1/find",
+            "rel": "service-endpoint",
+            "type": "application/json",
+            "title": "OS Names API Find Operation",
+            "description": "A free string text search of OS Names, intended to be an ambiguous/fuzzy search. Find can locate a feature using just its name."
+          },
+          {
+            "href": "https://api.os.uk/search/names/v1/nearest",
+            "rel": "service-endpoint",
+            "type": "application/json",
+            "title": "OS Names API Nearest Operation",
+            "description": "The nearest resource returns the closest address to a given point. This is done by using a pair of BNG coordinates (to two decimal places or less) as the input. The property will only be considered to be included by the search if the Address Seed is in range of the search, regardless of the property's physical boundaries."
+          },
+          {
+            "href": "https://osdatahub.os.uk/docs/names/overview",
+            "rel": "documentation",
+            "type": "text/html",
+            "title": "OS Names API: Overview",
+            "description": "Provides a descriptive overview of the API."
+          },
+          {
+            "href": "https://osdatahub.os.uk/docs/names/gettingStarted",
+            "rel": "documentation",
+            "type": "text/html",
+            "title": "OS Names API: Getting started guide",
+            "description": "A guide to getting set up with OS Names API walking through the specifics of set up and using the API in a simple NodeJS app."
+          },
+          {
+            "href": "https://osdatahub.os.uk/docs/names/technicalSpecification",
+            "rel": "documentation",
+            "type": "text/html",
+            "title": "OS Names API: Technical Specification",
+            "description": "Document providing the technical details of the API, its operations and methods you can use to call it."
+          }
+        ]
+      }
+    },
+    {
+      "url": "https://api.os.uk/search/links",
+      "document": {
+        "title": "OS Linked Identifiers API",
+        "description": "Allows you to access the valuable relationships between properties, streets and OS MasterMap identifiers for free.",
+        "links": [
+          {
+            "href": "https://api.os.uk/search",
+            "rel": "api-grouping",
+            "type": "application/json",
+            "title": "OS Search APIs",
+            "description": "The available Search APIs offered by Ordnance Survey. These are provided as RESTful or Remote Procedure Call services."
+          },
+          {
+            "href": "https://api.os.uk/search/links/v1/identifiers/{id}",
+            "rel": "service-endpoint",
+            "type": "application/json",
+            "title": "Linked Identifier Lookup Operation",
+            "description": "Replace {id} with an identifier to Look up that identifier and find its associated identifiers, returns a list."
+          },
+          {
+            "href": "https://api.os.uk/search/links/v1/featureTypes/{featureType}/{id}",
+            "rel": "service-endpoint",
+            "type": "application/json",
+            "title": "Linked Identifier Feature Type Lookup Operation",
+            "description": "Looks up linked identifiers when the input feature type is known. Replace {featureType} and {id} with the feature type and identifier."
+          },
+          {
+            "href": "https://api.os.uk/search/links/v1/identifierTypes/{identifierType}/{id}",
+            "rel": "service-endpoint",
+            "type": "application/json",
+            "title": "Linked Identifier, Identifier Type Lookup Operation",
+            "description": "Looks up linked identifiers when the input identifier type is known. Replace {identifierType} and {id} with the identifier type and identifier."
+          },
+          {
+            "href": "https://api.os.uk/search/links/v1/productVersionInfo/{correlationMethod}",
+            "rel": "service-endpoint",
+            "type": "application/json",
+            "title": "Linked Identifier Current Product Version Info Lookup Operation",
+            "description": "This service is available as a GET resource method allowing you to discover the current product version information. Replace {correlationMethod} with a correlation method from the correlation method table found in the Technical Specification."
+          },
+          {
+            "href": "https://osdatahub.os.uk/docs/linkedIdentifiers/overview",
+            "rel": "documentation",
+            "type": "text/html",
+            "title": "OS Linked Identifiers API: Overview",
+            "description": "Provides a descriptive overview of the API."
+          },
+          {
+            "href": "https://osdatahub.os.uk/docs/linkedIdentifiers/gettingStarted",
+            "rel": "documentation",
+            "type": "text/html",
+            "title": "OS Linked Identifiers API: Getting started guide",
+            "description": "A guide to getting set up with the OS Linked Identifiers API walking through the specifics of set up and using the API through Ordnance Survey demo applications."
+          },
+          {
+            "href": "https://osdatahub.os.uk/docs/linkedIdentifiers/technicalSpecification",
+            "rel": "documentation",
+            "type": "text/html",
+            "title": "OS Linked Identifiers API: Technical Specification",
+            "description": "Document providing the technical details of the API, its operations and methods you can use to call it."
+          }
+        ]
+      }
+    },
+    {
+      "url": "https://api.os.uk/search/places",
+      "document": {
+        "title": "OS Places API",
+        "description": "Identify addresses accurately with OS Places API.",
+        "links": [
+          {
+            "href": "https://api.os.uk/search",
+            "rel": "api-grouping",
+            "type": "application/json",
+            "title": "OS Search APIs",
+            "description": "The available Search APIs offered by Ordnance Survey. These are provided as RESTful or Remote Procedure Call services."
+          },
+          {
+            "href": "https://api.os.uk/search/places/v1/find",
+            "rel": "service-endpoint",
+            "type": "application/json",
+            "title": "OS Places API Find Operation",
+            "description": "A free text search designed for quick use."
+          },
+          {
+            "href": "https://api.os.uk/search/places/v1/postcode",
+            "rel": "service-endpoint",
+            "type": "application/json",
+            "title": "OS Places API postcode Operation",
+            "description": "A search based on a property's postcode. The minimum for the resource is the area and district e.g. SO16, and will accept a full postcode consisting of the area, district, sector and unit e.g. SO16 0AS ."
+          },
+          {
+            "href": "https://api.os.uk/search/places/v1/uprn",
+            "rel": "service-endpoint",
+            "type": "application/json",
+            "title": "OS Places API UPRN Operation",
+            "description": "A search that takes a UPRN as the search parameter."
+          },
+          {
+            "href": "https://api.os.uk/search/places/v1/nearest",
+            "rel": "service-endpoint",
+            "type": "application/json",
+            "title": "OS Places API nearest Operation",
+            "description": "Takes a pair of coordinates (X and Y) as an input to determine the closest address."
+          },
+          {
+            "href": "https://api.os.uk/search/places/v1/bbox",
+            "rel": "service-endpoint",
+            "type": "application/json",
+            "title": "OS Places API bbox Operation",
+            "description": "Takes two points and creates a bounding box. All addresses within this bounding box are then returned."
+          },
+          {
+            "href": "https://api.os.uk/search/places/v1/radius",
+            "rel": "service-endpoint",
+            "type": "application/json",
+            "title": "OS Places API radius Operation",
+            "description": "Takes a pair of coordinates as the centre for a circle and returns all addresses that are intersected by it."
+          },
+          {
+            "href": "https://api.os.uk/search/places/v1/polygon",
+            "rel": "service-endpoint",
+            "type": "application/json",
+            "title": "OS Places API polygon Operation",
+            "description": "A POST Request that takes a geoJSON polygon or multi-polygon object and returns all addresses that are in the object."
+          },
+          {
+            "href": "https://osdatahub.os.uk/docs/places/overview",
+            "rel": "documentation",
+            "type": "text/html",
+            "title": "OS Places API: Overview",
+            "description": "Provides a descriptive overview of the API."
+          },
+          {
+            "href": "https://osdatahub.os.uk/docs/places/gettingStarted",
+            "rel": "documentation",
+            "type": "text/html",
+            "title": "OS Places API: Getting started guide",
+            "description": "A guide to getting set up with OS Places API walking through the specifics of set up and using the API in a simple NodeJS app."
+          },
+          {
+            "href": "https://osdatahub.os.uk/docs/places/technicalSpecification",
+            "rel": "documentation",
+            "type": "text/html",
+            "title": "OS Places API: Technical Specification",
+            "description": "Document providing the technical details of the API, its operations and methods you can use to call it."
+          }
+        ]
+      }
+    },
+    {
+      "url": "https://api.os.uk/search/match",
+      "document": {
+        "title": "OS Match & Cleanse API",
+        "description": "Instant, reliable search results to make deduping and cleansing address data easier for your business.",
+        "links": [
+          {
+            "href": "https://api.os.uk/search",
+            "rel": "api-grouping",
+            "type": "application/json",
+            "title": "OS Search APIs",
+            "description": "The available Search APIs offered by Ordnance Survey. These are provided as RESTful or Remote Procedure Call services."
+          },
+          {
+            "href": "https://api.os.uk/search/match/v1/match",
+            "rel": "service-endpoint",
+            "type": "application/json",
+            "title": "OS Match & Cleanse API Match Operation",
+            "description": "Match addresses with reliable search results."
+          },
+          {
+            "href": "https://osdatahub.os.uk/docs/match/overview",
+            "rel": "documentation",
+            "type": "text/html",
+            "title": "OS Match & Cleanse API: Overview",
+            "description": "Provides a descriptive overview of the API."
+          },
+          {
+            "href": "https://osdatahub.os.uk/docs/match/gettingStarted",
+            "rel": "documentation",
+            "type": "text/html",
+            "title": "OS Match & Cleanse API: Getting started guide",
+            "description": "A guide to getting set up with OS Match & Cleanse API walking through the specifics of set up and using the API in a simple NodeJS app."
+          },
+          {
+            "href": "https://osdatahub.os.uk/docs/match/technicalSpecification",
+            "rel": "documentation",
+            "type": "text/html",
+            "title": "OS Match & Cleanse API: Technical Specification",
+            "description": "Document providing the technical details of the API, its operations and methods you can use to call it."
+          }
+        ]
+      }
+    },
+    {
+      "url": "https://api.os.uk/positioning/osnet",
+      "document": {
+        "title": "OS Net API",
+        "description": "An API to access positioning data from the OS Net system.",
+        "links": [
+          {
+            "href": "https://api.os.uk/positioning",
+            "rel": "landing-page",
+            "type": "application/json",
+            "title": "OS Positioning APIs",
+            "description": "Access positioning APIs and data offered by Ordnance Survey."
+          },
+          {
+            "href": "https://api.os.uk/positioning/osnet/v1",
+            "rel": "api-grouping",
+            "type": "application/json",
+            "title": "OS Net API Version 1",
+            "description": "An API to access positioning data from the OS Net system."
+          }
+        ]
+      }
+    },
+    {
+      "url": "https://api.os.uk/maps/vector/v1",
+      "document": {
+        "title": "OS Vector Tile API",
+        "description": "OS Vector Tile API is a vector tile service providing detailed Ordnance Survey data as a customisable basemap. It can be used with most web mapping libraries including Mapbox GL JS, Leaflet, OpenLayers and ArcGIS API for JavaScript.",
+        "links": [
+          {
+            "href": "https://api.os.uk/maps/vector",
+            "rel": "api-grouping",
+            "type": "application/json",
+            "title": "OS Vector Tile APIs",
+            "description": "The available Vector Tile APIs offered by Ordnance Survey."
+          },
+          {
+            "href": "https://api.os.uk/maps/vector/v1/vts",
+            "rel": "service-endpoint",
+            "type": [
+              "application/json",
+              "application/x-protobuf"
+            ],
+            "title": "vts",
+            "description": "The endpoint for the OS Vector Tile Service."
+          },
+          {
+            "href": "https://osdatahub.os.uk/docs/vts/overview",
+            "rel": "documentation",
+            "type": "text/html",
+            "title": "OS Vector Tile Api: Overview",
+            "description": "An overview of the OS Vector Tile API."
+          },
+          {
+            "href": "https://osdatahub.os.uk/docs/vts/gettingStarted",
+            "rel": "documentation",
+            "type": "text/html",
+            "title": "OS Vector Tile API: Getting started guide",
+            "description": "A guide to getting set up with the OS Vector Tile API walking through the specifics of set up and using the API through Ordnance Survey demo applications."
+          },
+          {
+            "href": "https://osdatahub.os.uk/docs/vts/technicalSpecification",
+            "rel": "documentation",
+            "type": "text/html",
+            "title": "OS Vector Tile API: Technical Specification",
+            "description": "Document providing the technical details of the API and methods you can use to call it."
+          }
+        ]
+      }
+    },
+    {
+      "url": "https://api.os.uk/maps/vector/ngd",
+      "document": {
+        "title": "OS NGD API – Tiles",
+        "description": "OS NGD API – Tiles is a vector tile service powered by the OS National Geographic Database (OS NGD). It provides a detailed and customisable basemap based on the OGC API – Tiles standard to help you create stunning and interactive web maps",
+        "links": [
+          {
+            "href": "https://api.os.uk/maps/vector",
+            "rel": "api-grouping",
+            "type": "application/json",
+            "title": "OS Vector Tile APIs",
+            "description": "The available Vector Tile APIs offered by Ordnance Survey."
+          },
+          {
+            "href": "https://api.os.uk/maps/vector/ngd/ota/v1",
+            "rel": "service-endpoint",
+            "type": [
+              "application/json",
+              "application/octet-stream"
+            ],
+            "title": "OS NGD API – Tiles",
+            "description": "The endpoint for the Ordnance Survey National Geographic Database API – Tiles."
+          },
+          {
+            "href": "https://osdatahub.os.uk/docs/ota/overview",
+            "rel": "documentation",
+            "type": "text/html",
+            "title": "OS NGD API – Tiles: Overview",
+            "description": "An overview of the OS NGD API – Tiles describing what you can and can not do with the API."
+          },
+          {
+            "href": "https://osdatahub.os.uk/docs/ota/gettingStarted",
+            "rel": "documentation",
+            "type": "text/html",
+            "title": "OS NGD API – Tiles: Getting started guide",
+            "description": "A guide to getting set up with the OS NGD API – Tiles walking through the specifics of set up and using the API through Ordnance Survey interactive code examples."
+          },
+          {
+            "href": "https://osdatahub.os.uk/docs/ota/technicalSpecification",
+            "rel": "documentation",
+            "type": "text/html",
+            "title": "OS NGD API – Tiles: Technical specification",
+            "description": "Document providing the technical details of the API and methods you can use to call it."
+          }
+        ]
+      }
+    },
+    {
+      "url": "https://api.os.uk/maps/raster/v1/zxy",
+      "document": {
+        "title": "OS Maps API - ZXY",
+        "description": "Access OS Maps API through a RESTfull sevrice providing z,x,y co-ordinates",
+        "links": [
+          {
+            "href": "https://api.os.uk/maps/raster",
+            "rel": "api-grouping",
+            "type": "application/json",
+            "title": "OS Maps API",
+            "description": "Get started for free and integrate Ordnance Survey's up-to-date, detailed maps in your apps, enabling your customers to make location-based decisions with confidence, removing the overhead of managing complex datasets yourself."
+          },
+          {
+            "href": "https://api.os.uk/maps/raster/v1/zxy/Road_27700",
+            "rel": "service-endpoint",
+            "type": "image/png",
+            "title": "Road 27700",
+            "description": "Road raster tile set in projection 27700."
+          },
+          {
+            "href": "https://api.os.uk/maps/raster/v1/zxy/Road_3857",
+            "rel": "service-endpoint",
+            "type": "image/png",
+            "title": "Road 3857",
+            "description": "Road raster tile set in projection 3857."
+          },
+          {
+            "href": "https://api.os.uk/maps/raster/v1/zxy/Outdoor_27700",
+            "rel": "service-endpoint",
+            "type": "image/png",
+            "title": "Outdoor 27700",
+            "description": "Outdoor raster tile set in projection 27700."
+          },
+          {
+            "href": "https://api.os.uk/maps/raster/v1/zxy/Outdoor_3857",
+            "rel": "service-endpoint",
+            "type": "image/png",
+            "title": "Outdoor 3857",
+            "description": "Outdoor raster tile set in projection 3857."
+          },
+          {
+            "href": "https://api.os.uk/maps/raster/v1/zxy/Light_27700",
+            "rel": "service-endpoint",
+            "type": "image/png",
+            "title": "Light 27700",
+            "description": "Light raster tile set in projection 27700."
+          },
+          {
+            "href": "https://api.os.uk/maps/raster/v1/zxy/Light_3857",
+            "rel": "service-endpoint",
+            "type": "image/png",
+            "title": "Light 3857",
+            "description": "Light raster tile set in projection 3857."
+          },
+          {
+            "href": "https://api.os.uk/maps/raster/v1/zxy/Leisure_27700",
+            "rel": "service-endpoint",
+            "type": "image/png",
+            "title": "Leisure 27700",
+            "description": "Leisure raster tile set in projection 27700."
+          }
+        ]
+      }
+    },
+    {
+      "url": "https://api.os.uk/positioning/osnet/v1",
+      "document": {
+        "title": "OS Net API Version 1",
+        "description": "The available OS Net APIs offered by Ordnance Survey. These provide access to data through RESTful services.",
+        "links": [
+          {
+            "href": "https://api.os.uk/positioning/osnet",
+            "rel": "landing-page",
+            "type": "application/json",
+            "title": "OS Net API",
+            "description": "An API to access positioning data from the OS Net system."
+          },
+          {
+            "href": "https://api.os.uk/positioning/osnet/v1/openapi.yaml",
+            "rel": "service-endpoint",
+            "type": "application/yaml",
+            "title": "OS Net API specification",
+            "description": "Returns a yaml file that describes the OS Net API using OpenAPI version 3.0.0."
+          },
+          {
+            "href": "https://api.os.uk/positioning/osnet/v1/stations",
+            "rel": "service-endpoint",
+            "type": "application/json",
+            "title": "Get OS Net stations",
+            "description": "Provides a list of current OS Net stations."
+          },
+          {
+            "href": "https://api.os.uk/positioning/osnet/v1/rinex",
+            "rel": "service-endpoint",
+            "type": "application/json",
+            "title": "Get RINEX data",
+            "description": "Provides a list of RINEX files that are available to download."
+          }
+        ]
+      }
+    }
+  ]
+}

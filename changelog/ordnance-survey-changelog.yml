@@ -1,0 +1,115 @@
+generated: '2026-07-26'
+method: searched
+source: https://docs.os.uk/os-apis/service-and-data-status/change-log
+description: >-
+  The OS APIs change log - a dated table of changes to the OS API
+  documentation, which OS states "may reflect alterations to the APIs
+  themselves or improvements to the documentation". It is a documentation
+  change log rather than an API release log: there are no version numbers,
+  no breaking/additive classification, and no per-API stream. Entries below
+  are the full published window as captured on 2026-07-26, newest first.
+url: https://docs.os.uk/os-apis/service-and-data-status/change-log
+scheme: dated-entries
+versioned: false
+current_version: null
+current_version_note: >-
+  The change log carries no version numbers. The closest thing to a version is
+  each OpenAPI's info.version - v1.8.1 (OS NGD API - Features), v1.8 (OS NGD
+  API - Tiles), 1.6.0 (OS Net API), 1.0.0 (OS Downloads API).
+breaking_change_policy: >-
+  Not stated in the change log. Breaking changes have so far been handled as
+  end-of-life announcements with a dated withdrawal page - see
+  lifecycle/ordnance-survey-lifecycle.yml.
+entries:
+  - date: '2026-07-17'
+    type: documentation
+    breaking: false
+    highlights:
+      - New tutorial video on the Getting started with an API project page.
+      - 'New sections: Tips for API best practice, Finding out what OS APIs you have access to, Monitoring API usage.'
+  - date: '2026-05-08'
+    type: documentation
+    breaking: false
+    highlights:
+      - New tutorial video on the QGIS getting-started page for OS NGD API - Features.
+  - date: '2026-04'
+    type: documentation
+    breaking: false
+    highlights:
+      - OS NGD API - Features and OS NGD API - Tiles documentation transferred to the OS API Documentation platform; change log created.
+  - date: '2026-03-31'
+    type: end-of-life
+    breaking: true
+    highlights:
+      - OS Match & Cleanse API reached end of life and was withdrawn from use.
+      - OS MasterMap Water Network Layer reached end of life; removed from OS Vector Tile API and OS Features API.
+  - date: '2026-03-26'
+    type: data-release
+    breaking: false
+    highlights:
+      - March 2026 OS NGD data enhancements release documented against OS NGD API - Features.
+  - date: '2026-02-11'
+    type: deprecation-notice
+    breaking: false
+    highlights:
+      - End of life information for OS MasterMap Greenspace layer added to OS Vector Tile API and OS Features API.
+  - date: '2025-11-12'
+    type: documentation
+    breaking: false
+    highlights:
+      - Accessibility improvements made across the documentation site.
+  - date: '2025-10-22'
+    type: documentation
+    breaking: false
+    highlights:
+      - Planned maintenance page added to the Service Status section.
+  - date: '2025-09-25'
+    type: data-release
+    breaking: false
+    highlights:
+      - September 2025 OS NGD data enhancements documented for OS NGD API - Features and OS NGD API - Tiles.
+  - date: '2025-09-01'
+    type: deprecation-notice
+    breaking: false
+    highlights:
+      - End of life notices for OS MasterMap Water Network Layer and OS Detailed Path Network added.
+  - date: '2025-06-12'
+    type: addition
+    breaking: false
+    highlights:
+      - OS Net API documentation added to the site.
+  - date: '2025-03-27'
+    type: data-release
+    breaking: false
+    highlights:
+      - March 2025 OS NGD data enhancements documented for OS NGD API - Features.
+  - date: '2025-02-24'
+    type: deprecation-notice
+    breaking: false
+    highlights:
+      - End of Life information added for OS Match & Cleanse API (13 months' notice ahead of the 31 March 2026 withdrawal).
+  - date: '2025-01-03'
+    type: documentation
+    breaking: false
+    highlights:
+      - Getting Started guides updated for multiple APIs.
+  - date: '2024-06-27'
+    type: addition
+    breaking: false
+    highlights:
+      - Product Archive documentation added to OS Features API.
+  - date: '2024-04-30'
+    type: addition
+    breaking: false
+    highlights:
+      - OS Downloads API pages updated with OpenAPI documentation.
+  - date: '2024-04-26'
+    type: documentation
+    breaking: false
+    highlights:
+      - OS API documentation for multiple products added to the OS APIs Documentation platform.
+  - date: '2022-09-29'
+    type: launch
+    breaking: false
+    highlights:
+      - OS NGD official launch to customers.

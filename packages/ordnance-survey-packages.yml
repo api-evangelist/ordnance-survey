@@ -1,0 +1,91 @@
+generated: '2026-07-26'
+method: searched
+source: >-
+  https://docs.os.uk/os-apis/additional-resources/os-api-wrappers.md (the
+  official OS API Wrappers page names JavaScript/npm, Python/PyPI and R/CRAN),
+  cross-checked against the npm, PyPI and CRAN registries and the
+  github.com/OrdnanceSurvey organisation.
+description: >-
+  Ordnance Survey publishes first-party API wrappers in three languages and
+  ships them from its own GitHub organisation. The osdatahub family is the
+  current supported line; OS-PAW is the superseded Python wrapper it replaced.
+  osbng is a separate first-party library for the OS British National Grid
+  indexing system rather than an API client.
+docs: https://docs.os.uk/os-apis/additional-resources/os-api-wrappers
+packages:
+  - language: python
+    registry: pypi
+    name: osdatahub
+    version_seen: 1.3.4
+    url: https://pypi.org/project/osdatahub/
+    install: pip install osdatahub
+    repository: https://github.com/OrdnanceSurvey/osdatahub
+    documentation: https://osdatahub.readthedocs.io/en/latest/
+    official: true
+    role: primary Python client for the OS Data Hub APIs
+  - language: javascript
+    registry: npm
+    name: osdatahub
+    version_seen: 0.2.2
+    url: https://www.npmjs.com/package/osdatahub
+    install: npm install osdatahub
+    repository: https://github.com/OrdnanceSurvey/osdatahub-js
+    official: true
+    role: >-
+      JavaScript wrapper covering OS NGD API - Features, OS Names API and
+      OS Places API
+  - language: r
+    registry: cran
+    name: osdatahub
+    version_seen: 0.3.0
+    url: https://cran.r-project.org/web/packages/osdatahub/index.html
+    install: install.packages("osdatahub")
+    official: true
+    role: >-
+      "Easier Interaction with the Ordnance Survey Data Hub" - access, query
+      and download OS Data Hub products from R
+  - language: python
+    registry: pypi
+    name: osbng
+    version_seen: 0.5.1
+    url: https://pypi.org/project/osbng/
+    install: pip install osbng
+    repository: https://github.com/OrdnanceSurvey/osbng-py
+    documentation: https://osbng-py.readthedocs.io/en/stable/
+    official: true
+    role: >-
+      Geospatial grid indexing for the Ordnance Survey British National Grid
+      (not an API client)
+  - language: r
+    registry: cran
+    name: osbng
+    url: https://cran.r-project.org/web/packages/osbng/index.html
+    install: install.packages("osbng")
+    repository: https://github.com/OrdnanceSurvey/osbng-r
+    official: true
+    role: R sibling of osbng-py for British National Grid indexing
+  - language: python
+    registry: pypi
+    name: os-paw
+    version_seen: 1.0.1
+    url: https://pypi.org/project/os-paw/
+    install: pip install os-paw
+    repository: https://github.com/OrdnanceSurvey/OS-PAW
+    official: true
+    status: superseded
+    role: >-
+      OS Python API Wrapper - the earlier first-party Python client, superseded
+      by osdatahub
+sdk_summary:
+  official_client_libraries: 3
+  languages: [python, javascript, r]
+  note: >-
+    Counted as the three osdatahub wrappers OS itself lists on the OS API
+    Wrappers page. No first-party Java, .NET, Go, Ruby or PHP client is
+    published.
+gaps:
+  - No first-party CLI is published (see cli/ - none found).
+  - >-
+    No first-party SDK covers OS Downloads API, OS Net API, OS Features API
+    (WFS), OS Maps API or OS Vector Tile API - the wrappers target the search
+    and NGD Features surfaces only.

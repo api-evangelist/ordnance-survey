@@ -1,0 +1,105 @@
+generated: '2026-07-26'
+method: searched
+description: >-
+  Results of probing the /.well-known/ discovery surface for every host in
+  apis.yml and every OpenAPI servers[] host. IMPORTANT NEGATIVE RESULT:
+  api.os.uk answers HTTP 200 with the same JSON API landing document for ANY
+  path, including every /.well-known/* path and /openapi.json, so those 200s
+  are catch-all responses and NOT real discovery documents. The same is true of
+  osdatahub.os.uk, which is a single-page app that returns its HTML shell for
+  every path. What IS real is the machine-readable API catalogue Ordnance
+  Survey serves at the api.os.uk root and at every API grouping path - a
+  link-relation index (rel=self|landing-page|api-grouping|service-endpoint|documentation)
+  that enumerates all eleven OS APIs, their service endpoints and their
+  documentation pages. That has been crawled in full and saved verbatim.
+hosts:
+  - host: https://api.os.uk
+    documents:
+      - path: /.well-known/security.txt
+        status: 200
+        real: false
+        note: catch-all API landing document, not an RFC 9116 security.txt
+      - path: /.well-known/openid-configuration
+        status: 200
+        real: false
+        note: catch-all API landing document, not OIDC discovery
+      - path: /.well-known/oauth-authorization-server
+        status: 200
+        real: false
+        note: catch-all API landing document, not RFC 8414 metadata
+      - path: /.well-known/api-catalog
+        status: 200
+        real: false
+        note: catch-all API landing document
+      - path: /.well-known/ai-plugin.json
+        status: 200
+        real: false
+        note: catch-all API landing document
+      - path: /
+        status: 200
+        real: true
+        type: application/json
+        file: ordnance-survey-api-catalog.json
+        note: >-
+          The genuine OS API catalogue. Crawled from the root through every
+          rel=api-grouping child (19 documents, 33 service-endpoint links,
+          30 documentation links).
+  - host: https://www.ordnancesurvey.co.uk
+    documents:
+      - path: /.well-known/security.txt
+        status: 404
+      - path: /security.txt
+        status: 404
+      - path: /.well-known/api-catalog
+        status: 404
+  - host: https://osdatahub.os.uk
+    documents:
+      - path: /.well-known/security.txt
+        status: 200
+        real: false
+        note: single-page-app HTML shell returned for every path
+  - host: https://docs.os.uk
+    documents:
+      - path: /.well-known/security.txt
+        status: 404
+      - path: /llms.txt
+        status: 200
+        real: true
+        note: >-
+          Site-root llms.txt (106 bytes, Welcome space only). The substantive
+          one is the OS APIs space index at /os-apis/llms.txt, saved to
+          llms/ordnance-survey-llms.txt.
+      - path: /robots.txt
+        status: 200
+        real: true
+        type: text/plain
+        file: ordnance-survey-docs-robots.txt
+        note: >-
+          Carries a Content-Signal declaration - "ai-train=yes, search=yes,
+          ai-input=yes" - an explicit machine-readable AI usage consent signal
+          for the OS documentation corpus.
+  - host: https://labs.os.uk
+    documents:
+      - path: /.well-known/security.txt
+        status: 404
+content_signal:
+  source: https://docs.os.uk/robots.txt
+  file: ordnance-survey-docs-robots.txt
+  declaration: 'Content-Signal: ai-train=yes, search=yes, ai-input=yes'
+  scope: docs.os.uk (all OS documentation)
+  interpretation: >-
+    Ordnance Survey explicitly permits AI training, search indexing and
+    AI input/inference use of its published documentation. Combined with the
+    GitBook agent-query interface (append ?ask= to any .md page) this is an
+    unusually permissive and unusually explicit agent posture for a national
+    mapping agency.
+notes:
+  - >-
+    No RFC 9116 security.txt is resolvable on any OS host, even though the
+    Ordnance Survey vulnerability disclosure policy refers to "the published
+    security.txt". Recorded in security/ordnance-survey-vulnerability-disclosure.yml.
+  - >-
+    No OIDC/OAuth 2.0 authorization-server metadata is published. The OS OAuth 2
+    service is a bare client-credentials token endpoint at
+    https://api.os.uk/oauth2/token/v1 with no discovery document and no named
+    scopes.

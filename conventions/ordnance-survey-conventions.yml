@@ -1,0 +1,192 @@
+generated: '2026-07-26'
+method: searched
+source: >-
+  https://docs.os.uk/os-apis/core-concepts (authentication, error codes,
+  rate-limiting policy), the OS Places / OS Names / OS Features technical
+  specifications, and the ten OpenAPI documents in openapi/.
+description: >-
+  How the Ordnance Survey APIs behave across every operation: authentication
+  style, pagination, versioning, error envelope, rate-limit signaling, and the
+  licensing gate that is genuinely the most important cross-cutting concept in
+  this estate. The OS estate is READ-ONLY, so several of the usual conventions
+  (idempotency keys, request-body semantics, webhooks) simply do not apply -
+  recorded here as absent rather than omitted.
+base_url: https://api.os.uk
+api_style: >-
+  REST over HTTPS returning JSON/GeoJSON, alongside three OGC surfaces (OGC API
+  - Features, OGC API - Tiles, WFS 2.0.0/WMTS 1.0.0) that return GeoJSON, XML
+  or binary tiles.
+
+authentication:
+  scheme: >-
+    Project API Key, passed either as the `key` query parameter or the `key`
+    request header; or an OAuth 2.0 client-credentials Bearer token.
+  oauth2:
+    token_url: https://api.os.uk/oauth2/token/v1
+    grant_type: client_credentials
+    client_auth: HTTP Basic - Project API Key as username, Project API Secret as password
+    request_content_type: application/x-www-form-urlencoded
+    response_fields: [access_token, expires_in, issued_at, token_type]
+    observed_expires_in: 299 seconds (documented example)
+    usage: 'Authorization: Bearer <accessToken>'
+    scopes: none published
+  key_scope: >-
+    Keys are scoped to an API Project in the OS Data Hub, not to a user. A
+    project holds a set of APIs, one API Key and one API Secret; keys can be
+    regenerated in place.
+  guidance_from_docs:
+    - Keep API keys and tokens secure at all times.
+    - Rotate keys periodically.
+    - Regularly check usage patterns of API keys and set up alerts for unusual activity.
+    - Use separate API projects so usage can be monitored per project.
+  docs: https://docs.os.uk/os-apis/core-concepts/authentication
+  detail: authentication/ordnance-survey-authentication.yml
+
+licensing_gate:
+  note: >-
+    THE defining convention of this estate. Reachability and entitlement are
+    separate concerns: several OS endpoints are anonymous, most require a key,
+    and a key only works if the API is in your OS Data Hub plan.
+  anonymous_no_key:
+    - OS Downloads API OpenData half - /products, /products/{id}, /products/{id}/downloads (26 open products)
+    - OS NGD API - Features metadata - landing page, /conformance, /collections, /collections/{id}, /schema, /queryables
+    - OS NGD API - Tiles metadata - landing page, /conformance, /collections, /tilematrixsets, /styles
+    - The api.os.uk API catalogue link index
+  key_required:
+    - OS NGD Features /collections/{id}/items and /items/{featureId}
+    - OS NGD Tiles tile fetches
+    - Every OS Places, OS Names, OS Linked Identifiers, OS Maps, OS Vector Tile and OS Features (WFS) operation
+    - OS Downloads /dataPackages*
+    - Every OS Net API operation
+  plans: [OS OpenData Plan, Premium Plan, Public Sector Plan (PSGA)]
+  failure_mode: >-
+    403 Forbidden means "authenticated but not entitled" - the API is not in
+    your plan or not added to your project. It is not a credential problem.
+
+idempotency:
+  supported: false
+  reason: >-
+    Every OS operation is a read. The only non-GET operation in the whole
+    estate is OS Places POST /polygon, which is a query-by-request-body with no
+    side effects. There is no idempotency-key header, and none is needed. No
+    Idempotency pointer is emitted for this provider.
+
+pagination:
+  styles:
+    - api: OS NGD API - Features
+      style: offset + limit with OGC link relations
+      request_params:
+        limit: number of features per page
+        offset: starting offset
+      response_fields:
+        links: 'OGC link array carrying rel=next / rel=prev / rel=self'
+        numberReturned: features in this page
+        numberMatched: total matching features
+      docs: https://docs.os.uk/os-apis/accessing-os-apis/os-ngd-api-features/technical-specification/features
+    - api: OS Places API, OS Names API
+      style: offset + maxresults
+      request_params:
+        offset: index of the first result to return
+        maxresults: number of results to return
+      response_fields:
+        header.offset: echoed offset
+        header.totalresults: total matching records
+        header.maxresults: page size in effect
+      docs: https://docs.os.uk/os-apis/accessing-os-apis/os-places-api/technical-specification/find
+    - api: OS Features API (WFS 2.0.0)
+      style: startIndex + count
+      request_params:
+        startIndex: zero-based index of the first feature
+        count: maximum features to return (maxFeatures on WFS 1.x)
+      docs: https://docs.os.uk/os-apis/accessing-os-apis/os-features-api/technical-specification/paging
+    - api: OS Downloads API, OS Net API, OS Linked Identifiers API
+      style: none
+      note: These return complete collections; no paging parameters are declared.
+
+filtering:
+  - api: OS NGD API - Features
+    mechanism: CQL2 text via `filter`, with `filter-lang` and `filter-crs`
+    discovery: >-
+      Call getCollectionQueryables for a collection to learn which attributes
+      are filterable before writing a filter.
+    also: bbox, bbox-crs, datetime, crs
+  - api: OS Features API (WFS)
+    mechanism: OGC Filter Encoding 2.0 XML via `filter`, plus bbox and propertyName
+  - api: OS Places API, OS Names API
+    mechanism: >-
+      `fq` filter-query parameter (for example on classification code, local
+      custodian code or postcode), `dataset` (DPA/LPI), `minmatch` and
+      `matchprecision` thresholds, `lr` language preference.
+
+coordinate_reference_systems:
+  default: EPSG:27700 (British National Grid) on the search APIs; EPSG:4326 / CRS84 on the OGC APIs
+  parameters: [srs, output_srs, crs, bbox-crs, filter-crs, srsName]
+  note: >-
+    CRS handling is the single most common source of confusion in this estate.
+    OS Places returns both British National Grid X/Y and LNG/LAT on DPA
+    records; OS NGD Features declares the ogcapi-features-2 CRS conformance
+    class.
+
+versioning:
+  style: uri-path
+  current: v1 across every API
+  header_versioning: false
+  detail: lifecycle/ordnance-survey-lifecycle.yml
+
+error_envelope:
+  style: HTTP status codes with per-API bodies; no unified error object
+  media_types:
+    - application/json (most APIs)
+    - application/problem+json (OS Net API only, untyped body)
+    - application/xml OGC OWS ExceptionReport (WFS, WMTS, Vector Tile)
+  docs: https://docs.os.uk/os-apis/core-concepts/error-codes
+  detail: errors/ordnance-survey-problem-types.yml
+
+rate_limit_signaling:
+  documented_headers: none
+  response_code: 429
+  limits:
+    live_mode: 600 transactions per minute, per API, per project
+    development_mode: 50 transactions per minute, per API, per project
+    os_places_partner_trial: 50 transactions per minute per API Key across the account
+  guidance_from_docs: >-
+    "If the rate limit for an API is exceeded, subsequent requests will be
+    rejected (429) until the rate falls below the allowed threshold. It's
+    important to design your application to handle these errors gracefully."
+  docs: https://docs.os.uk/os-apis/core-concepts/rate-limiting-policy
+  detail: rate-limits/ordnance-survey-rate-limits.yml
+
+caching:
+  conditional_requests: >-
+    304 Not Modified is documented estate-wide: "In response to a conditional
+    GET request this response indicates that the underlying data has not
+    changed since the previous request, and cached results may be re-used."
+  docs: https://docs.os.uk/os-apis/core-concepts/error-codes
+
+request_tracing:
+  request_id_header: none documented
+  note: >-
+    OS documents no correlation/request-id header. Usage is instead monitored
+    per API project through the OS Data Hub API Dashboard.
+
+metadata: {supported: false}
+field_expansion: {supported: false}
+webhooks: {supported: false, note: OS publishes no event, webhook or streaming surface. See asyncapi/ - none.}
+
+attribution:
+  required: true
+  statement: 'Contains OS data (c) Crown copyright and database rights YYYY'
+  mechanism: >-
+    OS requires its logo and copyright statement on map applications built on
+    OS APIs, and ships a drop-in branding component to render it
+    (components/ordnance-survey-components.yml).
+  docs: https://docs.os.uk/os-apis/core-concepts/os-api-branding
+
+agent_interface:
+  docs_query_endpoint: >-
+    Every docs.os.uk page is available as Markdown by appending .md, and
+    accepts an `ask=<question>` (plus optional `goal=`) query parameter that
+    returns a natural-language answer with cited source pages. This is a real,
+    anonymous, agent-callable interface over the OS documentation.
+  content_signal: 'ai-train=yes, search=yes, ai-input=yes (https://docs.os.uk/robots.txt)'
+  llms_txt: https://docs.os.uk/os-apis/llms.txt

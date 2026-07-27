@@ -1,0 +1,94 @@
+specification: API Commons Plans
+specificationVersion: '0.1'
+provider: Ordnance Survey
+providerId: ordnance-survey
+generated: '2026-07-26'
+method: searched
+created: '2026-07-26'
+modified: '2026-07-26'
+tags:
+  - Geospatial
+  - Open Data
+  - Government
+  - Addressing
+description: >-
+  Access to the Ordnance Survey APIs is gated by OS Data Hub plan, not by
+  scope. The plan decides WHICH APIs and WHICH data products an API project can
+  use; a key on the wrong plan returns 403 rather than 401. Plan NAMES are
+  documented across the OS API documentation, but plan PRICING and free
+  allowances are not published in the developer documentation - the OS Data Hub
+  plans page is a JavaScript application that serves no server-rendered pricing,
+  so no price is recorded here rather than guessed.
+sources:
+  - https://osdatahub.os.uk/plans
+  - https://osdatahub.os.uk/support/plans
+  - https://docs.os.uk/os-apis/accessing-os-apis/os-ngd-api-features
+  - https://docs.os.uk/os-apis/accessing-os-apis/os-ngd-api-tiles
+  - https://docs.os.uk/os-apis/core-concepts/getting-started-with-an-api-project
+pricing_published_in_docs: false
+plans:
+  - id: os-opendata-plan
+    name: OS OpenData Plan
+    type: free
+    description: >-
+      Free access to the OS OpenData products. Shown as "OpenData usage" in the
+      OS Data Hub API Dashboard. The OpenData half of the OS Downloads API
+      needs no API key at all - 26 products including OS Open UPRN, OS Open
+      TOID, OS Open USRN, Code-Point Open, OS Open Names, OS Open Linked
+      Identifiers and Boundary-Line.
+    apis: [OS Downloads API (OpenData products)]
+    price: null
+  - id: premium-plan
+    name: Premium Plan
+    type: commercial
+    description: >-
+      Commercial plan giving access to the premium OS APIs and data products.
+      Named in the OS documentation as a supported plan for OS NGD API -
+      Features and OS NGD API - Tiles, and required for OS Places API, OS Names
+      API, OS Features API, OS Maps API and OS Vector Tile API.
+    apis:
+      - OS NGD API - Features
+      - OS NGD API - Tiles
+      - OS Places API
+      - OS Names API
+      - OS Linked Identifiers API
+      - OS Features API
+      - OS Maps API
+      - OS Vector Tile API
+      - OS Downloads API (data packages)
+      - OS Net API
+    price: null
+    price_note: Not published in the developer documentation.
+  - id: public-sector-plan
+    name: Public Sector Plan
+    type: entitlement
+    description: >-
+      For Public Sector Geospatial Agreement (PSGA) members. PSGA usage appears
+      as "Public Sector data" in the OS Data Hub API Dashboard rather than as
+      chargeable Premium usage.
+    apis:
+      - OS NGD API - Features
+      - OS NGD API - Tiles
+      - OS Places API
+      - OS Names API
+      - OS Linked Identifiers API
+      - OS Features API
+      - OS Maps API
+      - OS Vector Tile API
+      - OS Net API
+    price: null
+    eligibility: PSGA membership (UK public sector)
+trials:
+  - name: OS Places API Partner trial
+    description: Time-limited trial of OS Places API.
+    rate_limit: 50 transactions per minute per API Key across the account
+    source: https://docs.os.uk/os-apis/core-concepts/rate-limiting-policy
+project_modes:
+  - name: Development mode
+    rate_limit: 50 transactions per minute per API per project
+  - name: Live mode
+    rate_limit: 600 transactions per minute per API per project
+gaps:
+  - No machine-readable or server-rendered pricing page; the plans page is a client-side app.
+  - No published free monthly allowance or overage rate in the developer documentation.
+  - No self-serve upgrade path documented in the API docs - plan changes route through the OS Data Hub account.

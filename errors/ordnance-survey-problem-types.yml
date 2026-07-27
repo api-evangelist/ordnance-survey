@@ -1,0 +1,162 @@
+generated: '2026-07-26'
+method: searched
+source: >-
+  https://docs.os.uk/os-apis/core-concepts/error-codes (the OS-wide HTTP
+  response code reference, quoted verbatim below) plus the 4xx/5xx responses
+  declared across the ten OpenAPI documents in openapi/.
+format: http-status
+description: >-
+  Ordnance Survey does not publish an application-level error-code registry.
+  Its error contract is the HTTP status code itself, documented once for the
+  whole estate on the Error codes page, plus per-operation prose descriptions
+  in each OpenAPI. Only OS Net API returns application/problem+json (and even
+  there the body is typed as a bare object with no RFC 9457 members), so there
+  is no problem-type URI space to catalogue.
+envelope:
+  default_media_type: application/json
+  problem_json:
+    used_by: OS Net API
+    media_type: application/problem+json
+    responses: 12
+    note: >-
+      Declared on 400/403/404 responses across /stations* and /rinex*. The spec
+      types the payload as an untyped object - no type, title, status, detail
+      or instance members are described - so it is RFC 9457 in media type only.
+  xml_exception_report:
+    used_by: OS Features API (WFS), OS Maps API (WMTS), OS Vector Tile API
+    media_type: application/xml
+    shape: OGC OWS ExceptionReport (ows:Exception with exceptionCode and ExceptionText)
+    observed_example:
+      request: GET https://api.os.uk/maps/vector/v1/vts (no key)
+      exceptionCode: FailedToResolveAPIKey
+      exceptionText: Failed to resolve API Key variable request.queryparam.key
+      note: Observed live on 2026-07-26; OS does not publish an exceptionCode registry.
+problems:
+  - status: 200
+    title: OK
+    detail: Request has been successful.
+    source: docs
+  - status: 304
+    title: Not Modified
+    detail: >-
+      In response to a conditional GET request this response indicates that the
+      underlying data has not changed since the previous request, and cached
+      results may be re-used.
+    source: docs
+  - status: 400
+    title: Bad request
+    detail: For example, missing query parameter or malformed syntax.
+    source: docs
+    seen_in:
+      - openapi/ordnance-survey-ngd-features-openapi.json (getItems, getItemById, getCollectionQueryables, getSchema)
+      - openapi/ordnance-survey-ngd-tiles-openapi.json
+      - openapi/ordnance-survey-osnet-openapi.yaml
+      - openapi/ordnance-survey-linked-identifiers-openapi.json
+    operation_detail:
+      - 'OS NGD Features: "The items request is not supported. Please refer to documentation for examples."'
+      - 'OS NGD Features: "The queryable request is not supported. Please refer to documentation for examples."'
+      - 'OS NGD Features: "The feature request contains elements that are not supported."'
+    remediation: >-
+      Check required query parameters against the operation in openapi/ and the
+      collection's queryables document (getCollectionQueryables) before
+      constructing a CQL filter.
+  - status: 401
+    title: Unauthorized
+    detail: The client has not provided authentication or has provided incorrect authentication.
+    source: docs
+    seen_in:
+      - openapi/ordnance-survey-downloads-openapi.yaml (all /dataPackages operations)
+      - openapi/ordnance-survey-linked-identifiers-openapi.json
+    remediation: >-
+      Supply the Project API Key as the `key` query parameter or `key` request
+      header, or an OAuth 2 Bearer token from
+      https://api.os.uk/oauth2/token/v1. Tokens expire in roughly 300 seconds
+      - re-issue rather than cache long.
+  - status: 403
+    title: Forbidden
+    detail: The client has authenticated its access but does not have sufficient rights to complete the request.
+    source: docs
+    seen_in:
+      - openapi/ordnance-survey-osnet-openapi.yaml ("Returned if request is valid, but you do not have access to the resource")
+      - openapi/ordnance-survey-linked-identifiers-openapi.json
+    remediation: >-
+      This is usually a LICENSING result, not a credential result: the API is
+      not in your OS Data Hub plan (Premium / Public Sector / PSGA) or the
+      product is not in your API project. Add the API to the project in the OS
+      Data Hub, or check the plan.
+  - status: 404
+    title: Not found
+    detail: The server has not found anything matching the Request-URI.
+    source: docs
+    seen_in:
+      - openapi/ordnance-survey-ngd-features-openapi.json
+      - openapi/ordnance-survey-downloads-openapi.yaml
+      - openapi/ordnance-survey-osnet-openapi.yaml
+      - openapi/ordnance-survey-linked-identifiers-openapi.json
+    operation_detail:
+      - "OS NGD Features: \"Collection '{collectionId}' is not a supported Collection.\""
+      - "OS NGD Features: \"The feature collection '{collectionId}' or feature with id:'{featureId}' could not be found.\""
+    remediation: Call getAllCollections first and use a collectionId from that response.
+  - status: 405
+    title: Method not allowed
+    detail: The request used an unsupported HTTP method, for example, DELETE or PUT.
+    source: docs
+    seen_in:
+      - openapi/ordnance-survey-ngd-features-openapi.json ("This endpoint only supports 'GET' requests.")
+      - openapi/ordnance-survey-ngd-tiles-openapi.json
+      - openapi/ordnance-survey-linked-identifiers-openapi.json
+    note: >-
+      The OS estate is read-only. The only non-GET operation anywhere is
+      OS Places POST /polygon, which is a query-by-body.
+  - status: 406
+    title: Not Acceptable
+    detail: A request header value was not supported.
+    source: openapi
+    seen_in:
+      - openapi/ordnance-survey-ngd-features-openapi.json
+      - openapi/ordnance-survey-ngd-tiles-openapi.json
+    remediation: Send an Accept header the operation declares (application/geo+json, application/json, or the tile media type).
+  - status: 429
+    title: Too many requests
+    detail: The number of requests per minute (rate-limit) has been exceeded.
+    source: docs
+    seen_in:
+      - openapi/ordnance-survey-linked-identifiers-openapi.json
+    remediation: >-
+      Back off until the rate falls below the threshold. Limits are 600
+      transactions per minute per API per live-mode project, 50 per minute in
+      development mode. See rate-limits/ordnance-survey-rate-limits.yml. OS
+      does not document RateLimit-* or Retry-After response headers.
+  - status: 500
+    title: Internal server error
+    detail: A generic internal server error occurred.
+    source: docs
+    seen_in:
+      - openapi/ordnance-survey-ngd-tiles-openapi.json
+      - openapi/ordnance-survey-linked-identifiers-openapi.json
+  - status: 503
+    title: Service unavailable
+    detail: A temporary outage due to overloading or maintenance.
+    source: docs
+    seen_in:
+      - openapi/ordnance-survey-linked-identifiers-openapi.json
+    remediation: >-
+      Check https://osdatahub.os.uk/support/status - the Service Status
+      Dashboard refreshes every 10 minutes and shows 24 hours of per-API
+      availability - and the planned maintenance page.
+  - status: 504
+    title: Gateway Timeout
+    detail: The request has timed out.
+    source: openapi
+    seen_in:
+      - openapi/ordnance-survey-ngd-features-openapi.json
+      - openapi/ordnance-survey-ngd-tiles-openapi.json
+    remediation: >-
+      The OS NGD Features 504 description points explicitly at the service
+      availability dashboard. Narrow the bbox/filter and lower limit before
+      retrying a large feature query.
+gaps:
+  - No application-level error code registry (no OS-specific error identifiers).
+  - No RFC 9457 type URIs; no title/detail/instance members even where problem+json is used.
+  - No documented Retry-After or RateLimit-* response headers on 429.
+  - No published OGC OWS exceptionCode registry for the WFS/WMTS/VTS surfaces.

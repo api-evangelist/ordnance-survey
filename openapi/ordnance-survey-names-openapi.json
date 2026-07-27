@@ -1,0 +1,468 @@
+{
+  "openapi": "3.0.1",
+  "info": {
+    "title": "OS Names API",
+    "version": "v1.0",
+    "x-apievangelist-provenance": {
+      "method": "searched",
+      "generated": "2026-07-26",
+      "assembly": "Assembled by the API Evangelist enrichment pipeline from the per-operation OpenAPI 3.0.1 documents Ordnance Survey publishes inline on each docs.os.uk technical-specification page. Paths, parameters, schemas, security schemes and responses are verbatim from those published documents; only the per-page fragments were merged into one document per API.",
+      "sources": [
+        "https://docs.os.uk/os-apis/accessing-os-apis/os-names-api/technical-specification/find.md",
+        "https://docs.os.uk/os-apis/accessing-os-apis/os-names-api/technical-specification/nearest.md"
+      ]
+    }
+  },
+  "servers": [
+    {
+      "url": "https://api.os.uk/search/names/v1"
+    }
+  ],
+  "security": [
+    {
+      "api-key": [],
+      "api-key-header": [],
+      "oauth2": []
+    }
+  ],
+  "tags": [
+    {
+      "name": "Find",
+      "description": "A free string text search of OS Names, intended to be an ambiguous/fuzzy search."
+    },
+    {
+      "name": "Nearest",
+      "description": "Find the features closest to a given point."
+    }
+  ],
+  "paths": {
+    "/find": {
+      "get": {
+        "tags": [
+          "Find"
+        ],
+        "summary": "A free string text search, intended to be an ambiguous/fuzzy search.",
+        "operationId": "findAddress",
+        "parameters": [
+          {
+            "name": "query",
+            "in": "query",
+            "description": "Free text search parameter.",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "format",
+            "in": "query",
+            "description": "The format the response will be returned in.",
+            "schema": {
+              "type": "string",
+              "enum": [
+                "JSON",
+                "XML"
+              ]
+            }
+          },
+          {
+            "name": "maxresults",
+            "in": "query",
+            "description": "The maximum number of results to return. Minimum = 1. Maximum = 100. Default = 100.",
+            "style": "form",
+            "schema": {
+              "minimum": 1,
+              "maximum": 100,
+              "type": "integer"
+            }
+          },
+          {
+            "name": "offset",
+            "in": "query",
+            "description": "Offset the list of returned results by this amount.",
+            "schema": {
+              "minimum": 1,
+              "type": "integer"
+            }
+          },
+          {
+            "name": "bounds",
+            "in": "query",
+            "description": "Biases the results to a certain area. The <BoundingBox> is a British National Grid bounding box in the form: XMIN,YMIN,XMAX,YMAX",
+            "style": "form",
+            "explode": false,
+            "schema": {
+              "minItems": 4,
+              "maxItems": 4,
+              "type": "array",
+              "items": {
+                "type": "number"
+              }
+            }
+          },
+          {
+            "name": "fq",
+            "in": "query",
+            "description": "Filters the results by bounding box or local_type. ",
+            "schema": {
+              "type": "string",
+              "enum": [
+                "Airfield",
+                "Airport",
+                "Bay",
+                "Beach",
+                "Bus_Station",
+                "Channel",
+                "Chemical_Works",
+                "Cirque_Or_Hollow",
+                "City",
+                "Cliff_Or_Slope",
+                "Coach_Station",
+                "Coastal_Headland",
+                "Electricity_Distribution",
+                "Electricity_Production",
+                "Estuary",
+                "Further_Education",
+                "Gas_Distribution_or_Storage",
+                "Group_Of_Islands",
+                "Hamlet",
+                "Harbour",
+                "Helicopter_Station",
+                "Heliport",
+                "Higher_or_University_Education",
+                "Hill_Or_Mountain",
+                "Hill_Or_Mountain_Ranges",
+                "Hospice",
+                "Hospital",
+                "Inland_Water",
+                "Island",
+                "Medical_Care_Accommodation",
+                "Named_Road",
+                "Non_State_Primary_Education",
+                "Non_State_Secondary_Education",
+                "Numbered_Road",
+                "Oil_Distribution_or_Storage",
+                "Oil_Refining",
+                "Oil_Terminal",
+                "Other_Coastal_Landform",
+                "Other_Landcover",
+                "Other_Landform",
+                "Other_Settlement",
+                "Passenger_Ferry_Terminal",
+                "Port_Consisting_of_Docks_and_Nautical_Berthing",
+                "Postcode",
+                "Primary_Education",
+                "Railway",
+                "Railway_Station",
+                "Road_User_Services",
+                "Sea",
+                "Secondary_Education",
+                "Section_Of_Named_Road",
+                "Section_Of_Numbered_Road",
+                "Special_Needs_Education",
+                "Spot_Height",
+                "Suburban_Area",
+                "Tidal_Water",
+                "Town",
+                "Tramway",
+                "Urban_Greenspace",
+                "Valley",
+                "Vehicular_Ferry_Terminal",
+                "Vehicular_Rail_Terminal",
+                "Village",
+                "Waterfall",
+                "Wetland",
+                "Woodland_Or_Forest"
+              ]
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Retrieves addresses based on a free text search.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/SearchResponse"
+                }
+              },
+              "application/xml": {
+                "schema": {
+                  "$ref": "#/components/schemas/SearchResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/nearest": {
+      "get": {
+        "tags": [
+          "Nearest"
+        ],
+        "summary": "Find the features closest to a given point",
+        "operationId": "nearestAddress",
+        "parameters": [
+          {
+            "name": "point",
+            "in": "query",
+            "description": "A set of British National Grid coordinates to which the nearest record in a straight line should be found.",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "radius",
+            "in": "query",
+            "description": "The radius in metres to search within. Minimum = 0.01, Maximum = 1,000 . Default = 100",
+            "schema": {
+              "type": "number",
+              "minimum": 0.01,
+              "maximum": 1000
+            }
+          },
+          {
+            "name": "format",
+            "in": "query",
+            "description": "The format the response will be returned in.",
+            "schema": {
+              "type": "string",
+              "enum": [
+                "JSON",
+                "XML"
+              ]
+            }
+          },
+          {
+            "name": "fq",
+            "in": "query",
+            "description": "Filters the results by bounding box or local_type. ",
+            "schema": {
+              "type": "string",
+              "enum": [
+                "Airfield",
+                "Airport",
+                "Bay",
+                "Beach",
+                "Bus_Station",
+                "Channel",
+                "Chemical_Works",
+                "Cirque_Or_Hollow",
+                "City",
+                "Cliff_Or_Slope",
+                "Coach_Station",
+                "Coastal_Headland",
+                "Electricity_Distribution",
+                "Electricity_Production",
+                "Estuary",
+                "Further_Education",
+                "Gas_Distribution_or_Storage",
+                "Group_Of_Islands",
+                "Hamlet",
+                "Harbour",
+                "Helicopter_Station",
+                "Heliport",
+                "Higher_or_University_Education",
+                "Hill_Or_Mountain",
+                "Hill_Or_Mountain_Ranges",
+                "Hospice",
+                "Hospital",
+                "Inland_Water",
+                "Island",
+                "Medical_Care_Accommodation",
+                "Named_Road",
+                "Non_State_Primary_Education",
+                "Non_State_Secondary_Education",
+                "Numbered_Road",
+                "Oil_Distribution_or_Storage",
+                "Oil_Refining",
+                "Oil_Terminal",
+                "Other_Coastal_Landform",
+                "Other_Landcover",
+                "Other_Landform",
+                "Other_Settlement",
+                "Passenger_Ferry_Terminal",
+                "Port_Consisting_of_Docks_and_Nautical_Berthing",
+                "Postcode",
+                "Primary_Education",
+                "Railway",
+                "Railway_Station",
+                "Road_User_Services",
+                "Sea",
+                "Secondary_Education",
+                "Section_Of_Named_Road",
+                "Section_Of_Numbered_Road",
+                "Special_Needs_Education",
+                "Spot_Height",
+                "Suburban_Area",
+                "Tidal_Water",
+                "Town",
+                "Tramway",
+                "Urban_Greenspace",
+                "Valley",
+                "Vehicular_Ferry_Terminal",
+                "Vehicular_Rail_Terminal",
+                "Village",
+                "Waterfall",
+                "Wetland",
+                "Woodland_Or_Forest"
+              ]
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Retrieves addresses based on a free text search.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/SearchResponse"
+                }
+              },
+              "application/xml": {
+                "schema": {
+                  "$ref": "#/components/schemas/SearchResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "components": {
+    "securitySchemes": {
+      "api-key": {
+        "type": "apiKey",
+        "name": "key",
+        "in": "query"
+      }
+    },
+    "schemas": {
+      "SearchResponse": {
+        "type": "object",
+        "properties": {
+          "header": {
+            "$ref": "#/components/schemas/Header"
+          },
+          "results": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/GazetteerEntry"
+            }
+          }
+        }
+      },
+      "Header": {
+        "type": "object",
+        "properties": {
+          "uri": {
+            "type": "string"
+          },
+          "query": {
+            "type": "string"
+          },
+          "format": {
+            "type": "string"
+          },
+          "maxresults": {
+            "type": "integer"
+          },
+          "offset": {
+            "type": "integer"
+          },
+          "totalresults": {
+            "type": "integer"
+          }
+        }
+      },
+      "GazetteerEntry": {
+        "type": "object",
+        "properties": {
+          "GAZETTEER_ENTRY": {
+            "type": "object",
+            "properties": {
+              "ID": {
+                "type": "string"
+              },
+              "NAMES_URI": {
+                "type": "string"
+              },
+              "NAME1": {
+                "type": "string"
+              },
+              "TYPE": {
+                "type": "string"
+              },
+              "LOCAL_TYPE": {
+                "type": "string"
+              },
+              "GEOMETRY_X": {
+                "type": "number"
+              },
+              "GEOMETRY_Y": {
+                "type": "number"
+              },
+              "MOST_DETAIL_VIEW_RES": {
+                "type": "integer"
+              },
+              "LEAST_DETAIL_VIEW_RES": {
+                "type": "integer"
+              },
+              "MBR_XMIN": {
+                "type": "number"
+              },
+              "MBR_YMIN": {
+                "type": "number"
+              },
+              "MBR_XMAX": {
+                "type": "number"
+              },
+              "MBR_YMAX": {
+                "type": "number"
+              },
+              "POSTCODE_DISTRICT": {
+                "type": "string"
+              },
+              "POSTCODE_DISTRICT_URI": {
+                "type": "string"
+              },
+              "POPULATED_PLACE": {
+                "type": "string"
+              },
+              "POPULATED_PLACE_URI": {
+                "type": "string"
+              },
+              "POPULATED_PLACE_TYPE": {
+                "type": "string"
+              },
+              "COUNTY_UNITARY": {
+                "type": "string"
+              },
+              "COUNTY_UNITARY_URI": {
+                "type": "string"
+              },
+              "COUNTY_UNITARY_TYPE": {
+                "type": "string"
+              },
+              "REGION": {
+                "type": "string"
+              },
+              "REGION_URI": {
+                "type": "string"
+              },
+              "COUNTRY": {
+                "type": "string"
+              },
+              "COUNTRY_URI": {
+                "type": "string"
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,76 @@
+generated: '2026-07-26'
+method: searched
+source: >-
+  https://docs.os.uk/os-apis/core-concepts/os-api-branding,
+  https://github.com/OrdnanceSurvey/os-api-branding, and the
+  github.com/OrdnanceSurvey organisation.
+description: >-
+  Ordnance Survey ships one genuine drop-in client-side component - the OS API
+  branding overlay that renders the required OS logo and Crown copyright
+  statement on top of a map div - plus a family of first-party cartographic
+  stylesheets that function as client-side rendering assets for the vector-tile
+  APIs. These are distinct from the server-side wrappers catalogued in
+  packages/.
+components:
+  - family: Branding
+    name: OS API Branding
+    kind: drop-in JS + CSS overlay
+    description: >-
+      Renders the official OS logo and the "Contains OS data (c) Crown
+      copyright and database rights YYYY" attribution over a map container.
+      Attribution is a licence condition of using OS API data, so this is
+      effectively a compliance component rather than a convenience one.
+    repository: https://github.com/OrdnanceSurvey/os-api-branding
+    docs: https://docs.os.uk/os-apis/core-concepts/os-api-branding
+    loader:
+      css: https://cdn.jsdelivr.net/gh/OrdnanceSurvey/os-api-branding@latest/os-api-branding.css
+      js: https://cdn.jsdelivr.net/gh/OrdnanceSurvey/os-api-branding@latest/os-api-branding.js
+    configuration:
+      - {attribute: data-div, description: DOM id of the map container div, default: map}
+      - {attribute: data-logo, description: 'os-logo-maps or os-logo-maps-white', default: os-logo-maps}
+      - {attribute: data-statement, description: Copyright statement with YYYY placeholder, default: 'Contains OS data &copy; Crown copyright and database rights YYYY'}
+      - {attribute: data-prefix, description: Text prepended to the copyright statement, default: ''}
+      - {attribute: data-suffix, description: Text appended to the copyright statement, default: ''}
+    assets: https://osdatahub.os.uk/brandResources/os-maps-logo-maps.zip
+    official: true
+  - family: Cartography
+    name: OS Vector Tile API stylesheets
+    kind: map style assets (Mapbox/MapLibre style JSON, QML, LYRX)
+    repository: https://github.com/OrdnanceSurvey/OS-Vector-Tile-API-Stylesheets
+    docs: https://docs.os.uk/os-apis/accessing-os-apis/os-vector-tile-api/technical-specification/stylesheet
+    official: true
+  - family: Cartography
+    name: OS NGD stylesheets
+    kind: map style assets for OS NGD data (QML, QLR, LYRX, LYR)
+    repository: https://github.com/OrdnanceSurvey/OS-NGD-Stylesheets
+    docs: https://docs.os.uk/os-apis/core-concepts/styling-os-ngd-data
+    official: true
+  - family: Cartography
+    name: OS Open Zoomstack stylesheets
+    kind: map style assets
+    repository: https://github.com/OrdnanceSurvey/OS-Open-Zoomstack-Stylesheets
+    official: true
+  - family: Visualisation
+    name: OS Power BI Map Visual
+    kind: embedded BI visual (custom Power BI visual using OS base mapping)
+    repository: https://github.com/OrdnanceSurvey/os-powerbi-map
+    official: true
+  - family: Design system
+    name: OS Elements (web-elements)
+    kind: reusable UI component library
+    registry: npm
+    package: os-elements
+    version_seen: 0.15.0
+    repository: https://github.com/OrdnanceSurvey/web-elements
+    official: true
+    status: legacy
+    note: AngularJS-era component library; not part of the current OS API developer path.
+style_discovery:
+  note: >-
+    Both vector-tile APIs expose style discovery as real API operations rather
+    than only as repo assets - OS Vector Tile API `discoverStyles` /
+    `discoverOverlayStyles`, and OS NGD API - Tiles `getStylesList` /
+    `getStyleRoot` / `getStyleResources` (fonts and sprites).
+gaps:
+  - No first-party map SDK or web component wrapping the tile APIs - OS documents Leaflet, MapLibre GL JS and OpenLayers as third-party clients instead.
+  - No embeddable address-lookup or UPRN-picker widget for OS Places.

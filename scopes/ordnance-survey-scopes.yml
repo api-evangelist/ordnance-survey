@@ -1,0 +1,56 @@
+generated: '2026-07-26'
+method: searched
+source: openapi/ordnance-survey-downloads-openapi.yaml, openapi/ordnance-survey-linked-identifiers-openapi.json,
+  openapi/ordnance-survey-ngd-features-openapi.json, openapi/ordnance-survey-ngd-tiles-openapi.json,
+  openapi/ordnance-survey-osnet-openapi.yaml
+docs: https://docs.os.uk/os-apis/core-concepts/authentication
+oauth2_docs: https://docs.os.uk/os-apis/accessing-os-apis/oauth-2-api/technical-specification
+description: >-
+  Ordnance Survey runs OAuth 2.0 as a bare client-credentials token service and
+  publishes NO named scopes. The OS OAuth 2 API documentation describes only
+  grant_type=client_credentials against https://api.os.uk/oauth2/token/v1 with
+  HTTP Basic (Project API Key : Project API Secret), returning access_token /
+  expires_in / issued_at / token_type. Authorisation is carried by which APIs
+  are attached to the OS Data Hub API Project, not by scope strings - so a
+  token that is refused returns 403 (not entitled) rather than an
+  insufficient_scope error. The single scope below is the literal "read" scope
+  declared in the operation security requirements of the OS Linked Identifiers
+  OpenAPI fragments; it is not documented anywhere in prose and no other OS
+  spec declares it.
+token_endpoint: https://api.os.uk/oauth2/token/v1
+grant_types: [client_credentials]
+token_lifetime_seconds: 299
+discovery_document: none published
+schemes:
+- name: OAuth2
+  source: openapi/ordnance-survey-downloads-openapi.yaml
+  flows:
+  - flow: clientCredentials
+    tokenUrl: https://api.os.uk/oauth2/token/v1
+- name: OAuth2
+  source: openapi/ordnance-survey-linked-identifiers-openapi.json
+  flows:
+  - flow: clientCredentials
+    tokenUrl: https://api.os.uk/oauth2/token/v1
+- name: oauth2
+  source: openapi/ordnance-survey-ngd-features-openapi.json
+  flows:
+  - flow: clientCredentials
+    tokenUrl: https://api.os.uk/oauth2/token/v1
+- name: oauth2
+  source: openapi/ordnance-survey-ngd-tiles-openapi.json
+  flows:
+  - flow: clientCredentials
+    tokenUrl: https://api.os.uk/oauth2/token/v1
+- name: OAuth2
+  source: openapi/ordnance-survey-osnet-openapi.yaml
+  flows:
+  - flow: clientCredentials
+    tokenUrl: OAUTH_TOKEN_URL
+scopes:
+- scope: read
+  description: Grants read access
+  flows:
+  - clientCredentials
+  sources:
+  - openapi/ordnance-survey-linked-identifiers-openapi.json

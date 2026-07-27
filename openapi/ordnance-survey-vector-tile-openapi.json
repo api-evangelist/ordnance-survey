@@ -1,0 +1,582 @@
+{
+  "openapi": "3.0.1",
+  "info": {
+    "title": "OS Vector Tiles API",
+    "version": "v1.0",
+    "x-apievangelist-provenance": {
+      "method": "searched",
+      "generated": "2026-07-26",
+      "assembly": "Assembled by the API Evangelist enrichment pipeline from the per-operation OpenAPI 3.0.1 documents Ordnance Survey publishes inline on each docs.os.uk technical-specification page. Paths, parameters, schemas, security schemes and responses are verbatim from those published documents; only the per-page fragments were merged into one document per API.",
+      "sources": [
+        "https://docs.os.uk/os-apis/accessing-os-apis/os-vector-tile-api/technical-specification/service-metadata.md",
+        "https://docs.os.uk/os-apis/accessing-os-apis/os-vector-tile-api/technical-specification/stylesheet.md",
+        "https://docs.os.uk/os-apis/accessing-os-apis/os-vector-tile-api/technical-specification/tile-request.md"
+      ]
+    }
+  },
+  "servers": [
+    {
+      "url": "https://api.os.uk/maps/vector/v1"
+    }
+  ],
+  "security": [
+    {
+      "api-key": [],
+      "api-key-header": [],
+      "oauth2": []
+    }
+  ],
+  "tags": [
+    {
+      "name": "Service Metadata",
+      "description": "Service Metadata for OS Vector Tiles API"
+    },
+    {
+      "name": "Styles",
+      "description": "Discover compatible stylesheets for the OS Vector Tiles API"
+    },
+    {
+      "name": "Tile Request",
+      "description": "Access and download data for a specific tile"
+    }
+  ],
+  "paths": {
+    "/vts": {
+      "get": {
+        "tags": [
+          "Service Metadata"
+        ],
+        "summary": "Service Metadata for OS Vector Tiles API",
+        "operationId": "getServiceMetadata",
+        "parameters": [
+          {
+            "name": "srs",
+            "in": "query",
+            "description": "The Spatial Reference System for the service.",
+            "required": false,
+            "schema": {
+              "type": "string",
+              "default": "27700",
+              "enum": [
+                "27700",
+                "3857"
+              ]
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Retrieves Service Metadata for OS Vector Tiles API",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ServiceMetadata"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/vts/resources/styles": {
+      "get": {
+        "tags": [
+          "Styles"
+        ],
+        "summary": "Discover compatible stylesheets",
+        "operationId": "discoverStyles",
+        "parameters": [
+          {
+            "name": "srs",
+            "in": "query",
+            "description": "The Spatial Reference System for the service.",
+            "required": false,
+            "schema": {
+              "type": "string",
+              "default": "27700",
+              "enum": [
+                "27700",
+                "3857"
+              ]
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Retrieves compatible stylesheets",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/StylesResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/vts/{layer-name}/resources/styles": {
+      "get": {
+        "tags": [
+          "Styles"
+        ],
+        "summary": "Discover compatible stylesheets for a data overlay",
+        "operationId": "discoverOverlayStyles",
+        "parameters": [
+          {
+            "name": "layer-name",
+            "in": "path",
+            "description": "The name of the data overlay.",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "enum": [
+                "boundaries",
+                "greenspace",
+                "sites",
+                "water",
+                "highways",
+                "paths"
+              ]
+            }
+          },
+          {
+            "name": "srs",
+            "in": "query",
+            "description": "The Spatial Reference System for the service.",
+            "schema": {
+              "type": "string",
+              "default": "27700",
+              "enum": [
+                "27700",
+                "3857"
+              ]
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Returns compatible stylesheets for a data overlay.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/StylesResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/vts/tile/{z}/{y}/{x}.pbf": {
+      "get": {
+        "tags": [
+          "Tile Request"
+        ],
+        "summary": "Access and download data for a specific tile",
+        "operationId": "getTileData",
+        "parameters": [
+          {
+            "name": "z",
+            "in": "path",
+            "description": "Zoom level",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          },
+          {
+            "name": "y",
+            "in": "path",
+            "description": "Y coordinate",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          },
+          {
+            "name": "x",
+            "in": "path",
+            "description": "X coordinate",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          },
+          {
+            "name": "srs",
+            "in": "query",
+            "description": "The Spatial Reference System for the service.",
+            "required": false,
+            "schema": {
+              "type": "string",
+              "default": "27700",
+              "enum": [
+                "27700",
+                "3857"
+              ]
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Tile data retrieved successfully",
+            "content": {
+              "application/octet-stream": {
+                "schema": {
+                  "type": "string",
+                  "format": "binary"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/vts/{layer-name}/tile/{z}/{y}/{x}.pbf": {
+      "get": {
+        "tags": [
+          "Tile Request"
+        ],
+        "summary": "Access and download data for a specific tile from a data overlay",
+        "operationId": "getOverlayTileData",
+        "parameters": [
+          {
+            "name": "layer-name",
+            "in": "path",
+            "description": "The name of the data overlay.",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "enum": [
+                "boundaries",
+                "greenspace",
+                "sites",
+                "water",
+                "highways",
+                "paths"
+              ]
+            }
+          },
+          {
+            "name": "z",
+            "in": "path",
+            "description": "Zoom level",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          },
+          {
+            "name": "y",
+            "in": "path",
+            "description": "Y coordinate",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          },
+          {
+            "name": "x",
+            "in": "path",
+            "description": "X coordinate",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          },
+          {
+            "name": "srs",
+            "in": "query",
+            "description": "The Spatial Reference System for the service.",
+            "schema": {
+              "type": "string",
+              "default": "27700",
+              "enum": [
+                "27700",
+                "3857"
+              ]
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Tile data retrieved successfully",
+            "content": {
+              "application/octet-stream": {
+                "schema": {
+                  "type": "string",
+                  "format": "binary"
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "components": {
+    "securitySchemes": {
+      "api-key": {
+        "type": "apiKey",
+        "name": "key",
+        "in": "query"
+      }
+    },
+    "schemas": {
+      "ServiceMetadata": {
+        "type": "object",
+        "properties": {
+          "currentVersion": {
+            "type": "number"
+          },
+          "name": {
+            "type": "string"
+          },
+          "capabilities": {
+            "type": "string"
+          },
+          "type": {
+            "type": "string"
+          },
+          "defaultStyles": {
+            "type": "string"
+          },
+          "tiles": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "exportTilesAllowed": {
+            "type": "boolean"
+          },
+          "initialExtent": {
+            "$ref": "#/components/schemas/Extent"
+          },
+          "fullExtent": {
+            "$ref": "#/components/schemas/Extent"
+          },
+          "minScale": {
+            "type": "number"
+          },
+          "maxScale": {
+            "type": "number"
+          },
+          "tileInfo": {
+            "$ref": "#/components/schemas/TileInfo"
+          },
+          "maxzoom": {
+            "type": "integer"
+          },
+          "minLOD": {
+            "type": "integer"
+          },
+          "maxLOD": {
+            "type": "integer"
+          },
+          "resourceInfo": {
+            "type": "object",
+            "properties": {
+              "styleVersion": {
+                "type": "integer"
+              },
+              "tileCompression": {
+                "type": "string"
+              },
+              "cacheInfo": {
+                "type": "object",
+                "properties": {
+                  "storageInfo": {
+                    "type": "object",
+                    "properties": {
+                      "packetSize": {
+                        "type": "integer"
+                      },
+                      "storageFormat": {
+                        "type": "string"
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "serviceItemId": {
+            "type": "string"
+          },
+          "maxExportTilesCount": {
+            "type": "integer"
+          }
+        }
+      },
+      "Extent": {
+        "type": "object",
+        "properties": {
+          "xmin": {
+            "type": "number"
+          },
+          "ymin": {
+            "type": "number"
+          },
+          "xmax": {
+            "type": "number"
+          },
+          "ymax": {
+            "type": "number"
+          },
+          "spatialReference": {
+            "type": "object",
+            "properties": {
+              "wkid": {
+                "type": "integer"
+              },
+              "latestWkid": {
+                "type": "integer"
+              }
+            }
+          }
+        }
+      },
+      "TileInfo": {
+        "type": "object",
+        "properties": {
+          "rows": {
+            "type": "integer"
+          },
+          "cols": {
+            "type": "integer"
+          },
+          "dpi": {
+            "type": "integer"
+          },
+          "format": {
+            "type": "string"
+          },
+          "origin": {
+            "type": "object",
+            "properties": {
+              "x": {
+                "type": "number"
+              },
+              "y": {
+                "type": "number"
+              }
+            }
+          },
+          "spatialReference": {
+            "$ref": "#/components/schemas/Extent"
+          },
+          "lods": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/Lod"
+            }
+          }
+        }
+      },
+      "Lod": {
+        "type": "object",
+        "properties": {
+          "level": {
+            "type": "integer"
+          },
+          "resolution": {
+            "type": "number"
+          },
+          "scale": {
+            "type": "number"
+          }
+        }
+      },
+      "StylesResponse": {
+        "type": "object",
+        "properties": {
+          "version": {
+            "type": "integer"
+          },
+          "sprite": {
+            "type": "string"
+          },
+          "glyphs": {
+            "type": "string"
+          },
+          "sources": {
+            "type": "object",
+            "additionalProperties": {
+              "type": "object",
+              "properties": {
+                "type": {
+                  "type": "string"
+                },
+                "url": {
+                  "type": "string"
+                }
+              },
+              "required": [
+                "type",
+                "url"
+              ]
+            }
+          },
+          "layers": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "id": {
+                  "type": "string"
+                },
+                "type": {
+                  "type": "string"
+                },
+                "source": {
+                  "type": "string"
+                },
+                "source-layer": {
+                  "type": "string"
+                },
+                "filter": {
+                  "type": "array",
+                  "items": {
+                    "type": "string"
+                  }
+                },
+                "minzoom": {
+                  "type": "integer"
+                },
+                "maxzoom": {
+                  "type": "integer"
+                },
+                "layout": {
+                  "type": "object"
+                },
+                "paint": {
+                  "type": "object"
+                }
+              },
+              "required": [
+                "id",
+                "type",
+                "source"
+              ]
+            }
+          }
+        },
+        "required": [
+          "version",
+          "sprite",
+          "glyphs",
+          "sources",
+          "layers"
+        ]
+      }
+    }
+  }
+}

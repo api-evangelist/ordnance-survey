@@ -1,0 +1,106 @@
+generated: '2026-07-26'
+method: searched
+source: >-
+  https://docs.os.uk/os-apis/service-and-data-status/change-log,
+  https://docs.os.uk/os-apis/service-and-data-status/planned-maintenance,
+  https://docs.os.uk/os-apis/accessing-os-apis/os-match-and-cleanse-api/end-of-life-information,
+  plus the ten OpenAPI documents in openapi/.
+description: >-
+  Ordnance Survey runs a documentation-driven lifecycle: a dated change log, a
+  planned-maintenance page, a live per-API service status dashboard, and a
+  formal end-of-life page for each API or data layer it withdraws. Versioning
+  is in the URI path and has never moved past v1 for any API. There is no RFC
+  8594 Sunset/Deprecation header support and no machine-readable deprecation
+  signal - withdrawal is announced in prose with a dated end-of-life page.
+versioning:
+  scheme: uri-path
+  current:
+    OS NGD API - Features: v1 (document version v1.8.1)
+    OS NGD API - Tiles: v1 (document version v1.8)
+    OS Places API: v1
+    OS Names API: v1
+    OS Linked Identifiers API: v1
+    OS Downloads API: v1 (document version 1.0.0)
+    OS Net API: v1 (document version 1.6.0)
+    OS Features API: v1 (WFS 2.0.0)
+    OS Maps API: v1
+    OS Vector Tile API: v1
+    OS OAuth 2 API: v1
+  note: >-
+    Every OS API base URL carries /v1. No OS API has ever shipped a v2, so
+    there is no observed major-version migration precedent. Data changes ship
+    as dated "OS NGD data enhancements" releases against the same v1 surface.
+  docs: https://docs.os.uk/os-apis
+deprecation:
+  policy_url: https://docs.os.uk/os-apis/service-and-data-status/change-log
+  sunset_header: false
+  deprecation_header: false
+  mechanism: >-
+    A dedicated "End of Life Information" documentation page per withdrawn API
+    or data layer, announced in advance in the change log, giving the full
+    end-of-life date, the reasoning, the customer impact and named migration
+    options. Roughly 13 months' notice on the most recent full-API withdrawal.
+  withdrawn:
+    - name: OS Match & Cleanse API
+      kind: api
+      announced: '2025-02-24'
+      end_of_life: '2026-03-31'
+      notice_period: ~13 months
+      url: https://docs.os.uk/os-apis/accessing-os-apis/os-match-and-cleanse-api/end-of-life-information
+      reason: >-
+        Low usage; no bulk processing support; rate limits unsuitable for bulk
+        address matching; product consolidation.
+      migration: >-
+        OS Places API FIND endpoint for comparable single-address matching, or
+        an OS Partner bulk address-matching solution.
+      current_state: Removed from existing API projects; requests now fail.
+    - name: OS MasterMap Water Network Layer
+      kind: data-layer
+      announced: '2025-09-01'
+      end_of_life: '2026-03-31'
+      affects: [OS Vector Tile API, OS Features API]
+    - name: OS MasterMap Greenspace Layer
+      kind: data-layer
+      announced: '2026-02-11'
+      affects: [OS Vector Tile API, OS Features API]
+    - name: OS Detailed Path Network
+      kind: data-layer
+      announced: '2025-09-01'
+      affects: [OS Vector Tile API, OS Features API]
+deprecated_operations: []
+deprecated_operations_note: >-
+  No operation in any of the ten OpenAPI documents carries deprecated: true.
+  Withdrawal happens at the API and data-layer level, not the operation level,
+  and the spec for a withdrawn API is simply removed from the docs.
+status_page:
+  url: https://osdatahub.os.uk/support/status
+  name: OS Data Hub Service Status Dashboard
+  refresh_interval: every 10 minutes
+  window: rolling 24 hours
+  granularity: per API
+  states: [available, degraded, interrupted]
+  machine_readable: false
+  source: https://docs.os.uk/os-apis/service-and-data-status/planned-maintenance
+planned_maintenance:
+  url: https://docs.os.uk/os-apis/service-and-data-status/planned-maintenance
+  current: No maintenance events scheduled that will impact OS API availability (checked 2026-07-26).
+  most_recent_completed:
+    date: '2026-07-20T09:00'
+    action: Third-party service enhancements implemented in production.
+    impact: No impact to the service was reported in this period.
+sla:
+  url: null
+  uptime_target: null
+  note: >-
+    No published uptime target or service-level agreement for the OS Data Hub
+    APIs. Commercial terms live in the OS Data Hub terms and conditions
+    (https://osdatahub.os.uk/legal/termsConditions) and, for public sector
+    users, in the Public Sector Geospatial Agreement.
+change_log:
+  url: https://docs.os.uk/os-apis/service-and-data-status/change-log
+  artifact: changelog/ordnance-survey-changelog.yml
+data_release_cadence:
+  note: >-
+    OS NGD data enhancement releases are announced in the change log roughly
+    every six months (September 2025, March 2026 observed). Premium download
+    products version through OS Downloads API /dataPackages/{id}/versions.

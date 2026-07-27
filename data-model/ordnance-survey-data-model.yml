@@ -1,0 +1,207 @@
+generated: '2026-07-26'
+method: derived
+source: >-
+  The components.schemas of the ten OpenAPI documents in openapi/, plus the OS
+  Places code lists and the OS Linked Identifiers documentation at
+  https://docs.os.uk/os-apis/accessing-os-apis/os-linked-identifiers-api.
+description: >-
+  The Ordnance Survey data model has no customer/account/object graph in the
+  SaaS sense - there is no writable resource anywhere in the estate. What it
+  has instead is a NATIONAL IDENTIFIER GRAPH: three government-issued
+  identifiers (UPRN for a property, TOID for a topographic feature, USRN for a
+  street) that OS mints and that the OS Linked Identifiers API exists purely to
+  join. Everything else in the estate - addresses, features, tiles, downloads -
+  hangs off those three keys. The join between OS data, HM Land Registry
+  records and local-authority property data is the UPRN, which is why this
+  identifier graph, not any one API, is the product.
+identifiers:
+  - id: UPRN
+    name: Unique Property Reference Number
+    entity: Property / addressable location
+    minted_by: Ordnance Survey (AddressBase, from local authority custodians)
+    format: numeric string, up to 12 digits
+    open_product: OS Open UPRN (api.os.uk/downloads/v1/products/OpenUPRN, free, no key)
+    surfaced_by: [OS Places API, OS Linked Identifiers API, OS Downloads API]
+  - id: TOID
+    name: Topographic Identifier
+    entity: OS MasterMap topographic feature
+    minted_by: Ordnance Survey
+    format: 'osgb + numeric string'
+    open_product: OS Open TOID
+    surfaced_by: [OS Linked Identifiers API, OS Features API, OS NGD API - Features]
+  - id: USRN
+    name: Unique Street Reference Number
+    entity: Street
+    minted_by: GeoPlace / local highway authorities, published through OS
+    open_product: OS Open USRN
+    surfaced_by: [OS Places API (LPI records), OS Linked Identifiers API]
+  - id: UDPRN
+    name: Unique Delivery Point Reference Number
+    entity: Royal Mail delivery point
+    minted_by: Royal Mail
+    surfaced_by: [OS Places API (DPA records)]
+  - id: collectionId
+    name: OS NGD collection identifier
+    entity: OS National Geographic Database feature collection
+    surfaced_by: [OS NGD API - Features, OS NGD API - Tiles]
+  - id: productId
+    name: OS download product identifier
+    entity: OS OpenData or Premium download product
+    example_values: [OpenUPRN, OpenTOID, OpenUSRN, CodePointOpen, OpenNames, BoundaryLine]
+    surfaced_by: [OS Downloads API]
+  - id: stationId
+    name: OS Net station identifier
+    entity: GNSS continuously-operating reference station
+    surfaced_by: [OS Net API]
+entities:
+  - name: DPA
+    label: Delivery Point Address
+    api: OS Places API
+    schema: openapi/ordnance-survey-places-openapi.json#/components/schemas/DPA
+    key: UPRN
+    description: >-
+      The Royal Mail postal view of an address - the version most consumers
+      expect. Carries UPRN, UDPRN, the formatted ADDRESS, postal components,
+      British National Grid X_COORDINATE/Y_COORDINATE and LNG/LAT, plus
+      classification and local custodian codes.
+  - name: LPI
+    label: Local Property Identifier
+    api: OS Places API
+    schema: openapi/ordnance-survey-places-openapi.json#/components/schemas/LPI
+    key: UPRN
+    description: >-
+      The local-authority view of the same property - SAO/PAO structured
+      address components, LPI_KEY, STREET_DESCRIPTION and, critically, USRN.
+      This is the record that carries the property-to-street join.
+  - name: SearchResult
+    api: OS Places API
+    schema: openapi/ordnance-survey-places-openapi.json#/components/schemas/SearchResult
+    description: 'Envelope: header (offset, totalresults, maxresults, dataset, epoch, output_srs) + results[] of DPA and/or LPI.'
+  - name: GazetteerEntry
+    api: OS Names API
+    schema: openapi/ordnance-survey-names-openapi.json#/components/schemas/GazetteerEntry
+    description: A named place, road or settlement in the OS gazetteer.
+  - name: linkedIdentifier
+    api: OS Linked Identifiers API
+    schema: openapi/ordnance-survey-linked-identifiers-openapi.json#/components/schemas/linkedIdentifier
+    description: One identifier plus its correlations to identifiers of other types.
+  - name: correlationMethodInformation
+    api: OS Linked Identifiers API
+    description: >-
+      Provenance of a correlation - methodIdentifier, product creation date,
+      and the two identifierSource records that were joined.
+  - name: CollectionResponse
+    api: OS NGD API - Features
+    schema: openapi/ordnance-survey-ngd-features-openapi.json#/components/schemas/CollectionResponse
+    key: id
+    description: An OS NGD feature collection - crs, storageCrs, itemType, spatial/temporal extent, links.
+  - name: Feature
+    api: OS NGD API - Features, OS Features API
+    schema: openapi/ordnance-survey-ngd-features-openapi.json#/components/schemas/Feature
+    key: id
+    description: A GeoJSON feature - id, geometry, properties. properties are collection-specific and described by getSchema/getCollectionQueryables.
+  - name: Queryable
+    api: OS NGD API - Features
+    description: >-
+      A filterable attribute of a collection, with type, format, enum and a
+      parent/child hierarchy. This is the CQL2 vocabulary for the collection.
+  - name: tileMatrixSet
+    api: OS NGD API - Tiles
+    description: A tiling scheme - crs, orderedAxes, wellKnownScaleSet and its tileMatrices.
+  - name: Product
+    api: OS Downloads API
+    schema: openapi/ordnance-survey-downloads-openapi.yaml#/components/schemas/Product
+    key: id
+    description: An OS OpenData product - version, formats, areas, dataStructures, categories, downloadsUrl.
+  - name: Download
+    api: OS Downloads API
+    description: One downloadable file - url, fileName, size, md5.
+  - name: DataPackage
+    api: OS Downloads API
+    key: id
+    description: A premium data package bound to a productId, holding versions.
+  - name: DataPackageVersionSummary
+    api: OS Downloads API
+    key: id
+    description: One version of a data package - createdOn, reason, supplyType, productVersion, format.
+  - name: Station
+    api: OS Net API
+    schema: openapi/ordnance-survey-osnet-openapi.yaml#/components/schemas/Station
+    key: stationId
+    description: >-
+      A GNSS reference station with ETRS89 X/Y/Z and Lat/Long/H, OSGB36 E/N,
+      orthometric height and datum, transformation model and data frequency.
+  - name: RinexFile
+    api: OS Net API
+    description: A RINEX observation file for a station, year and day of year.
+relationships:
+  - from: DPA
+    to: LPI
+    type: has_one
+    via: UPRN
+    note: The same property expressed in the postal and the local-authority view.
+  - from: LPI
+    to: Street
+    type: belongs_to
+    via: USRN
+  - from: UPRN
+    to: TOID
+    type: has_many
+    via: OS Linked Identifiers API /identifiers/{id}
+    note: A property can correlate to one or more topographic features.
+  - from: USRN
+    to: TOID
+    type: has_many
+    via: OS Linked Identifiers API /identifiers/{id}
+  - from: linkedIdentifier
+    to: correlationMethodInformation
+    type: has_one
+    via: correlationMethod
+  - from: CollectionResponse
+    to: Feature
+    type: has_many
+    via: collectionId (/collections/{collectionId}/items)
+  - from: CollectionResponse
+    to: Queryable
+    type: has_many
+    via: collectionId (/collections/{collectionId}/queryables)
+  - from: CollectionResponse
+    to: tileSet
+    type: has_many
+    via: collectionId (/collections/{collectionId}/tiles)
+  - from: tileSet
+    to: tileMatrixSet
+    type: belongs_to
+    via: tileMatrixSetId
+  - from: Product
+    to: Download
+    type: has_many
+    via: productId (/products/{productId}/downloads)
+  - from: DataPackage
+    to: DataPackageVersionSummary
+    type: has_many
+    via: dataPackageId (/dataPackages/{dataPackageId}/versions)
+  - from: DataPackage
+    to: Product
+    type: belongs_to
+    via: productId
+  - from: Station
+    to: RinexFile
+    type: has_many
+    via: stationId (/stations/{stationId}/rinex)
+cross_organisation_joins:
+  - target: HM Land Registry
+    via: UPRN
+    note: >-
+      HM Land Registry title and price-paid records key on address/UPRN, making
+      OS the addressing spine of the UK property market.
+  - target: Local authority property data
+    via: UPRN / USRN
+  - target: Royal Mail PAF
+    via: UDPRN
+crs:
+  native: EPSG:27700 (British National Grid)
+  also_served: [EPSG:4326, CRS84, EPSG:3857]
+  helper_libraries: [osbng (PyPI), osbng (CRAN)]
+render: null
+render_note: No subway/ ERD visual exists for this provider yet.

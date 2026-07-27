@@ -1,0 +1,25 @@
+overlay: 1.0.0
+info:
+  title: API Evangelist enhancements for OS Vector Tile API
+  version: 1.0.0
+  x-generated: '2026-07-26'
+  x-method: generated
+  x-description: Non-destructive enhancements layered over the Ordnance Survey OpenAPI harvested in openapi/ordnance-survey-vector-tile-openapi.json.
+    The original document is never mutated.
+extends: openapi/ordnance-survey-vector-tile-openapi.json
+actions:
+- target: $.info
+  update:
+    x-apievangelist-provider: Ordnance Survey
+    x-apievangelist-provider-id: ordnance-survey
+    x-apievangelist-api: OS Vector Tile API
+    x-apievangelist-documentation: https://docs.os.uk/os-apis/accessing-os-apis/os-vector-tile-api
+    x-apievangelist-artifacts:
+      authentication: authentication/ordnance-survey-authentication.yml
+      conventions: conventions/ordnance-survey-conventions.yml
+      errors: errors/ordnance-survey-problem-types.yml
+      lifecycle: lifecycle/ordnance-survey-lifecycle.yml
+      rate_limits: rate-limits/ordnance-survey-rate-limits.yml
+      conformance: conformance/ordnance-survey-conformance.yml
+    x-apievangelist-rate-limit: 600 transactions per minute per API per live-mode project; 50 in development
+      mode

@@ -1,0 +1,92 @@
+generated: '2026-07-26'
+method: searched
+source: openapi/ordnance-survey-downloads-openapi.yaml, openapi/ordnance-survey-features-wfs-openapi.json,
+  openapi/ordnance-survey-linked-identifiers-openapi.json, openapi/ordnance-survey-maps-openapi.json,
+  openapi/ordnance-survey-names-openapi.json, openapi/ordnance-survey-ngd-features-openapi.json,
+  openapi/ordnance-survey-ngd-tiles-openapi.json, openapi/ordnance-survey-osnet-openapi.yaml,
+  openapi/ordnance-survey-places-openapi.json, openapi/ordnance-survey-vector-tile-openapi.json
+docs: https://docs.os.uk/os-apis/core-concepts/authentication
+oauth2_docs: https://docs.os.uk/os-apis/accessing-os-apis/oauth-2-api/technical-specification
+description: >-
+  Three interchangeable credentials across the whole Ordnance Survey estate:
+  the Project API Key as the `key` query parameter, the same key as the `key`
+  request header, or an OAuth 2.0 client-credentials Bearer token. Credentials
+  belong to an OS Data Hub API Project, not to a user, and carry no scopes -
+  entitlement comes from which APIs are attached to the project and which plan
+  the account holds. A 401 is a credential failure; a 403 is a LICENSING
+  failure. The OS Net API spec ships an unresolved OAUTH_TOKEN_URL placeholder
+  as its tokenUrl; the real endpoint is https://api.os.uk/oauth2/token/v1.
+oauth2:
+  token_url: https://api.os.uk/oauth2/token/v1
+  grant_type: client_credentials
+  client_authentication: HTTP Basic - Project API Key as username, Project API Secret as password
+  request_content_type: application/x-www-form-urlencoded
+  response_fields: [access_token, expires_in, issued_at, token_type]
+  documented_expires_in: 299
+  token_type: Bearer
+  usage: 'Authorization: Bearer <accessToken>'
+  scopes_published: false
+  refresh_tokens: false
+  discovery: none - no /.well-known/openid-configuration and no RFC 8414 metadata
+api_key:
+  query_parameter: key
+  header: key
+  scope: OS Data Hub API Project
+  rotation: Keys can be regenerated in place from the API project page in the OS Data Hub.
+provider_guidance:
+  - Keep API keys and tokens secure at all times.
+  - Rotate keys periodically to minimise the risk of unauthorised access.
+  - Regularly check usage patterns of API keys.
+  - Set up alerts for unusual or unauthorised activity.
+  - Use separate API projects so usage can be monitored per project.
+failure_semantics:
+  401: No credential or an incorrect/expired credential.
+  403: >-
+    Authenticated but not entitled - the API is not in your plan (Premium /
+    Public Sector / PSGA) or has not been added to this API project.
+summary:
+  types:
+  - apiKey
+  - oauth2
+  api_key_in:
+  - header
+  - query
+  oauth2_flows:
+  - clientCredentials
+schemes:
+- name: OAuth2
+  type: oauth2
+  flows:
+  - flow: clientCredentials
+    tokenUrl: https://api.os.uk/oauth2/token/v1
+    scopes: 0
+  sources:
+  - openapi/ordnance-survey-downloads-openapi.yaml
+  - openapi/ordnance-survey-linked-identifiers-openapi.json
+  - openapi/ordnance-survey-ngd-features-openapi.json
+  - openapi/ordnance-survey-ngd-tiles-openapi.json
+  - openapi/ordnance-survey-osnet-openapi.yaml
+- name: APIKeyQuery
+  type: apiKey
+  in: query
+  parameter: key
+  sources:
+  - openapi/ordnance-survey-downloads-openapi.yaml
+  - openapi/ordnance-survey-features-wfs-openapi.json
+  - openapi/ordnance-survey-linked-identifiers-openapi.json
+  - openapi/ordnance-survey-maps-openapi.json
+  - openapi/ordnance-survey-names-openapi.json
+  - openapi/ordnance-survey-ngd-features-openapi.json
+  - openapi/ordnance-survey-ngd-tiles-openapi.json
+  - openapi/ordnance-survey-osnet-openapi.yaml
+  - openapi/ordnance-survey-places-openapi.json
+  - openapi/ordnance-survey-vector-tile-openapi.json
+- name: APIKeyHeader
+  type: apiKey
+  in: header
+  parameter: key
+  sources:
+  - openapi/ordnance-survey-downloads-openapi.yaml
+  - openapi/ordnance-survey-ngd-features-openapi.json
+  - openapi/ordnance-survey-ngd-tiles-openapi.json
+  - openapi/ordnance-survey-osnet-openapi.yaml

@@ -1,0 +1,166 @@
+generated: '2026-07-26'
+method: derived
+status: candidate
+source: >-
+  Derived from the ten OpenAPI documents in openapi/. No official Ordnance
+  Survey MCP server exists.
+search_evidence:
+  - {probe: 'https://mcp.os.uk', result: '302 -> https://mcp.ordnancesurvey.co.uk/ which returns an empty body'}
+  - {probe: 'https://mcp.ordnancesurvey.co.uk/ (GET and JSON-RPC tools/list POST)', result: 'empty response, not an MCP endpoint'}
+  - {probe: 'https://api.os.uk/mcp', result: '200 but the api.os.uk catch-all landing document, not MCP'}
+  - {probe: 'https://docs.os.uk/mcp', result: '404'}
+  - {probe: 'registry.modelcontextprotocol.io ?search=ordnance', result: '0 servers'}
+  - {probe: 'npm search "ordnance survey mcp"', result: 'no first-party package'}
+description: >-
+  A candidate MCP tool surface for the Ordnance Survey APIs, one tool per
+  OpenAPI operation that an agent would realistically call. Every tool's
+  source_operation points at a real path/operationId in a spec in this repo, so
+  the tool's input schema is the operation's parameters verbatim - nothing here
+  is invented. This is a design starting point for whoever builds the server
+  (OS itself, or a third party); it is NOT a published Ordnance Survey product.
+server:
+  name: ordnance-survey
+  transport: http
+  url: null
+  auth: >-
+    All OS APIs authenticate with a Project API Key (query parameter `key` or
+    request header `key`) or an OAuth 2.0 client-credentials Bearer token from
+    https://api.os.uk/oauth2/token/v1. A server implementation would hold the
+    key/secret and never expose it to the model.
+  read_only: true
+  note: >-
+    Every OS operation is a read. The only non-GET operation in the estate is
+    OS Places POST /polygon, which is a query-by-request-body, not a write. An
+    MCP server over OS therefore needs no write consent model.
+tools:
+  - name: search_addresses
+    description: Free-text address search over AddressBase Premium; returns matched addresses with UPRNs.
+    source_operation: openapi/ordnance-survey-places-openapi.json#getFind
+    licensing: Premium or PSGA
+  - name: get_addresses_by_postcode
+    description: Return addresses for a postcode.
+    source_operation: openapi/ordnance-survey-places-openapi.json#getPostcode
+    licensing: Premium or PSGA
+  - name: get_address_by_uprn
+    description: Return the address record for a Unique Property Reference Number.
+    source_operation: openapi/ordnance-survey-places-openapi.json#getUPRN
+    licensing: Premium or PSGA
+  - name: get_nearest_address
+    description: Return the closest addresses to an X/Y coordinate pair.
+    source_operation: openapi/ordnance-survey-places-openapi.json#getNearest
+    licensing: Premium or PSGA
+  - name: get_addresses_in_bbox
+    description: Return addresses inside a bounding box.
+    source_operation: openapi/ordnance-survey-places-openapi.json#getBbox
+    licensing: Premium or PSGA
+  - name: get_addresses_in_radius
+    description: Return addresses intersected by a circle around a point.
+    source_operation: openapi/ordnance-survey-places-openapi.json#getRadius
+    licensing: Premium or PSGA
+  - name: get_addresses_in_polygon
+    description: Return addresses inside a GeoJSON polygon or multi-polygon.
+    source_operation: openapi/ordnance-survey-places-openapi.json#postPolygon
+    licensing: Premium or PSGA
+  - name: search_place_names
+    description: Fuzzy free-text search of the OS gazetteer of places, roads and settlements.
+    source_operation: openapi/ordnance-survey-names-openapi.json#findAddress
+    licensing: Premium or PSGA
+  - name: get_nearest_place_name
+    description: Find the gazetteer features closest to a point.
+    source_operation: openapi/ordnance-survey-names-openapi.json#nearestAddress
+    licensing: Premium or PSGA
+  - name: resolve_linked_identifier
+    description: >-
+      Resolve an identifier (UPRN, TOID, USRN) to its linked identifiers - the
+      join key between OS data, HM Land Registry and local authority records.
+    source_operation: openapi/ordnance-survey-linked-identifiers-openapi.json#GET /identifiers/{id}
+    note: The published spec fragment declares no operationId for this operation.
+    licensing: OS OpenData (OS Open Linked Identifiers)
+  - name: resolve_linked_identifier_by_type
+    description: Resolve an identifier when the identifier type is known.
+    source_operation: openapi/ordnance-survey-linked-identifiers-openapi.json#GET /identifierTypes/{identifierType}/{id}
+    note: The published spec fragment declares no operationId for this operation.
+  - name: resolve_linked_identifier_by_feature_type
+    description: Resolve an identifier when the feature type is known.
+    source_operation: openapi/ordnance-survey-linked-identifiers-openapi.json#GET /featureTypes/{featureType}/{id}
+    note: The published spec fragment declares no operationId for this operation.
+  - name: get_linked_identifiers_product_version
+    description: Return source product version details for a correlation method.
+    source_operation: openapi/ordnance-survey-linked-identifiers-openapi.json#GET /productVersionInfo/{correlationMethod}
+    note: The published spec fragment declares no operationId for this operation.
+  - name: list_ngd_collections
+    description: List every OS National Geographic Database feature collection.
+    source_operation: openapi/ordnance-survey-ngd-features-openapi.json#getAllCollections
+  - name: get_ngd_collection
+    description: Describe a single OS NGD feature collection.
+    source_operation: openapi/ordnance-survey-ngd-features-openapi.json#getCollectionById
+  - name: get_ngd_collection_schema
+    description: Return the schema for an OS NGD feature collection.
+    source_operation: openapi/ordnance-survey-ngd-features-openapi.json#getSchema
+  - name: get_ngd_collection_queryables
+    description: Return the queryable attributes for an OS NGD feature collection - the CQL filter vocabulary.
+    source_operation: openapi/ordnance-survey-ngd-features-openapi.json#getCollectionQueryables
+  - name: query_ngd_features
+    description: >-
+      Retrieve features from an OS NGD collection with bbox, datetime and CQL
+      filter, paged with limit/offset.
+    source_operation: openapi/ordnance-survey-ngd-features-openapi.json#getItems
+    licensing: Premium or PSGA
+  - name: get_ngd_feature
+    description: Retrieve a single OS NGD feature by id.
+    source_operation: openapi/ordnance-survey-ngd-features-openapi.json#getItemById
+    licensing: Premium or PSGA
+  - name: list_ngd_tile_collections
+    description: List the OS NGD vector-tile collections.
+    source_operation: openapi/ordnance-survey-ngd-tiles-openapi.json#getCollectionsList
+  - name: list_ngd_tile_matrix_sets
+    description: List the available tiling schemes (tile matrix sets).
+    source_operation: openapi/ordnance-survey-ngd-tiles-openapi.json#getTileMatrixSetsList
+  - name: list_ngd_styles
+    description: List the styles available for an OS NGD tile collection.
+    source_operation: openapi/ordnance-survey-ngd-tiles-openapi.json#getStylesList
+  - name: list_opendata_products
+    description: >-
+      List the 26 OS OpenData products available for download. Anonymous - no
+      API key required.
+    source_operation: openapi/ordnance-survey-downloads-openapi.yaml#GET /products
+    licensing: OS OpenData (no key)
+  - name: get_opendata_product
+    description: Return details for one OS OpenData product. Anonymous - no API key required.
+    source_operation: openapi/ordnance-survey-downloads-openapi.yaml#GET /products/{productId}
+    licensing: OS OpenData (no key)
+  - name: list_opendata_downloads
+    description: >-
+      List download files (or redirect to one) for an OS OpenData product -
+      including OS Open UPRN, OS Open TOID, Code-Point Open and Boundary-Line.
+      Anonymous.
+    source_operation: openapi/ordnance-survey-downloads-openapi.yaml#GET /products/{productId}/downloads
+    licensing: OS OpenData (no key)
+  - name: list_data_packages
+    description: List the premium data packages available to the authenticated account.
+    source_operation: openapi/ordnance-survey-downloads-openapi.yaml#GET /dataPackages
+    licensing: Premium or PSGA
+  - name: get_data_package_versions
+    description: List versions of a premium data package.
+    source_operation: openapi/ordnance-survey-downloads-openapi.yaml#GET /dataPackages/{dataPackageId}/versions
+    licensing: Premium or PSGA
+  - name: list_osnet_stations
+    description: List the OS Net GNSS continuously-operating reference stations across Great Britain.
+    source_operation: openapi/ordnance-survey-osnet-openapi.yaml#Get Stations
+  - name: get_osnet_network_health
+    description: Return OS Net network health.
+    source_operation: openapi/ordnance-survey-osnet-openapi.yaml#Get Network Health
+  - name: get_osnet_station
+    description: Return metadata for one OS Net station.
+    source_operation: openapi/ordnance-survey-osnet-openapi.yaml#Get Station
+  - name: list_osnet_rinex_files
+    description: List RINEX observation files for a year and day of year.
+    source_operation: openapi/ordnance-survey-osnet-openapi.yaml#Get Rinex Data Files
+coverage:
+  tools_proposed: 31
+  rest_operations_total: 62
+  note: >-
+    Tile-fetch and map-image operations (OS Maps API, OS Vector Tile API, the
+    NGD Tiles tile/style-resource endpoints, WFS getFeature) are deliberately
+    excluded - they return binary imagery or vector-tile payloads that are not
+    useful as agent tool results.

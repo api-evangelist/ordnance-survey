@@ -1,0 +1,91 @@
+generated: '2026-07-26'
+method: searched
+source: >-
+  https://docs.os.uk/os-apis/core-concepts/rate-limiting-policy,
+  https://docs.os.uk/os-apis/core-concepts/getting-started-with-an-api-project,
+  https://docs.os.uk/os-apis/accessing-os-apis/os-downloads-api, plus live
+  anonymous probes of api.os.uk on 2026-07-26.
+description: >-
+  Ordnance Survey has no separate sandbox host and publishes no test
+  credentials, magic identifiers or fixture tooling. What it has instead is
+  two real things worth capturing: (1) a development-mode API project that runs
+  against production data at a lower rate limit, and (2) a genuinely anonymous
+  open-data surface where several endpoints answer with no API key at all -
+  which is a better "try before you sign up" path than most providers' sandboxes.
+  Nothing in this file is invented; every value below was either published by
+  OS or observed live.
+sandbox_host: none
+test_credentials_published: false
+test_data_published: false
+modes:
+  - name: Development mode
+    kind: project mode
+    host: https://api.os.uk (same as live)
+    data: production data
+    rate_limit: 50 transactions per minute per API per project
+    how: Create an API project in the OS Data Hub and set it to development mode.
+    docs: https://docs.os.uk/os-apis/core-concepts/rate-limiting-policy
+  - name: Live mode
+    kind: project mode
+    host: https://api.os.uk
+    data: production data
+    rate_limit: 600 transactions per minute per API per project
+  - name: OS Places API Partner trial
+    kind: time-limited trial
+    rate_limit: 50 transactions per minute per API Key across the account
+    docs: https://docs.os.uk/os-apis/core-concepts/rate-limiting-policy
+no_key_endpoints:
+  description: >-
+    Verified anonymously on 2026-07-26 - these return real production data with
+    no API key, which is the practical way to exercise the OS contract before
+    holding credentials.
+  endpoints:
+    - url: https://api.os.uk/downloads/v1/products
+      returns: 26 OS OpenData products
+      observed: HTTP 200, JSON array
+      example_product_ids: [OpenUPRN, OpenTOID, OpenUSRN, CodePointOpen, OpenNames, BoundaryLine, OpenRoads, OpenRivers, OpenZoomstack, Terrain50, OpenMapLocal, VectorMapDistrict, BuiltUpAreas, OpenGreenspace, LIDS, MiniScale, GBOverviewMaps, 250kScaleColourRaster]
+    - url: https://api.os.uk/downloads/v1/products/OpenUPRN
+      returns: OS Open UPRN product detail
+      observed: HTTP 200
+    - url: https://api.os.uk/downloads/v1/products/OpenUPRN/downloads
+      returns: direct zip download URLs for OS Open UPRN
+      observed: HTTP 200 (307 redirect when ?redirect is requested)
+    - url: https://api.os.uk/features/ngd/ofa/v1/collections
+      returns: the full OS NGD feature collection list
+      observed: HTTP 200
+    - url: https://api.os.uk/features/ngd/ofa/v1/conformance
+      returns: OGC API - Features conformance classes
+      observed: HTTP 200
+    - url: https://api.os.uk/features/ngd/ofa/v1/api
+      returns: the live OS NGD API - Features OpenAPI 3.0.1 document
+      observed: HTTP 200
+    - url: https://api.os.uk/maps/vector/ngd/ota/v1/conformance
+      returns: OGC API - Tiles conformance classes
+      observed: HTTP 200
+    - url: https://api.os.uk/downloads/v1/openapi.yaml
+      returns: the live OS Downloads API OpenAPI document
+      observed: HTTP 200
+    - url: https://api.os.uk/positioning/osnet/v1/openapi.yaml
+      returns: the live OS Net API OpenAPI document
+      observed: HTTP 200
+    - url: https://api.os.uk/
+      returns: the OS API catalogue link index
+      observed: HTTP 200
+try_it_in_docs:
+  supported: true
+  mechanism: >-
+    Each technical-specification page on docs.os.uk embeds an "Open API block"
+    that will execute the operation from the page once you paste in an API Key
+    or OAuth2 token. There is no shared demo key - you supply your own.
+  docs: https://docs.os.uk/os-apis/accessing-os-apis/os-places-api/technical-specification/find
+tutorials_and_demos:
+  - https://labs.os.uk/public/os-data-hub-tutorials/
+  - https://github.com/OrdnanceSurvey/os-data-hub-tutorials
+  - https://github.com/OrdnanceSurvey/OS-Data-Hub-API-Demos
+gaps:
+  - No test API key, demo key or shared playground credential is published.
+  - No magic test UPRNs, TOIDs or postcodes are published for OS Places.
+  - No fixture, mock or replay tooling.
+  - >-
+    Development mode differs from live mode only in rate limit - it is not an
+    isolated environment, and it bills/consumes against the same real data.

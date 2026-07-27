@@ -1,0 +1,49 @@
+generated: '2026-07-26'
+method: generated
+source: >-
+  Packaged from the ten OpenAPI documents in openapi/ and the OS APIs
+  documentation at https://docs.os.uk/os-apis. Every operation named in a skill
+  exists verbatim in the referenced spec; where Ordnance Survey publishes an
+  operation with no operationId the skill names it by method and path and says so.
+description: >-
+  Agent Skills for the Ordnance Survey API estate - one per marquee flow. No
+  provider-published skill or AGENTS.md exists; Ordnance Survey does, however,
+  publish a real agent-facing documentation interface (append ?ask= to any
+  docs.os.uk .md page) and a permissive Content-Signal declaration, both
+  recorded in conventions/ and well-known/.
+skills:
+  - file: ordnance-survey-authenticate.md
+    name: Authenticate against the OS Data Hub APIs
+    api: openapi/ordnance-survey-places-openapi.json
+    operations: ['POST https://api.os.uk/oauth2/token/v1']
+    summary: API key in query or header, or OAuth 2 client-credentials Bearer token; 401 vs 403.
+  - file: ordnance-survey-resolve-address-to-uprn.md
+    name: Resolve a UK address to a UPRN with OS Places
+    api: openapi/ordnance-survey-places-openapi.json
+    operations: [getFind, getPostcode, getUPRN, getNearest, getBbox, getRadius, postPolygon]
+    summary: Free text, postcode or coordinate to an authoritative UPRN, across the DPA and LPI views.
+  - file: ordnance-survey-join-property-identifiers.md
+    name: Join UPRN, TOID and USRN with OS Linked Identifiers
+    api: openapi/ordnance-survey-linked-identifiers-openapi.json
+    operations:
+      - 'GET /identifiers/{id}'
+      - 'GET /identifierTypes/{identifierType}/{id}'
+      - 'GET /featureTypes/{featureType}/{id}'
+      - 'GET /productVersionInfo/{correlationMethod}'
+    summary: The join key between OS data, HM Land Registry and local authority property records.
+  - file: ordnance-survey-query-ngd-features.md
+    name: Query OS NGD features with OGC API - Features
+    api: openapi/ordnance-survey-ngd-features-openapi.json
+    operations: [getLandingPageResponse, getConformanceResponse, getAllCollections, getCollectionById, getSchema, getCollectionQueryables, getItems, getItemById]
+    summary: Discover a collection, read its queryables, then page filtered GeoJSON with CQL2.
+  - file: ordnance-survey-download-opendata.md
+    name: Download OS OpenData with no API key
+    api: openapi/ordnance-survey-downloads-openapi.yaml
+    operations:
+      - 'GET /products'
+      - 'GET /products/{productId}'
+      - 'GET /products/{productId}/downloads'
+      - 'GET /dataPackages'
+      - 'GET /dataPackages/{dataPackageId}/versions'
+      - 'GET /dataPackages/{dataPackageId}/versions/{versionId}/downloads'
+    summary: 26 free national products, anonymously; md5 verification and version-poll change detection.
