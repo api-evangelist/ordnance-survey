@@ -275,6 +275,8 @@ apis:
   - type: APIReference
     url: https://docs.os.uk/os-apis/accessing-os-apis/oauth-2-api/technical-specification
 common:
+- type: PostmanWorkspace
+  url: https://www.postman.com/kinlaneapi/ordnance-survey/overview
 - type: AgenticAccess
   url: agentic-access/ordnance-survey-agentic-access.yml
 - type: DomainSecurity
