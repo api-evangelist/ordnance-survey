@@ -1,0 +1,495 @@
+{
+  "info": {
+    "_postman_id": "6d2ef8bd-b914-4cfb-ab64-4591f864c197",
+    "name": "OS Features API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-07-28T02:29:24.000Z",
+    "updatedAt": "2026-07-28T02:29:25.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-6d2ef8bd-b914-4cfb-ab64-4591f864c197"
+  },
+  "item": [
+    {
+      "name": "wfs",
+      "item": [
+        {
+          "name": "archive",
+          "item": [
+            {
+              "name": "{year}",
+              "item": [
+                {
+                  "name": "Access to features matching a given query for a particular year (as an annual snapshot - taking the last full release in the calendar year)",
+                  "id": "763bfb69-24a5-4bf6-a506-b36bbfd7cfb0",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                  },
+                  "request": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/xml"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/wfs/archive/:year?request=GetFeature&service=WFS&version=2.0.0&typeNames=ITN_UrbanPaths_PathLink&bbox=<string>&filter=<string>&count=100&maxFeatures=100&propertyName=<string>&startIndex=0&outputFormat=GML32&resultType=results&srsName=EPSG:27700",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "wfs",
+                        "archive",
+                        ":year"
+                      ],
+                      "query": [
+                        {
+                          "description": "(Required) The type of request being made.",
+                          "key": "request",
+                          "value": "GetFeature"
+                        },
+                        {
+                          "description": "(Required) The type of service being requested.",
+                          "key": "service",
+                          "value": "WFS"
+                        },
+                        {
+                          "description": "(Required) The type of service being requested.",
+                          "key": "version",
+                          "value": "2.0.0"
+                        },
+                        {
+                          "description": "(Required) The Feature Type being requested.",
+                          "key": "typeNames",
+                          "value": "ITN_UrbanPaths_PathLink"
+                        },
+                        {
+                          "description": "A set of valid WFS BBOX coordinates, in the order <bottom-left y, bottom-left x, top-right y, top-right x> (Dependent on CRS)",
+                          "key": "bbox",
+                          "value": "<string>"
+                        },
+                        {
+                          "description": "A valid OGC XML filter object",
+                          "key": "filter",
+                          "value": "<string>"
+                        },
+                        {
+                          "description": "An integer stating the maximum number of features to be returned in a single response. In version 1.0.0 and 1.1.0 this is known as maxFeatures",
+                          "key": "count",
+                          "value": "100"
+                        },
+                        {
+                          "description": "An integer stating the maximum number of features to be returned in a single response. In version 2.0.0 this is known as count",
+                          "key": "maxFeatures",
+                          "value": "100"
+                        },
+                        {
+                          "description": "A list of valid feature attribute names, for example, ChangeDate, TOID, PhysicalLevel",
+                          "key": "propertyName",
+                          "value": "<string>"
+                        },
+                        {
+                          "description": "An integer stating which result to start from, when returning a response",
+                          "key": "startIndex",
+                          "value": "0"
+                        },
+                        {
+                          "description": "The format the response will be returned in. Default: XML.",
+                          "key": "outputFormat",
+                          "value": "GML32"
+                        },
+                        {
+                          "description": "Type of the results. Default: results.",
+                          "key": "resultType",
+                          "value": "results"
+                        },
+                        {
+                          "description": "Allows the user to reproject the selected features into another CRS. Default: EPSG:27700",
+                          "key": "srsName",
+                          "value": "EPSG:27700"
+                        }
+                      ],
+                      "variable": [
+                        {
+                          "id": "750a789e-36c2-4ae6-bfb6-c525a68d1fde",
+                          "key": "year",
+                          "value": "<string>",
+                          "description": "(Required) The year being requested."
+                        }
+                      ]
+                    }
+                  },
+                  "response": [
+                    {
+                      "id": "0ddbd121-45f8-485a-8765-303db7b2eb90",
+                      "name": "Returns a description of the attributes for each feature type supported by the WFS service.",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/xml"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/wfs/archive/:year?request=GetFeature&service=WFS&version=2.0.0&typeNames=ITN_UrbanPaths_PathLink&bbox=<string>&filter=<string>&count=100&maxFeatures=100&propertyName=<string>&startIndex=0&outputFormat=GML32&resultType=results&srsName=EPSG:27700&key=<API Key>",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "wfs",
+                            "archive",
+                            ":year"
+                          ],
+                          "query": [
+                            {
+                              "description": "(Required) The type of request being made.",
+                              "key": "request",
+                              "value": "GetFeature"
+                            },
+                            {
+                              "description": "(Required) The type of service being requested.",
+                              "key": "service",
+                              "value": "WFS"
+                            },
+                            {
+                              "description": "(Required) The type of service being requested.",
+                              "key": "version",
+                              "value": "2.0.0"
+                            },
+                            {
+                              "description": "(Required) The Feature Type being requested.",
+                              "key": "typeNames",
+                              "value": "ITN_UrbanPaths_PathLink"
+                            },
+                            {
+                              "description": "A set of valid WFS BBOX coordinates, in the order <bottom-left y, bottom-left x, top-right y, top-right x> (Dependent on CRS)",
+                              "key": "bbox",
+                              "value": "<string>"
+                            },
+                            {
+                              "description": "A valid OGC XML filter object",
+                              "key": "filter",
+                              "value": "<string>"
+                            },
+                            {
+                              "description": "An integer stating the maximum number of features to be returned in a single response. In version 1.0.0 and 1.1.0 this is known as maxFeatures",
+                              "key": "count",
+                              "value": "100"
+                            },
+                            {
+                              "description": "An integer stating the maximum number of features to be returned in a single response. In version 2.0.0 this is known as count",
+                              "key": "maxFeatures",
+                              "value": "100"
+                            },
+                            {
+                              "description": "A list of valid feature attribute names, for example, ChangeDate, TOID, PhysicalLevel",
+                              "key": "propertyName",
+                              "value": "<string>"
+                            },
+                            {
+                              "description": "An integer stating which result to start from, when returning a response",
+                              "key": "startIndex",
+                              "value": "0"
+                            },
+                            {
+                              "description": "The format the response will be returned in. Default: XML.",
+                              "key": "outputFormat",
+                              "value": "GML32"
+                            },
+                            {
+                              "description": "Type of the results. Default: results.",
+                              "key": "resultType",
+                              "value": "results"
+                            },
+                            {
+                              "description": "Allows the user to reproject the selected features into another CRS. Default: EPSG:27700",
+                              "key": "srsName",
+                              "value": "EPSG:27700"
+                            },
+                            {
+                              "description": "Added as a part of security scheme: apikey",
+                              "key": "key",
+                              "value": "<API Key>"
+                            }
+                          ],
+                          "variable": [
+                            {
+                              "key": "year"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "OK",
+                      "code": 200,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"type\": \"<string>\",\n  \"features\": [\n    {\n      \"type\": \"<string>\",\n      \"geometry\": {\n        \"type\": \"<string>\",\n        \"coordinates\": [\n          {\n            \"x\": \"<double>\",\n            \"y\": \"<double>\"\n          },\n          {\n            \"x\": \"<double>\",\n            \"y\": \"<double>\"\n          }\n        ]\n      },\n      \"properties\": {\n        \"laborum8\": {},\n        \"ut0\": {}\n      }\n    },\n    {\n      \"type\": \"<string>\",\n      \"geometry\": {\n        \"type\": \"<string>\",\n        \"coordinates\": [\n          {\n            \"x\": \"<double>\",\n            \"y\": \"<double>\"\n          },\n          {\n            \"x\": \"<double>\",\n            \"y\": \"<double>\"\n          }\n        ]\n      },\n      \"properties\": {\n        \"do_c5_\": {},\n        \"Ut_3\": {},\n        \"nulla1ca\": {}\n      }\n    }\n  ]\n}",
+                      "createdAt": "2026-07-28T02:29:25.000Z",
+                      "updatedAt": "2026-07-28T02:29:25.000Z",
+                      "uid": "35240-0ddbd121-45f8-485a-8765-303db7b2eb90"
+                    }
+                  ],
+                  "createdAt": "2026-07-28T02:29:25.000Z",
+                  "updatedAt": "2026-07-28T02:29:25.000Z",
+                  "uid": "35240-763bfb69-24a5-4bf6-a506-b36bbfd7cfb0"
+                }
+              ],
+              "id": "4e0f2009-1b81-410b-8807-a5b8d5e0cbfd",
+              "createdAt": "2026-07-28T02:29:25.000Z",
+              "updatedAt": "2026-07-28T02:29:25.000Z",
+              "uid": "35240-4e0f2009-1b81-410b-8807-a5b8d5e0cbfd"
+            }
+          ],
+          "id": "f301a53a-07f6-4f6f-87ec-67611e31c32a",
+          "createdAt": "2026-07-28T02:29:25.000Z",
+          "updatedAt": "2026-07-28T02:29:25.000Z",
+          "uid": "35240-f301a53a-07f6-4f6f-87ec-67611e31c32a"
+        },
+        {
+          "name": "Access to features matching a given query",
+          "id": "656c02f0-de5e-4719-8d1c-38fcadfe49e7",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/xml"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/wfs?request=GetFeature&service=WFS&version=2.0.0&typeNames=Zoomstack_RoadsNational&bbox=<string>&filter=<string>&count=100&maxFeatures=100&propertyName=<string>&startIndex=0&outputFormat=GML32&resultType=results&srsName=EPSG:27700",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "wfs"
+              ],
+              "query": [
+                {
+                  "description": "(Required) The type of request being made.",
+                  "key": "request",
+                  "value": "GetFeature"
+                },
+                {
+                  "description": "(Required) The type of service being requested.",
+                  "key": "service",
+                  "value": "WFS"
+                },
+                {
+                  "description": "(Required) The type of service being requested.",
+                  "key": "version",
+                  "value": "2.0.0"
+                },
+                {
+                  "description": "(Required) The Feature Type being requested.",
+                  "key": "typeNames",
+                  "value": "Zoomstack_RoadsNational"
+                },
+                {
+                  "description": "A set of valid WFS BBOX coordinates, in the order <bottom-left y, bottom-left x, top-right y, top-right x> (Dependent on CRS)",
+                  "key": "bbox",
+                  "value": "<string>"
+                },
+                {
+                  "description": "A valid OGC XML filter object",
+                  "key": "filter",
+                  "value": "<string>"
+                },
+                {
+                  "description": "An integer stating the maximum number of features to be returned in a single response. In version 1.0.0 and 1.1.0 this is known as maxFeatures",
+                  "key": "count",
+                  "value": "100"
+                },
+                {
+                  "description": "An integer stating the maximum number of features to be returned in a single response. In version 2.0.0 this is known as count",
+                  "key": "maxFeatures",
+                  "value": "100"
+                },
+                {
+                  "description": "A list of valid feature attribute names, for example, ChangeDate, TOID, PhysicalLevel",
+                  "key": "propertyName",
+                  "value": "<string>"
+                },
+                {
+                  "description": "An integer stating which result to start from, when returning a response",
+                  "key": "startIndex",
+                  "value": "0"
+                },
+                {
+                  "description": "The format the response will be returned in. Default: XML.",
+                  "key": "outputFormat",
+                  "value": "GML32"
+                },
+                {
+                  "description": "Type of the results. Default: results.",
+                  "key": "resultType",
+                  "value": "results"
+                },
+                {
+                  "description": "Allows the user to reproject the selected features into another CRS. Default: EPSG:27700",
+                  "key": "srsName",
+                  "value": "EPSG:27700"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "098ba301-e9de-4df8-b266-06e296da6892",
+              "name": "Returns a description of the attributes for each feature type supported by the WFS service.",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/xml"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/wfs?request=GetFeature&service=WFS&version=2.0.0&typeNames=Zoomstack_RoadsNational&bbox=<string>&filter=<string>&count=100&maxFeatures=100&propertyName=<string>&startIndex=0&outputFormat=GML32&resultType=results&srsName=EPSG:27700&key=<API Key>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "wfs"
+                  ],
+                  "query": [
+                    {
+                      "description": "(Required) The type of request being made.",
+                      "key": "request",
+                      "value": "GetFeature"
+                    },
+                    {
+                      "description": "(Required) The type of service being requested.",
+                      "key": "service",
+                      "value": "WFS"
+                    },
+                    {
+                      "description": "(Required) The type of service being requested.",
+                      "key": "version",
+                      "value": "2.0.0"
+                    },
+                    {
+                      "description": "(Required) The Feature Type being requested.",
+                      "key": "typeNames",
+                      "value": "Zoomstack_RoadsNational"
+                    },
+                    {
+                      "description": "A set of valid WFS BBOX coordinates, in the order <bottom-left y, bottom-left x, top-right y, top-right x> (Dependent on CRS)",
+                      "key": "bbox",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "A valid OGC XML filter object",
+                      "key": "filter",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "An integer stating the maximum number of features to be returned in a single response. In version 1.0.0 and 1.1.0 this is known as maxFeatures",
+                      "key": "count",
+                      "value": "100"
+                    },
+                    {
+                      "description": "An integer stating the maximum number of features to be returned in a single response. In version 2.0.0 this is known as count",
+                      "key": "maxFeatures",
+                      "value": "100"
+                    },
+                    {
+                      "description": "A list of valid feature attribute names, for example, ChangeDate, TOID, PhysicalLevel",
+                      "key": "propertyName",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "An integer stating which result to start from, when returning a response",
+                      "key": "startIndex",
+                      "value": "0"
+                    },
+                    {
+                      "description": "The format the response will be returned in. Default: XML.",
+                      "key": "outputFormat",
+                      "value": "GML32"
+                    },
+                    {
+                      "description": "Type of the results. Default: results.",
+                      "key": "resultType",
+                      "value": "results"
+                    },
+                    {
+                      "description": "Allows the user to reproject the selected features into another CRS. Default: EPSG:27700",
+                      "key": "srsName",
+                      "value": "EPSG:27700"
+                    },
+                    {
+                      "description": "Added as a part of security scheme: apikey",
+                      "key": "key",
+                      "value": "<API Key>"
+                    }
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"type\": \"<string>\",\n  \"features\": [\n    {\n      \"type\": \"<string>\",\n      \"geometry\": {\n        \"type\": \"<string>\",\n        \"coordinates\": [\n          {\n            \"x\": \"<double>\",\n            \"y\": \"<double>\"\n          },\n          {\n            \"x\": \"<double>\",\n            \"y\": \"<double>\"\n          }\n        ]\n      },\n      \"properties\": {\n        \"laborum8\": {},\n        \"ut0\": {}\n      }\n    },\n    {\n      \"type\": \"<string>\",\n      \"geometry\": {\n        \"type\": \"<string>\",\n        \"coordinates\": [\n          {\n            \"x\": \"<double>\",\n            \"y\": \"<double>\"\n          },\n          {\n            \"x\": \"<double>\",\n            \"y\": \"<double>\"\n          }\n        ]\n      },\n      \"properties\": {\n        \"do_c5_\": {},\n        \"Ut_3\": {},\n        \"nulla1ca\": {}\n      }\n    }\n  ]\n}",
+              "createdAt": "2026-07-28T02:29:25.000Z",
+              "updatedAt": "2026-07-28T02:29:25.000Z",
+              "uid": "35240-098ba301-e9de-4df8-b266-06e296da6892"
+            }
+          ],
+          "createdAt": "2026-07-28T02:29:25.000Z",
+          "updatedAt": "2026-07-28T02:29:25.000Z",
+          "uid": "35240-656c02f0-de5e-4719-8d1c-38fcadfe49e7"
+        }
+      ],
+      "id": "c99c88c7-2cd4-440e-8d08-8e9c9b97bba5",
+      "createdAt": "2026-07-28T02:29:25.000Z",
+      "updatedAt": "2026-07-28T02:29:25.000Z",
+      "uid": "35240-c99c88c7-2cd4-440e-8d08-8e9c9b97bba5"
+    }
+  ],
+  "auth": {
+    "type": "apikey",
+    "apikey": [
+      {
+        "key": "key",
+        "value": "key",
+        "type": "string"
+      },
+      {
+        "key": "value",
+        "value": "{{apiKey}}",
+        "type": "string"
+      },
+      {
+        "key": "in",
+        "value": "query",
+        "type": "string"
+      }
+    ]
+  },
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "https://api.os.uk/features/v1"
+    }
+  ]
+}

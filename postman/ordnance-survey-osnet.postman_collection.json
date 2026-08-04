@@ -1,0 +1,2153 @@
+{
+  "info": {
+    "_postman_id": "c3738743-f4f3-49b8-bc24-c2b4f1d5f7df",
+    "name": "OS Net API",
+    "description": "This is the API definition for the OS Net spring boot app. It is a working subset of the overall design\n",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-07-28T02:29:20.000Z",
+    "updatedAt": "2026-07-28T02:29:20.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-c3738743-f4f3-49b8-bc24-c2b4f1d5f7df"
+  },
+  "item": [
+    {
+      "name": "stations",
+      "item": [
+        {
+          "name": "health",
+          "item": [
+            {
+              "name": "Get Network Health",
+              "id": "02f4a35a-6cb0-4a37-923e-5136f2064730",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "auth": {
+                  "type": "oauth2",
+                  "oauth2": [
+                    {
+                      "key": "accessTokenUrl",
+                      "value": "OAUTH_TOKEN_URL",
+                      "type": "string"
+                    },
+                    {
+                      "key": "grant_type",
+                      "value": "client_credentials",
+                      "type": "string"
+                    }
+                  ]
+                },
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/stations/health?date=<date>&dataFrequency=<string>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "stations",
+                    "health"
+                  ],
+                  "query": [
+                    {
+                      "description": "(Required) Date for the network health search. Please note that the date should be within the last 45 days.",
+                      "key": "date",
+                      "value": "<date>"
+                    },
+                    {
+                      "description": "Parameter that selects the data frequency for a query. If the parameter is omitted then the query will proceed as if 30S data has been requested. Ephemeris files do not have a data frequency, and will be returned regardless of the dataFrequency parameter. Every organisation has access to 30S data. Access to 01S data is restricted to organisations on the Public Sector Plan.",
+                      "key": "dataFrequency",
+                      "value": "<string>"
+                    }
+                  ]
+                },
+                "description": "Get an hour-by-hour breakdown of the OS Net network health for a specific date."
+              },
+              "response": [
+                {
+                  "id": "120f1b08-7ab2-452d-a2d2-27145fba0533",
+                  "name": "Returns the network health for the given date. Each station in the network will be included in the response.",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: oauth2",
+                        "key": "Authorization",
+                        "value": "<token>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/stations/health?date=<date>&dataFrequency=<string>",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "stations",
+                        "health"
+                      ],
+                      "query": [
+                        {
+                          "description": "(Required) Date for the network health search. Please note that the date should be within the last 45 days.",
+                          "key": "date",
+                          "value": "<date>"
+                        },
+                        {
+                          "description": "Parameter that selects the data frequency for a query. If the parameter is omitted then the query will proceed as if 30S data has been requested. Ephemeris files do not have a data frequency, and will be returned regardless of the dataFrequency parameter. Every organisation has access to 30S data. Access to 01S data is restricted to organisations on the Public Sector Plan.",
+                          "key": "dataFrequency",
+                          "value": "<string>"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "OK",
+                  "code": 200,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "[\n  {\n    \"stationId\": \"<string>\",\n    \"hourlyData\": [\n      {\n        \"hour\": \"<integer>\",\n        \"percentageComplete\": \"<integer>\",\n        \"dataFrequency\": \"<string>\"\n      },\n      {\n        \"hour\": \"<integer>\",\n        \"percentageComplete\": \"<integer>\",\n        \"dataFrequency\": \"<string>\"\n      }\n    ]\n  },\n  {\n    \"stationId\": \"<string>\",\n    \"hourlyData\": [\n      {\n        \"hour\": \"<integer>\",\n        \"percentageComplete\": \"<integer>\",\n        \"dataFrequency\": \"<string>\"\n      },\n      {\n        \"hour\": \"<integer>\",\n        \"percentageComplete\": \"<integer>\",\n        \"dataFrequency\": \"<string>\"\n      }\n    ]\n  }\n]",
+                  "createdAt": "2026-07-28T02:29:21.000Z",
+                  "updatedAt": "2026-07-28T02:29:21.000Z",
+                  "uid": "35240-120f1b08-7ab2-452d-a2d2-27145fba0533"
+                }
+              ],
+              "createdAt": "2026-07-28T02:29:21.000Z",
+              "updatedAt": "2026-07-28T02:29:21.000Z",
+              "uid": "35240-02f4a35a-6cb0-4a37-923e-5136f2064730"
+            }
+          ],
+          "id": "f9044b29-136c-4683-93ca-9114fa8b5727",
+          "createdAt": "2026-07-28T02:29:21.000Z",
+          "updatedAt": "2026-07-28T02:29:21.000Z",
+          "uid": "35240-f9044b29-136c-4683-93ca-9114fa8b5727"
+        },
+        {
+          "name": "{stationId}",
+          "item": [
+            {
+              "name": "health",
+              "item": [
+                {
+                  "name": "Get Station Health",
+                  "id": "768da596-7ad0-4a35-a98c-b33da27fad9e",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                  },
+                  "request": {
+                    "auth": {
+                      "type": "oauth2",
+                      "oauth2": [
+                        {
+                          "key": "accessTokenUrl",
+                          "value": "OAUTH_TOKEN_URL",
+                          "type": "string"
+                        },
+                        {
+                          "key": "grant_type",
+                          "value": "client_credentials",
+                          "type": "string"
+                        }
+                      ]
+                    },
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/stations/:stationId/health?dataFrequency=<string>",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "stations",
+                        ":stationId",
+                        "health"
+                      ],
+                      "query": [
+                        {
+                          "description": "Parameter that selects the data frequency for a query. If the parameter is omitted then the query will proceed as if 30S data has been requested. Ephemeris files do not have a data frequency, and will be returned regardless of the dataFrequency parameter. Every organisation has access to 30S data. Access to 01S data is restricted to organisations on the Public Sector Plan.",
+                          "key": "dataFrequency",
+                          "value": "<string>"
+                        }
+                      ],
+                      "variable": [
+                        {
+                          "id": "6d09ebdb-8d79-402b-bcb1-7856fa28cf64",
+                          "key": "stationId",
+                          "value": "WEWW",
+                          "description": "(Required) Specific station ID."
+                        }
+                      ]
+                    },
+                    "description": "Get health information about a specific station"
+                  },
+                  "response": [
+                    {
+                      "id": "ce7e11c8-458b-4197-adce-cd6b273281d7",
+                      "name": "Returns the station health, on a day-by-day basis",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: oauth2",
+                            "key": "Authorization",
+                            "value": "<token>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/stations/:stationId/health?dataFrequency=<string>",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "stations",
+                            ":stationId",
+                            "health"
+                          ],
+                          "query": [
+                            {
+                              "description": "Parameter that selects the data frequency for a query. If the parameter is omitted then the query will proceed as if 30S data has been requested. Ephemeris files do not have a data frequency, and will be returned regardless of the dataFrequency parameter. Every organisation has access to 30S data. Access to 01S data is restricted to organisations on the Public Sector Plan.",
+                              "key": "dataFrequency",
+                              "value": "<string>"
+                            }
+                          ],
+                          "variable": [
+                            {
+                              "key": "stationId"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "OK",
+                      "code": 200,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "[\n  {\n    \"date\": \"<date>\",\n    \"hourlyData\": [\n      {\n        \"hour\": \"<integer>\",\n        \"percentageComplete\": \"<integer>\",\n        \"dataFrequency\": \"<string>\"\n      },\n      {\n        \"hour\": \"<integer>\",\n        \"percentageComplete\": \"<integer>\",\n        \"dataFrequency\": \"<string>\"\n      }\n    ]\n  },\n  {\n    \"date\": \"<date>\",\n    \"hourlyData\": [\n      {\n        \"hour\": \"<integer>\",\n        \"percentageComplete\": \"<integer>\",\n        \"dataFrequency\": \"<string>\"\n      },\n      {\n        \"hour\": \"<integer>\",\n        \"percentageComplete\": \"<integer>\",\n        \"dataFrequency\": \"<string>\"\n      }\n    ]\n  }\n]",
+                      "createdAt": "2026-07-28T02:29:21.000Z",
+                      "updatedAt": "2026-07-28T02:29:21.000Z",
+                      "uid": "35240-ce7e11c8-458b-4197-adce-cd6b273281d7"
+                    }
+                  ],
+                  "createdAt": "2026-07-28T02:29:21.000Z",
+                  "updatedAt": "2026-07-28T02:29:21.000Z",
+                  "uid": "35240-768da596-7ad0-4a35-a98c-b33da27fad9e"
+                }
+              ],
+              "id": "86105a7f-c5e8-4ab2-a2dc-86d8ca1dfb42",
+              "createdAt": "2026-07-28T02:29:21.000Z",
+              "updatedAt": "2026-07-28T02:29:21.000Z",
+              "uid": "35240-86105a7f-c5e8-4ab2-a2dc-86d8ca1dfb42"
+            },
+            {
+              "name": "log",
+              "item": [
+                {
+                  "name": "Get Station Logs",
+                  "id": "891f8b3a-b847-4131-ba0f-0d0e757f518e",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                  },
+                  "request": {
+                    "auth": {
+                      "type": "oauth2",
+                      "oauth2": [
+                        {
+                          "key": "accessTokenUrl",
+                          "value": "OAUTH_TOKEN_URL",
+                          "type": "string"
+                        },
+                        {
+                          "key": "grant_type",
+                          "value": "client_credentials",
+                          "type": "string"
+                        }
+                      ]
+                    },
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "text/plain"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/stations/:stationId/log",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "stations",
+                        ":stationId",
+                        "log"
+                      ],
+                      "variable": [
+                        {
+                          "id": "5d62e6b6-9815-4ffc-a12a-2648eabb4648",
+                          "key": "stationId",
+                          "value": "WEWW",
+                          "description": "(Required) Specific station ID."
+                        }
+                      ]
+                    },
+                    "description": "Get logs for specified station"
+                  },
+                  "response": [
+                    {
+                      "id": "39d736e5-0922-4c0f-a8ea-63615318c037",
+                      "name": "Returns the station logs",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "text/plain"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: oauth2",
+                            "key": "Authorization",
+                            "value": "<token>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/stations/:stationId/log",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "stations",
+                            ":stationId",
+                            "log"
+                          ],
+                          "variable": [
+                            {
+                              "key": "stationId"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "OK",
+                      "code": 200,
+                      "_postman_previewlanguage": "text",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "text/plain"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "<string>",
+                      "createdAt": "2026-07-28T02:29:21.000Z",
+                      "updatedAt": "2026-07-28T02:29:21.000Z",
+                      "uid": "35240-39d736e5-0922-4c0f-a8ea-63615318c037"
+                    },
+                    {
+                      "id": "f337255b-ce41-4ab8-91bf-1a0e167ff7e1",
+                      "name": "Bad request",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/problem+json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: oauth2",
+                            "key": "Authorization",
+                            "value": "<token>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/stations/:stationId/log",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "stations",
+                            ":stationId",
+                            "log"
+                          ],
+                          "variable": [
+                            {
+                              "key": "stationId"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Bad Request",
+                      "code": 400,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/problem+json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{}",
+                      "createdAt": "2026-07-28T02:29:21.000Z",
+                      "updatedAt": "2026-07-28T02:29:21.000Z",
+                      "uid": "35240-f337255b-ce41-4ab8-91bf-1a0e167ff7e1"
+                    },
+                    {
+                      "id": "3ec916d4-ceac-4277-801d-966c0b60a843",
+                      "name": "Not Found",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/problem+json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: oauth2",
+                            "key": "Authorization",
+                            "value": "<token>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/stations/:stationId/log",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "stations",
+                            ":stationId",
+                            "log"
+                          ],
+                          "variable": [
+                            {
+                              "key": "stationId"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Not Found",
+                      "code": 404,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/problem+json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{}",
+                      "createdAt": "2026-07-28T02:29:21.000Z",
+                      "updatedAt": "2026-07-28T02:29:21.000Z",
+                      "uid": "35240-3ec916d4-ceac-4277-801d-966c0b60a843"
+                    }
+                  ],
+                  "createdAt": "2026-07-28T02:29:21.000Z",
+                  "updatedAt": "2026-07-28T02:29:21.000Z",
+                  "uid": "35240-891f8b3a-b847-4131-ba0f-0d0e757f518e"
+                }
+              ],
+              "id": "a9fd2560-c158-4e62-abf8-50b171038b5c",
+              "createdAt": "2026-07-28T02:29:21.000Z",
+              "updatedAt": "2026-07-28T02:29:21.000Z",
+              "uid": "35240-a9fd2560-c158-4e62-abf8-50b171038b5c"
+            },
+            {
+              "name": "rinex",
+              "item": [
+                {
+                  "name": "Get station data",
+                  "id": "d4a1020d-db29-477c-9b4e-becab657488c",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                  },
+                  "request": {
+                    "auth": {
+                      "type": "oauth2",
+                      "oauth2": [
+                        {
+                          "key": "accessTokenUrl",
+                          "value": "OAUTH_TOKEN_URL",
+                          "type": "string"
+                        },
+                        {
+                          "key": "grant_type",
+                          "value": "client_credentials",
+                          "type": "string"
+                        }
+                      ]
+                    },
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/stations/:stationId/rinex?end=<dateTime>&start=<dateTime>&dataFrequency=<string>",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "stations",
+                        ":stationId",
+                        "rinex"
+                      ],
+                      "query": [
+                        {
+                          "description": "(Required) Parameters that provide a temporal window (from start to end) for a query. These parameters can be used to restrict the query to a specific time range. Please note that the start time should be within the last 45 days, and the end should be no more than 24 hours after the start.",
+                          "key": "end",
+                          "value": "<dateTime>"
+                        },
+                        {
+                          "description": "(Required) Parameters that provide a temporal window (from start to end) for a query. These parameters can be used to restrict the query to a specific time range. Please note that the start time should be within the last 45 days, and the end should be no more than 24 hours after the start.",
+                          "key": "start",
+                          "value": "<dateTime>"
+                        },
+                        {
+                          "description": "Parameter that selects the data frequency for a query. If the parameter is omitted then the query will proceed as if 30S data has been requested. Ephemeris files do not have a data frequency, and will be returned regardless of the dataFrequency parameter. Every organisation has access to 30S data. Access to 01S data is restricted to organisations on the Public Sector Plan.",
+                          "key": "dataFrequency",
+                          "value": "<string>"
+                        }
+                      ],
+                      "variable": [
+                        {
+                          "id": "617add30-1d78-414e-a170-48992483c4e3",
+                          "key": "stationId",
+                          "value": "WEWW",
+                          "description": "(Required) Specific station ID."
+                        }
+                      ]
+                    },
+                    "description": "Get RINEX v3 files for a specific station"
+                  },
+                  "response": [
+                    {
+                      "id": "ed1b9817-f3cd-4629-8757-b5ac06643c1b",
+                      "name": "Returns the list of available files",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: oauth2",
+                            "key": "Authorization",
+                            "value": "<token>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/stations/:stationId/rinex?end=<dateTime>&start=<dateTime>&dataFrequency=<string>",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "stations",
+                            ":stationId",
+                            "rinex"
+                          ],
+                          "query": [
+                            {
+                              "description": "(Required) Parameters that provide a temporal window (from start to end) for a query. These parameters can be used to restrict the query to a specific time range. Please note that the start time should be within the last 45 days, and the end should be no more than 24 hours after the start.",
+                              "key": "end",
+                              "value": "<dateTime>"
+                            },
+                            {
+                              "description": "(Required) Parameters that provide a temporal window (from start to end) for a query. These parameters can be used to restrict the query to a specific time range. Please note that the start time should be within the last 45 days, and the end should be no more than 24 hours after the start.",
+                              "key": "start",
+                              "value": "<dateTime>"
+                            },
+                            {
+                              "description": "Parameter that selects the data frequency for a query. If the parameter is omitted then the query will proceed as if 30S data has been requested. Ephemeris files do not have a data frequency, and will be returned regardless of the dataFrequency parameter. Every organisation has access to 30S data. Access to 01S data is restricted to organisations on the Public Sector Plan.",
+                              "key": "dataFrequency",
+                              "value": "<string>"
+                            }
+                          ],
+                          "variable": [
+                            {
+                              "key": "stationId"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "OK",
+                      "code": 200,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "[\n  {\n    \"fileName\": \"<string>\",\n    \"url\": \"<uri>\",\n    \"size\": \"<long>\",\n    \"md5\": \"<string>\",\n    \"format\": \"<string>\",\n    \"subformat\": \"<string>\",\n    \"station\": \"<string>\",\n    \"start\": \"<dateTime>\",\n    \"duration\": \"<string>\",\n    \"dataFrequency\": \"<string>\",\n    \"percentageComplete\": \"<integer>\"\n  },\n  {\n    \"fileName\": \"<string>\",\n    \"url\": \"<uri>\",\n    \"size\": \"<long>\",\n    \"md5\": \"<string>\",\n    \"format\": \"<string>\",\n    \"subformat\": \"<string>\",\n    \"station\": \"<string>\",\n    \"start\": \"<dateTime>\",\n    \"duration\": \"<string>\",\n    \"dataFrequency\": \"<string>\",\n    \"percentageComplete\": \"<integer>\"\n  }\n]",
+                      "createdAt": "2026-07-28T02:29:21.000Z",
+                      "updatedAt": "2026-07-28T02:29:21.000Z",
+                      "uid": "35240-ed1b9817-f3cd-4629-8757-b5ac06643c1b"
+                    },
+                    {
+                      "id": "ccbf398b-9b22-481a-9bd9-698efc74e5e5",
+                      "name": "Returned if the input parameters are not valid",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/problem+json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: oauth2",
+                            "key": "Authorization",
+                            "value": "<token>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/stations/:stationId/rinex?end=<dateTime>&start=<dateTime>&dataFrequency=<string>",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "stations",
+                            ":stationId",
+                            "rinex"
+                          ],
+                          "query": [
+                            {
+                              "description": "(Required) Parameters that provide a temporal window (from start to end) for a query. These parameters can be used to restrict the query to a specific time range. Please note that the start time should be within the last 45 days, and the end should be no more than 24 hours after the start.",
+                              "key": "end",
+                              "value": "<dateTime>"
+                            },
+                            {
+                              "description": "(Required) Parameters that provide a temporal window (from start to end) for a query. These parameters can be used to restrict the query to a specific time range. Please note that the start time should be within the last 45 days, and the end should be no more than 24 hours after the start.",
+                              "key": "start",
+                              "value": "<dateTime>"
+                            },
+                            {
+                              "description": "Parameter that selects the data frequency for a query. If the parameter is omitted then the query will proceed as if 30S data has been requested. Ephemeris files do not have a data frequency, and will be returned regardless of the dataFrequency parameter. Every organisation has access to 30S data. Access to 01S data is restricted to organisations on the Public Sector Plan.",
+                              "key": "dataFrequency",
+                              "value": "<string>"
+                            }
+                          ],
+                          "variable": [
+                            {
+                              "key": "stationId"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Bad Request",
+                      "code": 400,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/problem+json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{}",
+                      "createdAt": "2026-07-28T02:29:21.000Z",
+                      "updatedAt": "2026-07-28T02:29:21.000Z",
+                      "uid": "35240-ccbf398b-9b22-481a-9bd9-698efc74e5e5"
+                    },
+                    {
+                      "id": "4679efe9-2faa-448a-aff4-4f30eee1e439",
+                      "name": "Returned if the request is valid, but you do not have access to the resource",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/problem+json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: oauth2",
+                            "key": "Authorization",
+                            "value": "<token>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/stations/:stationId/rinex?end=<dateTime>&start=<dateTime>&dataFrequency=<string>",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "stations",
+                            ":stationId",
+                            "rinex"
+                          ],
+                          "query": [
+                            {
+                              "description": "(Required) Parameters that provide a temporal window (from start to end) for a query. These parameters can be used to restrict the query to a specific time range. Please note that the start time should be within the last 45 days, and the end should be no more than 24 hours after the start.",
+                              "key": "end",
+                              "value": "<dateTime>"
+                            },
+                            {
+                              "description": "(Required) Parameters that provide a temporal window (from start to end) for a query. These parameters can be used to restrict the query to a specific time range. Please note that the start time should be within the last 45 days, and the end should be no more than 24 hours after the start.",
+                              "key": "start",
+                              "value": "<dateTime>"
+                            },
+                            {
+                              "description": "Parameter that selects the data frequency for a query. If the parameter is omitted then the query will proceed as if 30S data has been requested. Ephemeris files do not have a data frequency, and will be returned regardless of the dataFrequency parameter. Every organisation has access to 30S data. Access to 01S data is restricted to organisations on the Public Sector Plan.",
+                              "key": "dataFrequency",
+                              "value": "<string>"
+                            }
+                          ],
+                          "variable": [
+                            {
+                              "key": "stationId"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Forbidden",
+                      "code": 403,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/problem+json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{}",
+                      "createdAt": "2026-07-28T02:29:21.000Z",
+                      "updatedAt": "2026-07-28T02:29:21.000Z",
+                      "uid": "35240-4679efe9-2faa-448a-aff4-4f30eee1e439"
+                    }
+                  ],
+                  "createdAt": "2026-07-28T02:29:21.000Z",
+                  "updatedAt": "2026-07-28T02:29:21.000Z",
+                  "uid": "35240-d4a1020d-db29-477c-9b4e-becab657488c"
+                }
+              ],
+              "id": "29ad5ef4-21d4-4f60-a99c-8a17fc4553e0",
+              "createdAt": "2026-07-28T02:29:21.000Z",
+              "updatedAt": "2026-07-28T02:29:21.000Z",
+              "uid": "35240-29ad5ef4-21d4-4f60-a99c-8a17fc4553e0"
+            },
+            {
+              "name": "Get Station",
+              "id": "427df643-fbc4-49c3-af60-40955c303430",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "auth": {
+                  "type": "oauth2",
+                  "oauth2": [
+                    {
+                      "key": "accessTokenUrl",
+                      "value": "OAUTH_TOKEN_URL",
+                      "type": "string"
+                    },
+                    {
+                      "key": "grant_type",
+                      "value": "client_credentials",
+                      "type": "string"
+                    }
+                  ]
+                },
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/stations/:stationId?start=<dateTime>&end=<dateTime>&dataFrequency=<string>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "stations",
+                    ":stationId"
+                  ],
+                  "query": [
+                    {
+                      "description": "Parameters that provide an optional temporal window (from start to end) for a query. These parameters can be used to restrict the query to a specific time range. When using start and end, please note that start should be within the last 45 days, and the end should be no more than 24 hours after the start.",
+                      "key": "start",
+                      "value": "<dateTime>"
+                    },
+                    {
+                      "description": "Parameters that provide an optional temporal window (from start to end) for a query. These parameters can be used to restrict the query to a specific time range. When using start and end, please note that start should be within the last 45 days, and the end should be no more than 24 hours after the start.",
+                      "key": "end",
+                      "value": "<dateTime>"
+                    },
+                    {
+                      "description": "Parameter that selects the data frequency for a query. If the parameter is omitted then the query will proceed as if 30S data has been requested. Ephemeris files do not have a data frequency, and will be returned regardless of the dataFrequency parameter. Every organisation has access to 30S data. Access to 01S data is restricted to organisations on the Public Sector Plan.",
+                      "key": "dataFrequency",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "id": "e133c5c3-8565-4bcf-a878-6d7a82f993d4",
+                      "key": "stationId",
+                      "value": "WEWW",
+                      "description": "(Required) Specific station ID."
+                    }
+                  ]
+                },
+                "description": "Get info on specified station over a specified time period. Note that if the start and end date are omitted then the response will not contain the percentageComplete property. The dataFrequency parameter is only relevant if the start and end date are supplied."
+              },
+              "response": [
+                {
+                  "id": "8742ca21-03d0-42ff-ab9a-d21ea1447960",
+                  "name": "Returns info about the station, as structured JSON data",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: oauth2",
+                        "key": "Authorization",
+                        "value": "<token>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/stations/:stationId?start=<dateTime>&end=<dateTime>&dataFrequency=<string>",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "stations",
+                        ":stationId"
+                      ],
+                      "query": [
+                        {
+                          "description": "Parameters that provide an optional temporal window (from start to end) for a query. These parameters can be used to restrict the query to a specific time range. When using start and end, please note that start should be within the last 45 days, and the end should be no more than 24 hours after the start.",
+                          "key": "start",
+                          "value": "<dateTime>"
+                        },
+                        {
+                          "description": "Parameters that provide an optional temporal window (from start to end) for a query. These parameters can be used to restrict the query to a specific time range. When using start and end, please note that start should be within the last 45 days, and the end should be no more than 24 hours after the start.",
+                          "key": "end",
+                          "value": "<dateTime>"
+                        },
+                        {
+                          "description": "Parameter that selects the data frequency for a query. If the parameter is omitted then the query will proceed as if 30S data has been requested. Ephemeris files do not have a data frequency, and will be returned regardless of the dataFrequency parameter. Every organisation has access to 30S data. Access to 01S data is restricted to organisations on the Public Sector Plan.",
+                          "key": "dataFrequency",
+                          "value": "<string>"
+                        }
+                      ],
+                      "variable": [
+                        {
+                          "key": "stationId"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "OK",
+                  "code": 200,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"ETRS89_H\": \"<number>\",\n  \"ETRS89_Lat\": \"<string>\",\n  \"ETRS89_Long\": \"<string>\",\n  \"ETRS89_X\": \"<number>\",\n  \"ETRS89_Y\": \"<number>\",\n  \"ETRS89_Z\": \"<number>\",\n  \"OSGB36_E\": \"<number>\",\n  \"OSGB36_N\": \"<number>\",\n  \"ortho_Datum\": \"<string>\",\n  \"ortho_h\": \"<number>\",\n  \"percentageComplete\": \"<integer>\",\n  \"stationId\": \"<string>\",\n  \"tranModel\": \"<string>\",\n  \"stationName\": \"<string>\",\n  \"dataFrequency\": \"<string>\",\n  \"distance\": \"<number>\",\n  \"links\": [\n    {\n      \"description\": \"<string>\",\n      \"href\": \"<uri>\",\n      \"rel\": \"<string>\",\n      \"title\": \"<string>\",\n      \"type\": \"<string>\"\n    },\n    {\n      \"description\": \"<string>\",\n      \"href\": \"<uri>\",\n      \"rel\": \"<string>\",\n      \"title\": \"<string>\",\n      \"type\": \"<string>\"\n    }\n  ]\n}",
+                  "createdAt": "2026-07-28T02:29:21.000Z",
+                  "updatedAt": "2026-07-28T02:29:21.000Z",
+                  "uid": "35240-8742ca21-03d0-42ff-ab9a-d21ea1447960"
+                },
+                {
+                  "id": "de492e4a-4cbc-4752-b3d2-edb4b0ed67bc",
+                  "name": "Bad request",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/problem+json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: oauth2",
+                        "key": "Authorization",
+                        "value": "<token>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/stations/:stationId?start=<dateTime>&end=<dateTime>&dataFrequency=<string>",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "stations",
+                        ":stationId"
+                      ],
+                      "query": [
+                        {
+                          "description": "Parameters that provide an optional temporal window (from start to end) for a query. These parameters can be used to restrict the query to a specific time range. When using start and end, please note that start should be within the last 45 days, and the end should be no more than 24 hours after the start.",
+                          "key": "start",
+                          "value": "<dateTime>"
+                        },
+                        {
+                          "description": "Parameters that provide an optional temporal window (from start to end) for a query. These parameters can be used to restrict the query to a specific time range. When using start and end, please note that start should be within the last 45 days, and the end should be no more than 24 hours after the start.",
+                          "key": "end",
+                          "value": "<dateTime>"
+                        },
+                        {
+                          "description": "Parameter that selects the data frequency for a query. If the parameter is omitted then the query will proceed as if 30S data has been requested. Ephemeris files do not have a data frequency, and will be returned regardless of the dataFrequency parameter. Every organisation has access to 30S data. Access to 01S data is restricted to organisations on the Public Sector Plan.",
+                          "key": "dataFrequency",
+                          "value": "<string>"
+                        }
+                      ],
+                      "variable": [
+                        {
+                          "key": "stationId"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Bad Request",
+                  "code": 400,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/problem+json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{}",
+                  "createdAt": "2026-07-28T02:29:21.000Z",
+                  "updatedAt": "2026-07-28T02:29:21.000Z",
+                  "uid": "35240-de492e4a-4cbc-4752-b3d2-edb4b0ed67bc"
+                },
+                {
+                  "id": "8383cfe8-12fb-4683-88f7-b0edd0a898af",
+                  "name": "Not Found",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/problem+json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: oauth2",
+                        "key": "Authorization",
+                        "value": "<token>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/stations/:stationId?start=<dateTime>&end=<dateTime>&dataFrequency=<string>",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "stations",
+                        ":stationId"
+                      ],
+                      "query": [
+                        {
+                          "description": "Parameters that provide an optional temporal window (from start to end) for a query. These parameters can be used to restrict the query to a specific time range. When using start and end, please note that start should be within the last 45 days, and the end should be no more than 24 hours after the start.",
+                          "key": "start",
+                          "value": "<dateTime>"
+                        },
+                        {
+                          "description": "Parameters that provide an optional temporal window (from start to end) for a query. These parameters can be used to restrict the query to a specific time range. When using start and end, please note that start should be within the last 45 days, and the end should be no more than 24 hours after the start.",
+                          "key": "end",
+                          "value": "<dateTime>"
+                        },
+                        {
+                          "description": "Parameter that selects the data frequency for a query. If the parameter is omitted then the query will proceed as if 30S data has been requested. Ephemeris files do not have a data frequency, and will be returned regardless of the dataFrequency parameter. Every organisation has access to 30S data. Access to 01S data is restricted to organisations on the Public Sector Plan.",
+                          "key": "dataFrequency",
+                          "value": "<string>"
+                        }
+                      ],
+                      "variable": [
+                        {
+                          "key": "stationId"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Not Found",
+                  "code": 404,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/problem+json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{}",
+                  "createdAt": "2026-07-28T02:29:21.000Z",
+                  "updatedAt": "2026-07-28T02:29:21.000Z",
+                  "uid": "35240-8383cfe8-12fb-4683-88f7-b0edd0a898af"
+                }
+              ],
+              "createdAt": "2026-07-28T02:29:21.000Z",
+              "updatedAt": "2026-07-28T02:29:21.000Z",
+              "uid": "35240-427df643-fbc4-49c3-af60-40955c303430"
+            }
+          ],
+          "id": "f374ae16-c016-4b9d-956f-02ab2c6d970d",
+          "createdAt": "2026-07-28T02:29:21.000Z",
+          "updatedAt": "2026-07-28T02:29:21.000Z",
+          "uid": "35240-f374ae16-c016-4b9d-956f-02ab2c6d970d"
+        },
+        {
+          "name": "Get Stations",
+          "id": "fe2d6879-60cc-40c1-8656-13a168420619",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "auth": {
+              "type": "oauth2",
+              "oauth2": [
+                {
+                  "key": "accessTokenUrl",
+                  "value": "OAUTH_TOKEN_URL",
+                  "type": "string"
+                },
+                {
+                  "key": "grant_type",
+                  "value": "client_credentials",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "GET",
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/stations?location=<string>&radius=<integer>&stationCount=<integer>&start=<dateTime>&end=<dateTime>&dataFrequency=<string>",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "stations"
+              ],
+              "query": [
+                {
+                  "description": "Spatial parameters for the /stations endpoint. These parameters can be used to restrict the station search to a specific geographic area.",
+                  "key": "location",
+                  "value": "<string>"
+                },
+                {
+                  "description": "Spatial parameters for the /stations endpoint. These parameters can be used to restrict the station search to a specific geographic area.",
+                  "key": "radius",
+                  "value": "<integer>"
+                },
+                {
+                  "description": "Spatial parameters for the /stations endpoint. These parameters can be used to restrict the station search to a specific geographic area.",
+                  "key": "stationCount",
+                  "value": "<integer>"
+                },
+                {
+                  "description": "Parameters that provide an optional temporal window (from start to end) for a query. These parameters can be used to restrict the query to a specific time range. When using start and end, please note that start should be within the last 45 days, and the end should be no more than 24 hours after the start.",
+                  "key": "start",
+                  "value": "<dateTime>"
+                },
+                {
+                  "description": "Parameters that provide an optional temporal window (from start to end) for a query. These parameters can be used to restrict the query to a specific time range. When using start and end, please note that start should be within the last 45 days, and the end should be no more than 24 hours after the start.",
+                  "key": "end",
+                  "value": "<dateTime>"
+                },
+                {
+                  "description": "Parameter that selects the data frequency for a query. If the parameter is omitted then the query will proceed as if 30S data has been requested. Ephemeris files do not have a data frequency, and will be returned regardless of the dataFrequency parameter. Every organisation has access to 30S data. Access to 01S data is restricted to organisations on the Public Sector Plan.",
+                  "key": "dataFrequency",
+                  "value": "<string>"
+                }
+              ]
+            },
+            "description": "Get a list of the current GPS stations over the specified time period. The info is derived from https://www.ordnancesurvey.co.uk/documents/resources/osnet-coordinates-file.txt. Note that if the start and end date are omitted then the response will not contain the percentageComplete property. The dataFrequency parameter is only relevant if the start and end date are supplied."
+          },
+          "response": [
+            {
+              "id": "50313ef6-84ea-41cd-b59f-12c0d121c9d8",
+              "name": "Returns the list of stations, either as structured JSON data or a simple text file",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: oauth2",
+                    "key": "Authorization",
+                    "value": "<token>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/stations?location=<string>&radius=<integer>&stationCount=<integer>&start=<dateTime>&end=<dateTime>&dataFrequency=<string>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "stations"
+                  ],
+                  "query": [
+                    {
+                      "description": "Spatial parameters for the /stations endpoint. These parameters can be used to restrict the station search to a specific geographic area.",
+                      "key": "location",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Spatial parameters for the /stations endpoint. These parameters can be used to restrict the station search to a specific geographic area.",
+                      "key": "radius",
+                      "value": "<integer>"
+                    },
+                    {
+                      "description": "Spatial parameters for the /stations endpoint. These parameters can be used to restrict the station search to a specific geographic area.",
+                      "key": "stationCount",
+                      "value": "<integer>"
+                    },
+                    {
+                      "description": "Parameters that provide an optional temporal window (from start to end) for a query. These parameters can be used to restrict the query to a specific time range. When using start and end, please note that start should be within the last 45 days, and the end should be no more than 24 hours after the start.",
+                      "key": "start",
+                      "value": "<dateTime>"
+                    },
+                    {
+                      "description": "Parameters that provide an optional temporal window (from start to end) for a query. These parameters can be used to restrict the query to a specific time range. When using start and end, please note that start should be within the last 45 days, and the end should be no more than 24 hours after the start.",
+                      "key": "end",
+                      "value": "<dateTime>"
+                    },
+                    {
+                      "description": "Parameter that selects the data frequency for a query. If the parameter is omitted then the query will proceed as if 30S data has been requested. Ephemeris files do not have a data frequency, and will be returned regardless of the dataFrequency parameter. Every organisation has access to 30S data. Access to 01S data is restricted to organisations on the Public Sector Plan.",
+                      "key": "dataFrequency",
+                      "value": "<string>"
+                    }
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "[\n  {\n    \"ETRS89_H\": \"<number>\",\n    \"ETRS89_Lat\": \"<string>\",\n    \"ETRS89_Long\": \"<string>\",\n    \"ETRS89_X\": \"<number>\",\n    \"ETRS89_Y\": \"<number>\",\n    \"ETRS89_Z\": \"<number>\",\n    \"OSGB36_E\": \"<number>\",\n    \"OSGB36_N\": \"<number>\",\n    \"ortho_Datum\": \"<string>\",\n    \"ortho_h\": \"<number>\",\n    \"percentageComplete\": \"<integer>\",\n    \"stationId\": \"<string>\",\n    \"tranModel\": \"<string>\",\n    \"stationName\": \"<string>\",\n    \"dataFrequency\": \"<string>\",\n    \"distance\": \"<number>\",\n    \"links\": [\n      {\n        \"description\": \"<string>\",\n        \"href\": \"<uri>\",\n        \"rel\": \"<string>\",\n        \"title\": \"<string>\",\n        \"type\": \"<string>\"\n      },\n      {\n        \"description\": \"<string>\",\n        \"href\": \"<uri>\",\n        \"rel\": \"<string>\",\n        \"title\": \"<string>\",\n        \"type\": \"<string>\"\n      }\n    ]\n  },\n  {\n    \"ETRS89_H\": \"<number>\",\n    \"ETRS89_Lat\": \"<string>\",\n    \"ETRS89_Long\": \"<string>\",\n    \"ETRS89_X\": \"<number>\",\n    \"ETRS89_Y\": \"<number>\",\n    \"ETRS89_Z\": \"<number>\",\n    \"OSGB36_E\": \"<number>\",\n    \"OSGB36_N\": \"<number>\",\n    \"ortho_Datum\": \"<string>\",\n    \"ortho_h\": \"<number>\",\n    \"percentageComplete\": \"<integer>\",\n    \"stationId\": \"<string>\",\n    \"tranModel\": \"<string>\",\n    \"stationName\": \"<string>\",\n    \"dataFrequency\": \"<string>\",\n    \"distance\": \"<number>\",\n    \"links\": [\n      {\n        \"description\": \"<string>\",\n        \"href\": \"<uri>\",\n        \"rel\": \"<string>\",\n        \"title\": \"<string>\",\n        \"type\": \"<string>\"\n      },\n      {\n        \"description\": \"<string>\",\n        \"href\": \"<uri>\",\n        \"rel\": \"<string>\",\n        \"title\": \"<string>\",\n        \"type\": \"<string>\"\n      }\n    ]\n  }\n]",
+              "createdAt": "2026-07-28T02:29:21.000Z",
+              "updatedAt": "2026-07-28T02:29:21.000Z",
+              "uid": "35240-50313ef6-84ea-41cd-b59f-12c0d121c9d8"
+            },
+            {
+              "id": "191eaa4b-5965-4122-966e-b706e65c6697",
+              "name": "Bad request",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/problem+json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: oauth2",
+                    "key": "Authorization",
+                    "value": "<token>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/stations?location=<string>&radius=<integer>&stationCount=<integer>&start=<dateTime>&end=<dateTime>&dataFrequency=<string>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "stations"
+                  ],
+                  "query": [
+                    {
+                      "description": "Spatial parameters for the /stations endpoint. These parameters can be used to restrict the station search to a specific geographic area.",
+                      "key": "location",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Spatial parameters for the /stations endpoint. These parameters can be used to restrict the station search to a specific geographic area.",
+                      "key": "radius",
+                      "value": "<integer>"
+                    },
+                    {
+                      "description": "Spatial parameters for the /stations endpoint. These parameters can be used to restrict the station search to a specific geographic area.",
+                      "key": "stationCount",
+                      "value": "<integer>"
+                    },
+                    {
+                      "description": "Parameters that provide an optional temporal window (from start to end) for a query. These parameters can be used to restrict the query to a specific time range. When using start and end, please note that start should be within the last 45 days, and the end should be no more than 24 hours after the start.",
+                      "key": "start",
+                      "value": "<dateTime>"
+                    },
+                    {
+                      "description": "Parameters that provide an optional temporal window (from start to end) for a query. These parameters can be used to restrict the query to a specific time range. When using start and end, please note that start should be within the last 45 days, and the end should be no more than 24 hours after the start.",
+                      "key": "end",
+                      "value": "<dateTime>"
+                    },
+                    {
+                      "description": "Parameter that selects the data frequency for a query. If the parameter is omitted then the query will proceed as if 30S data has been requested. Ephemeris files do not have a data frequency, and will be returned regardless of the dataFrequency parameter. Every organisation has access to 30S data. Access to 01S data is restricted to organisations on the Public Sector Plan.",
+                      "key": "dataFrequency",
+                      "value": "<string>"
+                    }
+                  ]
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/problem+json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{}",
+              "createdAt": "2026-07-28T02:29:21.000Z",
+              "updatedAt": "2026-07-28T02:29:21.000Z",
+              "uid": "35240-191eaa4b-5965-4122-966e-b706e65c6697"
+            }
+          ],
+          "createdAt": "2026-07-28T02:29:21.000Z",
+          "updatedAt": "2026-07-28T02:29:21.000Z",
+          "uid": "35240-fe2d6879-60cc-40c1-8656-13a168420619"
+        }
+      ],
+      "id": "9e4e3042-7149-4187-885b-7ced41dbd2e9",
+      "createdAt": "2026-07-28T02:29:21.000Z",
+      "updatedAt": "2026-07-28T02:29:21.000Z",
+      "uid": "35240-9e4e3042-7149-4187-885b-7ced41dbd2e9"
+    },
+    {
+      "name": "rinex",
+      "item": [
+        {
+          "name": "{year}",
+          "item": [
+            {
+              "name": "{dayOfYear}",
+              "item": [
+                {
+                  "name": "{filename}",
+                  "item": [
+                    {
+                      "name": "Get Rinex File",
+                      "id": "652bfe66-17db-45e4-b3a2-e507232994e8",
+                      "protocolProfileBehavior": {
+                        "disableBodyPruning": true
+                      },
+                      "request": {
+                        "auth": {
+                          "type": "oauth2",
+                          "oauth2": [
+                            {
+                              "key": "accessTokenUrl",
+                              "value": "OAUTH_TOKEN_URL",
+                              "type": "string"
+                            },
+                            {
+                              "key": "grant_type",
+                              "value": "client_credentials",
+                              "type": "string"
+                            }
+                          ]
+                        },
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/octet-stream"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/rinex/:year/:dayOfYear/:filename",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "rinex",
+                            ":year",
+                            ":dayOfYear",
+                            ":filename"
+                          ],
+                          "variable": [
+                            {
+                              "id": "ab233f2b-d6de-43e9-b21e-4b4b6c631efc",
+                              "key": "year",
+                              "value": "<integer>",
+                              "description": "(Required) The year to be queried"
+                            },
+                            {
+                              "id": "af162ac6-9251-44c0-a286-a860bb554c9a",
+                              "key": "dayOfYear",
+                              "value": "<integer>",
+                              "description": "(Required) The day to be queried, within the given year"
+                            },
+                            {
+                              "id": "ae6f8b32-d637-42a4-8b4e-839a512cacc8",
+                              "key": "filename",
+                              "value": "<string>",
+                              "description": "(Required) Name of the file"
+                            }
+                          ]
+                        },
+                        "description": "Get a specific RINEX v3 file"
+                      },
+                      "response": [
+                        {
+                          "id": "6a2ecbfa-f9a2-470f-9003-1a40c91eb2af",
+                          "name": "Returns the requested RINEX file",
+                          "originalRequest": {
+                            "method": "GET",
+                            "header": [
+                              {
+                                "key": "Accept",
+                                "value": "application/octet-stream"
+                              },
+                              {
+                                "description": "Added as a part of security scheme: oauth2",
+                                "key": "Authorization",
+                                "value": "<token>"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/rinex/:year/:dayOfYear/:filename",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "rinex",
+                                ":year",
+                                ":dayOfYear",
+                                ":filename"
+                              ],
+                              "variable": [
+                                {
+                                  "key": "year"
+                                },
+                                {
+                                  "key": "dayOfYear"
+                                },
+                                {
+                                  "key": "filename"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "OK",
+                          "code": 200,
+                          "_postman_previewlanguage": "text",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/octet-stream"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "<binary>",
+                          "createdAt": "2026-07-28T02:29:21.000Z",
+                          "updatedAt": "2026-07-28T02:29:21.000Z",
+                          "uid": "35240-6a2ecbfa-f9a2-470f-9003-1a40c91eb2af"
+                        },
+                        {
+                          "id": "00fe04c1-4697-4047-812e-8e3c814661ce",
+                          "name": "No Content",
+                          "originalRequest": {
+                            "method": "GET",
+                            "header": [
+                              {
+                                "key": "Accept",
+                                "value": "application/problem+json"
+                              },
+                              {
+                                "description": "Added as a part of security scheme: oauth2",
+                                "key": "Authorization",
+                                "value": "<token>"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/rinex/:year/:dayOfYear/:filename",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "rinex",
+                                ":year",
+                                ":dayOfYear",
+                                ":filename"
+                              ],
+                              "variable": [
+                                {
+                                  "key": "year"
+                                },
+                                {
+                                  "key": "dayOfYear"
+                                },
+                                {
+                                  "key": "filename"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "No Content",
+                          "code": 204,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/problem+json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "{}",
+                          "createdAt": "2026-07-28T02:29:21.000Z",
+                          "updatedAt": "2026-07-28T02:29:21.000Z",
+                          "uid": "35240-00fe04c1-4697-4047-812e-8e3c814661ce"
+                        },
+                        {
+                          "id": "dab422b0-c609-4141-b853-0e0f9cba83b2",
+                          "name": "Temporary redirect, returned for files larger than 10MB. The Location header contains a time-limited URL that can be used to download the file.  Most HTTP clients can be configured to follow redirects automatically.\n",
+                          "originalRequest": {
+                            "method": "GET",
+                            "header": [
+                              {
+                                "description": "Added as a part of security scheme: oauth2",
+                                "key": "Authorization",
+                                "value": "<token>"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/rinex/:year/:dayOfYear/:filename",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "rinex",
+                                ":year",
+                                ":dayOfYear",
+                                ":filename"
+                              ],
+                              "variable": [
+                                {
+                                  "key": "year"
+                                },
+                                {
+                                  "key": "dayOfYear"
+                                },
+                                {
+                                  "key": "filename"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "Temporary Redirect (since HTTP/1.1)",
+                          "code": 307,
+                          "_postman_previewlanguage": "text",
+                          "header": [
+                            {
+                              "disabled": false,
+                              "description": {
+                                "content": "URL to download the file directly",
+                                "type": "text/plain"
+                              },
+                              "key": "Location",
+                              "value": "<uri>"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": null,
+                          "createdAt": "2026-07-28T02:29:21.000Z",
+                          "updatedAt": "2026-07-28T02:29:21.000Z",
+                          "uid": "35240-dab422b0-c609-4141-b853-0e0f9cba83b2"
+                        },
+                        {
+                          "id": "03f2f8e9-4268-443d-8a59-4e76bbb2aa0d",
+                          "name": "Bad request",
+                          "originalRequest": {
+                            "method": "GET",
+                            "header": [
+                              {
+                                "key": "Accept",
+                                "value": "application/problem+json"
+                              },
+                              {
+                                "description": "Added as a part of security scheme: oauth2",
+                                "key": "Authorization",
+                                "value": "<token>"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/rinex/:year/:dayOfYear/:filename",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "rinex",
+                                ":year",
+                                ":dayOfYear",
+                                ":filename"
+                              ],
+                              "variable": [
+                                {
+                                  "key": "year"
+                                },
+                                {
+                                  "key": "dayOfYear"
+                                },
+                                {
+                                  "key": "filename"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "Bad Request",
+                          "code": 400,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/problem+json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "{}",
+                          "createdAt": "2026-07-28T02:29:21.000Z",
+                          "updatedAt": "2026-07-28T02:29:21.000Z",
+                          "uid": "35240-03f2f8e9-4268-443d-8a59-4e76bbb2aa0d"
+                        },
+                        {
+                          "id": "6a53bf99-1ee1-4e47-a15a-877c55047b5c",
+                          "name": "Returned if the request is valid, but you do not have access to the resource",
+                          "originalRequest": {
+                            "method": "GET",
+                            "header": [
+                              {
+                                "key": "Accept",
+                                "value": "application/problem+json"
+                              },
+                              {
+                                "description": "Added as a part of security scheme: oauth2",
+                                "key": "Authorization",
+                                "value": "<token>"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/rinex/:year/:dayOfYear/:filename",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "rinex",
+                                ":year",
+                                ":dayOfYear",
+                                ":filename"
+                              ],
+                              "variable": [
+                                {
+                                  "key": "year"
+                                },
+                                {
+                                  "key": "dayOfYear"
+                                },
+                                {
+                                  "key": "filename"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "Forbidden",
+                          "code": 403,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/problem+json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "{}",
+                          "createdAt": "2026-07-28T02:29:21.000Z",
+                          "updatedAt": "2026-07-28T02:29:21.000Z",
+                          "uid": "35240-6a53bf99-1ee1-4e47-a15a-877c55047b5c"
+                        },
+                        {
+                          "id": "54b94630-d94a-406a-9996-2ff06e9b97ec",
+                          "name": "Not Found",
+                          "originalRequest": {
+                            "method": "GET",
+                            "header": [
+                              {
+                                "key": "Accept",
+                                "value": "application/problem+json"
+                              },
+                              {
+                                "description": "Added as a part of security scheme: oauth2",
+                                "key": "Authorization",
+                                "value": "<token>"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/rinex/:year/:dayOfYear/:filename",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "rinex",
+                                ":year",
+                                ":dayOfYear",
+                                ":filename"
+                              ],
+                              "variable": [
+                                {
+                                  "key": "year"
+                                },
+                                {
+                                  "key": "dayOfYear"
+                                },
+                                {
+                                  "key": "filename"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "Not Found",
+                          "code": 404,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/problem+json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "{}",
+                          "createdAt": "2026-07-28T02:29:21.000Z",
+                          "updatedAt": "2026-07-28T02:29:21.000Z",
+                          "uid": "35240-54b94630-d94a-406a-9996-2ff06e9b97ec"
+                        }
+                      ],
+                      "createdAt": "2026-07-28T02:29:21.000Z",
+                      "updatedAt": "2026-07-28T02:29:21.000Z",
+                      "uid": "35240-652bfe66-17db-45e4-b3a2-e507232994e8"
+                    }
+                  ],
+                  "id": "a6c5febf-4752-472a-b640-9b80f76332ea",
+                  "createdAt": "2026-07-28T02:29:21.000Z",
+                  "updatedAt": "2026-07-28T02:29:21.000Z",
+                  "uid": "35240-a6c5febf-4752-472a-b640-9b80f76332ea"
+                },
+                {
+                  "name": "Get Rinex Data Files",
+                  "id": "05ec73ba-2cf9-4d83-b01b-a808b3e5b19c",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                  },
+                  "request": {
+                    "auth": {
+                      "type": "oauth2",
+                      "oauth2": [
+                        {
+                          "key": "accessTokenUrl",
+                          "value": "OAUTH_TOKEN_URL",
+                          "type": "string"
+                        },
+                        {
+                          "key": "grant_type",
+                          "value": "client_credentials",
+                          "type": "string"
+                        }
+                      ]
+                    },
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/rinex/:year/:dayOfYear?dataFrequency=<string>",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "rinex",
+                        ":year",
+                        ":dayOfYear"
+                      ],
+                      "query": [
+                        {
+                          "description": "Parameter that selects the data frequency for a query. If the parameter is omitted then the query will proceed as if 30S data has been requested. Ephemeris files do not have a data frequency, and will be returned regardless of the dataFrequency parameter. Every organisation has access to 30S data. Access to 01S data is restricted to organisations on the Public Sector Plan.",
+                          "key": "dataFrequency",
+                          "value": "<string>"
+                        }
+                      ],
+                      "variable": [
+                        {
+                          "id": "030d6a63-374a-41d5-8fa7-166ae8c68846",
+                          "key": "year",
+                          "value": "<integer>",
+                          "description": "(Required) The year to be queried"
+                        },
+                        {
+                          "id": "df62bb2b-27cf-4c91-8a60-051ced91c7de",
+                          "key": "dayOfYear",
+                          "value": "<integer>",
+                          "description": "(Required) The day to be queried, within the given year"
+                        }
+                      ]
+                    },
+                    "description": "List the files available via this service, for the given year and day"
+                  },
+                  "response": [
+                    {
+                      "id": "9079cdba-ba50-497c-be5b-8940784e8f46",
+                      "name": "List the days available via this service, for the given year and day",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: oauth2",
+                            "key": "Authorization",
+                            "value": "<token>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/rinex/:year/:dayOfYear?dataFrequency=<string>",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "rinex",
+                            ":year",
+                            ":dayOfYear"
+                          ],
+                          "query": [
+                            {
+                              "description": "Parameter that selects the data frequency for a query. If the parameter is omitted then the query will proceed as if 30S data has been requested. Ephemeris files do not have a data frequency, and will be returned regardless of the dataFrequency parameter. Every organisation has access to 30S data. Access to 01S data is restricted to organisations on the Public Sector Plan.",
+                              "key": "dataFrequency",
+                              "value": "<string>"
+                            }
+                          ],
+                          "variable": [
+                            {
+                              "key": "year"
+                            },
+                            {
+                              "key": "dayOfYear"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "OK",
+                      "code": 200,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "[\n  {\n    \"fileName\": \"<string>\",\n    \"url\": \"<uri>\",\n    \"size\": \"<long>\",\n    \"md5\": \"<string>\",\n    \"format\": \"<string>\",\n    \"subformat\": \"<string>\",\n    \"station\": \"<string>\",\n    \"start\": \"<dateTime>\",\n    \"duration\": \"<string>\",\n    \"dataFrequency\": \"<string>\",\n    \"percentageComplete\": \"<integer>\"\n  },\n  {\n    \"fileName\": \"<string>\",\n    \"url\": \"<uri>\",\n    \"size\": \"<long>\",\n    \"md5\": \"<string>\",\n    \"format\": \"<string>\",\n    \"subformat\": \"<string>\",\n    \"station\": \"<string>\",\n    \"start\": \"<dateTime>\",\n    \"duration\": \"<string>\",\n    \"dataFrequency\": \"<string>\",\n    \"percentageComplete\": \"<integer>\"\n  }\n]",
+                      "createdAt": "2026-07-28T02:29:21.000Z",
+                      "updatedAt": "2026-07-28T02:29:21.000Z",
+                      "uid": "35240-9079cdba-ba50-497c-be5b-8940784e8f46"
+                    },
+                    {
+                      "id": "b8795996-db7b-4e67-aa47-5a1e2c2ef1d8",
+                      "name": "Returned if the input parameters are not valid",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/problem+json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: oauth2",
+                            "key": "Authorization",
+                            "value": "<token>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/rinex/:year/:dayOfYear?dataFrequency=<string>",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "rinex",
+                            ":year",
+                            ":dayOfYear"
+                          ],
+                          "query": [
+                            {
+                              "description": "Parameter that selects the data frequency for a query. If the parameter is omitted then the query will proceed as if 30S data has been requested. Ephemeris files do not have a data frequency, and will be returned regardless of the dataFrequency parameter. Every organisation has access to 30S data. Access to 01S data is restricted to organisations on the Public Sector Plan.",
+                              "key": "dataFrequency",
+                              "value": "<string>"
+                            }
+                          ],
+                          "variable": [
+                            {
+                              "key": "year"
+                            },
+                            {
+                              "key": "dayOfYear"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Bad Request",
+                      "code": 400,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/problem+json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{}",
+                      "createdAt": "2026-07-28T02:29:21.000Z",
+                      "updatedAt": "2026-07-28T02:29:21.000Z",
+                      "uid": "35240-b8795996-db7b-4e67-aa47-5a1e2c2ef1d8"
+                    },
+                    {
+                      "id": "c55471b3-f080-4faa-8209-263cff764324",
+                      "name": "Returned if request is valid, but you do not have access to the resource",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/problem+json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: oauth2",
+                            "key": "Authorization",
+                            "value": "<token>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/rinex/:year/:dayOfYear?dataFrequency=<string>",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "rinex",
+                            ":year",
+                            ":dayOfYear"
+                          ],
+                          "query": [
+                            {
+                              "description": "Parameter that selects the data frequency for a query. If the parameter is omitted then the query will proceed as if 30S data has been requested. Ephemeris files do not have a data frequency, and will be returned regardless of the dataFrequency parameter. Every organisation has access to 30S data. Access to 01S data is restricted to organisations on the Public Sector Plan.",
+                              "key": "dataFrequency",
+                              "value": "<string>"
+                            }
+                          ],
+                          "variable": [
+                            {
+                              "key": "year"
+                            },
+                            {
+                              "key": "dayOfYear"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Forbidden",
+                      "code": 403,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/problem+json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{}",
+                      "createdAt": "2026-07-28T02:29:21.000Z",
+                      "updatedAt": "2026-07-28T02:29:21.000Z",
+                      "uid": "35240-c55471b3-f080-4faa-8209-263cff764324"
+                    }
+                  ],
+                  "createdAt": "2026-07-28T02:29:21.000Z",
+                  "updatedAt": "2026-07-28T02:29:21.000Z",
+                  "uid": "35240-05ec73ba-2cf9-4d83-b01b-a808b3e5b19c"
+                }
+              ],
+              "id": "2bb7af10-48d1-4c09-ab27-f831f57eb6ed",
+              "createdAt": "2026-07-28T02:29:21.000Z",
+              "updatedAt": "2026-07-28T02:29:21.000Z",
+              "uid": "35240-2bb7af10-48d1-4c09-ab27-f831f57eb6ed"
+            },
+            {
+              "name": "Get Rinex Data Days",
+              "id": "b5054bc2-145c-4826-864a-4f41afc21dc6",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "auth": {
+                  "type": "oauth2",
+                  "oauth2": [
+                    {
+                      "key": "accessTokenUrl",
+                      "value": "OAUTH_TOKEN_URL",
+                      "type": "string"
+                    },
+                    {
+                      "key": "grant_type",
+                      "value": "client_credentials",
+                      "type": "string"
+                    }
+                  ]
+                },
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/rinex/:year",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "rinex",
+                    ":year"
+                  ],
+                  "variable": [
+                    {
+                      "id": "1b39cc67-a31b-489e-80f3-99aa64a760dd",
+                      "key": "year",
+                      "value": "<integer>",
+                      "description": "(Required) The year to be queried"
+                    }
+                  ]
+                },
+                "description": "List the days that have RINEX data available, for the given year"
+              },
+              "response": [
+                {
+                  "id": "d97ef2fc-2c76-4af5-bd49-bccbd59d5771",
+                  "name": "List the days that have RINEX data available, for the given year",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: oauth2",
+                        "key": "Authorization",
+                        "value": "<token>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/rinex/:year",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "rinex",
+                        ":year"
+                      ],
+                      "variable": [
+                        {
+                          "key": "year"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "OK",
+                  "code": 200,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"description\": \"<string>\",\n  \"links\": [\n    {\n      \"description\": \"<string>\",\n      \"href\": \"<uri>\",\n      \"rel\": \"<string>\",\n      \"title\": \"<string>\",\n      \"type\": \"<string>\"\n    },\n    {\n      \"description\": \"<string>\",\n      \"href\": \"<uri>\",\n      \"rel\": \"<string>\",\n      \"title\": \"<string>\",\n      \"type\": \"<string>\"\n    }\n  ],\n  \"title\": \"<string>\"\n}",
+                  "createdAt": "2026-07-28T02:29:21.000Z",
+                  "updatedAt": "2026-07-28T02:29:21.000Z",
+                  "uid": "35240-d97ef2fc-2c76-4af5-bd49-bccbd59d5771"
+                }
+              ],
+              "createdAt": "2026-07-28T02:29:21.000Z",
+              "updatedAt": "2026-07-28T02:29:21.000Z",
+              "uid": "35240-b5054bc2-145c-4826-864a-4f41afc21dc6"
+            }
+          ],
+          "id": "5815ec7b-189a-4bdc-b623-b908516d5ec0",
+          "createdAt": "2026-07-28T02:29:21.000Z",
+          "updatedAt": "2026-07-28T02:29:21.000Z",
+          "uid": "35240-5815ec7b-189a-4bdc-b623-b908516d5ec0"
+        },
+        {
+          "name": "Get Rinex Data Years",
+          "id": "58f3934d-18fa-4606-986c-7eb5f2fa588e",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "auth": {
+              "type": "oauth2",
+              "oauth2": [
+                {
+                  "key": "accessTokenUrl",
+                  "value": "OAUTH_TOKEN_URL",
+                  "type": "string"
+                },
+                {
+                  "key": "grant_type",
+                  "value": "client_credentials",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "GET",
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/rinex",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "rinex"
+              ]
+            },
+            "description": "List the years that have RINEX data available"
+          },
+          "response": [
+            {
+              "id": "aaa2980a-2b80-4fbe-9b20-8e66f8ca35b6",
+              "name": "List the years that have RINEX data available",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: oauth2",
+                    "key": "Authorization",
+                    "value": "<token>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/rinex",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "rinex"
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"description\": \"<string>\",\n  \"links\": [\n    {\n      \"description\": \"<string>\",\n      \"href\": \"<uri>\",\n      \"rel\": \"<string>\",\n      \"title\": \"<string>\",\n      \"type\": \"<string>\"\n    },\n    {\n      \"description\": \"<string>\",\n      \"href\": \"<uri>\",\n      \"rel\": \"<string>\",\n      \"title\": \"<string>\",\n      \"type\": \"<string>\"\n    }\n  ],\n  \"title\": \"<string>\"\n}",
+              "createdAt": "2026-07-28T02:29:21.000Z",
+              "updatedAt": "2026-07-28T02:29:21.000Z",
+              "uid": "35240-aaa2980a-2b80-4fbe-9b20-8e66f8ca35b6"
+            }
+          ],
+          "createdAt": "2026-07-28T02:29:21.000Z",
+          "updatedAt": "2026-07-28T02:29:21.000Z",
+          "uid": "35240-58f3934d-18fa-4606-986c-7eb5f2fa588e"
+        }
+      ],
+      "id": "00ca026d-a95a-4a2a-ab01-eaf79ebbd070",
+      "createdAt": "2026-07-28T02:29:21.000Z",
+      "updatedAt": "2026-07-28T02:29:21.000Z",
+      "uid": "35240-00ca026d-a95a-4a2a-ab01-eaf79ebbd070"
+    }
+  ],
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "https://api.os.uk/positioning/osnet/v1"
+    }
+  ]
+}

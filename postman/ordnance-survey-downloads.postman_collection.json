@@ -1,0 +1,1828 @@
+{
+  "info": {
+    "_postman_id": "3c8589a0-4f14-4cdc-94c8-7bf0c0b80100",
+    "name": "Ordnance Survey Download API",
+    "description": "This api provides access to the OS products that are available to download.",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-07-28T02:29:18.000Z",
+    "updatedAt": "2026-07-28T02:29:18.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-3c8589a0-4f14-4cdc-94c8-7bf0c0b80100"
+  },
+  "item": [
+    {
+      "name": "products",
+      "item": [
+        {
+          "name": "{productId}",
+          "item": [
+            {
+              "name": "downloads",
+              "item": [
+                {
+                  "name": "Returns a list of downloads for a specific OpenData product, or redirects to the actual download if requested.",
+                  "id": "fa7bd459-e476-4881-bcfd-d45ec7d3403b",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                  },
+                  "request": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/products/:productId/downloads?fileName=<string>&format=<string>&subformat=<string>&area=SK&redirect=<boolean>",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "products",
+                        ":productId",
+                        "downloads"
+                      ],
+                      "query": [
+                        {
+                          "description": "Filter the list of downloads to only include those with this file name.",
+                          "key": "fileName",
+                          "value": "<string>"
+                        },
+                        {
+                          "description": "Filter the list of downloads to only include those with this format.",
+                          "key": "format",
+                          "value": "<string>"
+                        },
+                        {
+                          "description": "Filter the list of downloads to only include those with this subformat.",
+                          "key": "subformat",
+                          "value": "<string>"
+                        },
+                        {
+                          "description": "Filter the list of downloads to only include those which cover this area.",
+                          "key": "area",
+                          "value": "SK"
+                        },
+                        {
+                          "description": "When included, if the selected downloads list contains exactly one download, redirect to the download location.",
+                          "key": "redirect",
+                          "value": "<boolean>"
+                        }
+                      ],
+                      "variable": [
+                        {
+                          "id": "8feba7be-62f4-41cd-9eb3-764fa5a64f2d",
+                          "key": "productId",
+                          "value": "<string>",
+                          "description": "(Required) The id of the product."
+                        }
+                      ]
+                    }
+                  },
+                  "response": [
+                    {
+                      "id": "100df7f9-cc66-4d9f-afb9-d83b153e71c3",
+                      "name": "Successful response.",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/products/:productId/downloads?fileName=<string>&format=<string>&subformat=<string>&area=SK&redirect=<boolean>",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "products",
+                            ":productId",
+                            "downloads"
+                          ],
+                          "query": [
+                            {
+                              "description": "Filter the list of downloads to only include those with this file name.",
+                              "key": "fileName",
+                              "value": "<string>"
+                            },
+                            {
+                              "description": "Filter the list of downloads to only include those with this format.",
+                              "key": "format",
+                              "value": "<string>"
+                            },
+                            {
+                              "description": "Filter the list of downloads to only include those with this subformat.",
+                              "key": "subformat",
+                              "value": "<string>"
+                            },
+                            {
+                              "description": "Filter the list of downloads to only include those which cover this area.",
+                              "key": "area",
+                              "value": "SK"
+                            },
+                            {
+                              "description": "When included, if the selected downloads list contains exactly one download, redirect to the download location.",
+                              "key": "redirect",
+                              "value": "<boolean>"
+                            }
+                          ],
+                          "variable": [
+                            {
+                              "key": "productId"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "OK",
+                      "code": 200,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "[\n  {\n    \"area\": \"NF\",\n    \"fileName\": \"<string>\",\n    \"format\": \"<string>\",\n    \"url\": \"<uri>\",\n    \"size\": \"<integer>\",\n    \"md5\": \"<string>\",\n    \"subformat\": \"<string>\"\n  },\n  {\n    \"area\": \"SW\",\n    \"fileName\": \"<string>\",\n    \"format\": \"<string>\",\n    \"url\": \"<uri>\",\n    \"size\": \"<integer>\",\n    \"md5\": \"<string>\",\n    \"subformat\": \"<string>\"\n  }\n]",
+                      "createdAt": "2026-07-28T02:29:18.000Z",
+                      "updatedAt": "2026-07-28T02:29:18.000Z",
+                      "uid": "35240-100df7f9-cc66-4d9f-afb9-d83b153e71c3"
+                    },
+                    {
+                      "id": "7a7e5e15-fe7b-474f-8d94-7ba19e546b26",
+                      "name": "Returned when the 'redirect' parameter was supplied, and there was exactly one matching download.",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/products/:productId/downloads?fileName=<string>&format=<string>&subformat=<string>&area=SK&redirect=<boolean>",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "products",
+                            ":productId",
+                            "downloads"
+                          ],
+                          "query": [
+                            {
+                              "description": "Filter the list of downloads to only include those with this file name.",
+                              "key": "fileName",
+                              "value": "<string>"
+                            },
+                            {
+                              "description": "Filter the list of downloads to only include those with this format.",
+                              "key": "format",
+                              "value": "<string>"
+                            },
+                            {
+                              "description": "Filter the list of downloads to only include those with this subformat.",
+                              "key": "subformat",
+                              "value": "<string>"
+                            },
+                            {
+                              "description": "Filter the list of downloads to only include those which cover this area.",
+                              "key": "area",
+                              "value": "SK"
+                            },
+                            {
+                              "description": "When included, if the selected downloads list contains exactly one download, redirect to the download location.",
+                              "key": "redirect",
+                              "value": "<boolean>"
+                            }
+                          ],
+                          "variable": [
+                            {
+                              "key": "productId"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Temporary Redirect (since HTTP/1.1)",
+                      "code": 307,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        },
+                        {
+                          "disabled": false,
+                          "description": {
+                            "content": "Direct URL for the download file.",
+                            "type": "text/plain"
+                          },
+                          "key": "Location",
+                          "value": "<string>"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"area\": \"NS\",\n  \"fileName\": \"<string>\",\n  \"format\": \"<string>\",\n  \"url\": \"<uri>\",\n  \"size\": \"<integer>\",\n  \"md5\": \"<string>\",\n  \"subformat\": \"<string>\"\n}",
+                      "createdAt": "2026-07-28T02:29:18.000Z",
+                      "updatedAt": "2026-07-28T02:29:18.000Z",
+                      "uid": "35240-7a7e5e15-fe7b-474f-8d94-7ba19e546b26"
+                    },
+                    {
+                      "id": "eaa3c5db-7547-40f5-a839-32d1de6bcffe",
+                      "name": "The request does not match any known content.\nThe response will contain a human readable message, and may also contain links to help you\nnavigate to other API endpoints.\n",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/products/:productId/downloads?fileName=<string>&format=<string>&subformat=<string>&area=SK&redirect=<boolean>",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "products",
+                            ":productId",
+                            "downloads"
+                          ],
+                          "query": [
+                            {
+                              "description": "Filter the list of downloads to only include those with this file name.",
+                              "key": "fileName",
+                              "value": "<string>"
+                            },
+                            {
+                              "description": "Filter the list of downloads to only include those with this format.",
+                              "key": "format",
+                              "value": "<string>"
+                            },
+                            {
+                              "description": "Filter the list of downloads to only include those with this subformat.",
+                              "key": "subformat",
+                              "value": "<string>"
+                            },
+                            {
+                              "description": "Filter the list of downloads to only include those which cover this area.",
+                              "key": "area",
+                              "value": "SK"
+                            },
+                            {
+                              "description": "When included, if the selected downloads list contains exactly one download, redirect to the download location.",
+                              "key": "redirect",
+                              "value": "<boolean>"
+                            }
+                          ],
+                          "variable": [
+                            {
+                              "key": "productId"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Not Found",
+                      "code": 404,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"message\": \"<string>\",\n  \"dataPackagesUrl\": \"<uri>\",\n  \"downloadCatalogueUrl\": \"<uri>\",\n  \"productUrl\": \"<uri>\",\n  \"productDownloadsUrl\": \"<uri>\"\n}",
+                      "createdAt": "2026-07-28T02:29:18.000Z",
+                      "updatedAt": "2026-07-28T02:29:18.000Z",
+                      "uid": "35240-eaa3c5db-7547-40f5-a839-32d1de6bcffe"
+                    }
+                  ],
+                  "createdAt": "2026-07-28T02:29:18.000Z",
+                  "updatedAt": "2026-07-28T02:29:18.000Z",
+                  "uid": "35240-fa7bd459-e476-4881-bcfd-d45ec7d3403b"
+                }
+              ],
+              "id": "df3f63c9-92b1-4fcd-aaf0-1515b157cce4",
+              "createdAt": "2026-07-28T02:29:18.000Z",
+              "updatedAt": "2026-07-28T02:29:18.000Z",
+              "uid": "35240-df3f63c9-92b1-4fcd-aaf0-1515b157cce4"
+            },
+            {
+              "name": "images",
+              "item": [
+                {
+                  "name": "{index}",
+                  "item": [
+                    {
+                      "name": "Returns a HTTP redirect, pointing to thumbnail images for the specified OpenData product.",
+                      "id": "52390718-1ace-4c9f-b957-c5669301a2f1",
+                      "protocolProfileBehavior": {
+                        "disableBodyPruning": true
+                      },
+                      "request": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "image/jpeg"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/products/:productId/images/:index?large=<boolean>",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "products",
+                            ":productId",
+                            "images",
+                            ":index"
+                          ],
+                          "query": [
+                            {
+                              "description": "When set, the image that is returned will be a larger version.",
+                              "key": "large",
+                              "value": "<boolean>"
+                            }
+                          ],
+                          "variable": [
+                            {
+                              "id": "e5cfdf73-e8d4-4fca-921e-fb62e8d182d5",
+                              "key": "productId",
+                              "value": "<string>",
+                              "description": "(Required) The id of the product."
+                            },
+                            {
+                              "id": "e2725f3e-7cc7-4bf0-8d68-ac4a6b9019f7",
+                              "key": "index",
+                              "value": "<integer>",
+                              "description": "(Required) The index of the image to be retrieved. Valid values are from 0 to (Product.imageCount-1)."
+                            }
+                          ]
+                        }
+                      },
+                      "response": [
+                        {
+                          "id": "a7529701-fc43-4421-be33-2acd3a3db20f",
+                          "name": "Successful response.",
+                          "originalRequest": {
+                            "method": "GET",
+                            "header": [
+                              {
+                                "key": "Accept",
+                                "value": "image/jpeg"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/products/:productId/images/:index?large=<boolean>",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "products",
+                                ":productId",
+                                "images",
+                                ":index"
+                              ],
+                              "query": [
+                                {
+                                  "description": "When set, the image that is returned will be a larger version.",
+                                  "key": "large",
+                                  "value": "<boolean>"
+                                }
+                              ],
+                              "variable": [
+                                {
+                                  "key": "productId"
+                                },
+                                {
+                                  "key": "index"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "OK",
+                          "code": 200,
+                          "_postman_previewlanguage": "text",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "image/jpeg"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "<binary>",
+                          "createdAt": "2026-07-28T02:29:18.000Z",
+                          "updatedAt": "2026-07-28T02:29:18.000Z",
+                          "uid": "35240-a7529701-fc43-4421-be33-2acd3a3db20f"
+                        },
+                        {
+                          "id": "beea6b2c-53c6-4df2-bdfe-527f56f1211d",
+                          "name": "This response is a redirect to the actual image location.",
+                          "originalRequest": {
+                            "method": "GET",
+                            "header": [],
+                            "url": {
+                              "raw": "{{baseUrl}}/products/:productId/images/:index?large=<boolean>",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "products",
+                                ":productId",
+                                "images",
+                                ":index"
+                              ],
+                              "query": [
+                                {
+                                  "description": "When set, the image that is returned will be a larger version.",
+                                  "key": "large",
+                                  "value": "<boolean>"
+                                }
+                              ],
+                              "variable": [
+                                {
+                                  "key": "productId"
+                                },
+                                {
+                                  "key": "index"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "Temporary Redirect (since HTTP/1.1)",
+                          "code": 307,
+                          "_postman_previewlanguage": "text",
+                          "header": [
+                            {
+                              "disabled": false,
+                              "description": {
+                                "content": "Direct URL for the product image.",
+                                "type": "text/plain"
+                              },
+                              "key": "Location",
+                              "value": "<string>"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": null,
+                          "createdAt": "2026-07-28T02:29:18.000Z",
+                          "updatedAt": "2026-07-28T02:29:18.000Z",
+                          "uid": "35240-beea6b2c-53c6-4df2-bdfe-527f56f1211d"
+                        },
+                        {
+                          "id": "9c5fe3bd-cf42-40b0-8793-1ffdafa5f1ee",
+                          "name": "The request does not match any known content.\nThe response will contain a human readable message, and may also contain links to help you\nnavigate to other API endpoints.\n",
+                          "originalRequest": {
+                            "method": "GET",
+                            "header": [
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/products/:productId/images/:index?large=<boolean>",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "products",
+                                ":productId",
+                                "images",
+                                ":index"
+                              ],
+                              "query": [
+                                {
+                                  "description": "When set, the image that is returned will be a larger version.",
+                                  "key": "large",
+                                  "value": "<boolean>"
+                                }
+                              ],
+                              "variable": [
+                                {
+                                  "key": "productId"
+                                },
+                                {
+                                  "key": "index"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "Not Found",
+                          "code": 404,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "{\n  \"message\": \"<string>\",\n  \"dataPackagesUrl\": \"<uri>\",\n  \"downloadCatalogueUrl\": \"<uri>\",\n  \"productUrl\": \"<uri>\",\n  \"productDownloadsUrl\": \"<uri>\"\n}",
+                          "createdAt": "2026-07-28T02:29:18.000Z",
+                          "updatedAt": "2026-07-28T02:29:18.000Z",
+                          "uid": "35240-9c5fe3bd-cf42-40b0-8793-1ffdafa5f1ee"
+                        }
+                      ],
+                      "createdAt": "2026-07-28T02:29:18.000Z",
+                      "updatedAt": "2026-07-28T02:29:18.000Z",
+                      "uid": "35240-52390718-1ace-4c9f-b957-c5669301a2f1"
+                    }
+                  ],
+                  "id": "181983ca-13ad-46a1-893e-e705dc371c35",
+                  "createdAt": "2026-07-28T02:29:18.000Z",
+                  "updatedAt": "2026-07-28T02:29:18.000Z",
+                  "uid": "35240-181983ca-13ad-46a1-893e-e705dc371c35"
+                }
+              ],
+              "id": "f951c3d5-68d4-418f-9107-5bcd11dfcde0",
+              "createdAt": "2026-07-28T02:29:18.000Z",
+              "updatedAt": "2026-07-28T02:29:18.000Z",
+              "uid": "35240-f951c3d5-68d4-418f-9107-5bcd11dfcde0"
+            },
+            {
+              "name": "Returns details about a specific OpenData product.",
+              "id": "e63cf741-337e-47e7-bc56-83843671ad7e",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/products/:productId",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "products",
+                    ":productId"
+                  ],
+                  "variable": [
+                    {
+                      "id": "ec7c2511-f17c-412e-b07a-1f612c0d31d4",
+                      "key": "productId",
+                      "value": "<string>",
+                      "description": "(Required) The id of the product."
+                    }
+                  ]
+                }
+              },
+              "response": [
+                {
+                  "id": "e207e2ab-69e4-4801-a55a-a4a75f31aaf7",
+                  "name": "Successful response.",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/products/:productId",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "products",
+                        ":productId"
+                      ],
+                      "variable": [
+                        {
+                          "key": "productId"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "OK",
+                  "code": 200,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"id\": \"<string>\",\n  \"name\": \"<string>\",\n  \"description\": [\n    \"<string>\"\n  ],\n  \"version\": \"/dddd-/dd\",\n  \"url\": \"<string>\",\n  \"thirdPartyInfo\": {\n    \"dataProvider\": {\n      \"name\": \"<string>\",\n      \"shortName\": \"<string>\",\n      \"homepage\": \"<string>\",\n      \"logoUrl\": \"<uri>\"\n    },\n    \"supportingInfo\": [\n      {\n        \"name\": \"<string>\",\n        \"link\": \"<uri>\"\n      },\n      {\n        \"name\": \"<string>\",\n        \"link\": \"<uri>\"\n      }\n    ],\n    \"alsoAvailable\": [\n      {\n        \"name\": \"<string>\",\n        \"link\": \"<uri>\"\n      },\n      {\n        \"name\": \"<string>\",\n        \"link\": \"<uri>\"\n      }\n    ],\n    \"supportEmail\": \"<email>\"\n  },\n  \"documentationUrl\": \"<string>\",\n  \"areas\": [\n    \"NX\",\n    \"HZ\"\n  ],\n  \"dataStructures\": [\n    \"Vector\",\n    \"Raster\"\n  ],\n  \"category\": \"<string>\",\n  \"categories\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"formats\": [\n    {\n      \"format\": \"<string>\",\n      \"subformat\": \"<string>\"\n    },\n    {\n      \"format\": \"<string>\",\n      \"subformat\": \"<string>\"\n    }\n  ],\n  \"imageCount\": \"<integer>\",\n  \"imageTemplate\": \"<string>\",\n  \"downloadsUrl\": \"<uri>\",\n  \"warning\": \"<string>\",\n  \"endOfLife\": \"/dddd-/dd-/dd\"\n}",
+                  "createdAt": "2026-07-28T02:29:18.000Z",
+                  "updatedAt": "2026-07-28T02:29:18.000Z",
+                  "uid": "35240-e207e2ab-69e4-4801-a55a-a4a75f31aaf7"
+                },
+                {
+                  "id": "35bd6893-252d-43d6-a568-0c902db58015",
+                  "name": "The request does not match any known content.\nThe response will contain a human readable message, and may also contain links to help you\nnavigate to other API endpoints.\n",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/products/:productId",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "products",
+                        ":productId"
+                      ],
+                      "variable": [
+                        {
+                          "key": "productId"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Not Found",
+                  "code": 404,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"message\": \"<string>\",\n  \"dataPackagesUrl\": \"<uri>\",\n  \"downloadCatalogueUrl\": \"<uri>\",\n  \"productUrl\": \"<uri>\",\n  \"productDownloadsUrl\": \"<uri>\"\n}",
+                  "createdAt": "2026-07-28T02:29:18.000Z",
+                  "updatedAt": "2026-07-28T02:29:18.000Z",
+                  "uid": "35240-35bd6893-252d-43d6-a568-0c902db58015"
+                }
+              ],
+              "createdAt": "2026-07-28T02:29:18.000Z",
+              "updatedAt": "2026-07-28T02:29:18.000Z",
+              "uid": "35240-e63cf741-337e-47e7-bc56-83843671ad7e"
+            }
+          ],
+          "id": "380b4d2e-ca1a-4928-9700-78f9d832e3b9",
+          "createdAt": "2026-07-28T02:29:18.000Z",
+          "updatedAt": "2026-07-28T02:29:18.000Z",
+          "uid": "35240-380b4d2e-ca1a-4928-9700-78f9d832e3b9"
+        },
+        {
+          "name": "Returns a list of the OpenData products that are available to download.",
+          "id": "60df82c0-83a0-45de-9216-49c6b9daa904",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/products?expanded=<boolean>",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "products"
+              ],
+              "query": [
+                {
+                  "description": "When specified, the full details of each product will be returned.",
+                  "key": "expanded",
+                  "value": "<boolean>"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "df978d29-a8c2-4806-ac0c-f981e94b0515",
+              "name": "Successful response.",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/products?expanded=<boolean>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "products"
+                  ],
+                  "query": [
+                    {
+                      "description": "When specified, the full details of each product will be returned.",
+                      "key": "expanded",
+                      "value": "<boolean>"
+                    }
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "[\n  {\n    \"id\": \"<string>\",\n    \"name\": \"<string>\",\n    \"description\": [\n      \"<string>\"\n    ],\n    \"version\": \"/dddd-/dd\",\n    \"url\": \"<string>\",\n    \"thirdPartyInfo\": {\n      \"dataProvider\": {\n        \"name\": \"<string>\",\n        \"shortName\": \"<string>\",\n        \"homepage\": \"<string>\",\n        \"logoUrl\": \"<uri>\"\n      },\n      \"supportingInfo\": [\n        {\n          \"name\": \"<string>\",\n          \"link\": \"<uri>\"\n        },\n        {\n          \"name\": \"<string>\",\n          \"link\": \"<uri>\"\n        }\n      ],\n      \"alsoAvailable\": [\n        {\n          \"name\": \"<string>\",\n          \"link\": \"<uri>\"\n        },\n        {\n          \"name\": \"<string>\",\n          \"link\": \"<uri>\"\n        }\n      ],\n      \"supportEmail\": \"<email>\"\n    },\n    \"documentationUrl\": \"<string>\",\n    \"areas\": [\n      \"NM\",\n      \"ND\"\n    ],\n    \"dataStructures\": [\n      \"Raster\",\n      \"Vector\"\n    ],\n    \"category\": \"<string>\",\n    \"categories\": [\n      \"<string>\",\n      \"<string>\"\n    ],\n    \"formats\": [\n      {\n        \"format\": \"<string>\",\n        \"subformat\": \"<string>\"\n      },\n      {\n        \"format\": \"<string>\",\n        \"subformat\": \"<string>\"\n      }\n    ],\n    \"imageCount\": \"<integer>\",\n    \"imageTemplate\": \"<string>\",\n    \"downloadsUrl\": \"<uri>\",\n    \"warning\": \"<string>\",\n    \"endOfLife\": \"/dddd-/dd-/dd\"\n  },\n  {\n    \"id\": \"<string>\",\n    \"name\": \"<string>\",\n    \"description\": [\n      \"<string>\"\n    ],\n    \"version\": \"/dddd-/dd\",\n    \"url\": \"<string>\",\n    \"thirdPartyInfo\": {\n      \"dataProvider\": {\n        \"name\": \"<string>\",\n        \"shortName\": \"<string>\",\n        \"homepage\": \"<string>\",\n        \"logoUrl\": \"<uri>\"\n      },\n      \"supportingInfo\": [\n        {\n          \"name\": \"<string>\",\n          \"link\": \"<uri>\"\n        },\n        {\n          \"name\": \"<string>\",\n          \"link\": \"<uri>\"\n        }\n      ],\n      \"alsoAvailable\": [\n        {\n          \"name\": \"<string>\",\n          \"link\": \"<uri>\"\n        },\n        {\n          \"name\": \"<string>\",\n          \"link\": \"<uri>\"\n        }\n      ],\n      \"supportEmail\": \"<email>\"\n    },\n    \"documentationUrl\": \"<string>\",\n    \"areas\": [\n      \"HW\",\n      \"NA\"\n    ],\n    \"dataStructures\": [\n      \"Raster\",\n      \"Vector\"\n    ],\n    \"category\": \"<string>\",\n    \"categories\": [\n      \"<string>\",\n      \"<string>\"\n    ],\n    \"formats\": [\n      {\n        \"format\": \"<string>\",\n        \"subformat\": \"<string>\"\n      },\n      {\n        \"format\": \"<string>\",\n        \"subformat\": \"<string>\"\n      }\n    ],\n    \"imageCount\": \"<integer>\",\n    \"imageTemplate\": \"<string>\",\n    \"downloadsUrl\": \"<uri>\",\n    \"warning\": \"<string>\",\n    \"endOfLife\": \"/dddd-/dd-/dd\"\n  }\n]",
+              "createdAt": "2026-07-28T02:29:18.000Z",
+              "updatedAt": "2026-07-28T02:29:18.000Z",
+              "uid": "35240-df978d29-a8c2-4806-ac0c-f981e94b0515"
+            }
+          ],
+          "createdAt": "2026-07-28T02:29:18.000Z",
+          "updatedAt": "2026-07-28T02:29:18.000Z",
+          "uid": "35240-60df82c0-83a0-45de-9216-49c6b9daa904"
+        }
+      ],
+      "id": "8d033cbe-6743-4185-9249-e1d521f11b8d",
+      "createdAt": "2026-07-28T02:29:18.000Z",
+      "updatedAt": "2026-07-28T02:29:18.000Z",
+      "uid": "35240-8d033cbe-6743-4185-9249-e1d521f11b8d"
+    },
+    {
+      "name": "dataPackages",
+      "item": [
+        {
+          "name": "{dataPackageId}",
+          "item": [
+            {
+              "name": "versions",
+              "item": [
+                {
+                  "name": "{versionId}",
+                  "item": [
+                    {
+                      "name": "downloads",
+                      "item": [
+                        {
+                          "name": "Get a specific file from a data package version.",
+                          "id": "54d7a076-1f14-4158-9de4-9e972a8d525c",
+                          "protocolProfileBehavior": {
+                            "disableBodyPruning": true
+                          },
+                          "request": {
+                            "auth": {
+                              "type": "oauth2",
+                              "oauth2": [
+                                {
+                                  "key": "accessTokenUrl",
+                                  "value": "https://api.os.uk/oauth2/token/v1",
+                                  "type": "string"
+                                },
+                                {
+                                  "key": "grant_type",
+                                  "value": "client_credentials",
+                                  "type": "string"
+                                }
+                              ]
+                            },
+                            "method": "GET",
+                            "header": [
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/dataPackages/:dataPackageId/versions/:versionId/downloads?fileName=<string>",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "dataPackages",
+                                ":dataPackageId",
+                                "versions",
+                                ":versionId",
+                                "downloads"
+                              ],
+                              "query": [
+                                {
+                                  "description": "(Required) The name of the file.",
+                                  "key": "fileName",
+                                  "value": "<string>"
+                                }
+                              ],
+                              "variable": [
+                                {
+                                  "id": "562fb80b-9402-4049-b789-a82e0a0d6c5a",
+                                  "key": "dataPackageId",
+                                  "value": "<string>",
+                                  "description": "(Required) The id of the data package."
+                                },
+                                {
+                                  "id": "139893b3-6c40-44fb-a782-3e667a6105c2",
+                                  "key": "versionId",
+                                  "value": "<string>",
+                                  "description": "(Required) The id of the data package version."
+                                }
+                              ]
+                            }
+                          },
+                          "response": [
+                            {
+                              "id": "caef3840-bb33-4c29-93a6-26beb2156ff6",
+                              "name": "A redirect to the actual file data.",
+                              "originalRequest": {
+                                "method": "GET",
+                                "header": [
+                                  {
+                                    "description": "Added as a part of security scheme: oauth2",
+                                    "key": "Authorization",
+                                    "value": "<token>"
+                                  }
+                                ],
+                                "url": {
+                                  "raw": "{{baseUrl}}/dataPackages/:dataPackageId/versions/:versionId/downloads?fileName=<string>",
+                                  "host": [
+                                    "{{baseUrl}}"
+                                  ],
+                                  "path": [
+                                    "dataPackages",
+                                    ":dataPackageId",
+                                    "versions",
+                                    ":versionId",
+                                    "downloads"
+                                  ],
+                                  "query": [
+                                    {
+                                      "description": "(Required) The name of the file.",
+                                      "key": "fileName",
+                                      "value": "<string>"
+                                    }
+                                  ],
+                                  "variable": [
+                                    {
+                                      "key": "dataPackageId"
+                                    },
+                                    {
+                                      "key": "versionId"
+                                    }
+                                  ]
+                                }
+                              },
+                              "status": "Temporary Redirect (since HTTP/1.1)",
+                              "code": 307,
+                              "_postman_previewlanguage": "text",
+                              "header": [
+                                {
+                                  "disabled": false,
+                                  "description": {
+                                    "content": "Direct URL for the download file.",
+                                    "type": "text/plain"
+                                  },
+                                  "key": "Location",
+                                  "value": "<uri>"
+                                }
+                              ],
+                              "cookie": [],
+                              "responseTime": null,
+                              "body": null,
+                              "createdAt": "2026-07-28T02:29:18.000Z",
+                              "updatedAt": "2026-07-28T02:29:18.000Z",
+                              "uid": "35240-caef3840-bb33-4c29-93a6-26beb2156ff6"
+                            },
+                            {
+                              "id": "331ccd0a-3856-4db5-a8e0-ce4ed39dcc06",
+                              "name": "The API key or OAuth 2 access token is missing or invalid.",
+                              "originalRequest": {
+                                "method": "GET",
+                                "header": [
+                                  {
+                                    "key": "Accept",
+                                    "value": "application/json"
+                                  },
+                                  {
+                                    "description": "Added as a part of security scheme: oauth2",
+                                    "key": "Authorization",
+                                    "value": "<token>"
+                                  }
+                                ],
+                                "url": {
+                                  "raw": "{{baseUrl}}/dataPackages/:dataPackageId/versions/:versionId/downloads?fileName=<string>",
+                                  "host": [
+                                    "{{baseUrl}}"
+                                  ],
+                                  "path": [
+                                    "dataPackages",
+                                    ":dataPackageId",
+                                    "versions",
+                                    ":versionId",
+                                    "downloads"
+                                  ],
+                                  "query": [
+                                    {
+                                      "description": "(Required) The name of the file.",
+                                      "key": "fileName",
+                                      "value": "<string>"
+                                    }
+                                  ],
+                                  "variable": [
+                                    {
+                                      "key": "dataPackageId"
+                                    },
+                                    {
+                                      "key": "versionId"
+                                    }
+                                  ]
+                                }
+                              },
+                              "status": "Unauthorized",
+                              "code": 401,
+                              "_postman_previewlanguage": "json",
+                              "header": [
+                                {
+                                  "key": "Content-Type",
+                                  "value": "application/json"
+                                }
+                              ],
+                              "cookie": [],
+                              "responseTime": null,
+                              "body": "{\n  \"message\": \"<string>\"\n}",
+                              "createdAt": "2026-07-28T02:29:18.000Z",
+                              "updatedAt": "2026-07-28T02:29:18.000Z",
+                              "uid": "35240-331ccd0a-3856-4db5-a8e0-ce4ed39dcc06"
+                            },
+                            {
+                              "id": "2b9af14f-2431-49b8-b3f3-8cfff02265f3",
+                              "name": "The request does not match any known content.\nThe response will contain a human readable message, and may also contain links to help you\nnavigate to other API endpoints.\n",
+                              "originalRequest": {
+                                "method": "GET",
+                                "header": [
+                                  {
+                                    "key": "Accept",
+                                    "value": "application/json"
+                                  },
+                                  {
+                                    "description": "Added as a part of security scheme: oauth2",
+                                    "key": "Authorization",
+                                    "value": "<token>"
+                                  }
+                                ],
+                                "url": {
+                                  "raw": "{{baseUrl}}/dataPackages/:dataPackageId/versions/:versionId/downloads?fileName=<string>",
+                                  "host": [
+                                    "{{baseUrl}}"
+                                  ],
+                                  "path": [
+                                    "dataPackages",
+                                    ":dataPackageId",
+                                    "versions",
+                                    ":versionId",
+                                    "downloads"
+                                  ],
+                                  "query": [
+                                    {
+                                      "description": "(Required) The name of the file.",
+                                      "key": "fileName",
+                                      "value": "<string>"
+                                    }
+                                  ],
+                                  "variable": [
+                                    {
+                                      "key": "dataPackageId"
+                                    },
+                                    {
+                                      "key": "versionId"
+                                    }
+                                  ]
+                                }
+                              },
+                              "status": "Not Found",
+                              "code": 404,
+                              "_postman_previewlanguage": "json",
+                              "header": [
+                                {
+                                  "key": "Content-Type",
+                                  "value": "application/json"
+                                }
+                              ],
+                              "cookie": [],
+                              "responseTime": null,
+                              "body": "{\n  \"message\": \"<string>\",\n  \"dataPackagesUrl\": \"<uri>\",\n  \"downloadCatalogueUrl\": \"<uri>\",\n  \"productUrl\": \"<uri>\",\n  \"productDownloadsUrl\": \"<uri>\"\n}",
+                              "createdAt": "2026-07-28T02:29:18.000Z",
+                              "updatedAt": "2026-07-28T02:29:18.000Z",
+                              "uid": "35240-2b9af14f-2431-49b8-b3f3-8cfff02265f3"
+                            }
+                          ],
+                          "createdAt": "2026-07-28T02:29:18.000Z",
+                          "updatedAt": "2026-07-28T02:29:18.000Z",
+                          "uid": "35240-54d7a076-1f14-4158-9de4-9e972a8d525c"
+                        }
+                      ],
+                      "id": "3b7efdf6-b3f1-4097-b48c-51d5c2c042ef",
+                      "createdAt": "2026-07-28T02:29:18.000Z",
+                      "updatedAt": "2026-07-28T02:29:18.000Z",
+                      "uid": "35240-3b7efdf6-b3f1-4097-b48c-51d5c2c042ef"
+                    },
+                    {
+                      "name": "Get a specific data package version, including details of the files that are available to download.",
+                      "id": "ae82e3a0-f78e-499e-a54a-5bab2a58819c",
+                      "protocolProfileBehavior": {
+                        "disableBodyPruning": true
+                      },
+                      "request": {
+                        "auth": {
+                          "type": "oauth2",
+                          "oauth2": [
+                            {
+                              "key": "accessTokenUrl",
+                              "value": "https://api.os.uk/oauth2/token/v1",
+                              "type": "string"
+                            },
+                            {
+                              "key": "grant_type",
+                              "value": "client_credentials",
+                              "type": "string"
+                            }
+                          ]
+                        },
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/dataPackages/:dataPackageId/versions/:versionId",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "dataPackages",
+                            ":dataPackageId",
+                            "versions",
+                            ":versionId"
+                          ],
+                          "variable": [
+                            {
+                              "id": "6113e4ee-fcd1-4392-8671-8250fa7accd0",
+                              "key": "dataPackageId",
+                              "value": "<string>",
+                              "description": "(Required) The id of the data package."
+                            },
+                            {
+                              "id": "c3df72d4-eb20-4fda-a389-5933e4d4b242",
+                              "key": "versionId",
+                              "value": "<string>",
+                              "description": "(Required) The id of the data package version, or the string 'latest'."
+                            }
+                          ]
+                        }
+                      },
+                      "response": [
+                        {
+                          "id": "90cf689d-6b3c-4ca0-beb9-7c0b97c48ed5",
+                          "name": "A data package version, including download details.",
+                          "originalRequest": {
+                            "method": "GET",
+                            "header": [
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              },
+                              {
+                                "description": "Added as a part of security scheme: oauth2",
+                                "key": "Authorization",
+                                "value": "<token>"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/dataPackages/:dataPackageId/versions/:versionId",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "dataPackages",
+                                ":dataPackageId",
+                                "versions",
+                                ":versionId"
+                              ],
+                              "variable": [
+                                {
+                                  "key": "dataPackageId"
+                                },
+                                {
+                                  "key": "versionId"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "OK",
+                          "code": 200,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "{\n  \"createdOn\": \"<date>\",\n  \"downloads\": [\n    {\n      \"url\": \"<uri>\",\n      \"fileName\": \"<string>\",\n      \"size\": \"<integer>\",\n      \"md5\": \"<string>\"\n    },\n    {\n      \"url\": \"<uri>\",\n      \"fileName\": \"<string>\",\n      \"size\": \"<integer>\",\n      \"md5\": \"<string>\"\n    }\n  ],\n  \"id\": \"<string>\",\n  \"productVersion\": \"<string>\",\n  \"reason\": \"INITIAL\",\n  \"supplyType\": \"FULL\",\n  \"url\": \"<uri>\",\n  \"format\": \"<string>\",\n  \"dataPackageUrl\": \"<uri>\",\n  \"nextVersionUrl\": \"<uri>\",\n  \"previousVersionUrl\": \"<uri>\"\n}",
+                          "createdAt": "2026-07-28T02:29:18.000Z",
+                          "updatedAt": "2026-07-28T02:29:18.000Z",
+                          "uid": "35240-90cf689d-6b3c-4ca0-beb9-7c0b97c48ed5"
+                        },
+                        {
+                          "id": "9e8ec7cd-48d4-4ab9-bc4c-5587b3c817f6",
+                          "name": "The API key or OAuth 2 access token is missing or invalid.",
+                          "originalRequest": {
+                            "method": "GET",
+                            "header": [
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              },
+                              {
+                                "description": "Added as a part of security scheme: oauth2",
+                                "key": "Authorization",
+                                "value": "<token>"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/dataPackages/:dataPackageId/versions/:versionId",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "dataPackages",
+                                ":dataPackageId",
+                                "versions",
+                                ":versionId"
+                              ],
+                              "variable": [
+                                {
+                                  "key": "dataPackageId"
+                                },
+                                {
+                                  "key": "versionId"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "Unauthorized",
+                          "code": 401,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "{\n  \"message\": \"<string>\"\n}",
+                          "createdAt": "2026-07-28T02:29:18.000Z",
+                          "updatedAt": "2026-07-28T02:29:18.000Z",
+                          "uid": "35240-9e8ec7cd-48d4-4ab9-bc4c-5587b3c817f6"
+                        },
+                        {
+                          "id": "f6c9ce77-d1ac-42a2-905d-2050307d7e4e",
+                          "name": "The request does not match any known content.\nThe response will contain a human readable message, and may also contain links to help you\nnavigate to other API endpoints.\n",
+                          "originalRequest": {
+                            "method": "GET",
+                            "header": [
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              },
+                              {
+                                "description": "Added as a part of security scheme: oauth2",
+                                "key": "Authorization",
+                                "value": "<token>"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/dataPackages/:dataPackageId/versions/:versionId",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "dataPackages",
+                                ":dataPackageId",
+                                "versions",
+                                ":versionId"
+                              ],
+                              "variable": [
+                                {
+                                  "key": "dataPackageId"
+                                },
+                                {
+                                  "key": "versionId"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "Not Found",
+                          "code": 404,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "{\n  \"message\": \"<string>\",\n  \"dataPackagesUrl\": \"<uri>\",\n  \"downloadCatalogueUrl\": \"<uri>\",\n  \"productUrl\": \"<uri>\",\n  \"productDownloadsUrl\": \"<uri>\"\n}",
+                          "createdAt": "2026-07-28T02:29:18.000Z",
+                          "updatedAt": "2026-07-28T02:29:18.000Z",
+                          "uid": "35240-f6c9ce77-d1ac-42a2-905d-2050307d7e4e"
+                        }
+                      ],
+                      "createdAt": "2026-07-28T02:29:18.000Z",
+                      "updatedAt": "2026-07-28T02:29:18.000Z",
+                      "uid": "35240-ae82e3a0-f78e-499e-a54a-5bab2a58819c"
+                    }
+                  ],
+                  "id": "49f11a43-50c2-4942-9cab-b962319fa314",
+                  "createdAt": "2026-07-28T02:29:18.000Z",
+                  "updatedAt": "2026-07-28T02:29:18.000Z",
+                  "uid": "35240-49f11a43-50c2-4942-9cab-b962319fa314"
+                },
+                {
+                  "name": "Get the list of versions for a specific data package.",
+                  "id": "de7e7200-866e-4cd6-9f09-104354f53a39",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                  },
+                  "request": {
+                    "auth": {
+                      "type": "oauth2",
+                      "oauth2": [
+                        {
+                          "key": "accessTokenUrl",
+                          "value": "https://api.os.uk/oauth2/token/v1",
+                          "type": "string"
+                        },
+                        {
+                          "key": "grant_type",
+                          "value": "client_credentials",
+                          "type": "string"
+                        }
+                      ]
+                    },
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/dataPackages/:dataPackageId/versions",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "dataPackages",
+                        ":dataPackageId",
+                        "versions"
+                      ],
+                      "variable": [
+                        {
+                          "id": "0b5d7399-7fdf-44ce-8d08-365bf6f418f9",
+                          "key": "dataPackageId",
+                          "value": "<string>",
+                          "description": "(Required) The id of the data package."
+                        }
+                      ]
+                    }
+                  },
+                  "response": [
+                    {
+                      "id": "b6709667-c8f1-48ed-bec0-04d93c57ef31",
+                      "name": "A list of data package versions.",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: oauth2",
+                            "key": "Authorization",
+                            "value": "<token>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/dataPackages/:dataPackageId/versions",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "dataPackages",
+                            ":dataPackageId",
+                            "versions"
+                          ],
+                          "variable": [
+                            {
+                              "key": "dataPackageId"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "OK",
+                      "code": 200,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "[\n  {\n    \"id\": \"<string>\",\n    \"url\": \"<uri>\",\n    \"createdOn\": \"<date>\",\n    \"reason\": \"INITIAL\",\n    \"supplyType\": \"FULL\",\n    \"productVersion\": \"<string>\",\n    \"format\": \"<string>\",\n    \"dataPackageUrl\": \"<uri>\"\n  },\n  {\n    \"id\": \"<string>\",\n    \"url\": \"<uri>\",\n    \"createdOn\": \"<date>\",\n    \"reason\": \"UPDATE\",\n    \"supplyType\": \"COU\",\n    \"productVersion\": \"<string>\",\n    \"format\": \"<string>\",\n    \"dataPackageUrl\": \"<uri>\"\n  }\n]",
+                      "createdAt": "2026-07-28T02:29:18.000Z",
+                      "updatedAt": "2026-07-28T02:29:18.000Z",
+                      "uid": "35240-b6709667-c8f1-48ed-bec0-04d93c57ef31"
+                    },
+                    {
+                      "id": "5c862b12-7495-4ddd-9426-80d6526859bf",
+                      "name": "The API key or OAuth 2 access token is missing or invalid.",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: oauth2",
+                            "key": "Authorization",
+                            "value": "<token>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/dataPackages/:dataPackageId/versions",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "dataPackages",
+                            ":dataPackageId",
+                            "versions"
+                          ],
+                          "variable": [
+                            {
+                              "key": "dataPackageId"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Unauthorized",
+                      "code": 401,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"message\": \"<string>\"\n}",
+                      "createdAt": "2026-07-28T02:29:18.000Z",
+                      "updatedAt": "2026-07-28T02:29:18.000Z",
+                      "uid": "35240-5c862b12-7495-4ddd-9426-80d6526859bf"
+                    },
+                    {
+                      "id": "faaeb8a9-abac-4141-ae47-590d80a6611a",
+                      "name": "The request does not match any known content.\nThe response will contain a human readable message, and may also contain links to help you\nnavigate to other API endpoints.\n",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: oauth2",
+                            "key": "Authorization",
+                            "value": "<token>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/dataPackages/:dataPackageId/versions",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "dataPackages",
+                            ":dataPackageId",
+                            "versions"
+                          ],
+                          "variable": [
+                            {
+                              "key": "dataPackageId"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Not Found",
+                      "code": 404,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"message\": \"<string>\",\n  \"dataPackagesUrl\": \"<uri>\",\n  \"downloadCatalogueUrl\": \"<uri>\",\n  \"productUrl\": \"<uri>\",\n  \"productDownloadsUrl\": \"<uri>\"\n}",
+                      "createdAt": "2026-07-28T02:29:18.000Z",
+                      "updatedAt": "2026-07-28T02:29:18.000Z",
+                      "uid": "35240-faaeb8a9-abac-4141-ae47-590d80a6611a"
+                    }
+                  ],
+                  "createdAt": "2026-07-28T02:29:18.000Z",
+                  "updatedAt": "2026-07-28T02:29:18.000Z",
+                  "uid": "35240-de7e7200-866e-4cd6-9f09-104354f53a39"
+                }
+              ],
+              "id": "da366de9-9992-47b6-b386-57a1b6895997",
+              "createdAt": "2026-07-28T02:29:18.000Z",
+              "updatedAt": "2026-07-28T02:29:18.000Z",
+              "uid": "35240-da366de9-9992-47b6-b386-57a1b6895997"
+            },
+            {
+              "name": "Get a specific data package.",
+              "id": "69415b04-006e-42bf-988e-74b55e39b6e8",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "auth": {
+                  "type": "oauth2",
+                  "oauth2": [
+                    {
+                      "key": "accessTokenUrl",
+                      "value": "https://api.os.uk/oauth2/token/v1",
+                      "type": "string"
+                    },
+                    {
+                      "key": "grant_type",
+                      "value": "client_credentials",
+                      "type": "string"
+                    }
+                  ]
+                },
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/dataPackages/:dataPackageId",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "dataPackages",
+                    ":dataPackageId"
+                  ],
+                  "variable": [
+                    {
+                      "id": "254b031b-3541-457c-acbf-853be7015281",
+                      "key": "dataPackageId",
+                      "value": "<string>",
+                      "description": "(Required) The id of the data package."
+                    }
+                  ]
+                }
+              },
+              "response": [
+                {
+                  "id": "b317c0d3-1b47-4442-b52a-fd3d14edfbfc",
+                  "name": "A data package.",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: oauth2",
+                        "key": "Authorization",
+                        "value": "<token>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/dataPackages/:dataPackageId",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "dataPackages",
+                        ":dataPackageId"
+                      ],
+                      "variable": [
+                        {
+                          "key": "dataPackageId"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "OK",
+                  "code": 200,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"id\": \"<string>\",\n  \"name\": \"<string>\",\n  \"url\": \"<uri>\",\n  \"createdOn\": \"<date>\",\n  \"productId\": \"<string>\",\n  \"productName\": \"<string>\",\n  \"versions\": [\n    {\n      \"id\": \"<string>\",\n      \"url\": \"<uri>\",\n      \"createdOn\": \"<date>\",\n      \"reason\": \"INITIAL\",\n      \"supplyType\": \"FULL\",\n      \"productVersion\": \"<string>\",\n      \"format\": \"<string>\",\n      \"dataPackageUrl\": \"<uri>\"\n    },\n    {\n      \"id\": \"<string>\",\n      \"url\": \"<uri>\",\n      \"createdOn\": \"<date>\",\n      \"reason\": \"EXPANSION\",\n      \"supplyType\": \"FULL\",\n      \"productVersion\": \"<string>\",\n      \"format\": \"<string>\",\n      \"dataPackageUrl\": \"<uri>\"\n    }\n  ]\n}",
+                  "createdAt": "2026-07-28T02:29:18.000Z",
+                  "updatedAt": "2026-07-28T02:29:18.000Z",
+                  "uid": "35240-b317c0d3-1b47-4442-b52a-fd3d14edfbfc"
+                },
+                {
+                  "id": "2037dea6-4483-474f-ad6d-71203cf9ac5b",
+                  "name": "The API key or OAuth 2 access token is missing or invalid.",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: oauth2",
+                        "key": "Authorization",
+                        "value": "<token>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/dataPackages/:dataPackageId",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "dataPackages",
+                        ":dataPackageId"
+                      ],
+                      "variable": [
+                        {
+                          "key": "dataPackageId"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Unauthorized",
+                  "code": 401,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"message\": \"<string>\"\n}",
+                  "createdAt": "2026-07-28T02:29:18.000Z",
+                  "updatedAt": "2026-07-28T02:29:18.000Z",
+                  "uid": "35240-2037dea6-4483-474f-ad6d-71203cf9ac5b"
+                },
+                {
+                  "id": "13ae65a8-0675-4855-9fdf-300d85cf0f73",
+                  "name": "The request does not match any known content.\nThe response will contain a human readable message, and may also contain links to help you\nnavigate to other API endpoints.\n",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: oauth2",
+                        "key": "Authorization",
+                        "value": "<token>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/dataPackages/:dataPackageId",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "dataPackages",
+                        ":dataPackageId"
+                      ],
+                      "variable": [
+                        {
+                          "key": "dataPackageId"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Not Found",
+                  "code": 404,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"message\": \"<string>\",\n  \"dataPackagesUrl\": \"<uri>\",\n  \"downloadCatalogueUrl\": \"<uri>\",\n  \"productUrl\": \"<uri>\",\n  \"productDownloadsUrl\": \"<uri>\"\n}",
+                  "createdAt": "2026-07-28T02:29:18.000Z",
+                  "updatedAt": "2026-07-28T02:29:18.000Z",
+                  "uid": "35240-13ae65a8-0675-4855-9fdf-300d85cf0f73"
+                }
+              ],
+              "createdAt": "2026-07-28T02:29:18.000Z",
+              "updatedAt": "2026-07-28T02:29:18.000Z",
+              "uid": "35240-69415b04-006e-42bf-988e-74b55e39b6e8"
+            }
+          ],
+          "id": "9364b518-c723-41f5-b705-2f5116e0899f",
+          "createdAt": "2026-07-28T02:29:18.000Z",
+          "updatedAt": "2026-07-28T02:29:18.000Z",
+          "uid": "35240-9364b518-c723-41f5-b705-2f5116e0899f"
+        },
+        {
+          "name": "List the data packages that are available to you.",
+          "id": "04ad110e-3cdf-45ed-91ef-b038a49f5d7a",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "auth": {
+              "type": "oauth2",
+              "oauth2": [
+                {
+                  "key": "accessTokenUrl",
+                  "value": "https://api.os.uk/oauth2/token/v1",
+                  "type": "string"
+                },
+                {
+                  "key": "grant_type",
+                  "value": "client_credentials",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "GET",
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/dataPackages",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "dataPackages"
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "3515b9dd-1864-489e-9273-ecb5fc125db5",
+              "name": "A list of data packages.",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: oauth2",
+                    "key": "Authorization",
+                    "value": "<token>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/dataPackages",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "dataPackages"
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "[\n  {\n    \"id\": \"<string>\",\n    \"name\": \"<string>\",\n    \"url\": \"<uri>\",\n    \"createdOn\": \"<date>\",\n    \"productId\": \"<string>\",\n    \"productName\": \"<string>\",\n    \"versions\": [\n      {\n        \"id\": \"<string>\",\n        \"url\": \"<uri>\",\n        \"createdOn\": \"<date>\",\n        \"reason\": \"INITIAL\",\n        \"supplyType\": \"COU\",\n        \"productVersion\": \"<string>\",\n        \"format\": \"<string>\",\n        \"dataPackageUrl\": \"<uri>\"\n      },\n      {\n        \"id\": \"<string>\",\n        \"url\": \"<uri>\",\n        \"createdOn\": \"<date>\",\n        \"reason\": \"EXPANSION\",\n        \"supplyType\": \"FULL\",\n        \"productVersion\": \"<string>\",\n        \"format\": \"<string>\",\n        \"dataPackageUrl\": \"<uri>\"\n      }\n    ]\n  },\n  {\n    \"id\": \"<string>\",\n    \"name\": \"<string>\",\n    \"url\": \"<uri>\",\n    \"createdOn\": \"<date>\",\n    \"productId\": \"<string>\",\n    \"productName\": \"<string>\",\n    \"versions\": [\n      {\n        \"id\": \"<string>\",\n        \"url\": \"<uri>\",\n        \"createdOn\": \"<date>\",\n        \"reason\": \"EXPANSION\",\n        \"supplyType\": \"FULL\",\n        \"productVersion\": \"<string>\",\n        \"format\": \"<string>\",\n        \"dataPackageUrl\": \"<uri>\"\n      },\n      {\n        \"id\": \"<string>\",\n        \"url\": \"<uri>\",\n        \"createdOn\": \"<date>\",\n        \"reason\": \"INITIAL\",\n        \"supplyType\": \"COU\",\n        \"productVersion\": \"<string>\",\n        \"format\": \"<string>\",\n        \"dataPackageUrl\": \"<uri>\"\n      }\n    ]\n  }\n]",
+              "createdAt": "2026-07-28T02:29:18.000Z",
+              "updatedAt": "2026-07-28T02:29:18.000Z",
+              "uid": "35240-3515b9dd-1864-489e-9273-ecb5fc125db5"
+            },
+            {
+              "id": "44b9d94e-fe9c-4b4f-9e69-bc664196508c",
+              "name": "The API key or OAuth 2 access token is missing or invalid.",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: oauth2",
+                    "key": "Authorization",
+                    "value": "<token>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/dataPackages",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "dataPackages"
+                  ]
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"message\": \"<string>\"\n}",
+              "createdAt": "2026-07-28T02:29:18.000Z",
+              "updatedAt": "2026-07-28T02:29:18.000Z",
+              "uid": "35240-44b9d94e-fe9c-4b4f-9e69-bc664196508c"
+            }
+          ],
+          "createdAt": "2026-07-28T02:29:18.000Z",
+          "updatedAt": "2026-07-28T02:29:18.000Z",
+          "uid": "35240-04ad110e-3cdf-45ed-91ef-b038a49f5d7a"
+        }
+      ],
+      "id": "dc0f0a44-f0fd-4ba6-8eef-d9d3e9cdabf3",
+      "createdAt": "2026-07-28T02:29:18.000Z",
+      "updatedAt": "2026-07-28T02:29:18.000Z",
+      "uid": "35240-dc0f0a44-f0fd-4ba6-8eef-d9d3e9cdabf3"
+    }
+  ],
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "https://api.os.uk/downloads/v1/"
+    }
+  ]
+}

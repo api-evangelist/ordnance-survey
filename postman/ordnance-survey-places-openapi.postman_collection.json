@@ -1,0 +1,1297 @@
+{
+  "info": {
+    "_postman_id": "dabcbb2c-c670-4edc-ae5f-565f7abf4f86",
+    "name": "OS Places API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-07-28T02:29:21.000Z",
+    "updatedAt": "2026-07-28T02:29:22.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-dabcbb2c-c670-4edc-ae5f-565f7abf4f86"
+  },
+  "item": [
+    {
+      "name": "bbox",
+      "item": [
+        {
+          "name": "Returns matched addresses within a bounding box.",
+          "id": "cbfbbe13-847e-46fa-9707-6dc97d6d08ce",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/bbox?bbox=<string>&format=JSON&maxresults=100&offset=0&dataset=DPA&lr=EN&output_srs=EPSG:27700&srs=BNG&fq=<string>&fq=<string>",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "bbox"
+              ],
+              "query": [
+                {
+                  "description": "(Required) A pair of comma-separated coordinates with an accuracy of two decimal places or less, that specify the lower left and upper right coordinates of the bounding box. The maximum size of the bounding box is 1 km2. If the bounding box exceeds this, an error message is returned. The precision of the coordinates is to an accuracy of 8 metres.",
+                  "key": "bbox",
+                  "value": "<string>"
+                },
+                {
+                  "description": "The format the response will be returned in. Default: JSON.",
+                  "key": "format",
+                  "value": "JSON"
+                },
+                {
+                  "description": "The maximum number of results to return. Default: 100.",
+                  "key": "maxresults",
+                  "value": "100"
+                },
+                {
+                  "description": "Offset the list of returned results by this amount.",
+                  "key": "offset",
+                  "value": "0"
+                },
+                {
+                  "description": "The dataset to return. Multiple values can be sent, separated by a comma. Default: DPA.",
+                  "key": "dataset",
+                  "value": "DPA"
+                },
+                {
+                  "description": "Which language of addresses to return. Default: EN, CY.",
+                  "key": "lr",
+                  "value": "EN"
+                },
+                {
+                  "description": "The intended output spatial reference system. Default: EPSG:27700",
+                  "key": "output_srs",
+                  "value": "EPSG:27700"
+                },
+                {
+                  "description": "The spatial reference system for the input coordinate set.",
+                  "key": "srs",
+                  "value": "BNG"
+                },
+                {
+                  "description": "Filter for classification code, logical status code, LPI logical status code and/or country code. Filtering for classification code will accept wildcard ( * ) searches. Multiple searches can be done by separating the codes with a space. Multiple filters can be used together by including the parameter multiple times",
+                  "key": "fq",
+                  "value": "<string>"
+                },
+                {
+                  "description": "Filter for classification code, logical status code, LPI logical status code and/or country code. Filtering for classification code will accept wildcard ( * ) searches. Multiple searches can be done by separating the codes with a space. Multiple filters can be used together by including the parameter multiple times",
+                  "key": "fq",
+                  "value": "<string>"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "a6462b75-cf49-4ff1-a0f9-fba03a5f5c48",
+              "name": "Retrieves matched addresses",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/bbox?bbox=<string>&format=JSON&maxresults=100&offset=0&dataset=DPA&lr=EN&output_srs=EPSG:27700&srs=BNG&fq=<string>&key=<API Key>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "bbox"
+                  ],
+                  "query": [
+                    {
+                      "description": "(Required) A pair of comma-separated coordinates with an accuracy of two decimal places or less, that specify the lower left and upper right coordinates of the bounding box. The maximum size of the bounding box is 1 km2. If the bounding box exceeds this, an error message is returned. The precision of the coordinates is to an accuracy of 8 metres.",
+                      "key": "bbox",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "The format the response will be returned in. Default: JSON.",
+                      "key": "format",
+                      "value": "JSON"
+                    },
+                    {
+                      "description": "The maximum number of results to return. Default: 100.",
+                      "key": "maxresults",
+                      "value": "100"
+                    },
+                    {
+                      "description": "Offset the list of returned results by this amount.",
+                      "key": "offset",
+                      "value": "0"
+                    },
+                    {
+                      "description": "The dataset to return. Multiple values can be sent, separated by a comma. Default: DPA.",
+                      "key": "dataset",
+                      "value": "DPA"
+                    },
+                    {
+                      "description": "Which language of addresses to return. Default: EN, CY.",
+                      "key": "lr",
+                      "value": "EN"
+                    },
+                    {
+                      "description": "The intended output spatial reference system. Default: EPSG:27700",
+                      "key": "output_srs",
+                      "value": "EPSG:27700"
+                    },
+                    {
+                      "description": "The spatial reference system for the input coordinate set.",
+                      "key": "srs",
+                      "value": "BNG"
+                    },
+                    {
+                      "description": "Filter for classification code, logical status code, LPI logical status code and/or country code. Filtering for classification code will accept wildcard ( * ) searches. Multiple searches can be done by separating the codes with a space. Multiple filters can be used together by including the parameter multiple times",
+                      "key": "fq",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Added as a part of security scheme: apikey",
+                      "key": "key",
+                      "value": "<API Key>"
+                    }
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"header\": {\n    \"uri\": \"<string>\",\n    \"query\": \"<string>\",\n    \"offset\": \"<integer>\",\n    \"totalresults\": \"<integer>\",\n    \"format\": \"<string>\",\n    \"dataset\": \"<string>\",\n    \"lr\": \"<string>\",\n    \"maxresults\": \"<integer>\",\n    \"matchprecision\": \"<integer>\",\n    \"epoch\": \"<string>\",\n    \"lastupdate\": \"<string>\",\n    \"output_srs\": \"<string>\"\n  },\n  \"results\": [\n    {\n      \"DPA\": {\n        \"UPRN\": \"<string>\",\n        \"UDPRN\": \"<string>\",\n        \"ADDRESS\": \"<string>\",\n        \"ORGANISATION_NAME\": \"<string>\",\n        \"DEPARTMENT_NAME\": \"<string>\",\n        \"SUB_BUILDING_NAME\": \"<string>\",\n        \"BUILDING_NAME\": \"<string>\",\n        \"BUILDING_NUMBER\": \"<string>\",\n        \"DEPENDENT_THOROUGHFARE_NAME\": \"<string>\",\n        \"THOROUGHFARE_NAME\": \"<string>\",\n        \"DOUBLE_DEPENDENT_LOCALITY\": \"<string>\",\n        \"DEPENDENT_LOCALITY\": \"<string>\",\n        \"POST_TOWN\": \"<string>\",\n        \"POSTCODE\": \"<string>\",\n        \"RPC\": \"<string>\",\n        \"X_COORDINATE\": \"<number>\",\n        \"Y_COORDINATE\": \"<number>\",\n        \"LNG\": \"<number>\",\n        \"LAT\": \"<number>\",\n        \"STATUS\": \"<string>\",\n        \"LOGICAL_STATUS_CODE\": \"<string>\",\n        \"CLASSIFICATION_CODE\": \"<string>\",\n        \"CLASSIFICATION_CODE_DESCRIPTION\": \"<string>\",\n        \"LOCAL_CUSTODIAN_CODE\": \"<integer>\",\n        \"LOCAL_CUSTODIAN_CODE_DESCRIPTION\": \"<string>\",\n        \"COUNTRY_CODE\": \"<string>\",\n        \"COUNTRY_CODE_DESCRIPTION\": \"<string>\",\n        \"POSTAL_ADDRESS_CODE\": \"<string>\",\n        \"POSTAL_ADDRESS_CODE_DESCRIPTION\": \"<string>\",\n        \"BLPU_STATE_CODE\": \"<string>\",\n        \"BLPU_STATE_CODE_DESCRIPTION\": \"<string>\",\n        \"TOPOGRAPHY_LAYER_TOID\": \"<string>\",\n        \"WARD_CODE\": \"<string>\",\n        \"PARISH_CODE\": \"<string>\",\n        \"PARENT_UPRN\": \"<string>\",\n        \"LAST_UPDATE_DATE\": \"<string>\",\n        \"ENTRY_DATE\": \"<string>\",\n        \"LEGAL_NAME\": \"<string>\",\n        \"BLPU_STATE_DATE\": \"<string>\",\n        \"LANGUAGE\": \"<string>\",\n        \"MATCH\": \"<number>\",\n        \"MATCH_DESCRIPTION\": \"<string>\",\n        \"DELIVERY_POINT_SUFFIX\": \"<string>\"\n      },\n      \"LPI\": {\n        \"UPRN\": \"<string>\",\n        \"ADDRESS\": \"<string>\",\n        \"USRN\": \"<string>\",\n        \"LPI_KEY\": \"<string>\",\n        \"ORGANISATION\": \"<string>\",\n        \"SAO_START_NUMBER\": \"<string>\",\n        \"SAO_START_SUFFIX\": \"<string>\",\n        \"SAO_END_NUMBER\": \"<string>\",\n        \"SAO_END_SUFFIX\": \"<string>\",\n        \"SAO_TEXT\": \"<string>\",\n        \"PAO_START_NUMBER\": \"<string>\",\n        \"PAO_START_SUFFIX\": \"<string>\",\n        \"PAO_END_NUMBER\": \"<string>\",\n        \"PAO_END_SUFFIX\": \"<string>\",\n        \"PAO_TEXT\": \"<string>\",\n        \"STREET_DESCRIPTION\": \"<string>\",\n        \"LOCALITY_NAME\": \"<string>\",\n        \"TOWN_NAME\": \"<string>\",\n        \"ADMINISTRATIVE_AREA\": \"<string>\",\n        \"AREA_NAME\": \"<string>\",\n        \"POSTCODE_LOCATOR\": \"<string>\",\n        \"RPC\": \"<string>\",\n        \"X_COORDINATE\": \"<number>\",\n        \"Y_COORDINATE\": \"<number>\",\n        \"LNG\": \"<number>\",\n        \"LAT\": \"<number>\",\n        \"STATUS\": \"<string>\",\n        \"LOGICAL_STATUS_CODE\": \"<string>\",\n        \"CLASSIFICATION_CODE\": \"<string>\",\n        \"CLASSIFICATION_CODE_DESCRIPTION\": \"<string>\",\n        \"LOCAL_CUSTODIAN_CODE\": \"<integer>\",\n        \"LOCAL_CUSTODIAN_CODE_DESCRIPTION\": \"<string>\",\n        \"COUNTRY_CODE\": \"<string>\",\n        \"COUNTRY_CODE_DESCRIPTION\": \"<string>\",\n        \"POSTAL_ADDRESS_CODE\": \"<string>\",\n        \"POSTAL_ADDRESS_CODE_DESCRIPTION\": \"<string>\",\n        \"BLPU_STATE_CODE\": \"<string>\",\n        \"BLPU_STATE_CODE_DESCRIPTION\": \"<string>\",\n        \"TOPOGRAPHY_LAYER_TOID\": \"<string>\",\n        \"WARD_CODE\": \"<string>\",\n        \"PARISH_CODE\": \"<string>\",\n        \"PARENT_UPRN\": \"<string>\",\n        \"LAST_UPDATE_DATE\": \"<string>\",\n        \"ENTRY_DATE\": \"<string>\",\n        \"LEGAL_NAME\": \"<string>\",\n        \"BLPU_STATE_DATE\": \"<string>\",\n        \"STREET_STATE_CODE\": \"<string>\",\n        \"STREET_STATE_CODE_DESCRIPTION\": \"<string>\",\n        \"STREET_CLASSIFICATION_CODE\": \"<string>\",\n        \"STREET_CLASSIFICATION_CODE_DESCRIPTION\": \"<string>\",\n        \"LPI_LOGICAL_STATUS_CODE\": \"<string>\",\n        \"LPI_LOGICAL_STATUS_CODE_DESCRIPTION\": \"<string>\",\n        \"LANGUAGE\": \"<string>\",\n        \"MATCH\": \"<number>\",\n        \"MATCH_DESCRIPTION\": \"<string>\"\n      }\n    },\n    {\n      \"DPA\": {\n        \"UPRN\": \"<string>\",\n        \"UDPRN\": \"<string>\",\n        \"ADDRESS\": \"<string>\",\n        \"ORGANISATION_NAME\": \"<string>\",\n        \"DEPARTMENT_NAME\": \"<string>\",\n        \"SUB_BUILDING_NAME\": \"<string>\",\n        \"BUILDING_NAME\": \"<string>\",\n        \"BUILDING_NUMBER\": \"<string>\",\n        \"DEPENDENT_THOROUGHFARE_NAME\": \"<string>\",\n        \"THOROUGHFARE_NAME\": \"<string>\",\n        \"DOUBLE_DEPENDENT_LOCALITY\": \"<string>\",\n        \"DEPENDENT_LOCALITY\": \"<string>\",\n        \"POST_TOWN\": \"<string>\",\n        \"POSTCODE\": \"<string>\",\n        \"RPC\": \"<string>\",\n        \"X_COORDINATE\": \"<number>\",\n        \"Y_COORDINATE\": \"<number>\",\n        \"LNG\": \"<number>\",\n        \"LAT\": \"<number>\",\n        \"STATUS\": \"<string>\",\n        \"LOGICAL_STATUS_CODE\": \"<string>\",\n        \"CLASSIFICATION_CODE\": \"<string>\",\n        \"CLASSIFICATION_CODE_DESCRIPTION\": \"<string>\",\n        \"LOCAL_CUSTODIAN_CODE\": \"<integer>\",\n        \"LOCAL_CUSTODIAN_CODE_DESCRIPTION\": \"<string>\",\n        \"COUNTRY_CODE\": \"<string>\",\n        \"COUNTRY_CODE_DESCRIPTION\": \"<string>\",\n        \"POSTAL_ADDRESS_CODE\": \"<string>\",\n        \"POSTAL_ADDRESS_CODE_DESCRIPTION\": \"<string>\",\n        \"BLPU_STATE_CODE\": \"<string>\",\n        \"BLPU_STATE_CODE_DESCRIPTION\": \"<string>\",\n        \"TOPOGRAPHY_LAYER_TOID\": \"<string>\",\n        \"WARD_CODE\": \"<string>\",\n        \"PARISH_CODE\": \"<string>\",\n        \"PARENT_UPRN\": \"<string>\",\n        \"LAST_UPDATE_DATE\": \"<string>\",\n        \"ENTRY_DATE\": \"<string>\",\n        \"LEGAL_NAME\": \"<string>\",\n        \"BLPU_STATE_DATE\": \"<string>\",\n        \"LANGUAGE\": \"<string>\",\n        \"MATCH\": \"<number>\",\n        \"MATCH_DESCRIPTION\": \"<string>\",\n        \"DELIVERY_POINT_SUFFIX\": \"<string>\"\n      },\n      \"LPI\": {\n        \"UPRN\": \"<string>\",\n        \"ADDRESS\": \"<string>\",\n        \"USRN\": \"<string>\",\n        \"LPI_KEY\": \"<string>\",\n        \"ORGANISATION\": \"<string>\",\n        \"SAO_START_NUMBER\": \"<string>\",\n        \"SAO_START_SUFFIX\": \"<string>\",\n        \"SAO_END_NUMBER\": \"<string>\",\n        \"SAO_END_SUFFIX\": \"<string>\",\n        \"SAO_TEXT\": \"<string>\",\n        \"PAO_START_NUMBER\": \"<string>\",\n        \"PAO_START_SUFFIX\": \"<string>\",\n        \"PAO_END_NUMBER\": \"<string>\",\n        \"PAO_END_SUFFIX\": \"<string>\",\n        \"PAO_TEXT\": \"<string>\",\n        \"STREET_DESCRIPTION\": \"<string>\",\n        \"LOCALITY_NAME\": \"<string>\",\n        \"TOWN_NAME\": \"<string>\",\n        \"ADMINISTRATIVE_AREA\": \"<string>\",\n        \"AREA_NAME\": \"<string>\",\n        \"POSTCODE_LOCATOR\": \"<string>\",\n        \"RPC\": \"<string>\",\n        \"X_COORDINATE\": \"<number>\",\n        \"Y_COORDINATE\": \"<number>\",\n        \"LNG\": \"<number>\",\n        \"LAT\": \"<number>\",\n        \"STATUS\": \"<string>\",\n        \"LOGICAL_STATUS_CODE\": \"<string>\",\n        \"CLASSIFICATION_CODE\": \"<string>\",\n        \"CLASSIFICATION_CODE_DESCRIPTION\": \"<string>\",\n        \"LOCAL_CUSTODIAN_CODE\": \"<integer>\",\n        \"LOCAL_CUSTODIAN_CODE_DESCRIPTION\": \"<string>\",\n        \"COUNTRY_CODE\": \"<string>\",\n        \"COUNTRY_CODE_DESCRIPTION\": \"<string>\",\n        \"POSTAL_ADDRESS_CODE\": \"<string>\",\n        \"POSTAL_ADDRESS_CODE_DESCRIPTION\": \"<string>\",\n        \"BLPU_STATE_CODE\": \"<string>\",\n        \"BLPU_STATE_CODE_DESCRIPTION\": \"<string>\",\n        \"TOPOGRAPHY_LAYER_TOID\": \"<string>\",\n        \"WARD_CODE\": \"<string>\",\n        \"PARISH_CODE\": \"<string>\",\n        \"PARENT_UPRN\": \"<string>\",\n        \"LAST_UPDATE_DATE\": \"<string>\",\n        \"ENTRY_DATE\": \"<string>\",\n        \"LEGAL_NAME\": \"<string>\",\n        \"BLPU_STATE_DATE\": \"<string>\",\n        \"STREET_STATE_CODE\": \"<string>\",\n        \"STREET_STATE_CODE_DESCRIPTION\": \"<string>\",\n        \"STREET_CLASSIFICATION_CODE\": \"<string>\",\n        \"STREET_CLASSIFICATION_CODE_DESCRIPTION\": \"<string>\",\n        \"LPI_LOGICAL_STATUS_CODE\": \"<string>\",\n        \"LPI_LOGICAL_STATUS_CODE_DESCRIPTION\": \"<string>\",\n        \"LANGUAGE\": \"<string>\",\n        \"MATCH\": \"<number>\",\n        \"MATCH_DESCRIPTION\": \"<string>\"\n      }\n    }\n  ]\n}",
+              "createdAt": "2026-07-28T02:29:22.000Z",
+              "updatedAt": "2026-07-28T02:29:22.000Z",
+              "uid": "35240-a6462b75-cf49-4ff1-a0f9-fba03a5f5c48"
+            }
+          ],
+          "createdAt": "2026-07-28T02:29:22.000Z",
+          "updatedAt": "2026-07-28T02:29:22.000Z",
+          "uid": "35240-cbfbbe13-847e-46fa-9707-6dc97d6d08ce"
+        }
+      ],
+      "id": "a3af5982-980d-4c1e-9e3e-8bbc46ac83ca",
+      "createdAt": "2026-07-28T02:29:22.000Z",
+      "updatedAt": "2026-07-28T02:29:22.000Z",
+      "uid": "35240-a3af5982-980d-4c1e-9e3e-8bbc46ac83ca"
+    },
+    {
+      "name": "find",
+      "item": [
+        {
+          "name": "Returns matched addresses based on a free text search.",
+          "id": "683a4f49-37de-43a7-aff3-1fa6073bd9c0",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/find?query=<string>&format=JSON&maxresults=100&offset=0&dataset=DPA&bbox=<string>&lr=EN&minmatch=<number>&matchprecision=<number>&output_srs=EPSG:27700&fq=<string>&fq=<string>",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "find"
+              ],
+              "query": [
+                {
+                  "description": "(Required) Free text search parameter.",
+                  "key": "query",
+                  "value": "<string>"
+                },
+                {
+                  "description": "The format the response will be returned in. Default: JSON.",
+                  "key": "format",
+                  "value": "JSON"
+                },
+                {
+                  "description": "The maximum number of results to return. Default: 100.",
+                  "key": "maxresults",
+                  "value": "100"
+                },
+                {
+                  "description": "Offset the list of returned results by this amount.",
+                  "key": "offset",
+                  "value": "0"
+                },
+                {
+                  "description": "The dataset to return. Multiple values can be sent, separated by a comma. Default: DPA.",
+                  "key": "dataset",
+                  "value": "DPA"
+                },
+                {
+                  "description": "Limits results to only those contained within the supplied British National Grid bounding box. The bounding box must be specified with four comma-separated numbers, indicating the lower-left and upper-right coordinates in the format bbox=left,bottom,right,top. The bounding box must be entirely within the British National Grid.",
+                  "key": "bbox",
+                  "value": "<string>"
+                },
+                {
+                  "description": "Which language of addresses to return. Default: EN, CY.",
+                  "key": "lr",
+                  "value": "EN"
+                },
+                {
+                  "description": "The minimum match score a result has to have to be returned.",
+                  "key": "minmatch",
+                  "value": "<number>"
+                },
+                {
+                  "description": "The decimal point position at which the match score value is to be truncated.",
+                  "key": "matchprecision",
+                  "value": "<number>"
+                },
+                {
+                  "description": "The intended output spatial reference system. Default: EPSG:27700",
+                  "key": "output_srs",
+                  "value": "EPSG:27700"
+                },
+                {
+                  "description": "Filter for classification code, logical status code, LPI logical status code and/or country code. Filtering for classification code will accept wildcard ( * ) searches. Multiple searches can be done by separating the codes with a space. Multiple filters can be used together by including the parameter multiple times",
+                  "key": "fq",
+                  "value": "<string>"
+                },
+                {
+                  "description": "Filter for classification code, logical status code, LPI logical status code and/or country code. Filtering for classification code will accept wildcard ( * ) searches. Multiple searches can be done by separating the codes with a space. Multiple filters can be used together by including the parameter multiple times",
+                  "key": "fq",
+                  "value": "<string>"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "6c842ce3-a87f-49f7-ad04-296d5c78a83a",
+              "name": "Retrieves matched addresses",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/find?query=<string>&format=JSON&maxresults=100&offset=0&dataset=DPA&bbox=<string>&lr=EN&minmatch=<number>&matchprecision=<number>&output_srs=EPSG:27700&fq=<string>&key=<API Key>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "find"
+                  ],
+                  "query": [
+                    {
+                      "description": "(Required) Free text search parameter.",
+                      "key": "query",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "The format the response will be returned in. Default: JSON.",
+                      "key": "format",
+                      "value": "JSON"
+                    },
+                    {
+                      "description": "The maximum number of results to return. Default: 100.",
+                      "key": "maxresults",
+                      "value": "100"
+                    },
+                    {
+                      "description": "Offset the list of returned results by this amount.",
+                      "key": "offset",
+                      "value": "0"
+                    },
+                    {
+                      "description": "The dataset to return. Multiple values can be sent, separated by a comma. Default: DPA.",
+                      "key": "dataset",
+                      "value": "DPA"
+                    },
+                    {
+                      "description": "Limits results to only those contained within the supplied British National Grid bounding box. The bounding box must be specified with four comma-separated numbers, indicating the lower-left and upper-right coordinates in the format bbox=left,bottom,right,top. The bounding box must be entirely within the British National Grid.",
+                      "key": "bbox",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Which language of addresses to return. Default: EN, CY.",
+                      "key": "lr",
+                      "value": "EN"
+                    },
+                    {
+                      "description": "The minimum match score a result has to have to be returned.",
+                      "key": "minmatch",
+                      "value": "<number>"
+                    },
+                    {
+                      "description": "The decimal point position at which the match score value is to be truncated.",
+                      "key": "matchprecision",
+                      "value": "<number>"
+                    },
+                    {
+                      "description": "The intended output spatial reference system. Default: EPSG:27700",
+                      "key": "output_srs",
+                      "value": "EPSG:27700"
+                    },
+                    {
+                      "description": "Filter for classification code, logical status code, LPI logical status code and/or country code. Filtering for classification code will accept wildcard ( * ) searches. Multiple searches can be done by separating the codes with a space. Multiple filters can be used together by including the parameter multiple times",
+                      "key": "fq",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Added as a part of security scheme: apikey",
+                      "key": "key",
+                      "value": "<API Key>"
+                    }
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"header\": {\n    \"uri\": \"<string>\",\n    \"query\": \"<string>\",\n    \"offset\": \"<integer>\",\n    \"totalresults\": \"<integer>\",\n    \"format\": \"<string>\",\n    \"dataset\": \"<string>\",\n    \"lr\": \"<string>\",\n    \"maxresults\": \"<integer>\",\n    \"matchprecision\": \"<integer>\",\n    \"epoch\": \"<string>\",\n    \"lastupdate\": \"<string>\",\n    \"output_srs\": \"<string>\"\n  },\n  \"results\": [\n    {\n      \"DPA\": {\n        \"UPRN\": \"<string>\",\n        \"UDPRN\": \"<string>\",\n        \"ADDRESS\": \"<string>\",\n        \"ORGANISATION_NAME\": \"<string>\",\n        \"DEPARTMENT_NAME\": \"<string>\",\n        \"SUB_BUILDING_NAME\": \"<string>\",\n        \"BUILDING_NAME\": \"<string>\",\n        \"BUILDING_NUMBER\": \"<string>\",\n        \"DEPENDENT_THOROUGHFARE_NAME\": \"<string>\",\n        \"THOROUGHFARE_NAME\": \"<string>\",\n        \"DOUBLE_DEPENDENT_LOCALITY\": \"<string>\",\n        \"DEPENDENT_LOCALITY\": \"<string>\",\n        \"POST_TOWN\": \"<string>\",\n        \"POSTCODE\": \"<string>\",\n        \"RPC\": \"<string>\",\n        \"X_COORDINATE\": \"<number>\",\n        \"Y_COORDINATE\": \"<number>\",\n        \"LNG\": \"<number>\",\n        \"LAT\": \"<number>\",\n        \"STATUS\": \"<string>\",\n        \"LOGICAL_STATUS_CODE\": \"<string>\",\n        \"CLASSIFICATION_CODE\": \"<string>\",\n        \"CLASSIFICATION_CODE_DESCRIPTION\": \"<string>\",\n        \"LOCAL_CUSTODIAN_CODE\": \"<integer>\",\n        \"LOCAL_CUSTODIAN_CODE_DESCRIPTION\": \"<string>\",\n        \"COUNTRY_CODE\": \"<string>\",\n        \"COUNTRY_CODE_DESCRIPTION\": \"<string>\",\n        \"POSTAL_ADDRESS_CODE\": \"<string>\",\n        \"POSTAL_ADDRESS_CODE_DESCRIPTION\": \"<string>\",\n        \"BLPU_STATE_CODE\": \"<string>\",\n        \"BLPU_STATE_CODE_DESCRIPTION\": \"<string>\",\n        \"TOPOGRAPHY_LAYER_TOID\": \"<string>\",\n        \"WARD_CODE\": \"<string>\",\n        \"PARISH_CODE\": \"<string>\",\n        \"PARENT_UPRN\": \"<string>\",\n        \"LAST_UPDATE_DATE\": \"<string>\",\n        \"ENTRY_DATE\": \"<string>\",\n        \"LEGAL_NAME\": \"<string>\",\n        \"BLPU_STATE_DATE\": \"<string>\",\n        \"LANGUAGE\": \"<string>\",\n        \"MATCH\": \"<number>\",\n        \"MATCH_DESCRIPTION\": \"<string>\",\n        \"DELIVERY_POINT_SUFFIX\": \"<string>\"\n      },\n      \"LPI\": {\n        \"UPRN\": \"<string>\",\n        \"ADDRESS\": \"<string>\",\n        \"USRN\": \"<string>\",\n        \"LPI_KEY\": \"<string>\",\n        \"ORGANISATION\": \"<string>\",\n        \"SAO_START_NUMBER\": \"<string>\",\n        \"SAO_START_SUFFIX\": \"<string>\",\n        \"SAO_END_NUMBER\": \"<string>\",\n        \"SAO_END_SUFFIX\": \"<string>\",\n        \"SAO_TEXT\": \"<string>\",\n        \"PAO_START_NUMBER\": \"<string>\",\n        \"PAO_START_SUFFIX\": \"<string>\",\n        \"PAO_END_NUMBER\": \"<string>\",\n        \"PAO_END_SUFFIX\": \"<string>\",\n        \"PAO_TEXT\": \"<string>\",\n        \"STREET_DESCRIPTION\": \"<string>\",\n        \"LOCALITY_NAME\": \"<string>\",\n        \"TOWN_NAME\": \"<string>\",\n        \"ADMINISTRATIVE_AREA\": \"<string>\",\n        \"AREA_NAME\": \"<string>\",\n        \"POSTCODE_LOCATOR\": \"<string>\",\n        \"RPC\": \"<string>\",\n        \"X_COORDINATE\": \"<number>\",\n        \"Y_COORDINATE\": \"<number>\",\n        \"LNG\": \"<number>\",\n        \"LAT\": \"<number>\",\n        \"STATUS\": \"<string>\",\n        \"LOGICAL_STATUS_CODE\": \"<string>\",\n        \"CLASSIFICATION_CODE\": \"<string>\",\n        \"CLASSIFICATION_CODE_DESCRIPTION\": \"<string>\",\n        \"LOCAL_CUSTODIAN_CODE\": \"<integer>\",\n        \"LOCAL_CUSTODIAN_CODE_DESCRIPTION\": \"<string>\",\n        \"COUNTRY_CODE\": \"<string>\",\n        \"COUNTRY_CODE_DESCRIPTION\": \"<string>\",\n        \"POSTAL_ADDRESS_CODE\": \"<string>\",\n        \"POSTAL_ADDRESS_CODE_DESCRIPTION\": \"<string>\",\n        \"BLPU_STATE_CODE\": \"<string>\",\n        \"BLPU_STATE_CODE_DESCRIPTION\": \"<string>\",\n        \"TOPOGRAPHY_LAYER_TOID\": \"<string>\",\n        \"WARD_CODE\": \"<string>\",\n        \"PARISH_CODE\": \"<string>\",\n        \"PARENT_UPRN\": \"<string>\",\n        \"LAST_UPDATE_DATE\": \"<string>\",\n        \"ENTRY_DATE\": \"<string>\",\n        \"LEGAL_NAME\": \"<string>\",\n        \"BLPU_STATE_DATE\": \"<string>\",\n        \"STREET_STATE_CODE\": \"<string>\",\n        \"STREET_STATE_CODE_DESCRIPTION\": \"<string>\",\n        \"STREET_CLASSIFICATION_CODE\": \"<string>\",\n        \"STREET_CLASSIFICATION_CODE_DESCRIPTION\": \"<string>\",\n        \"LPI_LOGICAL_STATUS_CODE\": \"<string>\",\n        \"LPI_LOGICAL_STATUS_CODE_DESCRIPTION\": \"<string>\",\n        \"LANGUAGE\": \"<string>\",\n        \"MATCH\": \"<number>\",\n        \"MATCH_DESCRIPTION\": \"<string>\"\n      }\n    },\n    {\n      \"DPA\": {\n        \"UPRN\": \"<string>\",\n        \"UDPRN\": \"<string>\",\n        \"ADDRESS\": \"<string>\",\n        \"ORGANISATION_NAME\": \"<string>\",\n        \"DEPARTMENT_NAME\": \"<string>\",\n        \"SUB_BUILDING_NAME\": \"<string>\",\n        \"BUILDING_NAME\": \"<string>\",\n        \"BUILDING_NUMBER\": \"<string>\",\n        \"DEPENDENT_THOROUGHFARE_NAME\": \"<string>\",\n        \"THOROUGHFARE_NAME\": \"<string>\",\n        \"DOUBLE_DEPENDENT_LOCALITY\": \"<string>\",\n        \"DEPENDENT_LOCALITY\": \"<string>\",\n        \"POST_TOWN\": \"<string>\",\n        \"POSTCODE\": \"<string>\",\n        \"RPC\": \"<string>\",\n        \"X_COORDINATE\": \"<number>\",\n        \"Y_COORDINATE\": \"<number>\",\n        \"LNG\": \"<number>\",\n        \"LAT\": \"<number>\",\n        \"STATUS\": \"<string>\",\n        \"LOGICAL_STATUS_CODE\": \"<string>\",\n        \"CLASSIFICATION_CODE\": \"<string>\",\n        \"CLASSIFICATION_CODE_DESCRIPTION\": \"<string>\",\n        \"LOCAL_CUSTODIAN_CODE\": \"<integer>\",\n        \"LOCAL_CUSTODIAN_CODE_DESCRIPTION\": \"<string>\",\n        \"COUNTRY_CODE\": \"<string>\",\n        \"COUNTRY_CODE_DESCRIPTION\": \"<string>\",\n        \"POSTAL_ADDRESS_CODE\": \"<string>\",\n        \"POSTAL_ADDRESS_CODE_DESCRIPTION\": \"<string>\",\n        \"BLPU_STATE_CODE\": \"<string>\",\n        \"BLPU_STATE_CODE_DESCRIPTION\": \"<string>\",\n        \"TOPOGRAPHY_LAYER_TOID\": \"<string>\",\n        \"WARD_CODE\": \"<string>\",\n        \"PARISH_CODE\": \"<string>\",\n        \"PARENT_UPRN\": \"<string>\",\n        \"LAST_UPDATE_DATE\": \"<string>\",\n        \"ENTRY_DATE\": \"<string>\",\n        \"LEGAL_NAME\": \"<string>\",\n        \"BLPU_STATE_DATE\": \"<string>\",\n        \"LANGUAGE\": \"<string>\",\n        \"MATCH\": \"<number>\",\n        \"MATCH_DESCRIPTION\": \"<string>\",\n        \"DELIVERY_POINT_SUFFIX\": \"<string>\"\n      },\n      \"LPI\": {\n        \"UPRN\": \"<string>\",\n        \"ADDRESS\": \"<string>\",\n        \"USRN\": \"<string>\",\n        \"LPI_KEY\": \"<string>\",\n        \"ORGANISATION\": \"<string>\",\n        \"SAO_START_NUMBER\": \"<string>\",\n        \"SAO_START_SUFFIX\": \"<string>\",\n        \"SAO_END_NUMBER\": \"<string>\",\n        \"SAO_END_SUFFIX\": \"<string>\",\n        \"SAO_TEXT\": \"<string>\",\n        \"PAO_START_NUMBER\": \"<string>\",\n        \"PAO_START_SUFFIX\": \"<string>\",\n        \"PAO_END_NUMBER\": \"<string>\",\n        \"PAO_END_SUFFIX\": \"<string>\",\n        \"PAO_TEXT\": \"<string>\",\n        \"STREET_DESCRIPTION\": \"<string>\",\n        \"LOCALITY_NAME\": \"<string>\",\n        \"TOWN_NAME\": \"<string>\",\n        \"ADMINISTRATIVE_AREA\": \"<string>\",\n        \"AREA_NAME\": \"<string>\",\n        \"POSTCODE_LOCATOR\": \"<string>\",\n        \"RPC\": \"<string>\",\n        \"X_COORDINATE\": \"<number>\",\n        \"Y_COORDINATE\": \"<number>\",\n        \"LNG\": \"<number>\",\n        \"LAT\": \"<number>\",\n        \"STATUS\": \"<string>\",\n        \"LOGICAL_STATUS_CODE\": \"<string>\",\n        \"CLASSIFICATION_CODE\": \"<string>\",\n        \"CLASSIFICATION_CODE_DESCRIPTION\": \"<string>\",\n        \"LOCAL_CUSTODIAN_CODE\": \"<integer>\",\n        \"LOCAL_CUSTODIAN_CODE_DESCRIPTION\": \"<string>\",\n        \"COUNTRY_CODE\": \"<string>\",\n        \"COUNTRY_CODE_DESCRIPTION\": \"<string>\",\n        \"POSTAL_ADDRESS_CODE\": \"<string>\",\n        \"POSTAL_ADDRESS_CODE_DESCRIPTION\": \"<string>\",\n        \"BLPU_STATE_CODE\": \"<string>\",\n        \"BLPU_STATE_CODE_DESCRIPTION\": \"<string>\",\n        \"TOPOGRAPHY_LAYER_TOID\": \"<string>\",\n        \"WARD_CODE\": \"<string>\",\n        \"PARISH_CODE\": \"<string>\",\n        \"PARENT_UPRN\": \"<string>\",\n        \"LAST_UPDATE_DATE\": \"<string>\",\n        \"ENTRY_DATE\": \"<string>\",\n        \"LEGAL_NAME\": \"<string>\",\n        \"BLPU_STATE_DATE\": \"<string>\",\n        \"STREET_STATE_CODE\": \"<string>\",\n        \"STREET_STATE_CODE_DESCRIPTION\": \"<string>\",\n        \"STREET_CLASSIFICATION_CODE\": \"<string>\",\n        \"STREET_CLASSIFICATION_CODE_DESCRIPTION\": \"<string>\",\n        \"LPI_LOGICAL_STATUS_CODE\": \"<string>\",\n        \"LPI_LOGICAL_STATUS_CODE_DESCRIPTION\": \"<string>\",\n        \"LANGUAGE\": \"<string>\",\n        \"MATCH\": \"<number>\",\n        \"MATCH_DESCRIPTION\": \"<string>\"\n      }\n    }\n  ]\n}",
+              "createdAt": "2026-07-28T02:29:22.000Z",
+              "updatedAt": "2026-07-28T02:29:22.000Z",
+              "uid": "35240-6c842ce3-a87f-49f7-ad04-296d5c78a83a"
+            }
+          ],
+          "createdAt": "2026-07-28T02:29:22.000Z",
+          "updatedAt": "2026-07-28T02:29:22.000Z",
+          "uid": "35240-683a4f49-37de-43a7-aff3-1fa6073bd9c0"
+        }
+      ],
+      "id": "316940bb-b0c9-42f0-bb0b-c2e6137b275b",
+      "createdAt": "2026-07-28T02:29:22.000Z",
+      "updatedAt": "2026-07-28T02:29:22.000Z",
+      "uid": "35240-316940bb-b0c9-42f0-bb0b-c2e6137b275b"
+    },
+    {
+      "name": "nearest",
+      "item": [
+        {
+          "name": "Returns closest addresses to a pair of coordinates (X and Y).",
+          "id": "b305a54b-581c-4600-ad51-2d060b159297",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/nearest?point=<string>&radius=<number>&format=JSON&dataset=DPA&lr=EN&output_srs=EPSG:27700&srs=BNG&fq=<string>&fq=<string>",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "nearest"
+              ],
+              "query": [
+                {
+                  "description": "(Required) One comma-separated coordinate set that specifies the coordinate to which the nearest record in a straight line should be found. The maximum distance the search will try is 1,000 metres. The precision of the coordinates is to two decimal places (that is, 1 cm accuracy).",
+                  "key": "point",
+                  "value": "<string>"
+                },
+                {
+                  "description": "The radius in metres to search within. The precision of the distance is to two decimal places (that is, 1 cm accuracy). Minimum = 0.01, Maximum = 1,000 . Default = 100",
+                  "key": "radius",
+                  "value": "<number>"
+                },
+                {
+                  "description": "The format the response will be returned in. Default: JSON.",
+                  "key": "format",
+                  "value": "JSON"
+                },
+                {
+                  "description": "The dataset to return. Multiple values can be sent, separated by a comma. Default: DPA.",
+                  "key": "dataset",
+                  "value": "DPA"
+                },
+                {
+                  "description": "Which language of addresses to return. Default: EN, CY.",
+                  "key": "lr",
+                  "value": "EN"
+                },
+                {
+                  "description": "The intended output spatial reference system. Default: EPSG:27700",
+                  "key": "output_srs",
+                  "value": "EPSG:27700"
+                },
+                {
+                  "description": "The spatial reference system for the input coordinate set.",
+                  "key": "srs",
+                  "value": "BNG"
+                },
+                {
+                  "description": "Filter for classification code, logical status code, LPI logical status code and/or country code. Filtering for classification code will accept wildcard ( * ) searches. Multiple searches can be done by separating the codes with a space. Multiple filters can be used together by including the parameter multiple times",
+                  "key": "fq",
+                  "value": "<string>"
+                },
+                {
+                  "description": "Filter for classification code, logical status code, LPI logical status code and/or country code. Filtering for classification code will accept wildcard ( * ) searches. Multiple searches can be done by separating the codes with a space. Multiple filters can be used together by including the parameter multiple times",
+                  "key": "fq",
+                  "value": "<string>"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "10d9b661-815b-41a0-9046-c92c36cbde21",
+              "name": "Retrieves matched addresses",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/nearest?point=<string>&radius=<number>&format=JSON&dataset=DPA&lr=EN&output_srs=EPSG:27700&srs=BNG&fq=<string>&key=<API Key>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "nearest"
+                  ],
+                  "query": [
+                    {
+                      "description": "(Required) One comma-separated coordinate set that specifies the coordinate to which the nearest record in a straight line should be found. The maximum distance the search will try is 1,000 metres. The precision of the coordinates is to two decimal places (that is, 1 cm accuracy).",
+                      "key": "point",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "The radius in metres to search within. The precision of the distance is to two decimal places (that is, 1 cm accuracy). Minimum = 0.01, Maximum = 1,000 . Default = 100",
+                      "key": "radius",
+                      "value": "<number>"
+                    },
+                    {
+                      "description": "The format the response will be returned in. Default: JSON.",
+                      "key": "format",
+                      "value": "JSON"
+                    },
+                    {
+                      "description": "The dataset to return. Multiple values can be sent, separated by a comma. Default: DPA.",
+                      "key": "dataset",
+                      "value": "DPA"
+                    },
+                    {
+                      "description": "Which language of addresses to return. Default: EN, CY.",
+                      "key": "lr",
+                      "value": "EN"
+                    },
+                    {
+                      "description": "The intended output spatial reference system. Default: EPSG:27700",
+                      "key": "output_srs",
+                      "value": "EPSG:27700"
+                    },
+                    {
+                      "description": "The spatial reference system for the input coordinate set.",
+                      "key": "srs",
+                      "value": "BNG"
+                    },
+                    {
+                      "description": "Filter for classification code, logical status code, LPI logical status code and/or country code. Filtering for classification code will accept wildcard ( * ) searches. Multiple searches can be done by separating the codes with a space. Multiple filters can be used together by including the parameter multiple times",
+                      "key": "fq",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Added as a part of security scheme: apikey",
+                      "key": "key",
+                      "value": "<API Key>"
+                    }
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"header\": {\n    \"uri\": \"<string>\",\n    \"query\": \"<string>\",\n    \"offset\": \"<integer>\",\n    \"totalresults\": \"<integer>\",\n    \"format\": \"<string>\",\n    \"dataset\": \"<string>\",\n    \"lr\": \"<string>\",\n    \"maxresults\": \"<integer>\",\n    \"matchprecision\": \"<integer>\",\n    \"epoch\": \"<string>\",\n    \"lastupdate\": \"<string>\",\n    \"output_srs\": \"<string>\"\n  },\n  \"results\": [\n    {\n      \"DPA\": {\n        \"UPRN\": \"<string>\",\n        \"UDPRN\": \"<string>\",\n        \"ADDRESS\": \"<string>\",\n        \"ORGANISATION_NAME\": \"<string>\",\n        \"DEPARTMENT_NAME\": \"<string>\",\n        \"SUB_BUILDING_NAME\": \"<string>\",\n        \"BUILDING_NAME\": \"<string>\",\n        \"BUILDING_NUMBER\": \"<string>\",\n        \"DEPENDENT_THOROUGHFARE_NAME\": \"<string>\",\n        \"THOROUGHFARE_NAME\": \"<string>\",\n        \"DOUBLE_DEPENDENT_LOCALITY\": \"<string>\",\n        \"DEPENDENT_LOCALITY\": \"<string>\",\n        \"POST_TOWN\": \"<string>\",\n        \"POSTCODE\": \"<string>\",\n        \"RPC\": \"<string>\",\n        \"X_COORDINATE\": \"<number>\",\n        \"Y_COORDINATE\": \"<number>\",\n        \"LNG\": \"<number>\",\n        \"LAT\": \"<number>\",\n        \"STATUS\": \"<string>\",\n        \"LOGICAL_STATUS_CODE\": \"<string>\",\n        \"CLASSIFICATION_CODE\": \"<string>\",\n        \"CLASSIFICATION_CODE_DESCRIPTION\": \"<string>\",\n        \"LOCAL_CUSTODIAN_CODE\": \"<integer>\",\n        \"LOCAL_CUSTODIAN_CODE_DESCRIPTION\": \"<string>\",\n        \"COUNTRY_CODE\": \"<string>\",\n        \"COUNTRY_CODE_DESCRIPTION\": \"<string>\",\n        \"POSTAL_ADDRESS_CODE\": \"<string>\",\n        \"POSTAL_ADDRESS_CODE_DESCRIPTION\": \"<string>\",\n        \"BLPU_STATE_CODE\": \"<string>\",\n        \"BLPU_STATE_CODE_DESCRIPTION\": \"<string>\",\n        \"TOPOGRAPHY_LAYER_TOID\": \"<string>\",\n        \"WARD_CODE\": \"<string>\",\n        \"PARISH_CODE\": \"<string>\",\n        \"PARENT_UPRN\": \"<string>\",\n        \"LAST_UPDATE_DATE\": \"<string>\",\n        \"ENTRY_DATE\": \"<string>\",\n        \"LEGAL_NAME\": \"<string>\",\n        \"BLPU_STATE_DATE\": \"<string>\",\n        \"LANGUAGE\": \"<string>\",\n        \"MATCH\": \"<number>\",\n        \"MATCH_DESCRIPTION\": \"<string>\",\n        \"DELIVERY_POINT_SUFFIX\": \"<string>\"\n      },\n      \"LPI\": {\n        \"UPRN\": \"<string>\",\n        \"ADDRESS\": \"<string>\",\n        \"USRN\": \"<string>\",\n        \"LPI_KEY\": \"<string>\",\n        \"ORGANISATION\": \"<string>\",\n        \"SAO_START_NUMBER\": \"<string>\",\n        \"SAO_START_SUFFIX\": \"<string>\",\n        \"SAO_END_NUMBER\": \"<string>\",\n        \"SAO_END_SUFFIX\": \"<string>\",\n        \"SAO_TEXT\": \"<string>\",\n        \"PAO_START_NUMBER\": \"<string>\",\n        \"PAO_START_SUFFIX\": \"<string>\",\n        \"PAO_END_NUMBER\": \"<string>\",\n        \"PAO_END_SUFFIX\": \"<string>\",\n        \"PAO_TEXT\": \"<string>\",\n        \"STREET_DESCRIPTION\": \"<string>\",\n        \"LOCALITY_NAME\": \"<string>\",\n        \"TOWN_NAME\": \"<string>\",\n        \"ADMINISTRATIVE_AREA\": \"<string>\",\n        \"AREA_NAME\": \"<string>\",\n        \"POSTCODE_LOCATOR\": \"<string>\",\n        \"RPC\": \"<string>\",\n        \"X_COORDINATE\": \"<number>\",\n        \"Y_COORDINATE\": \"<number>\",\n        \"LNG\": \"<number>\",\n        \"LAT\": \"<number>\",\n        \"STATUS\": \"<string>\",\n        \"LOGICAL_STATUS_CODE\": \"<string>\",\n        \"CLASSIFICATION_CODE\": \"<string>\",\n        \"CLASSIFICATION_CODE_DESCRIPTION\": \"<string>\",\n        \"LOCAL_CUSTODIAN_CODE\": \"<integer>\",\n        \"LOCAL_CUSTODIAN_CODE_DESCRIPTION\": \"<string>\",\n        \"COUNTRY_CODE\": \"<string>\",\n        \"COUNTRY_CODE_DESCRIPTION\": \"<string>\",\n        \"POSTAL_ADDRESS_CODE\": \"<string>\",\n        \"POSTAL_ADDRESS_CODE_DESCRIPTION\": \"<string>\",\n        \"BLPU_STATE_CODE\": \"<string>\",\n        \"BLPU_STATE_CODE_DESCRIPTION\": \"<string>\",\n        \"TOPOGRAPHY_LAYER_TOID\": \"<string>\",\n        \"WARD_CODE\": \"<string>\",\n        \"PARISH_CODE\": \"<string>\",\n        \"PARENT_UPRN\": \"<string>\",\n        \"LAST_UPDATE_DATE\": \"<string>\",\n        \"ENTRY_DATE\": \"<string>\",\n        \"LEGAL_NAME\": \"<string>\",\n        \"BLPU_STATE_DATE\": \"<string>\",\n        \"STREET_STATE_CODE\": \"<string>\",\n        \"STREET_STATE_CODE_DESCRIPTION\": \"<string>\",\n        \"STREET_CLASSIFICATION_CODE\": \"<string>\",\n        \"STREET_CLASSIFICATION_CODE_DESCRIPTION\": \"<string>\",\n        \"LPI_LOGICAL_STATUS_CODE\": \"<string>\",\n        \"LPI_LOGICAL_STATUS_CODE_DESCRIPTION\": \"<string>\",\n        \"LANGUAGE\": \"<string>\",\n        \"MATCH\": \"<number>\",\n        \"MATCH_DESCRIPTION\": \"<string>\"\n      }\n    },\n    {\n      \"DPA\": {\n        \"UPRN\": \"<string>\",\n        \"UDPRN\": \"<string>\",\n        \"ADDRESS\": \"<string>\",\n        \"ORGANISATION_NAME\": \"<string>\",\n        \"DEPARTMENT_NAME\": \"<string>\",\n        \"SUB_BUILDING_NAME\": \"<string>\",\n        \"BUILDING_NAME\": \"<string>\",\n        \"BUILDING_NUMBER\": \"<string>\",\n        \"DEPENDENT_THOROUGHFARE_NAME\": \"<string>\",\n        \"THOROUGHFARE_NAME\": \"<string>\",\n        \"DOUBLE_DEPENDENT_LOCALITY\": \"<string>\",\n        \"DEPENDENT_LOCALITY\": \"<string>\",\n        \"POST_TOWN\": \"<string>\",\n        \"POSTCODE\": \"<string>\",\n        \"RPC\": \"<string>\",\n        \"X_COORDINATE\": \"<number>\",\n        \"Y_COORDINATE\": \"<number>\",\n        \"LNG\": \"<number>\",\n        \"LAT\": \"<number>\",\n        \"STATUS\": \"<string>\",\n        \"LOGICAL_STATUS_CODE\": \"<string>\",\n        \"CLASSIFICATION_CODE\": \"<string>\",\n        \"CLASSIFICATION_CODE_DESCRIPTION\": \"<string>\",\n        \"LOCAL_CUSTODIAN_CODE\": \"<integer>\",\n        \"LOCAL_CUSTODIAN_CODE_DESCRIPTION\": \"<string>\",\n        \"COUNTRY_CODE\": \"<string>\",\n        \"COUNTRY_CODE_DESCRIPTION\": \"<string>\",\n        \"POSTAL_ADDRESS_CODE\": \"<string>\",\n        \"POSTAL_ADDRESS_CODE_DESCRIPTION\": \"<string>\",\n        \"BLPU_STATE_CODE\": \"<string>\",\n        \"BLPU_STATE_CODE_DESCRIPTION\": \"<string>\",\n        \"TOPOGRAPHY_LAYER_TOID\": \"<string>\",\n        \"WARD_CODE\": \"<string>\",\n        \"PARISH_CODE\": \"<string>\",\n        \"PARENT_UPRN\": \"<string>\",\n        \"LAST_UPDATE_DATE\": \"<string>\",\n        \"ENTRY_DATE\": \"<string>\",\n        \"LEGAL_NAME\": \"<string>\",\n        \"BLPU_STATE_DATE\": \"<string>\",\n        \"LANGUAGE\": \"<string>\",\n        \"MATCH\": \"<number>\",\n        \"MATCH_DESCRIPTION\": \"<string>\",\n        \"DELIVERY_POINT_SUFFIX\": \"<string>\"\n      },\n      \"LPI\": {\n        \"UPRN\": \"<string>\",\n        \"ADDRESS\": \"<string>\",\n        \"USRN\": \"<string>\",\n        \"LPI_KEY\": \"<string>\",\n        \"ORGANISATION\": \"<string>\",\n        \"SAO_START_NUMBER\": \"<string>\",\n        \"SAO_START_SUFFIX\": \"<string>\",\n        \"SAO_END_NUMBER\": \"<string>\",\n        \"SAO_END_SUFFIX\": \"<string>\",\n        \"SAO_TEXT\": \"<string>\",\n        \"PAO_START_NUMBER\": \"<string>\",\n        \"PAO_START_SUFFIX\": \"<string>\",\n        \"PAO_END_NUMBER\": \"<string>\",\n        \"PAO_END_SUFFIX\": \"<string>\",\n        \"PAO_TEXT\": \"<string>\",\n        \"STREET_DESCRIPTION\": \"<string>\",\n        \"LOCALITY_NAME\": \"<string>\",\n        \"TOWN_NAME\": \"<string>\",\n        \"ADMINISTRATIVE_AREA\": \"<string>\",\n        \"AREA_NAME\": \"<string>\",\n        \"POSTCODE_LOCATOR\": \"<string>\",\n        \"RPC\": \"<string>\",\n        \"X_COORDINATE\": \"<number>\",\n        \"Y_COORDINATE\": \"<number>\",\n        \"LNG\": \"<number>\",\n        \"LAT\": \"<number>\",\n        \"STATUS\": \"<string>\",\n        \"LOGICAL_STATUS_CODE\": \"<string>\",\n        \"CLASSIFICATION_CODE\": \"<string>\",\n        \"CLASSIFICATION_CODE_DESCRIPTION\": \"<string>\",\n        \"LOCAL_CUSTODIAN_CODE\": \"<integer>\",\n        \"LOCAL_CUSTODIAN_CODE_DESCRIPTION\": \"<string>\",\n        \"COUNTRY_CODE\": \"<string>\",\n        \"COUNTRY_CODE_DESCRIPTION\": \"<string>\",\n        \"POSTAL_ADDRESS_CODE\": \"<string>\",\n        \"POSTAL_ADDRESS_CODE_DESCRIPTION\": \"<string>\",\n        \"BLPU_STATE_CODE\": \"<string>\",\n        \"BLPU_STATE_CODE_DESCRIPTION\": \"<string>\",\n        \"TOPOGRAPHY_LAYER_TOID\": \"<string>\",\n        \"WARD_CODE\": \"<string>\",\n        \"PARISH_CODE\": \"<string>\",\n        \"PARENT_UPRN\": \"<string>\",\n        \"LAST_UPDATE_DATE\": \"<string>\",\n        \"ENTRY_DATE\": \"<string>\",\n        \"LEGAL_NAME\": \"<string>\",\n        \"BLPU_STATE_DATE\": \"<string>\",\n        \"STREET_STATE_CODE\": \"<string>\",\n        \"STREET_STATE_CODE_DESCRIPTION\": \"<string>\",\n        \"STREET_CLASSIFICATION_CODE\": \"<string>\",\n        \"STREET_CLASSIFICATION_CODE_DESCRIPTION\": \"<string>\",\n        \"LPI_LOGICAL_STATUS_CODE\": \"<string>\",\n        \"LPI_LOGICAL_STATUS_CODE_DESCRIPTION\": \"<string>\",\n        \"LANGUAGE\": \"<string>\",\n        \"MATCH\": \"<number>\",\n        \"MATCH_DESCRIPTION\": \"<string>\"\n      }\n    }\n  ]\n}",
+              "createdAt": "2026-07-28T02:29:22.000Z",
+              "updatedAt": "2026-07-28T02:29:22.000Z",
+              "uid": "35240-10d9b661-815b-41a0-9046-c92c36cbde21"
+            }
+          ],
+          "createdAt": "2026-07-28T02:29:22.000Z",
+          "updatedAt": "2026-07-28T02:29:22.000Z",
+          "uid": "35240-b305a54b-581c-4600-ad51-2d060b159297"
+        }
+      ],
+      "id": "a13eeedd-2a36-4045-81cc-a511e67e5aaf",
+      "createdAt": "2026-07-28T02:29:22.000Z",
+      "updatedAt": "2026-07-28T02:29:22.000Z",
+      "uid": "35240-a13eeedd-2a36-4045-81cc-a511e67e5aaf"
+    },
+    {
+      "name": "polygon",
+      "item": [
+        {
+          "name": "Returns matched addresses within a geoJSON polygon or multi-polygon object.",
+          "id": "04ccde43-bacb-4bfa-9f7c-45c02a67c18c",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"type\": \"<string>\",\n  \"geometry\": {}\n}",
+              "options": {
+                "raw": {
+                  "headerFamily": "json",
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{baseUrl}}/polygon?referencepoint=<integer>&maxresults=100&offset=0&dataset=DPA&lr=EN&output_srs=EPSG:27700&srs=BNG&fq=<string>&fq=<string>",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "polygon"
+              ],
+              "query": [
+                {
+                  "description": "Reference point geometry is the basis from which the distance value is calculated. Output is ordered by ascending distance from given reference point only if parameter has been specified.",
+                  "key": "referencepoint",
+                  "value": "<integer>"
+                },
+                {
+                  "description": "The maximum number of results to return. Default: 100.",
+                  "key": "maxresults",
+                  "value": "100"
+                },
+                {
+                  "description": "Offset the list of returned results by this amount.",
+                  "key": "offset",
+                  "value": "0"
+                },
+                {
+                  "description": "The dataset to return. Multiple values can be sent, separated by a comma. Default: DPA.",
+                  "key": "dataset",
+                  "value": "DPA"
+                },
+                {
+                  "description": "Which language of addresses to return. Default: EN, CY.",
+                  "key": "lr",
+                  "value": "EN"
+                },
+                {
+                  "description": "The intended output spatial reference system. Default: EPSG:27700",
+                  "key": "output_srs",
+                  "value": "EPSG:27700"
+                },
+                {
+                  "description": "The spatial reference system for the input coordinate set.",
+                  "key": "srs",
+                  "value": "BNG"
+                },
+                {
+                  "description": "Filter for classification code, logical status code, LPI logical status code and/or country code. Filtering for classification code will accept wildcard ( * ) searches. Multiple searches can be done by separating the codes with a space. Multiple filters can be used together by including the parameter multiple times",
+                  "key": "fq",
+                  "value": "<string>"
+                },
+                {
+                  "description": "Filter for classification code, logical status code, LPI logical status code and/or country code. Filtering for classification code will accept wildcard ( * ) searches. Multiple searches can be done by separating the codes with a space. Multiple filters can be used together by including the parameter multiple times",
+                  "key": "fq",
+                  "value": "<string>"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "a50bf26a-91cd-4605-a47a-757a71664ae8",
+              "name": "Retrieves matched addresses",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"type\": \"<string>\",\n  \"geometry\": {}\n}",
+                  "options": {
+                    "raw": {
+                      "headerFamily": "json",
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/polygon?referencepoint=<integer>&maxresults=100&offset=0&dataset=DPA&lr=EN&output_srs=EPSG:27700&srs=BNG&fq=<string>&key=<API Key>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "polygon"
+                  ],
+                  "query": [
+                    {
+                      "description": "Reference point geometry is the basis from which the distance value is calculated. Output is ordered by ascending distance from given reference point only if parameter has been specified.",
+                      "key": "referencepoint",
+                      "value": "<integer>"
+                    },
+                    {
+                      "description": "The maximum number of results to return. Default: 100.",
+                      "key": "maxresults",
+                      "value": "100"
+                    },
+                    {
+                      "description": "Offset the list of returned results by this amount.",
+                      "key": "offset",
+                      "value": "0"
+                    },
+                    {
+                      "description": "The dataset to return. Multiple values can be sent, separated by a comma. Default: DPA.",
+                      "key": "dataset",
+                      "value": "DPA"
+                    },
+                    {
+                      "description": "Which language of addresses to return. Default: EN, CY.",
+                      "key": "lr",
+                      "value": "EN"
+                    },
+                    {
+                      "description": "The intended output spatial reference system. Default: EPSG:27700",
+                      "key": "output_srs",
+                      "value": "EPSG:27700"
+                    },
+                    {
+                      "description": "The spatial reference system for the input coordinate set.",
+                      "key": "srs",
+                      "value": "BNG"
+                    },
+                    {
+                      "description": "Filter for classification code, logical status code, LPI logical status code and/or country code. Filtering for classification code will accept wildcard ( * ) searches. Multiple searches can be done by separating the codes with a space. Multiple filters can be used together by including the parameter multiple times",
+                      "key": "fq",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Added as a part of security scheme: apikey",
+                      "key": "key",
+                      "value": "<API Key>"
+                    }
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"header\": {\n    \"uri\": \"<string>\",\n    \"query\": \"<string>\",\n    \"offset\": \"<integer>\",\n    \"totalresults\": \"<integer>\",\n    \"format\": \"<string>\",\n    \"dataset\": \"<string>\",\n    \"lr\": \"<string>\",\n    \"maxresults\": \"<integer>\",\n    \"matchprecision\": \"<integer>\",\n    \"epoch\": \"<string>\",\n    \"lastupdate\": \"<string>\",\n    \"output_srs\": \"<string>\"\n  },\n  \"results\": [\n    {\n      \"DPA\": {\n        \"UPRN\": \"<string>\",\n        \"UDPRN\": \"<string>\",\n        \"ADDRESS\": \"<string>\",\n        \"ORGANISATION_NAME\": \"<string>\",\n        \"DEPARTMENT_NAME\": \"<string>\",\n        \"SUB_BUILDING_NAME\": \"<string>\",\n        \"BUILDING_NAME\": \"<string>\",\n        \"BUILDING_NUMBER\": \"<string>\",\n        \"DEPENDENT_THOROUGHFARE_NAME\": \"<string>\",\n        \"THOROUGHFARE_NAME\": \"<string>\",\n        \"DOUBLE_DEPENDENT_LOCALITY\": \"<string>\",\n        \"DEPENDENT_LOCALITY\": \"<string>\",\n        \"POST_TOWN\": \"<string>\",\n        \"POSTCODE\": \"<string>\",\n        \"RPC\": \"<string>\",\n        \"X_COORDINATE\": \"<number>\",\n        \"Y_COORDINATE\": \"<number>\",\n        \"LNG\": \"<number>\",\n        \"LAT\": \"<number>\",\n        \"STATUS\": \"<string>\",\n        \"LOGICAL_STATUS_CODE\": \"<string>\",\n        \"CLASSIFICATION_CODE\": \"<string>\",\n        \"CLASSIFICATION_CODE_DESCRIPTION\": \"<string>\",\n        \"LOCAL_CUSTODIAN_CODE\": \"<integer>\",\n        \"LOCAL_CUSTODIAN_CODE_DESCRIPTION\": \"<string>\",\n        \"COUNTRY_CODE\": \"<string>\",\n        \"COUNTRY_CODE_DESCRIPTION\": \"<string>\",\n        \"POSTAL_ADDRESS_CODE\": \"<string>\",\n        \"POSTAL_ADDRESS_CODE_DESCRIPTION\": \"<string>\",\n        \"BLPU_STATE_CODE\": \"<string>\",\n        \"BLPU_STATE_CODE_DESCRIPTION\": \"<string>\",\n        \"TOPOGRAPHY_LAYER_TOID\": \"<string>\",\n        \"WARD_CODE\": \"<string>\",\n        \"PARISH_CODE\": \"<string>\",\n        \"PARENT_UPRN\": \"<string>\",\n        \"LAST_UPDATE_DATE\": \"<string>\",\n        \"ENTRY_DATE\": \"<string>\",\n        \"LEGAL_NAME\": \"<string>\",\n        \"BLPU_STATE_DATE\": \"<string>\",\n        \"LANGUAGE\": \"<string>\",\n        \"MATCH\": \"<number>\",\n        \"MATCH_DESCRIPTION\": \"<string>\",\n        \"DELIVERY_POINT_SUFFIX\": \"<string>\"\n      },\n      \"LPI\": {\n        \"UPRN\": \"<string>\",\n        \"ADDRESS\": \"<string>\",\n        \"USRN\": \"<string>\",\n        \"LPI_KEY\": \"<string>\",\n        \"ORGANISATION\": \"<string>\",\n        \"SAO_START_NUMBER\": \"<string>\",\n        \"SAO_START_SUFFIX\": \"<string>\",\n        \"SAO_END_NUMBER\": \"<string>\",\n        \"SAO_END_SUFFIX\": \"<string>\",\n        \"SAO_TEXT\": \"<string>\",\n        \"PAO_START_NUMBER\": \"<string>\",\n        \"PAO_START_SUFFIX\": \"<string>\",\n        \"PAO_END_NUMBER\": \"<string>\",\n        \"PAO_END_SUFFIX\": \"<string>\",\n        \"PAO_TEXT\": \"<string>\",\n        \"STREET_DESCRIPTION\": \"<string>\",\n        \"LOCALITY_NAME\": \"<string>\",\n        \"TOWN_NAME\": \"<string>\",\n        \"ADMINISTRATIVE_AREA\": \"<string>\",\n        \"AREA_NAME\": \"<string>\",\n        \"POSTCODE_LOCATOR\": \"<string>\",\n        \"RPC\": \"<string>\",\n        \"X_COORDINATE\": \"<number>\",\n        \"Y_COORDINATE\": \"<number>\",\n        \"LNG\": \"<number>\",\n        \"LAT\": \"<number>\",\n        \"STATUS\": \"<string>\",\n        \"LOGICAL_STATUS_CODE\": \"<string>\",\n        \"CLASSIFICATION_CODE\": \"<string>\",\n        \"CLASSIFICATION_CODE_DESCRIPTION\": \"<string>\",\n        \"LOCAL_CUSTODIAN_CODE\": \"<integer>\",\n        \"LOCAL_CUSTODIAN_CODE_DESCRIPTION\": \"<string>\",\n        \"COUNTRY_CODE\": \"<string>\",\n        \"COUNTRY_CODE_DESCRIPTION\": \"<string>\",\n        \"POSTAL_ADDRESS_CODE\": \"<string>\",\n        \"POSTAL_ADDRESS_CODE_DESCRIPTION\": \"<string>\",\n        \"BLPU_STATE_CODE\": \"<string>\",\n        \"BLPU_STATE_CODE_DESCRIPTION\": \"<string>\",\n        \"TOPOGRAPHY_LAYER_TOID\": \"<string>\",\n        \"WARD_CODE\": \"<string>\",\n        \"PARISH_CODE\": \"<string>\",\n        \"PARENT_UPRN\": \"<string>\",\n        \"LAST_UPDATE_DATE\": \"<string>\",\n        \"ENTRY_DATE\": \"<string>\",\n        \"LEGAL_NAME\": \"<string>\",\n        \"BLPU_STATE_DATE\": \"<string>\",\n        \"STREET_STATE_CODE\": \"<string>\",\n        \"STREET_STATE_CODE_DESCRIPTION\": \"<string>\",\n        \"STREET_CLASSIFICATION_CODE\": \"<string>\",\n        \"STREET_CLASSIFICATION_CODE_DESCRIPTION\": \"<string>\",\n        \"LPI_LOGICAL_STATUS_CODE\": \"<string>\",\n        \"LPI_LOGICAL_STATUS_CODE_DESCRIPTION\": \"<string>\",\n        \"LANGUAGE\": \"<string>\",\n        \"MATCH\": \"<number>\",\n        \"MATCH_DESCRIPTION\": \"<string>\"\n      }\n    },\n    {\n      \"DPA\": {\n        \"UPRN\": \"<string>\",\n        \"UDPRN\": \"<string>\",\n        \"ADDRESS\": \"<string>\",\n        \"ORGANISATION_NAME\": \"<string>\",\n        \"DEPARTMENT_NAME\": \"<string>\",\n        \"SUB_BUILDING_NAME\": \"<string>\",\n        \"BUILDING_NAME\": \"<string>\",\n        \"BUILDING_NUMBER\": \"<string>\",\n        \"DEPENDENT_THOROUGHFARE_NAME\": \"<string>\",\n        \"THOROUGHFARE_NAME\": \"<string>\",\n        \"DOUBLE_DEPENDENT_LOCALITY\": \"<string>\",\n        \"DEPENDENT_LOCALITY\": \"<string>\",\n        \"POST_TOWN\": \"<string>\",\n        \"POSTCODE\": \"<string>\",\n        \"RPC\": \"<string>\",\n        \"X_COORDINATE\": \"<number>\",\n        \"Y_COORDINATE\": \"<number>\",\n        \"LNG\": \"<number>\",\n        \"LAT\": \"<number>\",\n        \"STATUS\": \"<string>\",\n        \"LOGICAL_STATUS_CODE\": \"<string>\",\n        \"CLASSIFICATION_CODE\": \"<string>\",\n        \"CLASSIFICATION_CODE_DESCRIPTION\": \"<string>\",\n        \"LOCAL_CUSTODIAN_CODE\": \"<integer>\",\n        \"LOCAL_CUSTODIAN_CODE_DESCRIPTION\": \"<string>\",\n        \"COUNTRY_CODE\": \"<string>\",\n        \"COUNTRY_CODE_DESCRIPTION\": \"<string>\",\n        \"POSTAL_ADDRESS_CODE\": \"<string>\",\n        \"POSTAL_ADDRESS_CODE_DESCRIPTION\": \"<string>\",\n        \"BLPU_STATE_CODE\": \"<string>\",\n        \"BLPU_STATE_CODE_DESCRIPTION\": \"<string>\",\n        \"TOPOGRAPHY_LAYER_TOID\": \"<string>\",\n        \"WARD_CODE\": \"<string>\",\n        \"PARISH_CODE\": \"<string>\",\n        \"PARENT_UPRN\": \"<string>\",\n        \"LAST_UPDATE_DATE\": \"<string>\",\n        \"ENTRY_DATE\": \"<string>\",\n        \"LEGAL_NAME\": \"<string>\",\n        \"BLPU_STATE_DATE\": \"<string>\",\n        \"LANGUAGE\": \"<string>\",\n        \"MATCH\": \"<number>\",\n        \"MATCH_DESCRIPTION\": \"<string>\",\n        \"DELIVERY_POINT_SUFFIX\": \"<string>\"\n      },\n      \"LPI\": {\n        \"UPRN\": \"<string>\",\n        \"ADDRESS\": \"<string>\",\n        \"USRN\": \"<string>\",\n        \"LPI_KEY\": \"<string>\",\n        \"ORGANISATION\": \"<string>\",\n        \"SAO_START_NUMBER\": \"<string>\",\n        \"SAO_START_SUFFIX\": \"<string>\",\n        \"SAO_END_NUMBER\": \"<string>\",\n        \"SAO_END_SUFFIX\": \"<string>\",\n        \"SAO_TEXT\": \"<string>\",\n        \"PAO_START_NUMBER\": \"<string>\",\n        \"PAO_START_SUFFIX\": \"<string>\",\n        \"PAO_END_NUMBER\": \"<string>\",\n        \"PAO_END_SUFFIX\": \"<string>\",\n        \"PAO_TEXT\": \"<string>\",\n        \"STREET_DESCRIPTION\": \"<string>\",\n        \"LOCALITY_NAME\": \"<string>\",\n        \"TOWN_NAME\": \"<string>\",\n        \"ADMINISTRATIVE_AREA\": \"<string>\",\n        \"AREA_NAME\": \"<string>\",\n        \"POSTCODE_LOCATOR\": \"<string>\",\n        \"RPC\": \"<string>\",\n        \"X_COORDINATE\": \"<number>\",\n        \"Y_COORDINATE\": \"<number>\",\n        \"LNG\": \"<number>\",\n        \"LAT\": \"<number>\",\n        \"STATUS\": \"<string>\",\n        \"LOGICAL_STATUS_CODE\": \"<string>\",\n        \"CLASSIFICATION_CODE\": \"<string>\",\n        \"CLASSIFICATION_CODE_DESCRIPTION\": \"<string>\",\n        \"LOCAL_CUSTODIAN_CODE\": \"<integer>\",\n        \"LOCAL_CUSTODIAN_CODE_DESCRIPTION\": \"<string>\",\n        \"COUNTRY_CODE\": \"<string>\",\n        \"COUNTRY_CODE_DESCRIPTION\": \"<string>\",\n        \"POSTAL_ADDRESS_CODE\": \"<string>\",\n        \"POSTAL_ADDRESS_CODE_DESCRIPTION\": \"<string>\",\n        \"BLPU_STATE_CODE\": \"<string>\",\n        \"BLPU_STATE_CODE_DESCRIPTION\": \"<string>\",\n        \"TOPOGRAPHY_LAYER_TOID\": \"<string>\",\n        \"WARD_CODE\": \"<string>\",\n        \"PARISH_CODE\": \"<string>\",\n        \"PARENT_UPRN\": \"<string>\",\n        \"LAST_UPDATE_DATE\": \"<string>\",\n        \"ENTRY_DATE\": \"<string>\",\n        \"LEGAL_NAME\": \"<string>\",\n        \"BLPU_STATE_DATE\": \"<string>\",\n        \"STREET_STATE_CODE\": \"<string>\",\n        \"STREET_STATE_CODE_DESCRIPTION\": \"<string>\",\n        \"STREET_CLASSIFICATION_CODE\": \"<string>\",\n        \"STREET_CLASSIFICATION_CODE_DESCRIPTION\": \"<string>\",\n        \"LPI_LOGICAL_STATUS_CODE\": \"<string>\",\n        \"LPI_LOGICAL_STATUS_CODE_DESCRIPTION\": \"<string>\",\n        \"LANGUAGE\": \"<string>\",\n        \"MATCH\": \"<number>\",\n        \"MATCH_DESCRIPTION\": \"<string>\"\n      }\n    }\n  ]\n}",
+              "createdAt": "2026-07-28T02:29:22.000Z",
+              "updatedAt": "2026-07-28T02:29:22.000Z",
+              "uid": "35240-a50bf26a-91cd-4605-a47a-757a71664ae8"
+            }
+          ],
+          "createdAt": "2026-07-28T02:29:22.000Z",
+          "updatedAt": "2026-07-28T02:29:22.000Z",
+          "uid": "35240-04ccde43-bacb-4bfa-9f7c-45c02a67c18c"
+        }
+      ],
+      "id": "3e0926e4-8190-4197-834c-74b119711f86",
+      "createdAt": "2026-07-28T02:29:22.000Z",
+      "updatedAt": "2026-07-28T02:29:22.000Z",
+      "uid": "35240-3e0926e4-8190-4197-834c-74b119711f86"
+    },
+    {
+      "name": "postcode",
+      "item": [
+        {
+          "name": "Returns matched addresses based on a property's postcode.",
+          "id": "9a901dfe-e531-425f-a7f4-36fdaec5e78c",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/postcode?postcode=<string>&format=JSON&maxresults=100&offset=0&dataset=DPA&lr=EN&output_srs=EPSG:27700&fq=<string>&fq=<string>",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "postcode"
+              ],
+              "query": [
+                {
+                  "description": "(Required) The postcode search parameter.",
+                  "key": "postcode",
+                  "value": "<string>"
+                },
+                {
+                  "description": "The format the response will be returned in. Default: JSON.",
+                  "key": "format",
+                  "value": "JSON"
+                },
+                {
+                  "description": "The maximum number of results to return. Default: 100.",
+                  "key": "maxresults",
+                  "value": "100"
+                },
+                {
+                  "description": "Offset the list of returned results by this amount.",
+                  "key": "offset",
+                  "value": "0"
+                },
+                {
+                  "description": "The dataset to return. Multiple values can be sent, separated by a comma. Default: DPA.",
+                  "key": "dataset",
+                  "value": "DPA"
+                },
+                {
+                  "description": "Which language of addresses to return. Default: EN, CY.",
+                  "key": "lr",
+                  "value": "EN"
+                },
+                {
+                  "description": "The intended output spatial reference system. Default: EPSG:27700",
+                  "key": "output_srs",
+                  "value": "EPSG:27700"
+                },
+                {
+                  "description": "Filter for classification code, logical status code, LPI logical status code and/or country code. Filtering for classification code will accept wildcard ( * ) searches. Multiple searches can be done by separating the codes with a space. Multiple filters can be used together by including the parameter multiple times",
+                  "key": "fq",
+                  "value": "<string>"
+                },
+                {
+                  "description": "Filter for classification code, logical status code, LPI logical status code and/or country code. Filtering for classification code will accept wildcard ( * ) searches. Multiple searches can be done by separating the codes with a space. Multiple filters can be used together by including the parameter multiple times",
+                  "key": "fq",
+                  "value": "<string>"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "d2bbbcfd-7833-42fd-83ed-7efec6c4014a",
+              "name": "Retrieves matched addresses",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/postcode?postcode=<string>&format=JSON&maxresults=100&offset=0&dataset=DPA&lr=EN&output_srs=EPSG:27700&fq=<string>&key=<API Key>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "postcode"
+                  ],
+                  "query": [
+                    {
+                      "description": "(Required) The postcode search parameter.",
+                      "key": "postcode",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "The format the response will be returned in. Default: JSON.",
+                      "key": "format",
+                      "value": "JSON"
+                    },
+                    {
+                      "description": "The maximum number of results to return. Default: 100.",
+                      "key": "maxresults",
+                      "value": "100"
+                    },
+                    {
+                      "description": "Offset the list of returned results by this amount.",
+                      "key": "offset",
+                      "value": "0"
+                    },
+                    {
+                      "description": "The dataset to return. Multiple values can be sent, separated by a comma. Default: DPA.",
+                      "key": "dataset",
+                      "value": "DPA"
+                    },
+                    {
+                      "description": "Which language of addresses to return. Default: EN, CY.",
+                      "key": "lr",
+                      "value": "EN"
+                    },
+                    {
+                      "description": "The intended output spatial reference system. Default: EPSG:27700",
+                      "key": "output_srs",
+                      "value": "EPSG:27700"
+                    },
+                    {
+                      "description": "Filter for classification code, logical status code, LPI logical status code and/or country code. Filtering for classification code will accept wildcard ( * ) searches. Multiple searches can be done by separating the codes with a space. Multiple filters can be used together by including the parameter multiple times",
+                      "key": "fq",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Added as a part of security scheme: apikey",
+                      "key": "key",
+                      "value": "<API Key>"
+                    }
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"header\": {\n    \"uri\": \"<string>\",\n    \"query\": \"<string>\",\n    \"offset\": \"<integer>\",\n    \"totalresults\": \"<integer>\",\n    \"format\": \"<string>\",\n    \"dataset\": \"<string>\",\n    \"lr\": \"<string>\",\n    \"maxresults\": \"<integer>\",\n    \"matchprecision\": \"<integer>\",\n    \"epoch\": \"<string>\",\n    \"lastupdate\": \"<string>\",\n    \"output_srs\": \"<string>\"\n  },\n  \"results\": [\n    {\n      \"DPA\": {\n        \"UPRN\": \"<string>\",\n        \"UDPRN\": \"<string>\",\n        \"ADDRESS\": \"<string>\",\n        \"ORGANISATION_NAME\": \"<string>\",\n        \"DEPARTMENT_NAME\": \"<string>\",\n        \"SUB_BUILDING_NAME\": \"<string>\",\n        \"BUILDING_NAME\": \"<string>\",\n        \"BUILDING_NUMBER\": \"<string>\",\n        \"DEPENDENT_THOROUGHFARE_NAME\": \"<string>\",\n        \"THOROUGHFARE_NAME\": \"<string>\",\n        \"DOUBLE_DEPENDENT_LOCALITY\": \"<string>\",\n        \"DEPENDENT_LOCALITY\": \"<string>\",\n        \"POST_TOWN\": \"<string>\",\n        \"POSTCODE\": \"<string>\",\n        \"RPC\": \"<string>\",\n        \"X_COORDINATE\": \"<number>\",\n        \"Y_COORDINATE\": \"<number>\",\n        \"LNG\": \"<number>\",\n        \"LAT\": \"<number>\",\n        \"STATUS\": \"<string>\",\n        \"LOGICAL_STATUS_CODE\": \"<string>\",\n        \"CLASSIFICATION_CODE\": \"<string>\",\n        \"CLASSIFICATION_CODE_DESCRIPTION\": \"<string>\",\n        \"LOCAL_CUSTODIAN_CODE\": \"<integer>\",\n        \"LOCAL_CUSTODIAN_CODE_DESCRIPTION\": \"<string>\",\n        \"COUNTRY_CODE\": \"<string>\",\n        \"COUNTRY_CODE_DESCRIPTION\": \"<string>\",\n        \"POSTAL_ADDRESS_CODE\": \"<string>\",\n        \"POSTAL_ADDRESS_CODE_DESCRIPTION\": \"<string>\",\n        \"BLPU_STATE_CODE\": \"<string>\",\n        \"BLPU_STATE_CODE_DESCRIPTION\": \"<string>\",\n        \"TOPOGRAPHY_LAYER_TOID\": \"<string>\",\n        \"WARD_CODE\": \"<string>\",\n        \"PARISH_CODE\": \"<string>\",\n        \"PARENT_UPRN\": \"<string>\",\n        \"LAST_UPDATE_DATE\": \"<string>\",\n        \"ENTRY_DATE\": \"<string>\",\n        \"LEGAL_NAME\": \"<string>\",\n        \"BLPU_STATE_DATE\": \"<string>\",\n        \"LANGUAGE\": \"<string>\",\n        \"MATCH\": \"<number>\",\n        \"MATCH_DESCRIPTION\": \"<string>\",\n        \"DELIVERY_POINT_SUFFIX\": \"<string>\"\n      },\n      \"LPI\": {\n        \"UPRN\": \"<string>\",\n        \"ADDRESS\": \"<string>\",\n        \"USRN\": \"<string>\",\n        \"LPI_KEY\": \"<string>\",\n        \"ORGANISATION\": \"<string>\",\n        \"SAO_START_NUMBER\": \"<string>\",\n        \"SAO_START_SUFFIX\": \"<string>\",\n        \"SAO_END_NUMBER\": \"<string>\",\n        \"SAO_END_SUFFIX\": \"<string>\",\n        \"SAO_TEXT\": \"<string>\",\n        \"PAO_START_NUMBER\": \"<string>\",\n        \"PAO_START_SUFFIX\": \"<string>\",\n        \"PAO_END_NUMBER\": \"<string>\",\n        \"PAO_END_SUFFIX\": \"<string>\",\n        \"PAO_TEXT\": \"<string>\",\n        \"STREET_DESCRIPTION\": \"<string>\",\n        \"LOCALITY_NAME\": \"<string>\",\n        \"TOWN_NAME\": \"<string>\",\n        \"ADMINISTRATIVE_AREA\": \"<string>\",\n        \"AREA_NAME\": \"<string>\",\n        \"POSTCODE_LOCATOR\": \"<string>\",\n        \"RPC\": \"<string>\",\n        \"X_COORDINATE\": \"<number>\",\n        \"Y_COORDINATE\": \"<number>\",\n        \"LNG\": \"<number>\",\n        \"LAT\": \"<number>\",\n        \"STATUS\": \"<string>\",\n        \"LOGICAL_STATUS_CODE\": \"<string>\",\n        \"CLASSIFICATION_CODE\": \"<string>\",\n        \"CLASSIFICATION_CODE_DESCRIPTION\": \"<string>\",\n        \"LOCAL_CUSTODIAN_CODE\": \"<integer>\",\n        \"LOCAL_CUSTODIAN_CODE_DESCRIPTION\": \"<string>\",\n        \"COUNTRY_CODE\": \"<string>\",\n        \"COUNTRY_CODE_DESCRIPTION\": \"<string>\",\n        \"POSTAL_ADDRESS_CODE\": \"<string>\",\n        \"POSTAL_ADDRESS_CODE_DESCRIPTION\": \"<string>\",\n        \"BLPU_STATE_CODE\": \"<string>\",\n        \"BLPU_STATE_CODE_DESCRIPTION\": \"<string>\",\n        \"TOPOGRAPHY_LAYER_TOID\": \"<string>\",\n        \"WARD_CODE\": \"<string>\",\n        \"PARISH_CODE\": \"<string>\",\n        \"PARENT_UPRN\": \"<string>\",\n        \"LAST_UPDATE_DATE\": \"<string>\",\n        \"ENTRY_DATE\": \"<string>\",\n        \"LEGAL_NAME\": \"<string>\",\n        \"BLPU_STATE_DATE\": \"<string>\",\n        \"STREET_STATE_CODE\": \"<string>\",\n        \"STREET_STATE_CODE_DESCRIPTION\": \"<string>\",\n        \"STREET_CLASSIFICATION_CODE\": \"<string>\",\n        \"STREET_CLASSIFICATION_CODE_DESCRIPTION\": \"<string>\",\n        \"LPI_LOGICAL_STATUS_CODE\": \"<string>\",\n        \"LPI_LOGICAL_STATUS_CODE_DESCRIPTION\": \"<string>\",\n        \"LANGUAGE\": \"<string>\",\n        \"MATCH\": \"<number>\",\n        \"MATCH_DESCRIPTION\": \"<string>\"\n      }\n    },\n    {\n      \"DPA\": {\n        \"UPRN\": \"<string>\",\n        \"UDPRN\": \"<string>\",\n        \"ADDRESS\": \"<string>\",\n        \"ORGANISATION_NAME\": \"<string>\",\n        \"DEPARTMENT_NAME\": \"<string>\",\n        \"SUB_BUILDING_NAME\": \"<string>\",\n        \"BUILDING_NAME\": \"<string>\",\n        \"BUILDING_NUMBER\": \"<string>\",\n        \"DEPENDENT_THOROUGHFARE_NAME\": \"<string>\",\n        \"THOROUGHFARE_NAME\": \"<string>\",\n        \"DOUBLE_DEPENDENT_LOCALITY\": \"<string>\",\n        \"DEPENDENT_LOCALITY\": \"<string>\",\n        \"POST_TOWN\": \"<string>\",\n        \"POSTCODE\": \"<string>\",\n        \"RPC\": \"<string>\",\n        \"X_COORDINATE\": \"<number>\",\n        \"Y_COORDINATE\": \"<number>\",\n        \"LNG\": \"<number>\",\n        \"LAT\": \"<number>\",\n        \"STATUS\": \"<string>\",\n        \"LOGICAL_STATUS_CODE\": \"<string>\",\n        \"CLASSIFICATION_CODE\": \"<string>\",\n        \"CLASSIFICATION_CODE_DESCRIPTION\": \"<string>\",\n        \"LOCAL_CUSTODIAN_CODE\": \"<integer>\",\n        \"LOCAL_CUSTODIAN_CODE_DESCRIPTION\": \"<string>\",\n        \"COUNTRY_CODE\": \"<string>\",\n        \"COUNTRY_CODE_DESCRIPTION\": \"<string>\",\n        \"POSTAL_ADDRESS_CODE\": \"<string>\",\n        \"POSTAL_ADDRESS_CODE_DESCRIPTION\": \"<string>\",\n        \"BLPU_STATE_CODE\": \"<string>\",\n        \"BLPU_STATE_CODE_DESCRIPTION\": \"<string>\",\n        \"TOPOGRAPHY_LAYER_TOID\": \"<string>\",\n        \"WARD_CODE\": \"<string>\",\n        \"PARISH_CODE\": \"<string>\",\n        \"PARENT_UPRN\": \"<string>\",\n        \"LAST_UPDATE_DATE\": \"<string>\",\n        \"ENTRY_DATE\": \"<string>\",\n        \"LEGAL_NAME\": \"<string>\",\n        \"BLPU_STATE_DATE\": \"<string>\",\n        \"LANGUAGE\": \"<string>\",\n        \"MATCH\": \"<number>\",\n        \"MATCH_DESCRIPTION\": \"<string>\",\n        \"DELIVERY_POINT_SUFFIX\": \"<string>\"\n      },\n      \"LPI\": {\n        \"UPRN\": \"<string>\",\n        \"ADDRESS\": \"<string>\",\n        \"USRN\": \"<string>\",\n        \"LPI_KEY\": \"<string>\",\n        \"ORGANISATION\": \"<string>\",\n        \"SAO_START_NUMBER\": \"<string>\",\n        \"SAO_START_SUFFIX\": \"<string>\",\n        \"SAO_END_NUMBER\": \"<string>\",\n        \"SAO_END_SUFFIX\": \"<string>\",\n        \"SAO_TEXT\": \"<string>\",\n        \"PAO_START_NUMBER\": \"<string>\",\n        \"PAO_START_SUFFIX\": \"<string>\",\n        \"PAO_END_NUMBER\": \"<string>\",\n        \"PAO_END_SUFFIX\": \"<string>\",\n        \"PAO_TEXT\": \"<string>\",\n        \"STREET_DESCRIPTION\": \"<string>\",\n        \"LOCALITY_NAME\": \"<string>\",\n        \"TOWN_NAME\": \"<string>\",\n        \"ADMINISTRATIVE_AREA\": \"<string>\",\n        \"AREA_NAME\": \"<string>\",\n        \"POSTCODE_LOCATOR\": \"<string>\",\n        \"RPC\": \"<string>\",\n        \"X_COORDINATE\": \"<number>\",\n        \"Y_COORDINATE\": \"<number>\",\n        \"LNG\": \"<number>\",\n        \"LAT\": \"<number>\",\n        \"STATUS\": \"<string>\",\n        \"LOGICAL_STATUS_CODE\": \"<string>\",\n        \"CLASSIFICATION_CODE\": \"<string>\",\n        \"CLASSIFICATION_CODE_DESCRIPTION\": \"<string>\",\n        \"LOCAL_CUSTODIAN_CODE\": \"<integer>\",\n        \"LOCAL_CUSTODIAN_CODE_DESCRIPTION\": \"<string>\",\n        \"COUNTRY_CODE\": \"<string>\",\n        \"COUNTRY_CODE_DESCRIPTION\": \"<string>\",\n        \"POSTAL_ADDRESS_CODE\": \"<string>\",\n        \"POSTAL_ADDRESS_CODE_DESCRIPTION\": \"<string>\",\n        \"BLPU_STATE_CODE\": \"<string>\",\n        \"BLPU_STATE_CODE_DESCRIPTION\": \"<string>\",\n        \"TOPOGRAPHY_LAYER_TOID\": \"<string>\",\n        \"WARD_CODE\": \"<string>\",\n        \"PARISH_CODE\": \"<string>\",\n        \"PARENT_UPRN\": \"<string>\",\n        \"LAST_UPDATE_DATE\": \"<string>\",\n        \"ENTRY_DATE\": \"<string>\",\n        \"LEGAL_NAME\": \"<string>\",\n        \"BLPU_STATE_DATE\": \"<string>\",\n        \"STREET_STATE_CODE\": \"<string>\",\n        \"STREET_STATE_CODE_DESCRIPTION\": \"<string>\",\n        \"STREET_CLASSIFICATION_CODE\": \"<string>\",\n        \"STREET_CLASSIFICATION_CODE_DESCRIPTION\": \"<string>\",\n        \"LPI_LOGICAL_STATUS_CODE\": \"<string>\",\n        \"LPI_LOGICAL_STATUS_CODE_DESCRIPTION\": \"<string>\",\n        \"LANGUAGE\": \"<string>\",\n        \"MATCH\": \"<number>\",\n        \"MATCH_DESCRIPTION\": \"<string>\"\n      }\n    }\n  ]\n}",
+              "createdAt": "2026-07-28T02:29:22.000Z",
+              "updatedAt": "2026-07-28T02:29:22.000Z",
+              "uid": "35240-d2bbbcfd-7833-42fd-83ed-7efec6c4014a"
+            }
+          ],
+          "createdAt": "2026-07-28T02:29:22.000Z",
+          "updatedAt": "2026-07-28T02:29:22.000Z",
+          "uid": "35240-9a901dfe-e531-425f-a7f4-36fdaec5e78c"
+        }
+      ],
+      "id": "668f2118-42fa-4260-ba6f-bb16f3318a26",
+      "createdAt": "2026-07-28T02:29:22.000Z",
+      "updatedAt": "2026-07-28T02:29:22.000Z",
+      "uid": "35240-668f2118-42fa-4260-ba6f-bb16f3318a26"
+    },
+    {
+      "name": "radius",
+      "item": [
+        {
+          "name": "Takes a pair of coordinates as the centre for a circle and returns all addresses that are intersected by it.",
+          "id": "e9156388-8b42-41a1-b4ea-4e157758f8a4",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/radius?point=<string>&radius=<number>&format=JSON&maxresults=100&offset=0&dataset=DPA&lr=EN&output_srs=EPSG:27700&srs=BNG&fq=<string>&fq=<string>",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "radius"
+              ],
+              "query": [
+                {
+                  "description": "(Required) One comma-separated coordinate set that specifies the coordinate to which the nearest record in a straight line should be found. The maximum distance the search will try is 1,000 metres. The precision of the coordinates is to two decimal places (that is, 1 cm accuracy).",
+                  "key": "point",
+                  "value": "<string>"
+                },
+                {
+                  "description": "The radius in metres to search within. The precision of the distance is to two decimal places (that is, 1 cm accuracy). Minimum = 0.01, Maximum = 1,000 . Default = 100",
+                  "key": "radius",
+                  "value": "<number>"
+                },
+                {
+                  "description": "The format the response will be returned in. Default: JSON.",
+                  "key": "format",
+                  "value": "JSON"
+                },
+                {
+                  "description": "The maximum number of results to return. Default: 100.",
+                  "key": "maxresults",
+                  "value": "100"
+                },
+                {
+                  "description": "Offset the list of returned results by this amount.",
+                  "key": "offset",
+                  "value": "0"
+                },
+                {
+                  "description": "The dataset to return. Multiple values can be sent, separated by a comma. Default: DPA.",
+                  "key": "dataset",
+                  "value": "DPA"
+                },
+                {
+                  "description": "Which language of addresses to return. Default: EN, CY.",
+                  "key": "lr",
+                  "value": "EN"
+                },
+                {
+                  "description": "The intended output spatial reference system. Default: EPSG:27700",
+                  "key": "output_srs",
+                  "value": "EPSG:27700"
+                },
+                {
+                  "description": "The spatial reference system for the input coordinate set.",
+                  "key": "srs",
+                  "value": "BNG"
+                },
+                {
+                  "description": "Filter for classification code, logical status code, LPI logical status code and/or country code. Filtering for classification code will accept wildcard ( * ) searches. Multiple searches can be done by separating the codes with a space. Multiple filters can be used together by including the parameter multiple times",
+                  "key": "fq",
+                  "value": "<string>"
+                },
+                {
+                  "description": "Filter for classification code, logical status code, LPI logical status code and/or country code. Filtering for classification code will accept wildcard ( * ) searches. Multiple searches can be done by separating the codes with a space. Multiple filters can be used together by including the parameter multiple times",
+                  "key": "fq",
+                  "value": "<string>"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "4dcadd78-9fc5-4fab-b6d6-f53062c8e52a",
+              "name": "Retrieves matched addresses",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/radius?point=<string>&radius=<number>&format=JSON&maxresults=100&offset=0&dataset=DPA&lr=EN&output_srs=EPSG:27700&srs=BNG&fq=<string>&key=<API Key>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "radius"
+                  ],
+                  "query": [
+                    {
+                      "description": "(Required) One comma-separated coordinate set that specifies the coordinate to which the nearest record in a straight line should be found. The maximum distance the search will try is 1,000 metres. The precision of the coordinates is to two decimal places (that is, 1 cm accuracy).",
+                      "key": "point",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "The radius in metres to search within. The precision of the distance is to two decimal places (that is, 1 cm accuracy). Minimum = 0.01, Maximum = 1,000 . Default = 100",
+                      "key": "radius",
+                      "value": "<number>"
+                    },
+                    {
+                      "description": "The format the response will be returned in. Default: JSON.",
+                      "key": "format",
+                      "value": "JSON"
+                    },
+                    {
+                      "description": "The maximum number of results to return. Default: 100.",
+                      "key": "maxresults",
+                      "value": "100"
+                    },
+                    {
+                      "description": "Offset the list of returned results by this amount.",
+                      "key": "offset",
+                      "value": "0"
+                    },
+                    {
+                      "description": "The dataset to return. Multiple values can be sent, separated by a comma. Default: DPA.",
+                      "key": "dataset",
+                      "value": "DPA"
+                    },
+                    {
+                      "description": "Which language of addresses to return. Default: EN, CY.",
+                      "key": "lr",
+                      "value": "EN"
+                    },
+                    {
+                      "description": "The intended output spatial reference system. Default: EPSG:27700",
+                      "key": "output_srs",
+                      "value": "EPSG:27700"
+                    },
+                    {
+                      "description": "The spatial reference system for the input coordinate set.",
+                      "key": "srs",
+                      "value": "BNG"
+                    },
+                    {
+                      "description": "Filter for classification code, logical status code, LPI logical status code and/or country code. Filtering for classification code will accept wildcard ( * ) searches. Multiple searches can be done by separating the codes with a space. Multiple filters can be used together by including the parameter multiple times",
+                      "key": "fq",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Added as a part of security scheme: apikey",
+                      "key": "key",
+                      "value": "<API Key>"
+                    }
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"header\": {\n    \"uri\": \"<string>\",\n    \"query\": \"<string>\",\n    \"offset\": \"<integer>\",\n    \"totalresults\": \"<integer>\",\n    \"format\": \"<string>\",\n    \"dataset\": \"<string>\",\n    \"lr\": \"<string>\",\n    \"maxresults\": \"<integer>\",\n    \"matchprecision\": \"<integer>\",\n    \"epoch\": \"<string>\",\n    \"lastupdate\": \"<string>\",\n    \"output_srs\": \"<string>\"\n  },\n  \"results\": [\n    {\n      \"DPA\": {\n        \"UPRN\": \"<string>\",\n        \"UDPRN\": \"<string>\",\n        \"ADDRESS\": \"<string>\",\n        \"ORGANISATION_NAME\": \"<string>\",\n        \"DEPARTMENT_NAME\": \"<string>\",\n        \"SUB_BUILDING_NAME\": \"<string>\",\n        \"BUILDING_NAME\": \"<string>\",\n        \"BUILDING_NUMBER\": \"<string>\",\n        \"DEPENDENT_THOROUGHFARE_NAME\": \"<string>\",\n        \"THOROUGHFARE_NAME\": \"<string>\",\n        \"DOUBLE_DEPENDENT_LOCALITY\": \"<string>\",\n        \"DEPENDENT_LOCALITY\": \"<string>\",\n        \"POST_TOWN\": \"<string>\",\n        \"POSTCODE\": \"<string>\",\n        \"RPC\": \"<string>\",\n        \"X_COORDINATE\": \"<number>\",\n        \"Y_COORDINATE\": \"<number>\",\n        \"LNG\": \"<number>\",\n        \"LAT\": \"<number>\",\n        \"STATUS\": \"<string>\",\n        \"LOGICAL_STATUS_CODE\": \"<string>\",\n        \"CLASSIFICATION_CODE\": \"<string>\",\n        \"CLASSIFICATION_CODE_DESCRIPTION\": \"<string>\",\n        \"LOCAL_CUSTODIAN_CODE\": \"<integer>\",\n        \"LOCAL_CUSTODIAN_CODE_DESCRIPTION\": \"<string>\",\n        \"COUNTRY_CODE\": \"<string>\",\n        \"COUNTRY_CODE_DESCRIPTION\": \"<string>\",\n        \"POSTAL_ADDRESS_CODE\": \"<string>\",\n        \"POSTAL_ADDRESS_CODE_DESCRIPTION\": \"<string>\",\n        \"BLPU_STATE_CODE\": \"<string>\",\n        \"BLPU_STATE_CODE_DESCRIPTION\": \"<string>\",\n        \"TOPOGRAPHY_LAYER_TOID\": \"<string>\",\n        \"WARD_CODE\": \"<string>\",\n        \"PARISH_CODE\": \"<string>\",\n        \"PARENT_UPRN\": \"<string>\",\n        \"LAST_UPDATE_DATE\": \"<string>\",\n        \"ENTRY_DATE\": \"<string>\",\n        \"LEGAL_NAME\": \"<string>\",\n        \"BLPU_STATE_DATE\": \"<string>\",\n        \"LANGUAGE\": \"<string>\",\n        \"MATCH\": \"<number>\",\n        \"MATCH_DESCRIPTION\": \"<string>\",\n        \"DELIVERY_POINT_SUFFIX\": \"<string>\"\n      },\n      \"LPI\": {\n        \"UPRN\": \"<string>\",\n        \"ADDRESS\": \"<string>\",\n        \"USRN\": \"<string>\",\n        \"LPI_KEY\": \"<string>\",\n        \"ORGANISATION\": \"<string>\",\n        \"SAO_START_NUMBER\": \"<string>\",\n        \"SAO_START_SUFFIX\": \"<string>\",\n        \"SAO_END_NUMBER\": \"<string>\",\n        \"SAO_END_SUFFIX\": \"<string>\",\n        \"SAO_TEXT\": \"<string>\",\n        \"PAO_START_NUMBER\": \"<string>\",\n        \"PAO_START_SUFFIX\": \"<string>\",\n        \"PAO_END_NUMBER\": \"<string>\",\n        \"PAO_END_SUFFIX\": \"<string>\",\n        \"PAO_TEXT\": \"<string>\",\n        \"STREET_DESCRIPTION\": \"<string>\",\n        \"LOCALITY_NAME\": \"<string>\",\n        \"TOWN_NAME\": \"<string>\",\n        \"ADMINISTRATIVE_AREA\": \"<string>\",\n        \"AREA_NAME\": \"<string>\",\n        \"POSTCODE_LOCATOR\": \"<string>\",\n        \"RPC\": \"<string>\",\n        \"X_COORDINATE\": \"<number>\",\n        \"Y_COORDINATE\": \"<number>\",\n        \"LNG\": \"<number>\",\n        \"LAT\": \"<number>\",\n        \"STATUS\": \"<string>\",\n        \"LOGICAL_STATUS_CODE\": \"<string>\",\n        \"CLASSIFICATION_CODE\": \"<string>\",\n        \"CLASSIFICATION_CODE_DESCRIPTION\": \"<string>\",\n        \"LOCAL_CUSTODIAN_CODE\": \"<integer>\",\n        \"LOCAL_CUSTODIAN_CODE_DESCRIPTION\": \"<string>\",\n        \"COUNTRY_CODE\": \"<string>\",\n        \"COUNTRY_CODE_DESCRIPTION\": \"<string>\",\n        \"POSTAL_ADDRESS_CODE\": \"<string>\",\n        \"POSTAL_ADDRESS_CODE_DESCRIPTION\": \"<string>\",\n        \"BLPU_STATE_CODE\": \"<string>\",\n        \"BLPU_STATE_CODE_DESCRIPTION\": \"<string>\",\n        \"TOPOGRAPHY_LAYER_TOID\": \"<string>\",\n        \"WARD_CODE\": \"<string>\",\n        \"PARISH_CODE\": \"<string>\",\n        \"PARENT_UPRN\": \"<string>\",\n        \"LAST_UPDATE_DATE\": \"<string>\",\n        \"ENTRY_DATE\": \"<string>\",\n        \"LEGAL_NAME\": \"<string>\",\n        \"BLPU_STATE_DATE\": \"<string>\",\n        \"STREET_STATE_CODE\": \"<string>\",\n        \"STREET_STATE_CODE_DESCRIPTION\": \"<string>\",\n        \"STREET_CLASSIFICATION_CODE\": \"<string>\",\n        \"STREET_CLASSIFICATION_CODE_DESCRIPTION\": \"<string>\",\n        \"LPI_LOGICAL_STATUS_CODE\": \"<string>\",\n        \"LPI_LOGICAL_STATUS_CODE_DESCRIPTION\": \"<string>\",\n        \"LANGUAGE\": \"<string>\",\n        \"MATCH\": \"<number>\",\n        \"MATCH_DESCRIPTION\": \"<string>\"\n      }\n    },\n    {\n      \"DPA\": {\n        \"UPRN\": \"<string>\",\n        \"UDPRN\": \"<string>\",\n        \"ADDRESS\": \"<string>\",\n        \"ORGANISATION_NAME\": \"<string>\",\n        \"DEPARTMENT_NAME\": \"<string>\",\n        \"SUB_BUILDING_NAME\": \"<string>\",\n        \"BUILDING_NAME\": \"<string>\",\n        \"BUILDING_NUMBER\": \"<string>\",\n        \"DEPENDENT_THOROUGHFARE_NAME\": \"<string>\",\n        \"THOROUGHFARE_NAME\": \"<string>\",\n        \"DOUBLE_DEPENDENT_LOCALITY\": \"<string>\",\n        \"DEPENDENT_LOCALITY\": \"<string>\",\n        \"POST_TOWN\": \"<string>\",\n        \"POSTCODE\": \"<string>\",\n        \"RPC\": \"<string>\",\n        \"X_COORDINATE\": \"<number>\",\n        \"Y_COORDINATE\": \"<number>\",\n        \"LNG\": \"<number>\",\n        \"LAT\": \"<number>\",\n        \"STATUS\": \"<string>\",\n        \"LOGICAL_STATUS_CODE\": \"<string>\",\n        \"CLASSIFICATION_CODE\": \"<string>\",\n        \"CLASSIFICATION_CODE_DESCRIPTION\": \"<string>\",\n        \"LOCAL_CUSTODIAN_CODE\": \"<integer>\",\n        \"LOCAL_CUSTODIAN_CODE_DESCRIPTION\": \"<string>\",\n        \"COUNTRY_CODE\": \"<string>\",\n        \"COUNTRY_CODE_DESCRIPTION\": \"<string>\",\n        \"POSTAL_ADDRESS_CODE\": \"<string>\",\n        \"POSTAL_ADDRESS_CODE_DESCRIPTION\": \"<string>\",\n        \"BLPU_STATE_CODE\": \"<string>\",\n        \"BLPU_STATE_CODE_DESCRIPTION\": \"<string>\",\n        \"TOPOGRAPHY_LAYER_TOID\": \"<string>\",\n        \"WARD_CODE\": \"<string>\",\n        \"PARISH_CODE\": \"<string>\",\n        \"PARENT_UPRN\": \"<string>\",\n        \"LAST_UPDATE_DATE\": \"<string>\",\n        \"ENTRY_DATE\": \"<string>\",\n        \"LEGAL_NAME\": \"<string>\",\n        \"BLPU_STATE_DATE\": \"<string>\",\n        \"LANGUAGE\": \"<string>\",\n        \"MATCH\": \"<number>\",\n        \"MATCH_DESCRIPTION\": \"<string>\",\n        \"DELIVERY_POINT_SUFFIX\": \"<string>\"\n      },\n      \"LPI\": {\n        \"UPRN\": \"<string>\",\n        \"ADDRESS\": \"<string>\",\n        \"USRN\": \"<string>\",\n        \"LPI_KEY\": \"<string>\",\n        \"ORGANISATION\": \"<string>\",\n        \"SAO_START_NUMBER\": \"<string>\",\n        \"SAO_START_SUFFIX\": \"<string>\",\n        \"SAO_END_NUMBER\": \"<string>\",\n        \"SAO_END_SUFFIX\": \"<string>\",\n        \"SAO_TEXT\": \"<string>\",\n        \"PAO_START_NUMBER\": \"<string>\",\n        \"PAO_START_SUFFIX\": \"<string>\",\n        \"PAO_END_NUMBER\": \"<string>\",\n        \"PAO_END_SUFFIX\": \"<string>\",\n        \"PAO_TEXT\": \"<string>\",\n        \"STREET_DESCRIPTION\": \"<string>\",\n        \"LOCALITY_NAME\": \"<string>\",\n        \"TOWN_NAME\": \"<string>\",\n        \"ADMINISTRATIVE_AREA\": \"<string>\",\n        \"AREA_NAME\": \"<string>\",\n        \"POSTCODE_LOCATOR\": \"<string>\",\n        \"RPC\": \"<string>\",\n        \"X_COORDINATE\": \"<number>\",\n        \"Y_COORDINATE\": \"<number>\",\n        \"LNG\": \"<number>\",\n        \"LAT\": \"<number>\",\n        \"STATUS\": \"<string>\",\n        \"LOGICAL_STATUS_CODE\": \"<string>\",\n        \"CLASSIFICATION_CODE\": \"<string>\",\n        \"CLASSIFICATION_CODE_DESCRIPTION\": \"<string>\",\n        \"LOCAL_CUSTODIAN_CODE\": \"<integer>\",\n        \"LOCAL_CUSTODIAN_CODE_DESCRIPTION\": \"<string>\",\n        \"COUNTRY_CODE\": \"<string>\",\n        \"COUNTRY_CODE_DESCRIPTION\": \"<string>\",\n        \"POSTAL_ADDRESS_CODE\": \"<string>\",\n        \"POSTAL_ADDRESS_CODE_DESCRIPTION\": \"<string>\",\n        \"BLPU_STATE_CODE\": \"<string>\",\n        \"BLPU_STATE_CODE_DESCRIPTION\": \"<string>\",\n        \"TOPOGRAPHY_LAYER_TOID\": \"<string>\",\n        \"WARD_CODE\": \"<string>\",\n        \"PARISH_CODE\": \"<string>\",\n        \"PARENT_UPRN\": \"<string>\",\n        \"LAST_UPDATE_DATE\": \"<string>\",\n        \"ENTRY_DATE\": \"<string>\",\n        \"LEGAL_NAME\": \"<string>\",\n        \"BLPU_STATE_DATE\": \"<string>\",\n        \"STREET_STATE_CODE\": \"<string>\",\n        \"STREET_STATE_CODE_DESCRIPTION\": \"<string>\",\n        \"STREET_CLASSIFICATION_CODE\": \"<string>\",\n        \"STREET_CLASSIFICATION_CODE_DESCRIPTION\": \"<string>\",\n        \"LPI_LOGICAL_STATUS_CODE\": \"<string>\",\n        \"LPI_LOGICAL_STATUS_CODE_DESCRIPTION\": \"<string>\",\n        \"LANGUAGE\": \"<string>\",\n        \"MATCH\": \"<number>\",\n        \"MATCH_DESCRIPTION\": \"<string>\"\n      }\n    }\n  ]\n}",
+              "createdAt": "2026-07-28T02:29:22.000Z",
+              "updatedAt": "2026-07-28T02:29:22.000Z",
+              "uid": "35240-4dcadd78-9fc5-4fab-b6d6-f53062c8e52a"
+            }
+          ],
+          "createdAt": "2026-07-28T02:29:22.000Z",
+          "updatedAt": "2026-07-28T02:29:22.000Z",
+          "uid": "35240-e9156388-8b42-41a1-b4ea-4e157758f8a4"
+        }
+      ],
+      "id": "f65af008-25ef-43c8-a066-67d0c0335d1d",
+      "createdAt": "2026-07-28T02:29:22.000Z",
+      "updatedAt": "2026-07-28T02:29:22.000Z",
+      "uid": "35240-f65af008-25ef-43c8-a066-67d0c0335d1d"
+    },
+    {
+      "name": "uprn",
+      "item": [
+        {
+          "name": "Returns matched addresses based on a UPRN.",
+          "id": "ffbc2b9c-2c93-49a1-888f-4e77b2dca18d",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/uprn?uprn=<integer>&format=JSON&dataset=DPA&lr=EN&output_srs=EPSG:27700&fq=<string>&fq=<string>",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "uprn"
+              ],
+              "query": [
+                {
+                  "description": "(Required) A valid UPRN.",
+                  "key": "uprn",
+                  "value": "<integer>"
+                },
+                {
+                  "description": "The format the response will be returned in. Default: JSON.",
+                  "key": "format",
+                  "value": "JSON"
+                },
+                {
+                  "description": "The dataset to return. Multiple values can be sent, separated by a comma. Default: DPA.",
+                  "key": "dataset",
+                  "value": "DPA"
+                },
+                {
+                  "description": "Which language of addresses to return. Default: EN, CY.",
+                  "key": "lr",
+                  "value": "EN"
+                },
+                {
+                  "description": "The intended output spatial reference system. Default: EPSG:27700",
+                  "key": "output_srs",
+                  "value": "EPSG:27700"
+                },
+                {
+                  "description": "Filter for classification code, logical status code, LPI logical status code and/or country code. Filtering for classification code will accept wildcard ( * ) searches. Multiple searches can be done by separating the codes with a space. Multiple filters can be used together by including the parameter multiple times",
+                  "key": "fq",
+                  "value": "<string>"
+                },
+                {
+                  "description": "Filter for classification code, logical status code, LPI logical status code and/or country code. Filtering for classification code will accept wildcard ( * ) searches. Multiple searches can be done by separating the codes with a space. Multiple filters can be used together by including the parameter multiple times",
+                  "key": "fq",
+                  "value": "<string>"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "0c356696-6bed-46f1-a52f-21bce3b6f9bd",
+              "name": "Retrieves matched addresses",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/uprn?uprn=<integer>&format=JSON&dataset=DPA&lr=EN&output_srs=EPSG:27700&fq=<string>&key=<API Key>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "uprn"
+                  ],
+                  "query": [
+                    {
+                      "description": "(Required) A valid UPRN.",
+                      "key": "uprn",
+                      "value": "<integer>"
+                    },
+                    {
+                      "description": "The format the response will be returned in. Default: JSON.",
+                      "key": "format",
+                      "value": "JSON"
+                    },
+                    {
+                      "description": "The dataset to return. Multiple values can be sent, separated by a comma. Default: DPA.",
+                      "key": "dataset",
+                      "value": "DPA"
+                    },
+                    {
+                      "description": "Which language of addresses to return. Default: EN, CY.",
+                      "key": "lr",
+                      "value": "EN"
+                    },
+                    {
+                      "description": "The intended output spatial reference system. Default: EPSG:27700",
+                      "key": "output_srs",
+                      "value": "EPSG:27700"
+                    },
+                    {
+                      "description": "Filter for classification code, logical status code, LPI logical status code and/or country code. Filtering for classification code will accept wildcard ( * ) searches. Multiple searches can be done by separating the codes with a space. Multiple filters can be used together by including the parameter multiple times",
+                      "key": "fq",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Added as a part of security scheme: apikey",
+                      "key": "key",
+                      "value": "<API Key>"
+                    }
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"header\": {\n    \"uri\": \"<string>\",\n    \"query\": \"<string>\",\n    \"offset\": \"<integer>\",\n    \"totalresults\": \"<integer>\",\n    \"format\": \"<string>\",\n    \"dataset\": \"<string>\",\n    \"lr\": \"<string>\",\n    \"maxresults\": \"<integer>\",\n    \"matchprecision\": \"<integer>\",\n    \"epoch\": \"<string>\",\n    \"lastupdate\": \"<string>\",\n    \"output_srs\": \"<string>\"\n  },\n  \"results\": [\n    {\n      \"DPA\": {\n        \"UPRN\": \"<string>\",\n        \"UDPRN\": \"<string>\",\n        \"ADDRESS\": \"<string>\",\n        \"ORGANISATION_NAME\": \"<string>\",\n        \"DEPARTMENT_NAME\": \"<string>\",\n        \"SUB_BUILDING_NAME\": \"<string>\",\n        \"BUILDING_NAME\": \"<string>\",\n        \"BUILDING_NUMBER\": \"<string>\",\n        \"DEPENDENT_THOROUGHFARE_NAME\": \"<string>\",\n        \"THOROUGHFARE_NAME\": \"<string>\",\n        \"DOUBLE_DEPENDENT_LOCALITY\": \"<string>\",\n        \"DEPENDENT_LOCALITY\": \"<string>\",\n        \"POST_TOWN\": \"<string>\",\n        \"POSTCODE\": \"<string>\",\n        \"RPC\": \"<string>\",\n        \"X_COORDINATE\": \"<number>\",\n        \"Y_COORDINATE\": \"<number>\",\n        \"LNG\": \"<number>\",\n        \"LAT\": \"<number>\",\n        \"STATUS\": \"<string>\",\n        \"LOGICAL_STATUS_CODE\": \"<string>\",\n        \"CLASSIFICATION_CODE\": \"<string>\",\n        \"CLASSIFICATION_CODE_DESCRIPTION\": \"<string>\",\n        \"LOCAL_CUSTODIAN_CODE\": \"<integer>\",\n        \"LOCAL_CUSTODIAN_CODE_DESCRIPTION\": \"<string>\",\n        \"COUNTRY_CODE\": \"<string>\",\n        \"COUNTRY_CODE_DESCRIPTION\": \"<string>\",\n        \"POSTAL_ADDRESS_CODE\": \"<string>\",\n        \"POSTAL_ADDRESS_CODE_DESCRIPTION\": \"<string>\",\n        \"BLPU_STATE_CODE\": \"<string>\",\n        \"BLPU_STATE_CODE_DESCRIPTION\": \"<string>\",\n        \"TOPOGRAPHY_LAYER_TOID\": \"<string>\",\n        \"WARD_CODE\": \"<string>\",\n        \"PARISH_CODE\": \"<string>\",\n        \"PARENT_UPRN\": \"<string>\",\n        \"LAST_UPDATE_DATE\": \"<string>\",\n        \"ENTRY_DATE\": \"<string>\",\n        \"LEGAL_NAME\": \"<string>\",\n        \"BLPU_STATE_DATE\": \"<string>\",\n        \"LANGUAGE\": \"<string>\",\n        \"MATCH\": \"<number>\",\n        \"MATCH_DESCRIPTION\": \"<string>\",\n        \"DELIVERY_POINT_SUFFIX\": \"<string>\"\n      },\n      \"LPI\": {\n        \"UPRN\": \"<string>\",\n        \"ADDRESS\": \"<string>\",\n        \"USRN\": \"<string>\",\n        \"LPI_KEY\": \"<string>\",\n        \"ORGANISATION\": \"<string>\",\n        \"SAO_START_NUMBER\": \"<string>\",\n        \"SAO_START_SUFFIX\": \"<string>\",\n        \"SAO_END_NUMBER\": \"<string>\",\n        \"SAO_END_SUFFIX\": \"<string>\",\n        \"SAO_TEXT\": \"<string>\",\n        \"PAO_START_NUMBER\": \"<string>\",\n        \"PAO_START_SUFFIX\": \"<string>\",\n        \"PAO_END_NUMBER\": \"<string>\",\n        \"PAO_END_SUFFIX\": \"<string>\",\n        \"PAO_TEXT\": \"<string>\",\n        \"STREET_DESCRIPTION\": \"<string>\",\n        \"LOCALITY_NAME\": \"<string>\",\n        \"TOWN_NAME\": \"<string>\",\n        \"ADMINISTRATIVE_AREA\": \"<string>\",\n        \"AREA_NAME\": \"<string>\",\n        \"POSTCODE_LOCATOR\": \"<string>\",\n        \"RPC\": \"<string>\",\n        \"X_COORDINATE\": \"<number>\",\n        \"Y_COORDINATE\": \"<number>\",\n        \"LNG\": \"<number>\",\n        \"LAT\": \"<number>\",\n        \"STATUS\": \"<string>\",\n        \"LOGICAL_STATUS_CODE\": \"<string>\",\n        \"CLASSIFICATION_CODE\": \"<string>\",\n        \"CLASSIFICATION_CODE_DESCRIPTION\": \"<string>\",\n        \"LOCAL_CUSTODIAN_CODE\": \"<integer>\",\n        \"LOCAL_CUSTODIAN_CODE_DESCRIPTION\": \"<string>\",\n        \"COUNTRY_CODE\": \"<string>\",\n        \"COUNTRY_CODE_DESCRIPTION\": \"<string>\",\n        \"POSTAL_ADDRESS_CODE\": \"<string>\",\n        \"POSTAL_ADDRESS_CODE_DESCRIPTION\": \"<string>\",\n        \"BLPU_STATE_CODE\": \"<string>\",\n        \"BLPU_STATE_CODE_DESCRIPTION\": \"<string>\",\n        \"TOPOGRAPHY_LAYER_TOID\": \"<string>\",\n        \"WARD_CODE\": \"<string>\",\n        \"PARISH_CODE\": \"<string>\",\n        \"PARENT_UPRN\": \"<string>\",\n        \"LAST_UPDATE_DATE\": \"<string>\",\n        \"ENTRY_DATE\": \"<string>\",\n        \"LEGAL_NAME\": \"<string>\",\n        \"BLPU_STATE_DATE\": \"<string>\",\n        \"STREET_STATE_CODE\": \"<string>\",\n        \"STREET_STATE_CODE_DESCRIPTION\": \"<string>\",\n        \"STREET_CLASSIFICATION_CODE\": \"<string>\",\n        \"STREET_CLASSIFICATION_CODE_DESCRIPTION\": \"<string>\",\n        \"LPI_LOGICAL_STATUS_CODE\": \"<string>\",\n        \"LPI_LOGICAL_STATUS_CODE_DESCRIPTION\": \"<string>\",\n        \"LANGUAGE\": \"<string>\",\n        \"MATCH\": \"<number>\",\n        \"MATCH_DESCRIPTION\": \"<string>\"\n      }\n    },\n    {\n      \"DPA\": {\n        \"UPRN\": \"<string>\",\n        \"UDPRN\": \"<string>\",\n        \"ADDRESS\": \"<string>\",\n        \"ORGANISATION_NAME\": \"<string>\",\n        \"DEPARTMENT_NAME\": \"<string>\",\n        \"SUB_BUILDING_NAME\": \"<string>\",\n        \"BUILDING_NAME\": \"<string>\",\n        \"BUILDING_NUMBER\": \"<string>\",\n        \"DEPENDENT_THOROUGHFARE_NAME\": \"<string>\",\n        \"THOROUGHFARE_NAME\": \"<string>\",\n        \"DOUBLE_DEPENDENT_LOCALITY\": \"<string>\",\n        \"DEPENDENT_LOCALITY\": \"<string>\",\n        \"POST_TOWN\": \"<string>\",\n        \"POSTCODE\": \"<string>\",\n        \"RPC\": \"<string>\",\n        \"X_COORDINATE\": \"<number>\",\n        \"Y_COORDINATE\": \"<number>\",\n        \"LNG\": \"<number>\",\n        \"LAT\": \"<number>\",\n        \"STATUS\": \"<string>\",\n        \"LOGICAL_STATUS_CODE\": \"<string>\",\n        \"CLASSIFICATION_CODE\": \"<string>\",\n        \"CLASSIFICATION_CODE_DESCRIPTION\": \"<string>\",\n        \"LOCAL_CUSTODIAN_CODE\": \"<integer>\",\n        \"LOCAL_CUSTODIAN_CODE_DESCRIPTION\": \"<string>\",\n        \"COUNTRY_CODE\": \"<string>\",\n        \"COUNTRY_CODE_DESCRIPTION\": \"<string>\",\n        \"POSTAL_ADDRESS_CODE\": \"<string>\",\n        \"POSTAL_ADDRESS_CODE_DESCRIPTION\": \"<string>\",\n        \"BLPU_STATE_CODE\": \"<string>\",\n        \"BLPU_STATE_CODE_DESCRIPTION\": \"<string>\",\n        \"TOPOGRAPHY_LAYER_TOID\": \"<string>\",\n        \"WARD_CODE\": \"<string>\",\n        \"PARISH_CODE\": \"<string>\",\n        \"PARENT_UPRN\": \"<string>\",\n        \"LAST_UPDATE_DATE\": \"<string>\",\n        \"ENTRY_DATE\": \"<string>\",\n        \"LEGAL_NAME\": \"<string>\",\n        \"BLPU_STATE_DATE\": \"<string>\",\n        \"LANGUAGE\": \"<string>\",\n        \"MATCH\": \"<number>\",\n        \"MATCH_DESCRIPTION\": \"<string>\",\n        \"DELIVERY_POINT_SUFFIX\": \"<string>\"\n      },\n      \"LPI\": {\n        \"UPRN\": \"<string>\",\n        \"ADDRESS\": \"<string>\",\n        \"USRN\": \"<string>\",\n        \"LPI_KEY\": \"<string>\",\n        \"ORGANISATION\": \"<string>\",\n        \"SAO_START_NUMBER\": \"<string>\",\n        \"SAO_START_SUFFIX\": \"<string>\",\n        \"SAO_END_NUMBER\": \"<string>\",\n        \"SAO_END_SUFFIX\": \"<string>\",\n        \"SAO_TEXT\": \"<string>\",\n        \"PAO_START_NUMBER\": \"<string>\",\n        \"PAO_START_SUFFIX\": \"<string>\",\n        \"PAO_END_NUMBER\": \"<string>\",\n        \"PAO_END_SUFFIX\": \"<string>\",\n        \"PAO_TEXT\": \"<string>\",\n        \"STREET_DESCRIPTION\": \"<string>\",\n        \"LOCALITY_NAME\": \"<string>\",\n        \"TOWN_NAME\": \"<string>\",\n        \"ADMINISTRATIVE_AREA\": \"<string>\",\n        \"AREA_NAME\": \"<string>\",\n        \"POSTCODE_LOCATOR\": \"<string>\",\n        \"RPC\": \"<string>\",\n        \"X_COORDINATE\": \"<number>\",\n        \"Y_COORDINATE\": \"<number>\",\n        \"LNG\": \"<number>\",\n        \"LAT\": \"<number>\",\n        \"STATUS\": \"<string>\",\n        \"LOGICAL_STATUS_CODE\": \"<string>\",\n        \"CLASSIFICATION_CODE\": \"<string>\",\n        \"CLASSIFICATION_CODE_DESCRIPTION\": \"<string>\",\n        \"LOCAL_CUSTODIAN_CODE\": \"<integer>\",\n        \"LOCAL_CUSTODIAN_CODE_DESCRIPTION\": \"<string>\",\n        \"COUNTRY_CODE\": \"<string>\",\n        \"COUNTRY_CODE_DESCRIPTION\": \"<string>\",\n        \"POSTAL_ADDRESS_CODE\": \"<string>\",\n        \"POSTAL_ADDRESS_CODE_DESCRIPTION\": \"<string>\",\n        \"BLPU_STATE_CODE\": \"<string>\",\n        \"BLPU_STATE_CODE_DESCRIPTION\": \"<string>\",\n        \"TOPOGRAPHY_LAYER_TOID\": \"<string>\",\n        \"WARD_CODE\": \"<string>\",\n        \"PARISH_CODE\": \"<string>\",\n        \"PARENT_UPRN\": \"<string>\",\n        \"LAST_UPDATE_DATE\": \"<string>\",\n        \"ENTRY_DATE\": \"<string>\",\n        \"LEGAL_NAME\": \"<string>\",\n        \"BLPU_STATE_DATE\": \"<string>\",\n        \"STREET_STATE_CODE\": \"<string>\",\n        \"STREET_STATE_CODE_DESCRIPTION\": \"<string>\",\n        \"STREET_CLASSIFICATION_CODE\": \"<string>\",\n        \"STREET_CLASSIFICATION_CODE_DESCRIPTION\": \"<string>\",\n        \"LPI_LOGICAL_STATUS_CODE\": \"<string>\",\n        \"LPI_LOGICAL_STATUS_CODE_DESCRIPTION\": \"<string>\",\n        \"LANGUAGE\": \"<string>\",\n        \"MATCH\": \"<number>\",\n        \"MATCH_DESCRIPTION\": \"<string>\"\n      }\n    }\n  ]\n}",
+              "createdAt": "2026-07-28T02:29:22.000Z",
+              "updatedAt": "2026-07-28T02:29:22.000Z",
+              "uid": "35240-0c356696-6bed-46f1-a52f-21bce3b6f9bd"
+            }
+          ],
+          "createdAt": "2026-07-28T02:29:22.000Z",
+          "updatedAt": "2026-07-28T02:29:22.000Z",
+          "uid": "35240-ffbc2b9c-2c93-49a1-888f-4e77b2dca18d"
+        }
+      ],
+      "id": "2d24e3d6-98a9-41c9-bcef-dbd37c7970eb",
+      "createdAt": "2026-07-28T02:29:22.000Z",
+      "updatedAt": "2026-07-28T02:29:22.000Z",
+      "uid": "35240-2d24e3d6-98a9-41c9-bcef-dbd37c7970eb"
+    }
+  ],
+  "auth": {
+    "type": "apikey",
+    "apikey": [
+      {
+        "key": "key",
+        "value": "key",
+        "type": "string"
+      },
+      {
+        "key": "value",
+        "value": "{{apiKey}}",
+        "type": "string"
+      },
+      {
+        "key": "in",
+        "value": "query",
+        "type": "string"
+      }
+    ]
+  },
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "https://api.os.uk/search/places/v1"
+    }
+  ]
+}

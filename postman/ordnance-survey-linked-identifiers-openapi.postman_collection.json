@@ -1,0 +1,1855 @@
+{
+  "info": {
+    "_postman_id": "87ba6329-8ee0-4a67-b07d-760e43b46200",
+    "name": "OS Linked Identifiers API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-07-28T02:29:23.000Z",
+    "updatedAt": "2026-07-28T02:29:24.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-87ba6329-8ee0-4a67-b07d-760e43b46200"
+  },
+  "item": [
+    {
+      "name": "featureTypes",
+      "item": [
+        {
+          "name": "{featureType}",
+          "item": [
+            {
+              "name": "{id}",
+              "item": [
+                {
+                  "name": "Query ID when input featureType is known",
+                  "id": "e3fcd33d-f918-4bc5-8005-44055f4cc607",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                  },
+                  "request": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/featureTypes/:featureType/:id",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "featureTypes",
+                        ":featureType",
+                        ":id"
+                      ],
+                      "variable": [
+                        {
+                          "id": "5ae92125-81c9-4f71-820f-80453456d49b",
+                          "key": "featureType",
+                          "value": "TopographicArea",
+                          "description": "(Required) Feature type of ID being queried"
+                        },
+                        {
+                          "id": "66226672-b977-4b18-aa28-9d4432c7c99a",
+                          "key": "id",
+                          "value": "<string>",
+                          "description": "(Required) ID of the feature that is being matched"
+                        }
+                      ]
+                    },
+                    "description": "Returns associated Linked Identifiers, when feature type is known. Returns an object."
+                  },
+                  "response": [
+                    {
+                      "id": "04ac42c3-85f9-4863-ab19-3a4bcc0ddb3a",
+                      "name": "Search results matching criteria",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/featureTypes/:featureType/:id?key=<API Key>",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "featureTypes",
+                            ":featureType",
+                            ":id"
+                          ],
+                          "query": [
+                            {
+                              "description": "Added as a part of security scheme: apikey",
+                              "key": "key",
+                              "value": "<API Key>"
+                            }
+                          ],
+                          "variable": [
+                            {
+                              "key": "featureType"
+                            },
+                            {
+                              "key": "id"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "OK",
+                      "code": 200,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"linkedIdentifier\": {\n    \"identifier\": \"<string>\",\n    \"featureType\": \"ORRoadLink\",\n    \"identifierType\": \"TOID\"\n  },\n  \"correlations\": [\n    {\n      \"correlationMethodIdentifier\": \"RoadLink_TOID_TopographicArea_TOID_2\",\n      \"correlatedFeatureType\": \"ORRoadNode\",\n      \"correlatedIdentifierType\": \"GUID\",\n      \"correlatedIdentifiers\": [\n        {\n          \"identifier\": \"<string>\",\n          \"versionNumber\": \"<number>\",\n          \"versionDate\": \"<string>\",\n          \"confidence\": \"<string>\",\n          \"correlationIdentifier\": \"<string>\"\n        },\n        {\n          \"identifier\": \"<string>\",\n          \"versionNumber\": \"<number>\",\n          \"versionDate\": \"<string>\",\n          \"confidence\": \"<string>\",\n          \"correlationIdentifier\": \"<string>\"\n        }\n      ],\n      \"searchedIdentifierVersionDate\": \"<string>\",\n      \"searchedIdentifierVersionNumber\": \"<number>\"\n    },\n    {\n      \"correlationMethodIdentifier\": \"BLPU_UPRN_Street_USRN_11\",\n      \"correlatedFeatureType\": \"Street\",\n      \"correlatedIdentifierType\": \"USRN\",\n      \"correlatedIdentifiers\": [\n        {\n          \"identifier\": \"<string>\",\n          \"versionNumber\": \"<number>\",\n          \"versionDate\": \"<string>\",\n          \"confidence\": \"<string>\",\n          \"correlationIdentifier\": \"<string>\"\n        },\n        {\n          \"identifier\": \"<string>\",\n          \"versionNumber\": \"<number>\",\n          \"versionDate\": \"<string>\",\n          \"confidence\": \"<string>\",\n          \"correlationIdentifier\": \"<string>\"\n        }\n      ],\n      \"searchedIdentifierVersionDate\": \"<string>\",\n      \"searchedIdentifierVersionNumber\": \"<number>\"\n    }\n  ]\n}",
+                      "createdAt": "2026-07-28T02:29:24.000Z",
+                      "updatedAt": "2026-07-28T02:29:24.000Z",
+                      "uid": "35240-04ac42c3-85f9-4863-ab19-3a4bcc0ddb3a"
+                    },
+                    {
+                      "id": "f591fa00-189f-4956-9f2e-dff753c787a8",
+                      "name": "E.g. missing query parameter, malformed syntax.",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [],
+                        "url": {
+                          "raw": "{{baseUrl}}/featureTypes/:featureType/:id?key=<API Key>",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "featureTypes",
+                            ":featureType",
+                            ":id"
+                          ],
+                          "query": [
+                            {
+                              "description": "Added as a part of security scheme: apikey",
+                              "key": "key",
+                              "value": "<API Key>"
+                            }
+                          ],
+                          "variable": [
+                            {
+                              "key": "featureType"
+                            },
+                            {
+                              "key": "id"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Bad Request",
+                      "code": 400,
+                      "_postman_previewlanguage": "text",
+                      "header": [],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": null,
+                      "createdAt": "2026-07-28T02:29:24.000Z",
+                      "updatedAt": "2026-07-28T02:29:24.000Z",
+                      "uid": "35240-f591fa00-189f-4956-9f2e-dff753c787a8"
+                    },
+                    {
+                      "id": "b67f94e9-b800-4b10-b941-afc32090769f",
+                      "name": "The client has not provided authentication or incorrect authentication.",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [],
+                        "url": {
+                          "raw": "{{baseUrl}}/featureTypes/:featureType/:id?key=<API Key>",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "featureTypes",
+                            ":featureType",
+                            ":id"
+                          ],
+                          "query": [
+                            {
+                              "description": "Added as a part of security scheme: apikey",
+                              "key": "key",
+                              "value": "<API Key>"
+                            }
+                          ],
+                          "variable": [
+                            {
+                              "key": "featureType"
+                            },
+                            {
+                              "key": "id"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Unauthorized",
+                      "code": 401,
+                      "_postman_previewlanguage": "text",
+                      "header": [],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": null,
+                      "createdAt": "2026-07-28T02:29:24.000Z",
+                      "updatedAt": "2026-07-28T02:29:24.000Z",
+                      "uid": "35240-b67f94e9-b800-4b10-b941-afc32090769f"
+                    },
+                    {
+                      "id": "e8a3b093-2fa7-4953-af76-d1f0f0c03128",
+                      "name": "The client has authenticated its access but does not have sufficient rights to complete the request.",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [],
+                        "url": {
+                          "raw": "{{baseUrl}}/featureTypes/:featureType/:id?key=<API Key>",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "featureTypes",
+                            ":featureType",
+                            ":id"
+                          ],
+                          "query": [
+                            {
+                              "description": "Added as a part of security scheme: apikey",
+                              "key": "key",
+                              "value": "<API Key>"
+                            }
+                          ],
+                          "variable": [
+                            {
+                              "key": "featureType"
+                            },
+                            {
+                              "key": "id"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Forbidden",
+                      "code": 403,
+                      "_postman_previewlanguage": "text",
+                      "header": [],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": null,
+                      "createdAt": "2026-07-28T02:29:24.000Z",
+                      "updatedAt": "2026-07-28T02:29:24.000Z",
+                      "uid": "35240-e8a3b093-2fa7-4953-af76-d1f0f0c03128"
+                    },
+                    {
+                      "id": "30d9e093-adc1-4c88-ad71-3e344f119181",
+                      "name": "The server has not found anything matching the Request-URI.",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [],
+                        "url": {
+                          "raw": "{{baseUrl}}/featureTypes/:featureType/:id?key=<API Key>",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "featureTypes",
+                            ":featureType",
+                            ":id"
+                          ],
+                          "query": [
+                            {
+                              "description": "Added as a part of security scheme: apikey",
+                              "key": "key",
+                              "value": "<API Key>"
+                            }
+                          ],
+                          "variable": [
+                            {
+                              "key": "featureType"
+                            },
+                            {
+                              "key": "id"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Not Found",
+                      "code": 404,
+                      "_postman_previewlanguage": "text",
+                      "header": [],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": null,
+                      "createdAt": "2026-07-28T02:29:24.000Z",
+                      "updatedAt": "2026-07-28T02:29:24.000Z",
+                      "uid": "35240-30d9e093-adc1-4c88-ad71-3e344f119181"
+                    },
+                    {
+                      "id": "38c09f7d-0eb0-4af4-9a86-2fc2226d8547",
+                      "name": "Request used an unsupported HTTP method, e.g. DELETE or PUT.",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [],
+                        "url": {
+                          "raw": "{{baseUrl}}/featureTypes/:featureType/:id?key=<API Key>",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "featureTypes",
+                            ":featureType",
+                            ":id"
+                          ],
+                          "query": [
+                            {
+                              "description": "Added as a part of security scheme: apikey",
+                              "key": "key",
+                              "value": "<API Key>"
+                            }
+                          ],
+                          "variable": [
+                            {
+                              "key": "featureType"
+                            },
+                            {
+                              "key": "id"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Method Not Allowed",
+                      "code": 405,
+                      "_postman_previewlanguage": "text",
+                      "header": [],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": null,
+                      "createdAt": "2026-07-28T02:29:24.000Z",
+                      "updatedAt": "2026-07-28T02:29:24.000Z",
+                      "uid": "35240-38c09f7d-0eb0-4af4-9a86-2fc2226d8547"
+                    },
+                    {
+                      "id": "a1ee37b3-5069-4e53-8da0-0935991175ca",
+                      "name": "Exceeded the number of requests per minute (rate-limit).",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [],
+                        "url": {
+                          "raw": "{{baseUrl}}/featureTypes/:featureType/:id?key=<API Key>",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "featureTypes",
+                            ":featureType",
+                            ":id"
+                          ],
+                          "query": [
+                            {
+                              "description": "Added as a part of security scheme: apikey",
+                              "key": "key",
+                              "value": "<API Key>"
+                            }
+                          ],
+                          "variable": [
+                            {
+                              "key": "featureType"
+                            },
+                            {
+                              "key": "id"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Too Many Requests",
+                      "code": 429,
+                      "_postman_previewlanguage": "text",
+                      "header": [],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": null,
+                      "createdAt": "2026-07-28T02:29:24.000Z",
+                      "updatedAt": "2026-07-28T02:29:24.000Z",
+                      "uid": "35240-a1ee37b3-5069-4e53-8da0-0935991175ca"
+                    },
+                    {
+                      "id": "cf587e37-4ebd-40be-b7b9-3bca1f1d1233",
+                      "name": "Generic internal server error.",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [],
+                        "url": {
+                          "raw": "{{baseUrl}}/featureTypes/:featureType/:id?key=<API Key>",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "featureTypes",
+                            ":featureType",
+                            ":id"
+                          ],
+                          "query": [
+                            {
+                              "description": "Added as a part of security scheme: apikey",
+                              "key": "key",
+                              "value": "<API Key>"
+                            }
+                          ],
+                          "variable": [
+                            {
+                              "key": "featureType"
+                            },
+                            {
+                              "key": "id"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Internal Server Error",
+                      "code": 500,
+                      "_postman_previewlanguage": "text",
+                      "header": [],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": null,
+                      "createdAt": "2026-07-28T02:29:24.000Z",
+                      "updatedAt": "2026-07-28T02:29:24.000Z",
+                      "uid": "35240-cf587e37-4ebd-40be-b7b9-3bca1f1d1233"
+                    },
+                    {
+                      "id": "9d9d7076-e305-4b57-ad88-373080254d48",
+                      "name": "Temporary outage due to overloading or maintenance.",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [],
+                        "url": {
+                          "raw": "{{baseUrl}}/featureTypes/:featureType/:id?key=<API Key>",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "featureTypes",
+                            ":featureType",
+                            ":id"
+                          ],
+                          "query": [
+                            {
+                              "description": "Added as a part of security scheme: apikey",
+                              "key": "key",
+                              "value": "<API Key>"
+                            }
+                          ],
+                          "variable": [
+                            {
+                              "key": "featureType"
+                            },
+                            {
+                              "key": "id"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Service Unavailable",
+                      "code": 503,
+                      "_postman_previewlanguage": "text",
+                      "header": [],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": null,
+                      "createdAt": "2026-07-28T02:29:24.000Z",
+                      "updatedAt": "2026-07-28T02:29:24.000Z",
+                      "uid": "35240-9d9d7076-e305-4b57-ad88-373080254d48"
+                    }
+                  ],
+                  "createdAt": "2026-07-28T02:29:24.000Z",
+                  "updatedAt": "2026-07-28T02:29:24.000Z",
+                  "uid": "35240-e3fcd33d-f918-4bc5-8005-44055f4cc607"
+                }
+              ],
+              "id": "c424ecf3-8803-44a4-9f78-a83c23aab380",
+              "createdAt": "2026-07-28T02:29:24.000Z",
+              "updatedAt": "2026-07-28T02:29:24.000Z",
+              "uid": "35240-c424ecf3-8803-44a4-9f78-a83c23aab380"
+            }
+          ],
+          "id": "ddf98677-c391-40cd-964a-2da1aea1e3dc",
+          "createdAt": "2026-07-28T02:29:24.000Z",
+          "updatedAt": "2026-07-28T02:29:24.000Z",
+          "uid": "35240-ddf98677-c391-40cd-964a-2da1aea1e3dc"
+        }
+      ],
+      "id": "f6d0b470-2327-4e0d-bda1-c013f2f66e79",
+      "createdAt": "2026-07-28T02:29:24.000Z",
+      "updatedAt": "2026-07-28T02:29:24.000Z",
+      "uid": "35240-f6d0b470-2327-4e0d-bda1-c013f2f66e79"
+    },
+    {
+      "name": "identifierTypes",
+      "item": [
+        {
+          "name": "{identifierType}",
+          "item": [
+            {
+              "name": "{id}",
+              "item": [
+                {
+                  "name": "Queries ID when input identifierType is known",
+                  "id": "7a49fc93-2534-47ac-8268-9c48b82d0d62",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                  },
+                  "request": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/identifierTypes/:identifierType/:id",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "identifierTypes",
+                        ":identifierType",
+                        ":id"
+                      ],
+                      "variable": [
+                        {
+                          "id": "fd298e20-89ff-49ef-a5f8-526a7222e9bf",
+                          "key": "identifierType",
+                          "value": "TOID",
+                          "description": "(Required) Identifier type of ID being queried"
+                        },
+                        {
+                          "id": "6d47db7c-426d-4b6d-ae14-429a3183a52f",
+                          "key": "id",
+                          "value": "<string>",
+                          "description": "(Required) ID of the feature that is being matched"
+                        }
+                      ]
+                    },
+                    "description": "Returns associated Linked Identifiers, when the input identifier type is known. Returns an object.\n"
+                  },
+                  "response": [
+                    {
+                      "id": "33fd5c96-ee28-4c9e-b4d5-a794d850a829",
+                      "name": "Search results matching criteria",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/identifierTypes/:identifierType/:id?key=<API Key>",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "identifierTypes",
+                            ":identifierType",
+                            ":id"
+                          ],
+                          "query": [
+                            {
+                              "description": "Added as a part of security scheme: apikey",
+                              "key": "key",
+                              "value": "<API Key>"
+                            }
+                          ],
+                          "variable": [
+                            {
+                              "key": "identifierType"
+                            },
+                            {
+                              "key": "id"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "OK",
+                      "code": 200,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"linkedIdentifier\": {\n    \"identifier\": \"<string>\",\n    \"featureType\": \"ORRoadLink\",\n    \"identifierType\": \"TOID\"\n  },\n  \"correlations\": [\n    {\n      \"correlationMethodIdentifier\": \"RoadLink_TOID_TopographicArea_TOID_2\",\n      \"correlatedFeatureType\": \"ORRoadNode\",\n      \"correlatedIdentifierType\": \"GUID\",\n      \"correlatedIdentifiers\": [\n        {\n          \"identifier\": \"<string>\",\n          \"versionNumber\": \"<number>\",\n          \"versionDate\": \"<string>\",\n          \"confidence\": \"<string>\",\n          \"correlationIdentifier\": \"<string>\"\n        },\n        {\n          \"identifier\": \"<string>\",\n          \"versionNumber\": \"<number>\",\n          \"versionDate\": \"<string>\",\n          \"confidence\": \"<string>\",\n          \"correlationIdentifier\": \"<string>\"\n        }\n      ],\n      \"searchedIdentifierVersionDate\": \"<string>\",\n      \"searchedIdentifierVersionNumber\": \"<number>\"\n    },\n    {\n      \"correlationMethodIdentifier\": \"BLPU_UPRN_Street_USRN_11\",\n      \"correlatedFeatureType\": \"Street\",\n      \"correlatedIdentifierType\": \"USRN\",\n      \"correlatedIdentifiers\": [\n        {\n          \"identifier\": \"<string>\",\n          \"versionNumber\": \"<number>\",\n          \"versionDate\": \"<string>\",\n          \"confidence\": \"<string>\",\n          \"correlationIdentifier\": \"<string>\"\n        },\n        {\n          \"identifier\": \"<string>\",\n          \"versionNumber\": \"<number>\",\n          \"versionDate\": \"<string>\",\n          \"confidence\": \"<string>\",\n          \"correlationIdentifier\": \"<string>\"\n        }\n      ],\n      \"searchedIdentifierVersionDate\": \"<string>\",\n      \"searchedIdentifierVersionNumber\": \"<number>\"\n    }\n  ]\n}",
+                      "createdAt": "2026-07-28T02:29:24.000Z",
+                      "updatedAt": "2026-07-28T02:29:24.000Z",
+                      "uid": "35240-33fd5c96-ee28-4c9e-b4d5-a794d850a829"
+                    },
+                    {
+                      "id": "486ae9e1-36cd-4b6b-86f2-99018873b95a",
+                      "name": "E.g. missing query parameter, malformed syntax.",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [],
+                        "url": {
+                          "raw": "{{baseUrl}}/identifierTypes/:identifierType/:id?key=<API Key>",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "identifierTypes",
+                            ":identifierType",
+                            ":id"
+                          ],
+                          "query": [
+                            {
+                              "description": "Added as a part of security scheme: apikey",
+                              "key": "key",
+                              "value": "<API Key>"
+                            }
+                          ],
+                          "variable": [
+                            {
+                              "key": "identifierType"
+                            },
+                            {
+                              "key": "id"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Bad Request",
+                      "code": 400,
+                      "_postman_previewlanguage": "text",
+                      "header": [],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": null,
+                      "createdAt": "2026-07-28T02:29:24.000Z",
+                      "updatedAt": "2026-07-28T02:29:24.000Z",
+                      "uid": "35240-486ae9e1-36cd-4b6b-86f2-99018873b95a"
+                    },
+                    {
+                      "id": "41894755-4c7a-4588-b662-5db37a6ba046",
+                      "name": "The client has not provided authentication or incorrect authentication.",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [],
+                        "url": {
+                          "raw": "{{baseUrl}}/identifierTypes/:identifierType/:id?key=<API Key>",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "identifierTypes",
+                            ":identifierType",
+                            ":id"
+                          ],
+                          "query": [
+                            {
+                              "description": "Added as a part of security scheme: apikey",
+                              "key": "key",
+                              "value": "<API Key>"
+                            }
+                          ],
+                          "variable": [
+                            {
+                              "key": "identifierType"
+                            },
+                            {
+                              "key": "id"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Unauthorized",
+                      "code": 401,
+                      "_postman_previewlanguage": "text",
+                      "header": [],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": null,
+                      "createdAt": "2026-07-28T02:29:24.000Z",
+                      "updatedAt": "2026-07-28T02:29:24.000Z",
+                      "uid": "35240-41894755-4c7a-4588-b662-5db37a6ba046"
+                    },
+                    {
+                      "id": "75b81bc3-4ee9-43c8-a758-d391ff6d8537",
+                      "name": "The client has authenticated its access but does not have sufficient rights to complete the request.",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [],
+                        "url": {
+                          "raw": "{{baseUrl}}/identifierTypes/:identifierType/:id?key=<API Key>",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "identifierTypes",
+                            ":identifierType",
+                            ":id"
+                          ],
+                          "query": [
+                            {
+                              "description": "Added as a part of security scheme: apikey",
+                              "key": "key",
+                              "value": "<API Key>"
+                            }
+                          ],
+                          "variable": [
+                            {
+                              "key": "identifierType"
+                            },
+                            {
+                              "key": "id"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Forbidden",
+                      "code": 403,
+                      "_postman_previewlanguage": "text",
+                      "header": [],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": null,
+                      "createdAt": "2026-07-28T02:29:24.000Z",
+                      "updatedAt": "2026-07-28T02:29:24.000Z",
+                      "uid": "35240-75b81bc3-4ee9-43c8-a758-d391ff6d8537"
+                    },
+                    {
+                      "id": "32486bcb-a0ef-499e-bd07-6f04ab1fe79f",
+                      "name": "The server has not found anything matching the Request-URI.",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [],
+                        "url": {
+                          "raw": "{{baseUrl}}/identifierTypes/:identifierType/:id?key=<API Key>",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "identifierTypes",
+                            ":identifierType",
+                            ":id"
+                          ],
+                          "query": [
+                            {
+                              "description": "Added as a part of security scheme: apikey",
+                              "key": "key",
+                              "value": "<API Key>"
+                            }
+                          ],
+                          "variable": [
+                            {
+                              "key": "identifierType"
+                            },
+                            {
+                              "key": "id"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Not Found",
+                      "code": 404,
+                      "_postman_previewlanguage": "text",
+                      "header": [],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": null,
+                      "createdAt": "2026-07-28T02:29:24.000Z",
+                      "updatedAt": "2026-07-28T02:29:24.000Z",
+                      "uid": "35240-32486bcb-a0ef-499e-bd07-6f04ab1fe79f"
+                    },
+                    {
+                      "id": "535cb4e8-dac4-49de-8ef5-22bb0bca7e66",
+                      "name": "Request used an unsupported HTTP method, e.g. DELETE or PUT.",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [],
+                        "url": {
+                          "raw": "{{baseUrl}}/identifierTypes/:identifierType/:id?key=<API Key>",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "identifierTypes",
+                            ":identifierType",
+                            ":id"
+                          ],
+                          "query": [
+                            {
+                              "description": "Added as a part of security scheme: apikey",
+                              "key": "key",
+                              "value": "<API Key>"
+                            }
+                          ],
+                          "variable": [
+                            {
+                              "key": "identifierType"
+                            },
+                            {
+                              "key": "id"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Method Not Allowed",
+                      "code": 405,
+                      "_postman_previewlanguage": "text",
+                      "header": [],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": null,
+                      "createdAt": "2026-07-28T02:29:24.000Z",
+                      "updatedAt": "2026-07-28T02:29:24.000Z",
+                      "uid": "35240-535cb4e8-dac4-49de-8ef5-22bb0bca7e66"
+                    },
+                    {
+                      "id": "da37003e-30a1-48ef-bd0d-acd31e67578a",
+                      "name": "Exceeded the number of requests per minute (rate-limit).",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [],
+                        "url": {
+                          "raw": "{{baseUrl}}/identifierTypes/:identifierType/:id?key=<API Key>",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "identifierTypes",
+                            ":identifierType",
+                            ":id"
+                          ],
+                          "query": [
+                            {
+                              "description": "Added as a part of security scheme: apikey",
+                              "key": "key",
+                              "value": "<API Key>"
+                            }
+                          ],
+                          "variable": [
+                            {
+                              "key": "identifierType"
+                            },
+                            {
+                              "key": "id"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Too Many Requests",
+                      "code": 429,
+                      "_postman_previewlanguage": "text",
+                      "header": [],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": null,
+                      "createdAt": "2026-07-28T02:29:24.000Z",
+                      "updatedAt": "2026-07-28T02:29:24.000Z",
+                      "uid": "35240-da37003e-30a1-48ef-bd0d-acd31e67578a"
+                    },
+                    {
+                      "id": "ceb0f175-c04f-4735-be73-9a5cb4e0b172",
+                      "name": "Generic internal server error.",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [],
+                        "url": {
+                          "raw": "{{baseUrl}}/identifierTypes/:identifierType/:id?key=<API Key>",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "identifierTypes",
+                            ":identifierType",
+                            ":id"
+                          ],
+                          "query": [
+                            {
+                              "description": "Added as a part of security scheme: apikey",
+                              "key": "key",
+                              "value": "<API Key>"
+                            }
+                          ],
+                          "variable": [
+                            {
+                              "key": "identifierType"
+                            },
+                            {
+                              "key": "id"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Internal Server Error",
+                      "code": 500,
+                      "_postman_previewlanguage": "text",
+                      "header": [],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": null,
+                      "createdAt": "2026-07-28T02:29:24.000Z",
+                      "updatedAt": "2026-07-28T02:29:24.000Z",
+                      "uid": "35240-ceb0f175-c04f-4735-be73-9a5cb4e0b172"
+                    },
+                    {
+                      "id": "9069e2ee-0ee9-40b8-8b2a-d40cde3af5ef",
+                      "name": "Temporary outage due to overloading or maintenance.",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [],
+                        "url": {
+                          "raw": "{{baseUrl}}/identifierTypes/:identifierType/:id?key=<API Key>",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "identifierTypes",
+                            ":identifierType",
+                            ":id"
+                          ],
+                          "query": [
+                            {
+                              "description": "Added as a part of security scheme: apikey",
+                              "key": "key",
+                              "value": "<API Key>"
+                            }
+                          ],
+                          "variable": [
+                            {
+                              "key": "identifierType"
+                            },
+                            {
+                              "key": "id"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Service Unavailable",
+                      "code": 503,
+                      "_postman_previewlanguage": "text",
+                      "header": [],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": null,
+                      "createdAt": "2026-07-28T02:29:24.000Z",
+                      "updatedAt": "2026-07-28T02:29:24.000Z",
+                      "uid": "35240-9069e2ee-0ee9-40b8-8b2a-d40cde3af5ef"
+                    }
+                  ],
+                  "createdAt": "2026-07-28T02:29:24.000Z",
+                  "updatedAt": "2026-07-28T02:29:24.000Z",
+                  "uid": "35240-7a49fc93-2534-47ac-8268-9c48b82d0d62"
+                }
+              ],
+              "id": "1c40c5a2-4b49-477f-b5a6-4ad23a25bf97",
+              "createdAt": "2026-07-28T02:29:24.000Z",
+              "updatedAt": "2026-07-28T02:29:24.000Z",
+              "uid": "35240-1c40c5a2-4b49-477f-b5a6-4ad23a25bf97"
+            }
+          ],
+          "id": "e99aa67e-9210-45c0-848b-f8ba61d42683",
+          "createdAt": "2026-07-28T02:29:24.000Z",
+          "updatedAt": "2026-07-28T02:29:24.000Z",
+          "uid": "35240-e99aa67e-9210-45c0-848b-f8ba61d42683"
+        }
+      ],
+      "id": "5df3c96f-8eb2-4328-8c41-5043b03451c5",
+      "createdAt": "2026-07-28T02:29:24.000Z",
+      "updatedAt": "2026-07-28T02:29:24.000Z",
+      "uid": "35240-5df3c96f-8eb2-4328-8c41-5043b03451c5"
+    },
+    {
+      "name": "identifiers",
+      "item": [
+        {
+          "name": "{id}",
+          "item": [
+            {
+              "name": "Query identifer",
+              "id": "1ce36fc9-5f84-4c16-acdf-de172e589797",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/identifiers/:id",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "identifiers",
+                    ":id"
+                  ],
+                  "variable": [
+                    {
+                      "id": "5618500f-5293-4076-8e16-e5a37213f9c7",
+                      "key": "id",
+                      "value": "<string>",
+                      "description": "(Required) ID of the feature that is being matched"
+                    }
+                  ]
+                },
+                "description": "Query by identifier and find its associated IDs. May return more than one set of links due to the namespace overlap between UPRNs and USRNs."
+              },
+              "response": [
+                {
+                  "id": "3cac8bbd-fdad-4d47-a480-10e338f167d2",
+                  "name": "Search results matching criteria",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/identifiers/:id?key=<API Key>",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "identifiers",
+                        ":id"
+                      ],
+                      "query": [
+                        {
+                          "description": "Added as a part of security scheme: apikey",
+                          "key": "key",
+                          "value": "<API Key>"
+                        }
+                      ],
+                      "variable": [
+                        {
+                          "key": "id"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "OK",
+                  "code": 200,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"linkedIdentifiers\": [\n    {\n      \"linkedIdentifier\": {\n        \"identifier\": \"<string>\",\n        \"featureType\": \"Road\",\n        \"identifierType\": \"USRN\"\n      },\n      \"correlations\": [\n        {\n          \"correlationMethodIdentifier\": \"RoadLink_TOID_Street_USRN_8\",\n          \"correlatedFeatureType\": \"ORRoadNode\",\n          \"correlatedIdentifierType\": \"UPRN\",\n          \"correlatedIdentifiers\": [\n            {\n              \"identifier\": \"<string>\",\n              \"versionNumber\": \"<number>\",\n              \"versionDate\": \"<string>\",\n              \"confidence\": \"<string>\",\n              \"correlationIdentifier\": \"<string>\"\n            },\n            {\n              \"identifier\": \"<string>\",\n              \"versionNumber\": \"<number>\",\n              \"versionDate\": \"<string>\",\n              \"confidence\": \"<string>\",\n              \"correlationIdentifier\": \"<string>\"\n            }\n          ],\n          \"searchedIdentifierVersionDate\": \"<string>\",\n          \"searchedIdentifierVersionNumber\": \"<number>\"\n        },\n        {\n          \"correlationMethodIdentifier\": \"RoadLink_TOID_Road_TOID_7\",\n          \"correlatedFeatureType\": \"TopographicArea\",\n          \"correlatedIdentifierType\": \"TOID\",\n          \"correlatedIdentifiers\": [\n            {\n              \"identifier\": \"<string>\",\n              \"versionNumber\": \"<number>\",\n              \"versionDate\": \"<string>\",\n              \"confidence\": \"<string>\",\n              \"correlationIdentifier\": \"<string>\"\n            },\n            {\n              \"identifier\": \"<string>\",\n              \"versionNumber\": \"<number>\",\n              \"versionDate\": \"<string>\",\n              \"confidence\": \"<string>\",\n              \"correlationIdentifier\": \"<string>\"\n            }\n          ],\n          \"searchedIdentifierVersionDate\": \"<string>\",\n          \"searchedIdentifierVersionNumber\": \"<number>\"\n        }\n      ]\n    },\n    {\n      \"linkedIdentifier\": {\n        \"identifier\": \"<string>\",\n        \"featureType\": \"TopographicArea\",\n        \"identifierType\": \"TOID\"\n      },\n      \"correlations\": [\n        {\n          \"correlationMethodIdentifier\": \"ORRoadNode_GUID_RoadLink_TOID_13\",\n          \"correlatedFeatureType\": \"Road\",\n          \"correlatedIdentifierType\": \"UPRN\",\n          \"correlatedIdentifiers\": [\n            {\n              \"identifier\": \"<string>\",\n              \"versionNumber\": \"<number>\",\n              \"versionDate\": \"<string>\",\n              \"confidence\": \"<string>\",\n              \"correlationIdentifier\": \"<string>\"\n            },\n            {\n              \"identifier\": \"<string>\",\n              \"versionNumber\": \"<number>\",\n              \"versionDate\": \"<string>\",\n              \"confidence\": \"<string>\",\n              \"correlationIdentifier\": \"<string>\"\n            }\n          ],\n          \"searchedIdentifierVersionDate\": \"<string>\",\n          \"searchedIdentifierVersionNumber\": \"<number>\"\n        },\n        {\n          \"correlationMethodIdentifier\": \"Road_TOID_TopographicArea_TOID_3\",\n          \"correlatedFeatureType\": \"Road\",\n          \"correlatedIdentifierType\": \"UPRN\",\n          \"correlatedIdentifiers\": [\n            {\n              \"identifier\": \"<string>\",\n              \"versionNumber\": \"<number>\",\n              \"versionDate\": \"<string>\",\n              \"confidence\": \"<string>\",\n              \"correlationIdentifier\": \"<string>\"\n            },\n            {\n              \"identifier\": \"<string>\",\n              \"versionNumber\": \"<number>\",\n              \"versionDate\": \"<string>\",\n              \"confidence\": \"<string>\",\n              \"correlationIdentifier\": \"<string>\"\n            }\n          ],\n          \"searchedIdentifierVersionDate\": \"<string>\",\n          \"searchedIdentifierVersionNumber\": \"<number>\"\n        }\n      ]\n    }\n  ]\n}",
+                  "createdAt": "2026-07-28T02:29:24.000Z",
+                  "updatedAt": "2026-07-28T02:29:24.000Z",
+                  "uid": "35240-3cac8bbd-fdad-4d47-a480-10e338f167d2"
+                },
+                {
+                  "id": "b9672c34-78d9-4de2-ad65-02177cbaed11",
+                  "name": "E.g. missing query parameter, malformed syntax.",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [],
+                    "url": {
+                      "raw": "{{baseUrl}}/identifiers/:id?key=<API Key>",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "identifiers",
+                        ":id"
+                      ],
+                      "query": [
+                        {
+                          "description": "Added as a part of security scheme: apikey",
+                          "key": "key",
+                          "value": "<API Key>"
+                        }
+                      ],
+                      "variable": [
+                        {
+                          "key": "id"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Bad Request",
+                  "code": 400,
+                  "_postman_previewlanguage": "text",
+                  "header": [],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": null,
+                  "createdAt": "2026-07-28T02:29:24.000Z",
+                  "updatedAt": "2026-07-28T02:29:24.000Z",
+                  "uid": "35240-b9672c34-78d9-4de2-ad65-02177cbaed11"
+                },
+                {
+                  "id": "8a715dd0-799a-4411-89a8-f77a5c6e9e99",
+                  "name": "The client has not provided authentication or incorrect authentication.",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [],
+                    "url": {
+                      "raw": "{{baseUrl}}/identifiers/:id?key=<API Key>",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "identifiers",
+                        ":id"
+                      ],
+                      "query": [
+                        {
+                          "description": "Added as a part of security scheme: apikey",
+                          "key": "key",
+                          "value": "<API Key>"
+                        }
+                      ],
+                      "variable": [
+                        {
+                          "key": "id"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Unauthorized",
+                  "code": 401,
+                  "_postman_previewlanguage": "text",
+                  "header": [],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": null,
+                  "createdAt": "2026-07-28T02:29:24.000Z",
+                  "updatedAt": "2026-07-28T02:29:24.000Z",
+                  "uid": "35240-8a715dd0-799a-4411-89a8-f77a5c6e9e99"
+                },
+                {
+                  "id": "816e3ce3-7f21-4a88-ae88-a7271dd2cd57",
+                  "name": "The client has authenticated its access but does not have sufficient rights to complete the request.",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [],
+                    "url": {
+                      "raw": "{{baseUrl}}/identifiers/:id?key=<API Key>",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "identifiers",
+                        ":id"
+                      ],
+                      "query": [
+                        {
+                          "description": "Added as a part of security scheme: apikey",
+                          "key": "key",
+                          "value": "<API Key>"
+                        }
+                      ],
+                      "variable": [
+                        {
+                          "key": "id"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Forbidden",
+                  "code": 403,
+                  "_postman_previewlanguage": "text",
+                  "header": [],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": null,
+                  "createdAt": "2026-07-28T02:29:24.000Z",
+                  "updatedAt": "2026-07-28T02:29:24.000Z",
+                  "uid": "35240-816e3ce3-7f21-4a88-ae88-a7271dd2cd57"
+                },
+                {
+                  "id": "e6d1da44-5607-4ded-8a67-34855ac263cf",
+                  "name": "The server has not found anything matching the Request-URI.",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [],
+                    "url": {
+                      "raw": "{{baseUrl}}/identifiers/:id?key=<API Key>",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "identifiers",
+                        ":id"
+                      ],
+                      "query": [
+                        {
+                          "description": "Added as a part of security scheme: apikey",
+                          "key": "key",
+                          "value": "<API Key>"
+                        }
+                      ],
+                      "variable": [
+                        {
+                          "key": "id"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Not Found",
+                  "code": 404,
+                  "_postman_previewlanguage": "text",
+                  "header": [],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": null,
+                  "createdAt": "2026-07-28T02:29:24.000Z",
+                  "updatedAt": "2026-07-28T02:29:24.000Z",
+                  "uid": "35240-e6d1da44-5607-4ded-8a67-34855ac263cf"
+                },
+                {
+                  "id": "6c0804f7-43fe-4565-acf2-12a82f749ee9",
+                  "name": "Request used an unsupported HTTP method, e.g. DELETE or PUT.",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [],
+                    "url": {
+                      "raw": "{{baseUrl}}/identifiers/:id?key=<API Key>",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "identifiers",
+                        ":id"
+                      ],
+                      "query": [
+                        {
+                          "description": "Added as a part of security scheme: apikey",
+                          "key": "key",
+                          "value": "<API Key>"
+                        }
+                      ],
+                      "variable": [
+                        {
+                          "key": "id"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Method Not Allowed",
+                  "code": 405,
+                  "_postman_previewlanguage": "text",
+                  "header": [],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": null,
+                  "createdAt": "2026-07-28T02:29:24.000Z",
+                  "updatedAt": "2026-07-28T02:29:24.000Z",
+                  "uid": "35240-6c0804f7-43fe-4565-acf2-12a82f749ee9"
+                },
+                {
+                  "id": "b683f926-2b71-48f0-b92b-7ca3ce6a3a46",
+                  "name": "Exceeded the number of requests per minute (rate-limit).",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [],
+                    "url": {
+                      "raw": "{{baseUrl}}/identifiers/:id?key=<API Key>",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "identifiers",
+                        ":id"
+                      ],
+                      "query": [
+                        {
+                          "description": "Added as a part of security scheme: apikey",
+                          "key": "key",
+                          "value": "<API Key>"
+                        }
+                      ],
+                      "variable": [
+                        {
+                          "key": "id"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Too Many Requests",
+                  "code": 429,
+                  "_postman_previewlanguage": "text",
+                  "header": [],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": null,
+                  "createdAt": "2026-07-28T02:29:24.000Z",
+                  "updatedAt": "2026-07-28T02:29:24.000Z",
+                  "uid": "35240-b683f926-2b71-48f0-b92b-7ca3ce6a3a46"
+                },
+                {
+                  "id": "afd02e63-eddf-4435-94e4-eaa79c7c8747",
+                  "name": "Generic internal server error.",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [],
+                    "url": {
+                      "raw": "{{baseUrl}}/identifiers/:id?key=<API Key>",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "identifiers",
+                        ":id"
+                      ],
+                      "query": [
+                        {
+                          "description": "Added as a part of security scheme: apikey",
+                          "key": "key",
+                          "value": "<API Key>"
+                        }
+                      ],
+                      "variable": [
+                        {
+                          "key": "id"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Internal Server Error",
+                  "code": 500,
+                  "_postman_previewlanguage": "text",
+                  "header": [],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": null,
+                  "createdAt": "2026-07-28T02:29:24.000Z",
+                  "updatedAt": "2026-07-28T02:29:24.000Z",
+                  "uid": "35240-afd02e63-eddf-4435-94e4-eaa79c7c8747"
+                },
+                {
+                  "id": "d4ede8d0-caae-41a0-bd36-5c6eaf8be7a6",
+                  "name": "Temporary outage due to overloading or maintenance.",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [],
+                    "url": {
+                      "raw": "{{baseUrl}}/identifiers/:id?key=<API Key>",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "identifiers",
+                        ":id"
+                      ],
+                      "query": [
+                        {
+                          "description": "Added as a part of security scheme: apikey",
+                          "key": "key",
+                          "value": "<API Key>"
+                        }
+                      ],
+                      "variable": [
+                        {
+                          "key": "id"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Service Unavailable",
+                  "code": 503,
+                  "_postman_previewlanguage": "text",
+                  "header": [],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": null,
+                  "createdAt": "2026-07-28T02:29:24.000Z",
+                  "updatedAt": "2026-07-28T02:29:24.000Z",
+                  "uid": "35240-d4ede8d0-caae-41a0-bd36-5c6eaf8be7a6"
+                }
+              ],
+              "createdAt": "2026-07-28T02:29:24.000Z",
+              "updatedAt": "2026-07-28T02:29:24.000Z",
+              "uid": "35240-1ce36fc9-5f84-4c16-acdf-de172e589797"
+            }
+          ],
+          "id": "f14706d9-6927-4b44-83b3-84fb01099006",
+          "createdAt": "2026-07-28T02:29:24.000Z",
+          "updatedAt": "2026-07-28T02:29:24.000Z",
+          "uid": "35240-f14706d9-6927-4b44-83b3-84fb01099006"
+        }
+      ],
+      "id": "7c83e4ae-000f-4f5e-bd1b-959100d96fc9",
+      "createdAt": "2026-07-28T02:29:24.000Z",
+      "updatedAt": "2026-07-28T02:29:24.000Z",
+      "uid": "35240-7c83e4ae-000f-4f5e-bd1b-959100d96fc9"
+    },
+    {
+      "name": "productVersionInfo",
+      "item": [
+        {
+          "name": "{correlationMethod}",
+          "item": [
+            {
+              "name": "Returns product version details of the source data products",
+              "id": "844648ce-0404-478c-a251-b21b947461fc",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/productVersionInfo/:correlationMethod",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "productVersionInfo",
+                    ":correlationMethod"
+                  ],
+                  "variable": [
+                    {
+                      "id": "c22bae16-3789-4ffc-838e-8ca4b59cded6",
+                      "key": "correlationMethod",
+                      "value": "Road_TOID_Street_USRN_10",
+                      "description": "(Required) Correlation method being queried"
+                    }
+                  ]
+                },
+                "description": "Returns current valid version information for identifier relationships"
+              },
+              "response": [
+                {
+                  "id": "7525a1de-0581-498e-b17e-2622e049e4a4",
+                  "name": "Returns product version information about the requested correlation",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/productVersionInfo/:correlationMethod?key=<API Key>",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "productVersionInfo",
+                        ":correlationMethod"
+                      ],
+                      "query": [
+                        {
+                          "description": "Added as a part of security scheme: apikey",
+                          "key": "key",
+                          "value": "<API Key>"
+                        }
+                      ],
+                      "variable": [
+                        {
+                          "key": "correlationMethod"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "OK",
+                  "code": 200,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"productCreationDate\": \"<string>\",\n  \"identifier1Source\": {\n    \"productName\": \"OS Open Roads\",\n    \"productPublicationDate\": \"<string>\",\n    \"featureType\": \"ORRoadLink\",\n    \"identifierType\": \"USRN\",\n    \"productPublicationName\": \"<string>\"\n  },\n  \"identifier2Source\": {\n    \"productName\": \"OS Open Roads\",\n    \"productPublicationDate\": \"<string>\",\n    \"featureType\": \"RoadLink\",\n    \"identifierType\": \"UPRN\",\n    \"productPublicationName\": \"<string>\"\n  },\n  \"methodIdentifier\": \"RoadLink_TOID_Road_TOID_7\",\n  \"productPublicationName\": \"<string>\"\n}",
+                  "createdAt": "2026-07-28T02:29:24.000Z",
+                  "updatedAt": "2026-07-28T02:29:24.000Z",
+                  "uid": "35240-7525a1de-0581-498e-b17e-2622e049e4a4"
+                },
+                {
+                  "id": "5eeb576b-ed07-442e-a75b-15b27ca46042",
+                  "name": "E.g. missing query parameter, malformed syntax.",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [],
+                    "url": {
+                      "raw": "{{baseUrl}}/productVersionInfo/:correlationMethod?key=<API Key>",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "productVersionInfo",
+                        ":correlationMethod"
+                      ],
+                      "query": [
+                        {
+                          "description": "Added as a part of security scheme: apikey",
+                          "key": "key",
+                          "value": "<API Key>"
+                        }
+                      ],
+                      "variable": [
+                        {
+                          "key": "correlationMethod"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Bad Request",
+                  "code": 400,
+                  "_postman_previewlanguage": "text",
+                  "header": [],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": null,
+                  "createdAt": "2026-07-28T02:29:24.000Z",
+                  "updatedAt": "2026-07-28T02:29:24.000Z",
+                  "uid": "35240-5eeb576b-ed07-442e-a75b-15b27ca46042"
+                },
+                {
+                  "id": "e209c7cf-b983-4212-9cdd-d347d3878a2a",
+                  "name": "The client has not provided authentication or incorrect authentication.",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [],
+                    "url": {
+                      "raw": "{{baseUrl}}/productVersionInfo/:correlationMethod?key=<API Key>",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "productVersionInfo",
+                        ":correlationMethod"
+                      ],
+                      "query": [
+                        {
+                          "description": "Added as a part of security scheme: apikey",
+                          "key": "key",
+                          "value": "<API Key>"
+                        }
+                      ],
+                      "variable": [
+                        {
+                          "key": "correlationMethod"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Unauthorized",
+                  "code": 401,
+                  "_postman_previewlanguage": "text",
+                  "header": [],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": null,
+                  "createdAt": "2026-07-28T02:29:24.000Z",
+                  "updatedAt": "2026-07-28T02:29:24.000Z",
+                  "uid": "35240-e209c7cf-b983-4212-9cdd-d347d3878a2a"
+                },
+                {
+                  "id": "730cefbb-eb80-472d-9f89-8991e43f0343",
+                  "name": "The client has authenticated its access but does not have sufficient rights to complete the request.",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [],
+                    "url": {
+                      "raw": "{{baseUrl}}/productVersionInfo/:correlationMethod?key=<API Key>",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "productVersionInfo",
+                        ":correlationMethod"
+                      ],
+                      "query": [
+                        {
+                          "description": "Added as a part of security scheme: apikey",
+                          "key": "key",
+                          "value": "<API Key>"
+                        }
+                      ],
+                      "variable": [
+                        {
+                          "key": "correlationMethod"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Forbidden",
+                  "code": 403,
+                  "_postman_previewlanguage": "text",
+                  "header": [],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": null,
+                  "createdAt": "2026-07-28T02:29:24.000Z",
+                  "updatedAt": "2026-07-28T02:29:24.000Z",
+                  "uid": "35240-730cefbb-eb80-472d-9f89-8991e43f0343"
+                },
+                {
+                  "id": "7477109b-65d8-456d-8d96-a38df1170876",
+                  "name": "The server has not found anything matching the Request-URI.",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [],
+                    "url": {
+                      "raw": "{{baseUrl}}/productVersionInfo/:correlationMethod?key=<API Key>",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "productVersionInfo",
+                        ":correlationMethod"
+                      ],
+                      "query": [
+                        {
+                          "description": "Added as a part of security scheme: apikey",
+                          "key": "key",
+                          "value": "<API Key>"
+                        }
+                      ],
+                      "variable": [
+                        {
+                          "key": "correlationMethod"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Not Found",
+                  "code": 404,
+                  "_postman_previewlanguage": "text",
+                  "header": [],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": null,
+                  "createdAt": "2026-07-28T02:29:24.000Z",
+                  "updatedAt": "2026-07-28T02:29:24.000Z",
+                  "uid": "35240-7477109b-65d8-456d-8d96-a38df1170876"
+                },
+                {
+                  "id": "f80f0461-8e2b-4dab-a608-381cb0a950c1",
+                  "name": "Request used an unsupported HTTP method, e.g. DELETE or PUT.",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [],
+                    "url": {
+                      "raw": "{{baseUrl}}/productVersionInfo/:correlationMethod?key=<API Key>",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "productVersionInfo",
+                        ":correlationMethod"
+                      ],
+                      "query": [
+                        {
+                          "description": "Added as a part of security scheme: apikey",
+                          "key": "key",
+                          "value": "<API Key>"
+                        }
+                      ],
+                      "variable": [
+                        {
+                          "key": "correlationMethod"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Method Not Allowed",
+                  "code": 405,
+                  "_postman_previewlanguage": "text",
+                  "header": [],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": null,
+                  "createdAt": "2026-07-28T02:29:24.000Z",
+                  "updatedAt": "2026-07-28T02:29:24.000Z",
+                  "uid": "35240-f80f0461-8e2b-4dab-a608-381cb0a950c1"
+                },
+                {
+                  "id": "d8e1e8f6-e8ca-4a85-9b09-425fdbaa0b49",
+                  "name": "Exceeded the number of requests per minute (rate-limit).",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [],
+                    "url": {
+                      "raw": "{{baseUrl}}/productVersionInfo/:correlationMethod?key=<API Key>",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "productVersionInfo",
+                        ":correlationMethod"
+                      ],
+                      "query": [
+                        {
+                          "description": "Added as a part of security scheme: apikey",
+                          "key": "key",
+                          "value": "<API Key>"
+                        }
+                      ],
+                      "variable": [
+                        {
+                          "key": "correlationMethod"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Too Many Requests",
+                  "code": 429,
+                  "_postman_previewlanguage": "text",
+                  "header": [],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": null,
+                  "createdAt": "2026-07-28T02:29:24.000Z",
+                  "updatedAt": "2026-07-28T02:29:24.000Z",
+                  "uid": "35240-d8e1e8f6-e8ca-4a85-9b09-425fdbaa0b49"
+                },
+                {
+                  "id": "7f7b3eaa-4abe-4b48-9829-c739a4fe02e1",
+                  "name": "Generic internal server error.",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [],
+                    "url": {
+                      "raw": "{{baseUrl}}/productVersionInfo/:correlationMethod?key=<API Key>",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "productVersionInfo",
+                        ":correlationMethod"
+                      ],
+                      "query": [
+                        {
+                          "description": "Added as a part of security scheme: apikey",
+                          "key": "key",
+                          "value": "<API Key>"
+                        }
+                      ],
+                      "variable": [
+                        {
+                          "key": "correlationMethod"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Internal Server Error",
+                  "code": 500,
+                  "_postman_previewlanguage": "text",
+                  "header": [],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": null,
+                  "createdAt": "2026-07-28T02:29:24.000Z",
+                  "updatedAt": "2026-07-28T02:29:24.000Z",
+                  "uid": "35240-7f7b3eaa-4abe-4b48-9829-c739a4fe02e1"
+                },
+                {
+                  "id": "77823ab8-52aa-4672-bae0-692b4e10d121",
+                  "name": "Temporary outage due to overloading or maintenance.",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [],
+                    "url": {
+                      "raw": "{{baseUrl}}/productVersionInfo/:correlationMethod?key=<API Key>",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "productVersionInfo",
+                        ":correlationMethod"
+                      ],
+                      "query": [
+                        {
+                          "description": "Added as a part of security scheme: apikey",
+                          "key": "key",
+                          "value": "<API Key>"
+                        }
+                      ],
+                      "variable": [
+                        {
+                          "key": "correlationMethod"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Service Unavailable",
+                  "code": 503,
+                  "_postman_previewlanguage": "text",
+                  "header": [],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": null,
+                  "createdAt": "2026-07-28T02:29:24.000Z",
+                  "updatedAt": "2026-07-28T02:29:24.000Z",
+                  "uid": "35240-77823ab8-52aa-4672-bae0-692b4e10d121"
+                }
+              ],
+              "createdAt": "2026-07-28T02:29:24.000Z",
+              "updatedAt": "2026-07-28T02:29:24.000Z",
+              "uid": "35240-844648ce-0404-478c-a251-b21b947461fc"
+            }
+          ],
+          "id": "5293ea9d-3b99-40f9-b623-fd6622dce974",
+          "createdAt": "2026-07-28T02:29:24.000Z",
+          "updatedAt": "2026-07-28T02:29:24.000Z",
+          "uid": "35240-5293ea9d-3b99-40f9-b623-fd6622dce974"
+        }
+      ],
+      "id": "b1b37bdc-2eb0-4c39-b646-07527a5a8be7",
+      "createdAt": "2026-07-28T02:29:24.000Z",
+      "updatedAt": "2026-07-28T02:29:24.000Z",
+      "uid": "35240-b1b37bdc-2eb0-4c39-b646-07527a5a8be7"
+    }
+  ],
+  "auth": {
+    "type": "apikey",
+    "apikey": [
+      {
+        "key": "key",
+        "value": "key",
+        "type": "string"
+      },
+      {
+        "key": "value",
+        "value": "{{apiKey}}",
+        "type": "string"
+      },
+      {
+        "key": "in",
+        "value": "query",
+        "type": "string"
+      }
+    ]
+  },
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "https://api.os.uk/search/links/v1"
+    }
+  ]
+}

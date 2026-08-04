@@ -1,0 +1,508 @@
+{
+  "info": {
+    "_postman_id": "8aff5e8d-31cc-4fc4-8f9c-42c0ce6afb14",
+    "name": "OS Maps API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-07-28T02:29:25.000Z",
+    "updatedAt": "2026-07-28T02:29:26.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-8aff5e8d-31cc-4fc4-8f9c-42c0ce6afb14"
+  },
+  "item": [
+    {
+      "name": "wmts",
+      "item": [
+        {
+          "name": "Access and download data for a specific tile",
+          "id": "068fdb45-49a3-4c7e-b016-3ce96d323bbb",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Accept",
+                "value": "image/png"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/wmts?layer=Light_3857&tileMatrixSet=EPSG:3857&tileMatrix=<string>&tileRow=<integer>&tileCol=<integer>&service=wmts&request=GetCapabilities&style=default&version=2.0.0&height=<integer>&width=<integer>&outputformat=image/png",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "wmts"
+              ],
+              "query": [
+                {
+                  "description": "(Required) The tile set layer that will be requested.",
+                  "key": "layer",
+                  "value": "Light_3857"
+                },
+                {
+                  "description": "(Required) The identifier of the tile matrix set.",
+                  "key": "tileMatrixSet",
+                  "value": "EPSG:3857"
+                },
+                {
+                  "description": "(Required) The identifier of the tile matrix within the specified tile matrix set.",
+                  "key": "tileMatrix",
+                  "value": "<string>"
+                },
+                {
+                  "description": "(Required) The row index of the tile.",
+                  "key": "tileRow",
+                  "value": "<integer>"
+                },
+                {
+                  "description": "(Required) The column index of the tile.",
+                  "key": "tileCol",
+                  "value": "<integer>"
+                },
+                {
+                  "description": "(Required) The service that is being accessed.",
+                  "key": "service",
+                  "value": "wmts"
+                },
+                {
+                  "description": "(Required) The type of request being made. If a GetCapabilities request is being made, the other parameters are not required other than authentication.",
+                  "key": "request",
+                  "value": "GetCapabilities"
+                },
+                {
+                  "description": "(Required) Taken from the Identifier of the chosen Layer's Style property",
+                  "key": "style",
+                  "value": "default"
+                },
+                {
+                  "description": "The version number of the service.",
+                  "key": "version",
+                  "value": "2.0.0"
+                },
+                {
+                  "description": "The Height of the tile.",
+                  "key": "height",
+                  "value": "<integer>"
+                },
+                {
+                  "description": "The Width of the tile.",
+                  "key": "width",
+                  "value": "<integer>"
+                },
+                {
+                  "description": "The format of the returned tile.",
+                  "key": "outputformat",
+                  "value": "image/png"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "0eae652e-a9c0-4c71-ae07-653aa62c0e73",
+              "name": "Tile image retrieved successfully",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "image/png"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/wmts?layer=Light_3857&tileMatrixSet=EPSG:3857&tileMatrix=<string>&tileRow=<integer>&tileCol=<integer>&service=wmts&request=GetCapabilities&style=default&version=2.0.0&height=<integer>&width=<integer>&outputformat=image/png&key=<API Key>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "wmts"
+                  ],
+                  "query": [
+                    {
+                      "description": "(Required) The tile set layer that will be requested.",
+                      "key": "layer",
+                      "value": "Light_3857"
+                    },
+                    {
+                      "description": "(Required) The identifier of the tile matrix set.",
+                      "key": "tileMatrixSet",
+                      "value": "EPSG:3857"
+                    },
+                    {
+                      "description": "(Required) The identifier of the tile matrix within the specified tile matrix set.",
+                      "key": "tileMatrix",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "(Required) The row index of the tile.",
+                      "key": "tileRow",
+                      "value": "<integer>"
+                    },
+                    {
+                      "description": "(Required) The column index of the tile.",
+                      "key": "tileCol",
+                      "value": "<integer>"
+                    },
+                    {
+                      "description": "(Required) The service that is being accessed.",
+                      "key": "service",
+                      "value": "wmts"
+                    },
+                    {
+                      "description": "(Required) The type of request being made. If a GetCapabilities request is being made, the other parameters are not required other than authentication.",
+                      "key": "request",
+                      "value": "GetCapabilities"
+                    },
+                    {
+                      "description": "(Required) Taken from the Identifier of the chosen Layer's Style property",
+                      "key": "style",
+                      "value": "default"
+                    },
+                    {
+                      "description": "The version number of the service.",
+                      "key": "version",
+                      "value": "2.0.0"
+                    },
+                    {
+                      "description": "The Height of the tile.",
+                      "key": "height",
+                      "value": "<integer>"
+                    },
+                    {
+                      "description": "The Width of the tile.",
+                      "key": "width",
+                      "value": "<integer>"
+                    },
+                    {
+                      "description": "The format of the returned tile.",
+                      "key": "outputformat",
+                      "value": "image/png"
+                    },
+                    {
+                      "description": "Added as a part of security scheme: apikey",
+                      "key": "key",
+                      "value": "<API Key>"
+                    }
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "text",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "image/png"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "",
+              "createdAt": "2026-07-28T02:29:26.000Z",
+              "updatedAt": "2026-07-28T02:29:26.000Z",
+              "uid": "35240-0eae652e-a9c0-4c71-ae07-653aa62c0e73"
+            },
+            {
+              "id": "29e4ce6c-7df6-420f-a7c1-4b1faa7bbf92",
+              "name": "Retrieves Service Metadata for OS Maps API when request parameter is 'GetCapabilities'",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/wmts?layer=Light_3857&tileMatrixSet=EPSG:3857&tileMatrix=<string>&tileRow=<integer>&tileCol=<integer>&service=wmts&request=GetCapabilities&style=default&version=2.0.0&height=<integer>&width=<integer>&outputformat=image/png&key=<API Key>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "wmts"
+                  ],
+                  "query": [
+                    {
+                      "description": "(Required) The tile set layer that will be requested.",
+                      "key": "layer",
+                      "value": "Light_3857"
+                    },
+                    {
+                      "description": "(Required) The identifier of the tile matrix set.",
+                      "key": "tileMatrixSet",
+                      "value": "EPSG:3857"
+                    },
+                    {
+                      "description": "(Required) The identifier of the tile matrix within the specified tile matrix set.",
+                      "key": "tileMatrix",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "(Required) The row index of the tile.",
+                      "key": "tileRow",
+                      "value": "<integer>"
+                    },
+                    {
+                      "description": "(Required) The column index of the tile.",
+                      "key": "tileCol",
+                      "value": "<integer>"
+                    },
+                    {
+                      "description": "(Required) The service that is being accessed.",
+                      "key": "service",
+                      "value": "wmts"
+                    },
+                    {
+                      "description": "(Required) The type of request being made. If a GetCapabilities request is being made, the other parameters are not required other than authentication.",
+                      "key": "request",
+                      "value": "GetCapabilities"
+                    },
+                    {
+                      "description": "(Required) Taken from the Identifier of the chosen Layer's Style property",
+                      "key": "style",
+                      "value": "default"
+                    },
+                    {
+                      "description": "The version number of the service.",
+                      "key": "version",
+                      "value": "2.0.0"
+                    },
+                    {
+                      "description": "The Height of the tile.",
+                      "key": "height",
+                      "value": "<integer>"
+                    },
+                    {
+                      "description": "The Width of the tile.",
+                      "key": "width",
+                      "value": "<integer>"
+                    },
+                    {
+                      "description": "The format of the returned tile.",
+                      "key": "outputformat",
+                      "value": "image/png"
+                    },
+                    {
+                      "description": "Added as a part of security scheme: apikey",
+                      "key": "key",
+                      "value": "<API Key>"
+                    }
+                  ]
+                }
+              },
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"service\": {\n    \"title\": \"<string>\",\n    \"description\": \"<string>\",\n    \"version\": \"<string>\"\n  },\n  \"operations\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"tileMatrixSets\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"layers\": [\n    \"<string>\",\n    \"<string>\"\n  ]\n}",
+              "createdAt": "2026-07-28T02:29:26.000Z",
+              "updatedAt": "2026-07-28T02:29:26.000Z",
+              "uid": "35240-29e4ce6c-7df6-420f-a7c1-4b1faa7bbf92"
+            }
+          ],
+          "createdAt": "2026-07-28T02:29:26.000Z",
+          "updatedAt": "2026-07-28T02:29:26.000Z",
+          "uid": "35240-068fdb45-49a3-4c7e-b016-3ce96d323bbb"
+        }
+      ],
+      "id": "74ac6d33-0920-46a3-a4ae-61a3662ab3b4",
+      "createdAt": "2026-07-28T02:29:26.000Z",
+      "updatedAt": "2026-07-28T02:29:26.000Z",
+      "uid": "35240-74ac6d33-0920-46a3-a4ae-61a3662ab3b4"
+    },
+    {
+      "name": "zxy",
+      "item": [
+        {
+          "name": "{layer}",
+          "item": [
+            {
+              "name": "{z}",
+              "item": [
+                {
+                  "name": "{x}",
+                  "item": [
+                    {
+                      "name": "{y}.png",
+                      "item": [
+                        {
+                          "name": "Access and download data for a specific tile",
+                          "id": "e5e5ebbf-dfcf-43e2-933e-199606cebc72",
+                          "protocolProfileBehavior": {
+                            "disableBodyPruning": true
+                          },
+                          "request": {
+                            "method": "GET",
+                            "header": [
+                              {
+                                "key": "Accept",
+                                "value": "image/png"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/zxy/:layer/:z/:x/{{y}}.png",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "zxy",
+                                ":layer",
+                                ":z",
+                                ":x",
+                                "{{y}}.png"
+                              ],
+                              "variable": [
+                                {
+                                  "id": "33b51717-999c-4c0d-b810-e974ca0f565c",
+                                  "key": "layer",
+                                  "value": "Light_3857",
+                                  "description": "(Required) The tile set layer that will be requested."
+                                },
+                                {
+                                  "id": "2742365c-4851-479e-beb0-eb814423b9cb",
+                                  "key": "z",
+                                  "value": "<integer>",
+                                  "description": "(Required) Zoom level"
+                                },
+                                {
+                                  "id": "2bc7ce50-ad45-4903-bc9c-5880fe0579ac",
+                                  "key": "x",
+                                  "value": "<integer>",
+                                  "description": "(Required) X coordinate"
+                                }
+                              ]
+                            }
+                          },
+                          "response": [
+                            {
+                              "id": "437e9aa0-6605-4769-a73a-f8abd7f2a23f",
+                              "name": "Tile image retrieved successfully",
+                              "originalRequest": {
+                                "method": "GET",
+                                "header": [
+                                  {
+                                    "key": "Accept",
+                                    "value": "image/png"
+                                  }
+                                ],
+                                "url": {
+                                  "raw": "{{baseUrl}}/zxy/:layer/:z/:x/{{y}}.png?key=<API Key>",
+                                  "host": [
+                                    "{{baseUrl}}"
+                                  ],
+                                  "path": [
+                                    "zxy",
+                                    ":layer",
+                                    ":z",
+                                    ":x",
+                                    "{{y}}.png"
+                                  ],
+                                  "query": [
+                                    {
+                                      "description": "Added as a part of security scheme: apikey",
+                                      "key": "key",
+                                      "value": "<API Key>"
+                                    }
+                                  ],
+                                  "variable": [
+                                    {
+                                      "key": "layer"
+                                    },
+                                    {
+                                      "key": "z"
+                                    },
+                                    {
+                                      "key": "x"
+                                    }
+                                  ]
+                                }
+                              },
+                              "status": "OK",
+                              "code": 200,
+                              "_postman_previewlanguage": "text",
+                              "header": [
+                                {
+                                  "key": "Content-Type",
+                                  "value": "image/png"
+                                }
+                              ],
+                              "cookie": [],
+                              "responseTime": null,
+                              "body": "",
+                              "createdAt": "2026-07-28T02:29:26.000Z",
+                              "updatedAt": "2026-07-28T02:29:26.000Z",
+                              "uid": "35240-437e9aa0-6605-4769-a73a-f8abd7f2a23f"
+                            }
+                          ],
+                          "createdAt": "2026-07-28T02:29:26.000Z",
+                          "updatedAt": "2026-07-28T02:29:26.000Z",
+                          "uid": "35240-e5e5ebbf-dfcf-43e2-933e-199606cebc72"
+                        }
+                      ],
+                      "id": "9d75e433-3e16-4526-b0b8-432bbe261859",
+                      "createdAt": "2026-07-28T02:29:26.000Z",
+                      "updatedAt": "2026-07-28T02:29:26.000Z",
+                      "uid": "35240-9d75e433-3e16-4526-b0b8-432bbe261859"
+                    }
+                  ],
+                  "id": "2157c667-fc21-485c-b9fb-3d6d72f58844",
+                  "createdAt": "2026-07-28T02:29:26.000Z",
+                  "updatedAt": "2026-07-28T02:29:26.000Z",
+                  "uid": "35240-2157c667-fc21-485c-b9fb-3d6d72f58844"
+                }
+              ],
+              "id": "395b9c1d-595b-4b5b-86d3-507469b9c153",
+              "createdAt": "2026-07-28T02:29:26.000Z",
+              "updatedAt": "2026-07-28T02:29:26.000Z",
+              "uid": "35240-395b9c1d-595b-4b5b-86d3-507469b9c153"
+            }
+          ],
+          "id": "637820b0-f438-49a1-9c97-0a8682625275",
+          "createdAt": "2026-07-28T02:29:26.000Z",
+          "updatedAt": "2026-07-28T02:29:26.000Z",
+          "uid": "35240-637820b0-f438-49a1-9c97-0a8682625275"
+        }
+      ],
+      "id": "6c77dd93-26a7-4d44-a26c-4c8bff585b38",
+      "createdAt": "2026-07-28T02:29:26.000Z",
+      "updatedAt": "2026-07-28T02:29:26.000Z",
+      "uid": "35240-6c77dd93-26a7-4d44-a26c-4c8bff585b38"
+    }
+  ],
+  "auth": {
+    "type": "apikey",
+    "apikey": [
+      {
+        "key": "key",
+        "value": "key",
+        "type": "string"
+      },
+      {
+        "key": "value",
+        "value": "{{apiKey}}",
+        "type": "string"
+      },
+      {
+        "key": "in",
+        "value": "query",
+        "type": "string"
+      }
+    ]
+  },
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "https://api.os.uk/maps/raster/v1"
+    },
+    {
+      "key": "y",
+      "value": "<integer>"
+    }
+  ]
+}

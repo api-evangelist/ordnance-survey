@@ -1,0 +1,309 @@
+{
+  "info": {
+    "_postman_id": "c64991d0-0000-4daa-bb82-095f40b8a082",
+    "name": "OS Names API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-07-28T02:29:22.000Z",
+    "updatedAt": "2026-07-28T02:29:23.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-c64991d0-0000-4daa-bb82-095f40b8a082"
+  },
+  "item": [
+    {
+      "name": "find",
+      "item": [
+        {
+          "name": "A free string text search, intended to be an ambiguous/fuzzy search.",
+          "id": "46e78f63-5732-4cde-985e-003b81bac77f",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/find?query=<string>&format=XML&maxresults=<integer>&offset=<integer>&bounds=<number>,<number>,<number>,<number>&fq=Bus_Station",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "find"
+              ],
+              "query": [
+                {
+                  "description": "(Required) Free text search parameter.",
+                  "key": "query",
+                  "value": "<string>"
+                },
+                {
+                  "description": "The format the response will be returned in.",
+                  "key": "format",
+                  "value": "XML"
+                },
+                {
+                  "description": "The maximum number of results to return. Minimum = 1. Maximum = 100. Default = 100.",
+                  "key": "maxresults",
+                  "value": "<integer>"
+                },
+                {
+                  "description": "Offset the list of returned results by this amount.",
+                  "key": "offset",
+                  "value": "<integer>"
+                },
+                {
+                  "description": "Biases the results to a certain area. The <BoundingBox> is a British National Grid bounding box in the form: XMIN,YMIN,XMAX,YMAX",
+                  "key": "bounds",
+                  "value": "<number>,<number>,<number>,<number>"
+                },
+                {
+                  "description": "Filters the results by bounding box or local_type. ",
+                  "key": "fq",
+                  "value": "Bus_Station"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "1bdfc553-08f4-4570-a3ab-39e3041e0a6c",
+              "name": "Retrieves addresses based on a free text search.",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/find?query=<string>&format=XML&maxresults=<integer>&offset=<integer>&bounds=<number>,<number>,<number>,<number>&fq=Bus_Station&key=<API Key>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "find"
+                  ],
+                  "query": [
+                    {
+                      "description": "(Required) Free text search parameter.",
+                      "key": "query",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "The format the response will be returned in.",
+                      "key": "format",
+                      "value": "XML"
+                    },
+                    {
+                      "description": "The maximum number of results to return. Minimum = 1. Maximum = 100. Default = 100.",
+                      "key": "maxresults",
+                      "value": "<integer>"
+                    },
+                    {
+                      "description": "Offset the list of returned results by this amount.",
+                      "key": "offset",
+                      "value": "<integer>"
+                    },
+                    {
+                      "description": "Biases the results to a certain area. The <BoundingBox> is a British National Grid bounding box in the form: XMIN,YMIN,XMAX,YMAX",
+                      "key": "bounds",
+                      "value": "<number>,<number>,<number>,<number>"
+                    },
+                    {
+                      "description": "Filters the results by bounding box or local_type. ",
+                      "key": "fq",
+                      "value": "Bus_Station"
+                    },
+                    {
+                      "description": "Added as a part of security scheme: apikey",
+                      "key": "key",
+                      "value": "<API Key>"
+                    }
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"header\": {\n    \"uri\": \"<string>\",\n    \"query\": \"<string>\",\n    \"format\": \"<string>\",\n    \"maxresults\": \"<integer>\",\n    \"offset\": \"<integer>\",\n    \"totalresults\": \"<integer>\"\n  },\n  \"results\": [\n    {\n      \"GAZETTEER_ENTRY\": {\n        \"ID\": \"<string>\",\n        \"NAMES_URI\": \"<string>\",\n        \"NAME1\": \"<string>\",\n        \"TYPE\": \"<string>\",\n        \"LOCAL_TYPE\": \"<string>\",\n        \"GEOMETRY_X\": \"<number>\",\n        \"GEOMETRY_Y\": \"<number>\",\n        \"MOST_DETAIL_VIEW_RES\": \"<integer>\",\n        \"LEAST_DETAIL_VIEW_RES\": \"<integer>\",\n        \"MBR_XMIN\": \"<number>\",\n        \"MBR_YMIN\": \"<number>\",\n        \"MBR_XMAX\": \"<number>\",\n        \"MBR_YMAX\": \"<number>\",\n        \"POSTCODE_DISTRICT\": \"<string>\",\n        \"POSTCODE_DISTRICT_URI\": \"<string>\",\n        \"POPULATED_PLACE\": \"<string>\",\n        \"POPULATED_PLACE_URI\": \"<string>\",\n        \"POPULATED_PLACE_TYPE\": \"<string>\",\n        \"COUNTY_UNITARY\": \"<string>\",\n        \"COUNTY_UNITARY_URI\": \"<string>\",\n        \"COUNTY_UNITARY_TYPE\": \"<string>\",\n        \"REGION\": \"<string>\",\n        \"REGION_URI\": \"<string>\",\n        \"COUNTRY\": \"<string>\",\n        \"COUNTRY_URI\": \"<string>\"\n      }\n    },\n    {\n      \"GAZETTEER_ENTRY\": {\n        \"ID\": \"<string>\",\n        \"NAMES_URI\": \"<string>\",\n        \"NAME1\": \"<string>\",\n        \"TYPE\": \"<string>\",\n        \"LOCAL_TYPE\": \"<string>\",\n        \"GEOMETRY_X\": \"<number>\",\n        \"GEOMETRY_Y\": \"<number>\",\n        \"MOST_DETAIL_VIEW_RES\": \"<integer>\",\n        \"LEAST_DETAIL_VIEW_RES\": \"<integer>\",\n        \"MBR_XMIN\": \"<number>\",\n        \"MBR_YMIN\": \"<number>\",\n        \"MBR_XMAX\": \"<number>\",\n        \"MBR_YMAX\": \"<number>\",\n        \"POSTCODE_DISTRICT\": \"<string>\",\n        \"POSTCODE_DISTRICT_URI\": \"<string>\",\n        \"POPULATED_PLACE\": \"<string>\",\n        \"POPULATED_PLACE_URI\": \"<string>\",\n        \"POPULATED_PLACE_TYPE\": \"<string>\",\n        \"COUNTY_UNITARY\": \"<string>\",\n        \"COUNTY_UNITARY_URI\": \"<string>\",\n        \"COUNTY_UNITARY_TYPE\": \"<string>\",\n        \"REGION\": \"<string>\",\n        \"REGION_URI\": \"<string>\",\n        \"COUNTRY\": \"<string>\",\n        \"COUNTRY_URI\": \"<string>\"\n      }\n    }\n  ]\n}",
+              "createdAt": "2026-07-28T02:29:23.000Z",
+              "updatedAt": "2026-07-28T02:29:23.000Z",
+              "uid": "35240-1bdfc553-08f4-4570-a3ab-39e3041e0a6c"
+            }
+          ],
+          "createdAt": "2026-07-28T02:29:23.000Z",
+          "updatedAt": "2026-07-28T02:29:23.000Z",
+          "uid": "35240-46e78f63-5732-4cde-985e-003b81bac77f"
+        }
+      ],
+      "id": "d10a9e51-9470-4018-8f60-4cb91e9ba952",
+      "createdAt": "2026-07-28T02:29:23.000Z",
+      "updatedAt": "2026-07-28T02:29:23.000Z",
+      "uid": "35240-d10a9e51-9470-4018-8f60-4cb91e9ba952"
+    },
+    {
+      "name": "nearest",
+      "item": [
+        {
+          "name": "Find the features closest to a given point",
+          "id": "b8f71ef9-b6c8-4b74-841c-fc81fef92de4",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/nearest?point=<string>&radius=<number>&format=XML&fq=Bus_Station",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "nearest"
+              ],
+              "query": [
+                {
+                  "description": "(Required) A set of British National Grid coordinates to which the nearest record in a straight line should be found.",
+                  "key": "point",
+                  "value": "<string>"
+                },
+                {
+                  "description": "The radius in metres to search within. Minimum = 0.01, Maximum = 1,000 . Default = 100",
+                  "key": "radius",
+                  "value": "<number>"
+                },
+                {
+                  "description": "The format the response will be returned in.",
+                  "key": "format",
+                  "value": "XML"
+                },
+                {
+                  "description": "Filters the results by bounding box or local_type. ",
+                  "key": "fq",
+                  "value": "Bus_Station"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "e569bcd6-0948-4ff3-ba1a-5c587cbc36fc",
+              "name": "Retrieves addresses based on a free text search.",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/nearest?point=<string>&radius=<number>&format=XML&fq=Bus_Station&key=<API Key>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "nearest"
+                  ],
+                  "query": [
+                    {
+                      "description": "(Required) A set of British National Grid coordinates to which the nearest record in a straight line should be found.",
+                      "key": "point",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "The radius in metres to search within. Minimum = 0.01, Maximum = 1,000 . Default = 100",
+                      "key": "radius",
+                      "value": "<number>"
+                    },
+                    {
+                      "description": "The format the response will be returned in.",
+                      "key": "format",
+                      "value": "XML"
+                    },
+                    {
+                      "description": "Filters the results by bounding box or local_type. ",
+                      "key": "fq",
+                      "value": "Bus_Station"
+                    },
+                    {
+                      "description": "Added as a part of security scheme: apikey",
+                      "key": "key",
+                      "value": "<API Key>"
+                    }
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"header\": {\n    \"uri\": \"<string>\",\n    \"query\": \"<string>\",\n    \"format\": \"<string>\",\n    \"maxresults\": \"<integer>\",\n    \"offset\": \"<integer>\",\n    \"totalresults\": \"<integer>\"\n  },\n  \"results\": [\n    {\n      \"GAZETTEER_ENTRY\": {\n        \"ID\": \"<string>\",\n        \"NAMES_URI\": \"<string>\",\n        \"NAME1\": \"<string>\",\n        \"TYPE\": \"<string>\",\n        \"LOCAL_TYPE\": \"<string>\",\n        \"GEOMETRY_X\": \"<number>\",\n        \"GEOMETRY_Y\": \"<number>\",\n        \"MOST_DETAIL_VIEW_RES\": \"<integer>\",\n        \"LEAST_DETAIL_VIEW_RES\": \"<integer>\",\n        \"MBR_XMIN\": \"<number>\",\n        \"MBR_YMIN\": \"<number>\",\n        \"MBR_XMAX\": \"<number>\",\n        \"MBR_YMAX\": \"<number>\",\n        \"POSTCODE_DISTRICT\": \"<string>\",\n        \"POSTCODE_DISTRICT_URI\": \"<string>\",\n        \"POPULATED_PLACE\": \"<string>\",\n        \"POPULATED_PLACE_URI\": \"<string>\",\n        \"POPULATED_PLACE_TYPE\": \"<string>\",\n        \"COUNTY_UNITARY\": \"<string>\",\n        \"COUNTY_UNITARY_URI\": \"<string>\",\n        \"COUNTY_UNITARY_TYPE\": \"<string>\",\n        \"REGION\": \"<string>\",\n        \"REGION_URI\": \"<string>\",\n        \"COUNTRY\": \"<string>\",\n        \"COUNTRY_URI\": \"<string>\"\n      }\n    },\n    {\n      \"GAZETTEER_ENTRY\": {\n        \"ID\": \"<string>\",\n        \"NAMES_URI\": \"<string>\",\n        \"NAME1\": \"<string>\",\n        \"TYPE\": \"<string>\",\n        \"LOCAL_TYPE\": \"<string>\",\n        \"GEOMETRY_X\": \"<number>\",\n        \"GEOMETRY_Y\": \"<number>\",\n        \"MOST_DETAIL_VIEW_RES\": \"<integer>\",\n        \"LEAST_DETAIL_VIEW_RES\": \"<integer>\",\n        \"MBR_XMIN\": \"<number>\",\n        \"MBR_YMIN\": \"<number>\",\n        \"MBR_XMAX\": \"<number>\",\n        \"MBR_YMAX\": \"<number>\",\n        \"POSTCODE_DISTRICT\": \"<string>\",\n        \"POSTCODE_DISTRICT_URI\": \"<string>\",\n        \"POPULATED_PLACE\": \"<string>\",\n        \"POPULATED_PLACE_URI\": \"<string>\",\n        \"POPULATED_PLACE_TYPE\": \"<string>\",\n        \"COUNTY_UNITARY\": \"<string>\",\n        \"COUNTY_UNITARY_URI\": \"<string>\",\n        \"COUNTY_UNITARY_TYPE\": \"<string>\",\n        \"REGION\": \"<string>\",\n        \"REGION_URI\": \"<string>\",\n        \"COUNTRY\": \"<string>\",\n        \"COUNTRY_URI\": \"<string>\"\n      }\n    }\n  ]\n}",
+              "createdAt": "2026-07-28T02:29:23.000Z",
+              "updatedAt": "2026-07-28T02:29:23.000Z",
+              "uid": "35240-e569bcd6-0948-4ff3-ba1a-5c587cbc36fc"
+            }
+          ],
+          "createdAt": "2026-07-28T02:29:23.000Z",
+          "updatedAt": "2026-07-28T02:29:23.000Z",
+          "uid": "35240-b8f71ef9-b6c8-4b74-841c-fc81fef92de4"
+        }
+      ],
+      "id": "ad009992-83a4-4979-aa74-4238e03f9234",
+      "createdAt": "2026-07-28T02:29:23.000Z",
+      "updatedAt": "2026-07-28T02:29:23.000Z",
+      "uid": "35240-ad009992-83a4-4979-aa74-4238e03f9234"
+    }
+  ],
+  "auth": {
+    "type": "apikey",
+    "apikey": [
+      {
+        "key": "key",
+        "value": "key",
+        "type": "string"
+      },
+      {
+        "key": "value",
+        "value": "{{apiKey}}",
+        "type": "string"
+      },
+      {
+        "key": "in",
+        "value": "query",
+        "type": "string"
+      }
+    ]
+  },
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "https://api.os.uk/search/names/v1"
+    }
+  ]
+}

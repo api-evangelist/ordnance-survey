@@ -1,0 +1,2208 @@
+{
+  "info": {
+    "_postman_id": "5cbb1d64-b2e7-4e91-84d9-8b17b6906616",
+    "name": "OS NGD API \u2013 Features",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-07-28T02:28:42.000Z",
+    "updatedAt": "2026-07-28T02:28:42.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-5cbb1d64-b2e7-4e91-84d9-8b17b6906616"
+  },
+  "item": [
+    {
+      "name": "/",
+      "item": [
+        {
+          "name": "OS NGD API \u2013 Features landing page",
+          "id": "9f845157-367e-442d-bada-8e5169321bbf",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                ""
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "70b4ad94-73a0-4819-a9d7-3aa1845596c9",
+              "name": "Ordnance Survey National Geographic Database API \u2013 Features landing page.",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    ""
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"title\": \"<string>\",\n  \"description\": \"<string>\",\n  \"links\": [\n    {\n      \"href\": \"<string>\",\n      \"rel\": \"<string>\",\n      \"type\": \"<string>\",\n      \"title\": \"<string>\"\n    },\n    {\n      \"href\": \"<string>\",\n      \"rel\": \"<string>\",\n      \"type\": \"<string>\",\n      \"title\": \"<string>\"\n    }\n  ]\n}",
+              "createdAt": "2026-07-28T02:28:43.000Z",
+              "updatedAt": "2026-07-28T02:28:43.000Z",
+              "uid": "35240-70b4ad94-73a0-4819-a9d7-3aa1845596c9"
+            },
+            {
+              "id": "1b86e7a7-7b8a-4a9c-85d7-78c655a83171",
+              "name": "The request was not supported.",
+              "originalRequest": {
+                "method": "GET",
+                "header": [],
+                "url": {
+                  "raw": "{{baseUrl}}/",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    ""
+                  ]
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "_postman_previewlanguage": "text",
+              "header": [],
+              "cookie": [],
+              "responseTime": null,
+              "body": null,
+              "createdAt": "2026-07-28T02:28:43.000Z",
+              "updatedAt": "2026-07-28T02:28:43.000Z",
+              "uid": "35240-1b86e7a7-7b8a-4a9c-85d7-78c655a83171"
+            },
+            {
+              "id": "936c2fa4-3d75-495e-8719-feeecda2ebbe",
+              "name": "The HTTP method requested is not supported. This endpoint only supports 'GET' requests.",
+              "originalRequest": {
+                "method": "GET",
+                "header": [],
+                "url": {
+                  "raw": "{{baseUrl}}/",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    ""
+                  ]
+                }
+              },
+              "status": "Method Not Allowed",
+              "code": 405,
+              "_postman_previewlanguage": "text",
+              "header": [],
+              "cookie": [],
+              "responseTime": null,
+              "body": null,
+              "createdAt": "2026-07-28T02:28:43.000Z",
+              "updatedAt": "2026-07-28T02:28:43.000Z",
+              "uid": "35240-936c2fa4-3d75-495e-8719-feeecda2ebbe"
+            },
+            {
+              "id": "d8097eb2-d49a-469b-a6a1-2c8a6f0a33bf",
+              "name": "A request header value was not supported.",
+              "originalRequest": {
+                "method": "GET",
+                "header": [],
+                "url": {
+                  "raw": "{{baseUrl}}/",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    ""
+                  ]
+                }
+              },
+              "status": "Not Acceptable",
+              "code": 406,
+              "_postman_previewlanguage": "text",
+              "header": [],
+              "cookie": [],
+              "responseTime": null,
+              "body": null,
+              "createdAt": "2026-07-28T02:28:43.000Z",
+              "updatedAt": "2026-07-28T02:28:43.000Z",
+              "uid": "35240-d8097eb2-d49a-469b-a6a1-2c8a6f0a33bf"
+            }
+          ],
+          "createdAt": "2026-07-28T02:28:43.000Z",
+          "updatedAt": "2026-07-28T02:28:43.000Z",
+          "uid": "35240-9f845157-367e-442d-bada-8e5169321bbf"
+        }
+      ],
+      "id": "e4a75933-a714-4750-8975-7759db93c4b6",
+      "createdAt": "2026-07-28T02:28:43.000Z",
+      "updatedAt": "2026-07-28T02:28:43.000Z",
+      "uid": "35240-e4a75933-a714-4750-8975-7759db93c4b6"
+    },
+    {
+      "name": "conformance",
+      "item": [
+        {
+          "name": "OS NGD API \u2013 Features conformance page",
+          "id": "fac19f2e-583e-49e8-8a18-41f6d8f9a6d3",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/conformance",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "conformance"
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "bbc7e7e4-3188-4a85-9a6d-77b7e8a80d30",
+              "name": "Ordnance Survey National Geographic Database API \u2013 Features conformance page.",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/conformance",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "conformance"
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"conformsTo\": [\n    \"<string>\",\n    \"<string>\"\n  ]\n}",
+              "createdAt": "2026-07-28T02:28:43.000Z",
+              "updatedAt": "2026-07-28T02:28:43.000Z",
+              "uid": "35240-bbc7e7e4-3188-4a85-9a6d-77b7e8a80d30"
+            },
+            {
+              "id": "077878b2-d84a-4c9f-9d1e-667510ea6298",
+              "name": "The request was not supported.",
+              "originalRequest": {
+                "method": "GET",
+                "header": [],
+                "url": {
+                  "raw": "{{baseUrl}}/conformance",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "conformance"
+                  ]
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "_postman_previewlanguage": "text",
+              "header": [],
+              "cookie": [],
+              "responseTime": null,
+              "body": null,
+              "createdAt": "2026-07-28T02:28:43.000Z",
+              "updatedAt": "2026-07-28T02:28:43.000Z",
+              "uid": "35240-077878b2-d84a-4c9f-9d1e-667510ea6298"
+            },
+            {
+              "id": "f97125a1-c146-4f58-9602-7718d0edfa5e",
+              "name": "The HTTP method requested is not supported. This endpoint only supports 'GET' requests.",
+              "originalRequest": {
+                "method": "GET",
+                "header": [],
+                "url": {
+                  "raw": "{{baseUrl}}/conformance",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "conformance"
+                  ]
+                }
+              },
+              "status": "Method Not Allowed",
+              "code": 405,
+              "_postman_previewlanguage": "text",
+              "header": [],
+              "cookie": [],
+              "responseTime": null,
+              "body": null,
+              "createdAt": "2026-07-28T02:28:43.000Z",
+              "updatedAt": "2026-07-28T02:28:43.000Z",
+              "uid": "35240-f97125a1-c146-4f58-9602-7718d0edfa5e"
+            },
+            {
+              "id": "15c03a3c-996c-4202-86b5-80e28ef44081",
+              "name": "A request header value was not supported.",
+              "originalRequest": {
+                "method": "GET",
+                "header": [],
+                "url": {
+                  "raw": "{{baseUrl}}/conformance",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "conformance"
+                  ]
+                }
+              },
+              "status": "Not Acceptable",
+              "code": 406,
+              "_postman_previewlanguage": "text",
+              "header": [],
+              "cookie": [],
+              "responseTime": null,
+              "body": null,
+              "createdAt": "2026-07-28T02:28:43.000Z",
+              "updatedAt": "2026-07-28T02:28:43.000Z",
+              "uid": "35240-15c03a3c-996c-4202-86b5-80e28ef44081"
+            }
+          ],
+          "createdAt": "2026-07-28T02:28:43.000Z",
+          "updatedAt": "2026-07-28T02:28:43.000Z",
+          "uid": "35240-fac19f2e-583e-49e8-8a18-41f6d8f9a6d3"
+        }
+      ],
+      "id": "10bc5a88-276c-4d41-8e1a-5e72c266795c",
+      "createdAt": "2026-07-28T02:28:43.000Z",
+      "updatedAt": "2026-07-28T02:28:43.000Z",
+      "uid": "35240-10bc5a88-276c-4d41-8e1a-5e72c266795c"
+    },
+    {
+      "name": "collections",
+      "item": [
+        {
+          "name": "{collectionId}",
+          "item": [
+            {
+              "name": "schema",
+              "item": [
+                {
+                  "name": "Get schema for a single OS NGD feature collection",
+                  "id": "811ee660-5e95-4354-a236-a069c8b3a768",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                  },
+                  "request": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "*/*"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/collections/:collectionId/schema",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "collections",
+                        ":collectionId",
+                        "schema"
+                      ],
+                      "variable": [
+                        {
+                          "id": "87cff12a-8859-4b6c-9da9-ecc7cf53e649",
+                          "key": "collectionId",
+                          "value": "bld-fts-building-3",
+                          "description": "(Required) A known collection ID."
+                        }
+                      ]
+                    }
+                  },
+                  "response": [
+                    {
+                      "id": "680533e4-b8ca-4f1d-b14d-d667e39fb3ce",
+                      "name": "Schema for an Ordnance Survey National Geographic Database feature collection.",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "*/*"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/collections/:collectionId/schema",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "collections",
+                            ":collectionId",
+                            "schema"
+                          ],
+                          "variable": [
+                            {
+                              "key": "collectionId"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "OK",
+                      "code": 200,
+                      "_postman_previewlanguage": "text",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "*/*"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"deserunt_f\": {},\n  \"eac1a\": {},\n  \"dolor_a\": {}\n}",
+                      "createdAt": "2026-07-28T02:28:43.000Z",
+                      "updatedAt": "2026-07-28T02:28:43.000Z",
+                      "uid": "35240-680533e4-b8ca-4f1d-b14d-d667e39fb3ce"
+                    },
+                    {
+                      "id": "8310133f-21bf-490e-8431-f6f273836317",
+                      "name": "The schema request is not supported. Please refer to documentation for examples.",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [],
+                        "url": {
+                          "raw": "{{baseUrl}}/collections/:collectionId/schema",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "collections",
+                            ":collectionId",
+                            "schema"
+                          ],
+                          "variable": [
+                            {
+                              "key": "collectionId"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Bad Request",
+                      "code": 400,
+                      "_postman_previewlanguage": "text",
+                      "header": [],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": null,
+                      "createdAt": "2026-07-28T02:28:43.000Z",
+                      "updatedAt": "2026-07-28T02:28:43.000Z",
+                      "uid": "35240-8310133f-21bf-490e-8431-f6f273836317"
+                    },
+                    {
+                      "id": "f489824c-6c32-4338-9655-9d7838395ecf",
+                      "name": "Collection '{collectionId}' is not a supported Collection. Please refer to the documentation for a list of supported Collections.",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [],
+                        "url": {
+                          "raw": "{{baseUrl}}/collections/:collectionId/schema",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "collections",
+                            ":collectionId",
+                            "schema"
+                          ],
+                          "variable": [
+                            {
+                              "key": "collectionId"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Not Found",
+                      "code": 404,
+                      "_postman_previewlanguage": "text",
+                      "header": [],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": null,
+                      "createdAt": "2026-07-28T02:28:43.000Z",
+                      "updatedAt": "2026-07-28T02:28:43.000Z",
+                      "uid": "35240-f489824c-6c32-4338-9655-9d7838395ecf"
+                    },
+                    {
+                      "id": "7f01eb36-e888-4304-adb6-cece34b36894",
+                      "name": "The HTTP method requested is not supported. This endpoint only supports 'GET' requests.",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [],
+                        "url": {
+                          "raw": "{{baseUrl}}/collections/:collectionId/schema",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "collections",
+                            ":collectionId",
+                            "schema"
+                          ],
+                          "variable": [
+                            {
+                              "key": "collectionId"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Method Not Allowed",
+                      "code": 405,
+                      "_postman_previewlanguage": "text",
+                      "header": [],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": null,
+                      "createdAt": "2026-07-28T02:28:43.000Z",
+                      "updatedAt": "2026-07-28T02:28:43.000Z",
+                      "uid": "35240-7f01eb36-e888-4304-adb6-cece34b36894"
+                    },
+                    {
+                      "id": "b5825558-5fa8-4343-a617-dd5514dfa0cb",
+                      "name": "A request header value was not supported.",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [],
+                        "url": {
+                          "raw": "{{baseUrl}}/collections/:collectionId/schema",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "collections",
+                            ":collectionId",
+                            "schema"
+                          ],
+                          "variable": [
+                            {
+                              "key": "collectionId"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Not Acceptable",
+                      "code": 406,
+                      "_postman_previewlanguage": "text",
+                      "header": [],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": null,
+                      "createdAt": "2026-07-28T02:28:43.000Z",
+                      "updatedAt": "2026-07-28T02:28:43.000Z",
+                      "uid": "35240-b5825558-5fa8-4343-a617-dd5514dfa0cb"
+                    }
+                  ],
+                  "createdAt": "2026-07-28T02:28:43.000Z",
+                  "updatedAt": "2026-07-28T02:28:43.000Z",
+                  "uid": "35240-811ee660-5e95-4354-a236-a069c8b3a768"
+                }
+              ],
+              "id": "1c6dffb0-e0aa-426c-a599-dbfffcd75cd3",
+              "createdAt": "2026-07-28T02:28:43.000Z",
+              "updatedAt": "2026-07-28T02:28:43.000Z",
+              "uid": "35240-1c6dffb0-e0aa-426c-a599-dbfffcd75cd3"
+            },
+            {
+              "name": "queryables",
+              "item": [
+                {
+                  "name": "Get a list of queryable attributes for this feature collection",
+                  "id": "21554bb0-b74d-443f-ad74-8e9fc5df0d2b",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                  },
+                  "request": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/collections/:collectionId/queryables",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "collections",
+                        ":collectionId",
+                        "queryables"
+                      ],
+                      "variable": [
+                        {
+                          "id": "c385ed80-1da6-4342-8f32-2112b18db9b9",
+                          "key": "collectionId",
+                          "value": "bld-fts-building-3",
+                          "description": "(Required) A known collection ID."
+                        }
+                      ]
+                    }
+                  },
+                  "response": [
+                    {
+                      "id": "44211902-dfe7-4c66-bc28-04d4d618a002",
+                      "name": "A list of queryable attributes and their types for this feature collection.",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/collections/:collectionId/queryables",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "collections",
+                            ":collectionId",
+                            "queryables"
+                          ],
+                          "variable": [
+                            {
+                              "key": "collectionId"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "OK",
+                      "code": 200,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"$schema\": \"<string>\",\n  \"$id\": \"<string>\",\n  \"type\": \"<string>\",\n  \"title\": \"<string>\",\n  \"description\": \"<string>\",\n  \"properties\": {\n    \"ea6\": {\n      \"title\": \"<string>\",\n      \"type\": \"<string>\",\n      \"format\": \"<string>\",\n      \"maxLength\": \"<integer>\",\n      \"pattern\": \"<string>\",\n      \"description\": \"<string>\",\n      \"hierarchy\": \"<string>\",\n      \"parent\": \"<string>\",\n      \"child\": \"<string>\",\n      \"minItems\": \"<integer>\",\n      \"maxItems\": \"<integer>\",\n      \"items\": {\n        \"value\": \"<Circular reference to #/components/schemas/Queryable detected>\"\n      },\n      \"enum\": [\n        \"<string>\",\n        \"<string>\"\n      ]\n    },\n    \"sint_1\": {\n      \"title\": \"<string>\",\n      \"type\": \"<string>\",\n      \"format\": \"<string>\",\n      \"maxLength\": \"<integer>\",\n      \"pattern\": \"<string>\",\n      \"description\": \"<string>\",\n      \"hierarchy\": \"<string>\",\n      \"parent\": \"<string>\",\n      \"child\": \"<string>\",\n      \"minItems\": \"<integer>\",\n      \"maxItems\": \"<integer>\",\n      \"items\": {\n        \"value\": \"<Circular reference to #/components/schemas/Queryable detected>\"\n      },\n      \"enum\": [\n        \"<string>\",\n        \"<string>\"\n      ]\n    },\n    \"Ut_a\": {\n      \"title\": \"<string>\",\n      \"type\": \"<string>\",\n      \"format\": \"<string>\",\n      \"maxLength\": \"<integer>\",\n      \"pattern\": \"<string>\",\n      \"description\": \"<string>\",\n      \"hierarchy\": \"<string>\",\n      \"parent\": \"<string>\",\n      \"child\": \"<string>\",\n      \"minItems\": \"<integer>\",\n      \"maxItems\": \"<integer>\",\n      \"items\": {\n        \"value\": \"<Circular reference to #/components/schemas/Queryable detected>\"\n      },\n      \"enum\": [\n        \"<string>\",\n        \"<string>\"\n      ]\n    },\n    \"incididuntf6\": {\n      \"title\": \"<string>\",\n      \"type\": \"<string>\",\n      \"format\": \"<string>\",\n      \"maxLength\": \"<integer>\",\n      \"pattern\": \"<string>\",\n      \"description\": \"<string>\",\n      \"hierarchy\": \"<string>\",\n      \"parent\": \"<string>\",\n      \"child\": \"<string>\",\n      \"minItems\": \"<integer>\",\n      \"maxItems\": \"<integer>\",\n      \"items\": {\n        \"value\": \"<Circular reference to #/components/schemas/Queryable detected>\"\n      },\n      \"enum\": [\n        \"<string>\",\n        \"<string>\"\n      ]\n    },\n    \"dolor947\": {\n      \"title\": \"<string>\",\n      \"type\": \"<string>\",\n      \"format\": \"<string>\",\n      \"maxLength\": \"<integer>\",\n      \"pattern\": \"<string>\",\n      \"description\": \"<string>\",\n      \"hierarchy\": \"<string>\",\n      \"parent\": \"<string>\",\n      \"child\": \"<string>\",\n      \"minItems\": \"<integer>\",\n      \"maxItems\": \"<integer>\",\n      \"items\": {\n        \"value\": \"<Circular reference to #/components/schemas/Queryable detected>\"\n      },\n      \"enum\": [\n        \"<string>\",\n        \"<string>\"\n      ]\n    }\n  }\n}",
+                      "createdAt": "2026-07-28T02:28:43.000Z",
+                      "updatedAt": "2026-07-28T02:28:43.000Z",
+                      "uid": "35240-44211902-dfe7-4c66-bc28-04d4d618a002"
+                    },
+                    {
+                      "id": "885191f9-ee91-4220-9436-a52596e0ca95",
+                      "name": "The queryable request is not supported. Please refer to documentation for examples.",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [],
+                        "url": {
+                          "raw": "{{baseUrl}}/collections/:collectionId/queryables",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "collections",
+                            ":collectionId",
+                            "queryables"
+                          ],
+                          "variable": [
+                            {
+                              "key": "collectionId"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Bad Request",
+                      "code": 400,
+                      "_postman_previewlanguage": "text",
+                      "header": [],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": null,
+                      "createdAt": "2026-07-28T02:28:43.000Z",
+                      "updatedAt": "2026-07-28T02:28:43.000Z",
+                      "uid": "35240-885191f9-ee91-4220-9436-a52596e0ca95"
+                    },
+                    {
+                      "id": "e95e3462-f6d1-4849-9970-89b5f3da8dc2",
+                      "name": "Collection '{collectionId}' is not a supported Collection. Please refer to the documentation for a list of supported Collections.",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [],
+                        "url": {
+                          "raw": "{{baseUrl}}/collections/:collectionId/queryables",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "collections",
+                            ":collectionId",
+                            "queryables"
+                          ],
+                          "variable": [
+                            {
+                              "key": "collectionId"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Not Found",
+                      "code": 404,
+                      "_postman_previewlanguage": "text",
+                      "header": [],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": null,
+                      "createdAt": "2026-07-28T02:28:43.000Z",
+                      "updatedAt": "2026-07-28T02:28:43.000Z",
+                      "uid": "35240-e95e3462-f6d1-4849-9970-89b5f3da8dc2"
+                    },
+                    {
+                      "id": "eaa50883-5d89-4b51-a383-822e451d38d6",
+                      "name": "The HTTP method requested is not supported. This endpoint only supports 'GET' requests.",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [],
+                        "url": {
+                          "raw": "{{baseUrl}}/collections/:collectionId/queryables",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "collections",
+                            ":collectionId",
+                            "queryables"
+                          ],
+                          "variable": [
+                            {
+                              "key": "collectionId"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Method Not Allowed",
+                      "code": 405,
+                      "_postman_previewlanguage": "text",
+                      "header": [],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": null,
+                      "createdAt": "2026-07-28T02:28:43.000Z",
+                      "updatedAt": "2026-07-28T02:28:43.000Z",
+                      "uid": "35240-eaa50883-5d89-4b51-a383-822e451d38d6"
+                    },
+                    {
+                      "id": "700613ba-89ab-4209-b43f-7de68db56628",
+                      "name": "A request header value was not supported.",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [],
+                        "url": {
+                          "raw": "{{baseUrl}}/collections/:collectionId/queryables",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "collections",
+                            ":collectionId",
+                            "queryables"
+                          ],
+                          "variable": [
+                            {
+                              "key": "collectionId"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Not Acceptable",
+                      "code": 406,
+                      "_postman_previewlanguage": "text",
+                      "header": [],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": null,
+                      "createdAt": "2026-07-28T02:28:43.000Z",
+                      "updatedAt": "2026-07-28T02:28:43.000Z",
+                      "uid": "35240-700613ba-89ab-4209-b43f-7de68db56628"
+                    }
+                  ],
+                  "createdAt": "2026-07-28T02:28:43.000Z",
+                  "updatedAt": "2026-07-28T02:28:43.000Z",
+                  "uid": "35240-21554bb0-b74d-443f-ad74-8e9fc5df0d2b"
+                }
+              ],
+              "id": "61657e71-916e-4948-8f95-4e18b2f3c38f",
+              "createdAt": "2026-07-28T02:28:43.000Z",
+              "updatedAt": "2026-07-28T02:28:43.000Z",
+              "uid": "35240-61657e71-916e-4948-8f95-4e18b2f3c38f"
+            },
+            {
+              "name": "items",
+              "item": [
+                {
+                  "name": "{featureId}",
+                  "item": [
+                    {
+                      "name": "Retrieve a feature from the feature collection",
+                      "id": "a19c6e72-d9a3-449f-8c21-7b635882817c",
+                      "protocolProfileBehavior": {
+                        "disableBodyPruning": true
+                      },
+                      "request": {
+                        "auth": {
+                          "type": "apikey",
+                          "apikey": [
+                            {
+                              "key": "key",
+                              "value": "key",
+                              "type": "string"
+                            },
+                            {
+                              "key": "value",
+                              "value": "{{apiKey}}",
+                              "type": "string"
+                            },
+                            {
+                              "key": "in",
+                              "value": "query",
+                              "type": "string"
+                            }
+                          ]
+                        },
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/geo+json"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/collections/:collectionId/items/:featureId?crs=http://www.opengis.net/def/crs/EPSG/0/4326",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "collections",
+                            ":collectionId",
+                            "items",
+                            ":featureId"
+                          ],
+                          "query": [
+                            {
+                              "description": "The coordinate reference system of the response geometries. It must be a coordinate reference system supported by the collection. Default is WGS84 longitude/latitude (http://www.opengis.net/def/crs/OGC/1.3/CRS84).",
+                              "key": "crs",
+                              "value": "http://www.opengis.net/def/crs/EPSG/0/4326"
+                            }
+                          ],
+                          "variable": [
+                            {
+                              "id": "cd6afda8-37aa-4b41-a8d5-188e37d5e5bd",
+                              "key": "collectionId",
+                              "value": "bld-fts-building-3",
+                              "description": "(Required) A known collection ID."
+                            },
+                            {
+                              "id": "ba3a1e6d-682f-483a-98e9-8d263a226f38",
+                              "key": "featureId",
+                              "value": "<string>",
+                              "description": "(Required) A feature ID which is the identifier(id) for the feature."
+                            }
+                          ]
+                        }
+                      },
+                      "response": [
+                        {
+                          "id": "28c2c2ce-f625-47e7-b374-b49352cef0da",
+                          "name": "A single feature in the feature collection.",
+                          "originalRequest": {
+                            "method": "GET",
+                            "header": [
+                              {
+                                "key": "Accept",
+                                "value": "application/geo+json"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/collections/:collectionId/items/:featureId?crs=http://www.opengis.net/def/crs/EPSG/0/4326&key=<API Key>",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "collections",
+                                ":collectionId",
+                                "items",
+                                ":featureId"
+                              ],
+                              "query": [
+                                {
+                                  "description": "The coordinate reference system of the response geometries. It must be a coordinate reference system supported by the collection. Default is WGS84 longitude/latitude (http://www.opengis.net/def/crs/OGC/1.3/CRS84).",
+                                  "key": "crs",
+                                  "value": "http://www.opengis.net/def/crs/EPSG/0/4326"
+                                },
+                                {
+                                  "description": "Added as a part of security scheme: apikey",
+                                  "key": "key",
+                                  "value": "<API Key>"
+                                }
+                              ],
+                              "variable": [
+                                {
+                                  "key": "collectionId"
+                                },
+                                {
+                                  "key": "featureId"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "OK",
+                          "code": 200,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/geo+json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "{\n  \"id\": \"<string>\",\n  \"type\": \"<string>\",\n  \"geometry\": {\n    \"type\": \"<string>\",\n    \"coordinates\": [\n      {\n        \"x\": \"<double>\",\n        \"y\": \"<double>\"\n      },\n      {\n        \"x\": \"<double>\",\n        \"y\": \"<double>\"\n      }\n    ]\n  },\n  \"properties\": {\n    \"deserunt_337\": {},\n    \"Duis19\": {}\n  }\n}",
+                          "createdAt": "2026-07-28T02:28:43.000Z",
+                          "updatedAt": "2026-07-28T02:28:43.000Z",
+                          "uid": "35240-28c2c2ce-f625-47e7-b374-b49352cef0da"
+                        },
+                        {
+                          "id": "3f535df3-2b27-4115-bce6-40864a40b744",
+                          "name": "The feature request contains elements that are not supported. Please refer to documentation for examples.",
+                          "originalRequest": {
+                            "method": "GET",
+                            "header": [],
+                            "url": {
+                              "raw": "{{baseUrl}}/collections/:collectionId/items/:featureId?crs=http://www.opengis.net/def/crs/EPSG/0/4326&key=<API Key>",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "collections",
+                                ":collectionId",
+                                "items",
+                                ":featureId"
+                              ],
+                              "query": [
+                                {
+                                  "description": "The coordinate reference system of the response geometries. It must be a coordinate reference system supported by the collection. Default is WGS84 longitude/latitude (http://www.opengis.net/def/crs/OGC/1.3/CRS84).",
+                                  "key": "crs",
+                                  "value": "http://www.opengis.net/def/crs/EPSG/0/4326"
+                                },
+                                {
+                                  "description": "Added as a part of security scheme: apikey",
+                                  "key": "key",
+                                  "value": "<API Key>"
+                                }
+                              ],
+                              "variable": [
+                                {
+                                  "key": "collectionId"
+                                },
+                                {
+                                  "key": "featureId"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "Bad Request",
+                          "code": 400,
+                          "_postman_previewlanguage": "text",
+                          "header": [],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": null,
+                          "createdAt": "2026-07-28T02:28:43.000Z",
+                          "updatedAt": "2026-07-28T02:28:43.000Z",
+                          "uid": "35240-3f535df3-2b27-4115-bce6-40864a40b744"
+                        },
+                        {
+                          "id": "a5da5266-23ed-4136-a922-9cd315d9bca2",
+                          "name": "The feature collection '{collectionId}' or feature with id:'{featureId}' could not be found. Please check it is a supported collection or feature.",
+                          "originalRequest": {
+                            "method": "GET",
+                            "header": [],
+                            "url": {
+                              "raw": "{{baseUrl}}/collections/:collectionId/items/:featureId?crs=http://www.opengis.net/def/crs/EPSG/0/4326&key=<API Key>",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "collections",
+                                ":collectionId",
+                                "items",
+                                ":featureId"
+                              ],
+                              "query": [
+                                {
+                                  "description": "The coordinate reference system of the response geometries. It must be a coordinate reference system supported by the collection. Default is WGS84 longitude/latitude (http://www.opengis.net/def/crs/OGC/1.3/CRS84).",
+                                  "key": "crs",
+                                  "value": "http://www.opengis.net/def/crs/EPSG/0/4326"
+                                },
+                                {
+                                  "description": "Added as a part of security scheme: apikey",
+                                  "key": "key",
+                                  "value": "<API Key>"
+                                }
+                              ],
+                              "variable": [
+                                {
+                                  "key": "collectionId"
+                                },
+                                {
+                                  "key": "featureId"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "Not Found",
+                          "code": 404,
+                          "_postman_previewlanguage": "text",
+                          "header": [],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": null,
+                          "createdAt": "2026-07-28T02:28:43.000Z",
+                          "updatedAt": "2026-07-28T02:28:43.000Z",
+                          "uid": "35240-a5da5266-23ed-4136-a922-9cd315d9bca2"
+                        },
+                        {
+                          "id": "3ff54cb0-b32a-4381-9f4d-b9d1448649ac",
+                          "name": "The HTTP method requested is not supported. This endpoint only supports 'GET' requests.",
+                          "originalRequest": {
+                            "method": "GET",
+                            "header": [],
+                            "url": {
+                              "raw": "{{baseUrl}}/collections/:collectionId/items/:featureId?crs=http://www.opengis.net/def/crs/EPSG/0/4326&key=<API Key>",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "collections",
+                                ":collectionId",
+                                "items",
+                                ":featureId"
+                              ],
+                              "query": [
+                                {
+                                  "description": "The coordinate reference system of the response geometries. It must be a coordinate reference system supported by the collection. Default is WGS84 longitude/latitude (http://www.opengis.net/def/crs/OGC/1.3/CRS84).",
+                                  "key": "crs",
+                                  "value": "http://www.opengis.net/def/crs/EPSG/0/4326"
+                                },
+                                {
+                                  "description": "Added as a part of security scheme: apikey",
+                                  "key": "key",
+                                  "value": "<API Key>"
+                                }
+                              ],
+                              "variable": [
+                                {
+                                  "key": "collectionId"
+                                },
+                                {
+                                  "key": "featureId"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "Method Not Allowed",
+                          "code": 405,
+                          "_postman_previewlanguage": "text",
+                          "header": [],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": null,
+                          "createdAt": "2026-07-28T02:28:43.000Z",
+                          "updatedAt": "2026-07-28T02:28:43.000Z",
+                          "uid": "35240-3ff54cb0-b32a-4381-9f4d-b9d1448649ac"
+                        },
+                        {
+                          "id": "63159805-23b7-446b-8d60-9f3bf59656a6",
+                          "name": "A request header value was not supported.",
+                          "originalRequest": {
+                            "method": "GET",
+                            "header": [],
+                            "url": {
+                              "raw": "{{baseUrl}}/collections/:collectionId/items/:featureId?crs=http://www.opengis.net/def/crs/EPSG/0/4326&key=<API Key>",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "collections",
+                                ":collectionId",
+                                "items",
+                                ":featureId"
+                              ],
+                              "query": [
+                                {
+                                  "description": "The coordinate reference system of the response geometries. It must be a coordinate reference system supported by the collection. Default is WGS84 longitude/latitude (http://www.opengis.net/def/crs/OGC/1.3/CRS84).",
+                                  "key": "crs",
+                                  "value": "http://www.opengis.net/def/crs/EPSG/0/4326"
+                                },
+                                {
+                                  "description": "Added as a part of security scheme: apikey",
+                                  "key": "key",
+                                  "value": "<API Key>"
+                                }
+                              ],
+                              "variable": [
+                                {
+                                  "key": "collectionId"
+                                },
+                                {
+                                  "key": "featureId"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "Not Acceptable",
+                          "code": 406,
+                          "_postman_previewlanguage": "text",
+                          "header": [],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": null,
+                          "createdAt": "2026-07-28T02:28:43.000Z",
+                          "updatedAt": "2026-07-28T02:28:43.000Z",
+                          "uid": "35240-63159805-23b7-446b-8d60-9f3bf59656a6"
+                        },
+                        {
+                          "id": "b46dc0f5-f3b1-42a8-93bc-af756f91a63b",
+                          "name": "The request has timed out. Please check the service availability dashboard: https://osdatahub.os.uk/serviceStatus .",
+                          "originalRequest": {
+                            "method": "GET",
+                            "header": [],
+                            "url": {
+                              "raw": "{{baseUrl}}/collections/:collectionId/items/:featureId?crs=http://www.opengis.net/def/crs/EPSG/0/4326&key=<API Key>",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "collections",
+                                ":collectionId",
+                                "items",
+                                ":featureId"
+                              ],
+                              "query": [
+                                {
+                                  "description": "The coordinate reference system of the response geometries. It must be a coordinate reference system supported by the collection. Default is WGS84 longitude/latitude (http://www.opengis.net/def/crs/OGC/1.3/CRS84).",
+                                  "key": "crs",
+                                  "value": "http://www.opengis.net/def/crs/EPSG/0/4326"
+                                },
+                                {
+                                  "description": "Added as a part of security scheme: apikey",
+                                  "key": "key",
+                                  "value": "<API Key>"
+                                }
+                              ],
+                              "variable": [
+                                {
+                                  "key": "collectionId"
+                                },
+                                {
+                                  "key": "featureId"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "Gateway Timeout",
+                          "code": 504,
+                          "_postman_previewlanguage": "text",
+                          "header": [],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": null,
+                          "createdAt": "2026-07-28T02:28:43.000Z",
+                          "updatedAt": "2026-07-28T02:28:43.000Z",
+                          "uid": "35240-b46dc0f5-f3b1-42a8-93bc-af756f91a63b"
+                        }
+                      ],
+                      "createdAt": "2026-07-28T02:28:43.000Z",
+                      "updatedAt": "2026-07-28T02:28:43.000Z",
+                      "uid": "35240-a19c6e72-d9a3-449f-8c21-7b635882817c"
+                    }
+                  ],
+                  "id": "b29d095d-bba4-4d21-859f-b15afb2c458c",
+                  "createdAt": "2026-07-28T02:28:43.000Z",
+                  "updatedAt": "2026-07-28T02:28:43.000Z",
+                  "uid": "35240-b29d095d-bba4-4d21-859f-b15afb2c458c"
+                },
+                {
+                  "name": "Retrieve features in the feature collection",
+                  "id": "24dd7136-095c-495e-8ab7-9478a1555ecb",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                  },
+                  "request": {
+                    "auth": {
+                      "type": "apikey",
+                      "apikey": [
+                        {
+                          "key": "key",
+                          "value": "key",
+                          "type": "string"
+                        },
+                        {
+                          "key": "value",
+                          "value": "{{apiKey}}",
+                          "type": "string"
+                        },
+                        {
+                          "key": "in",
+                          "value": "query",
+                          "type": "string"
+                        }
+                      ]
+                    },
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/geo+json"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/collections/:collectionId/items?bbox=<number>,<number>,<number>,<number>&bbox-crs=http://www.opengis.net/def/crs/EPSG/0/3857&crs=http://www.opengis.net/def/crs/EPSG/0/4326&datetime=<string>&limit=<integer>&offset=<integer>&filter=<string>&filter-crs=http://www.opengis.net/def/crs/EPSG/0/3857&filter-lang=cql-text",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "collections",
+                        ":collectionId",
+                        "items"
+                      ],
+                      "query": [
+                        {
+                          "description": "The optional bbox parameter specifies a supported bounding box. Only features that have a geometry that intersects the bounding box are selected. The bounding box is provided as four comma-separated numbers:  <ul><li>Lower left corner, coordinate axis 1 (e.g. min x axis)</li><li> Lower left corner, coordinate axis 2 (e.g. min y axis)</li><li> Upper right corner, coordinate axis 1 (e.g. max x axis)</li><li> Upper right corner, coordinate axis 2 (e.g. max y axis)</li></ul>The default coordinate reference system of the values is WGS 84 longitude/latitude (http://www.opengis.net/def/crs/OGC/1.3/CRS84) unless a different coordinate reference system is specified in the parameter `bbox-crs`.",
+                          "key": "bbox",
+                          "value": "<number>,<number>,<number>,<number>"
+                        },
+                        {
+                          "description": "The coordinate reference system of the `bbox` parameter. It must be a 2D coordinate reference system supported by the collection. Default is WGS84 longitude/latitude (http://www.opengis.net/def/crs/OGC/1.3/CRS84).",
+                          "key": "bbox-crs",
+                          "value": "http://www.opengis.net/def/crs/EPSG/0/3857"
+                        },
+                        {
+                          "description": "The coordinate reference system of the response geometries. It must be a coordinate reference system supported by the collection. Default is WGS84 longitude/latitude (http://www.opengis.net/def/crs/OGC/1.3/CRS84).",
+                          "key": "crs",
+                          "value": "http://www.opengis.net/def/crs/EPSG/0/4326"
+                        },
+                        {
+                          "description": "Either a local date, a date-time with UTC time zone (Z) or an open or closed interval. Open ranges in time intervals at the start or end are supported using a double-dot (..) or an empty string for the start/end. Date and time expressions adhere to RFC 3339. Examples:<ul><li>A date-time: '2021-12-12T23:20:50Z'</li><li>A closed interval: '2021-12-12T00:00:00Z/2021-12-18T12:31:12Z'</li><li>Open intervals: '2021-12-12T00:00:00Z/..' or '../2021-12-18T12:31:12Z'</li><li>An interval until now: '2018-02-12T00:00:00Z/..' or '2018-02-12T00:00:00Z/'</li></ul>Selects features that have a temporal property that intersects the value of the parameter.",
+                          "key": "datetime",
+                          "value": "<string>"
+                        },
+                        {
+                          "description": "The optional limit parameter limits the number of items that are presented in the response document. Minimum = 1. Maximum = 100. Default = 100.",
+                          "key": "limit",
+                          "value": "<integer>"
+                        },
+                        {
+                          "description": "The optional offset parameter skips past the specified number of features in the collection. Minimum = 0. Default = 0.",
+                          "key": "offset",
+                          "value": "<integer>"
+                        },
+                        {
+                          "description": "The optional filter parameter is a filter expression in CQL format which is applied when retrieving resources to determine which resources are included in a result set.",
+                          "key": "filter",
+                          "value": "<string>"
+                        },
+                        {
+                          "description": "Specify which of the supported CRSs to use to encode geometric values in a filter expression. It must be a 2D coordinate reference system supported by the collection. Default is WGS84 longitude/latitude (http://www.opengis.net/def/crs/OGC/1.3/CRS84).",
+                          "key": "filter-crs",
+                          "value": "http://www.opengis.net/def/crs/EPSG/0/3857"
+                        },
+                        {
+                          "description": "The optional filter-lang parameter is the specific language used for the filter parameter. Default = cql-text",
+                          "key": "filter-lang",
+                          "value": "cql-text"
+                        }
+                      ],
+                      "variable": [
+                        {
+                          "id": "93e13a79-825e-45c0-b518-3782a0563896",
+                          "key": "collectionId",
+                          "value": "bld-fts-building-3",
+                          "description": "(Required) A known collection ID."
+                        }
+                      ]
+                    }
+                  },
+                  "response": [
+                    {
+                      "id": "efd07876-1184-45d2-b7c7-2c376f1c3337",
+                      "name": "A list of features in a feature collection.",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/geo+json"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/collections/:collectionId/items?bbox=<number>,<number>,<number>,<number>&bbox-crs=http://www.opengis.net/def/crs/EPSG/0/3857&crs=http://www.opengis.net/def/crs/EPSG/0/4326&datetime=<string>&limit=<integer>&offset=<integer>&filter=<string>&filter-crs=http://www.opengis.net/def/crs/EPSG/0/3857&filter-lang=cql-text&key=<API Key>",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "collections",
+                            ":collectionId",
+                            "items"
+                          ],
+                          "query": [
+                            {
+                              "description": "The optional bbox parameter specifies a supported bounding box. Only features that have a geometry that intersects the bounding box are selected. The bounding box is provided as four comma-separated numbers:  <ul><li>Lower left corner, coordinate axis 1 (e.g. min x axis)</li><li> Lower left corner, coordinate axis 2 (e.g. min y axis)</li><li> Upper right corner, coordinate axis 1 (e.g. max x axis)</li><li> Upper right corner, coordinate axis 2 (e.g. max y axis)</li></ul>The default coordinate reference system of the values is WGS 84 longitude/latitude (http://www.opengis.net/def/crs/OGC/1.3/CRS84) unless a different coordinate reference system is specified in the parameter `bbox-crs`.",
+                              "key": "bbox",
+                              "value": "<number>,<number>,<number>,<number>"
+                            },
+                            {
+                              "description": "The coordinate reference system of the `bbox` parameter. It must be a 2D coordinate reference system supported by the collection. Default is WGS84 longitude/latitude (http://www.opengis.net/def/crs/OGC/1.3/CRS84).",
+                              "key": "bbox-crs",
+                              "value": "http://www.opengis.net/def/crs/EPSG/0/3857"
+                            },
+                            {
+                              "description": "The coordinate reference system of the response geometries. It must be a coordinate reference system supported by the collection. Default is WGS84 longitude/latitude (http://www.opengis.net/def/crs/OGC/1.3/CRS84).",
+                              "key": "crs",
+                              "value": "http://www.opengis.net/def/crs/EPSG/0/4326"
+                            },
+                            {
+                              "description": "Either a local date, a date-time with UTC time zone (Z) or an open or closed interval. Open ranges in time intervals at the start or end are supported using a double-dot (..) or an empty string for the start/end. Date and time expressions adhere to RFC 3339. Examples:<ul><li>A date-time: '2021-12-12T23:20:50Z'</li><li>A closed interval: '2021-12-12T00:00:00Z/2021-12-18T12:31:12Z'</li><li>Open intervals: '2021-12-12T00:00:00Z/..' or '../2021-12-18T12:31:12Z'</li><li>An interval until now: '2018-02-12T00:00:00Z/..' or '2018-02-12T00:00:00Z/'</li></ul>Selects features that have a temporal property that intersects the value of the parameter.",
+                              "key": "datetime",
+                              "value": "<string>"
+                            },
+                            {
+                              "description": "The optional limit parameter limits the number of items that are presented in the response document. Minimum = 1. Maximum = 100. Default = 100.",
+                              "key": "limit",
+                              "value": "<integer>"
+                            },
+                            {
+                              "description": "The optional offset parameter skips past the specified number of features in the collection. Minimum = 0. Default = 0.",
+                              "key": "offset",
+                              "value": "<integer>"
+                            },
+                            {
+                              "description": "The optional filter parameter is a filter expression in CQL format which is applied when retrieving resources to determine which resources are included in a result set.",
+                              "key": "filter",
+                              "value": "<string>"
+                            },
+                            {
+                              "description": "Specify which of the supported CRSs to use to encode geometric values in a filter expression. It must be a 2D coordinate reference system supported by the collection. Default is WGS84 longitude/latitude (http://www.opengis.net/def/crs/OGC/1.3/CRS84).",
+                              "key": "filter-crs",
+                              "value": "http://www.opengis.net/def/crs/EPSG/0/3857"
+                            },
+                            {
+                              "description": "The optional filter-lang parameter is the specific language used for the filter parameter. Default = cql-text",
+                              "key": "filter-lang",
+                              "value": "cql-text"
+                            },
+                            {
+                              "description": "Added as a part of security scheme: apikey",
+                              "key": "key",
+                              "value": "<API Key>"
+                            }
+                          ],
+                          "variable": [
+                            {
+                              "key": "collectionId"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "OK",
+                      "code": 200,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/geo+json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"type\": \"<string>\",\n  \"links\": [\n    {\n      \"href\": \"<string>\",\n      \"rel\": \"<string>\",\n      \"type\": \"<string>\",\n      \"title\": \"<string>\"\n    },\n    {\n      \"href\": \"<string>\",\n      \"rel\": \"<string>\",\n      \"type\": \"<string>\",\n      \"title\": \"<string>\"\n    }\n  ],\n  \"timeStamp\": \"<dateTime>\",\n  \"features\": [\n    {\n      \"id\": \"<string>\",\n      \"type\": \"<string>\",\n      \"geometry\": {\n        \"type\": \"<string>\",\n        \"coordinates\": [\n          {\n            \"x\": \"<double>\",\n            \"y\": \"<double>\"\n          },\n          {\n            \"x\": \"<double>\",\n            \"y\": \"<double>\"\n          }\n        ]\n      },\n      \"properties\": {\n        \"in_1\": {},\n        \"etde\": {}\n      }\n    },\n    {\n      \"id\": \"<string>\",\n      \"type\": \"<string>\",\n      \"geometry\": {\n        \"type\": \"<string>\",\n        \"coordinates\": [\n          {\n            \"x\": \"<double>\",\n            \"y\": \"<double>\"\n          },\n          {\n            \"x\": \"<double>\",\n            \"y\": \"<double>\"\n          }\n        ]\n      },\n      \"properties\": {\n        \"magna_3f\": {},\n        \"Excepteur2\": {}\n      }\n    }\n  ]\n}",
+                      "createdAt": "2026-07-28T02:28:43.000Z",
+                      "updatedAt": "2026-07-28T02:28:43.000Z",
+                      "uid": "35240-efd07876-1184-45d2-b7c7-2c376f1c3337"
+                    },
+                    {
+                      "id": "8d2bfb01-3fd1-421c-be17-8d02dbf58684",
+                      "name": "The items request is not supported. Please refer to documentation for examples.",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [],
+                        "url": {
+                          "raw": "{{baseUrl}}/collections/:collectionId/items?bbox=<number>,<number>,<number>,<number>&bbox-crs=http://www.opengis.net/def/crs/EPSG/0/3857&crs=http://www.opengis.net/def/crs/EPSG/0/4326&datetime=<string>&limit=<integer>&offset=<integer>&filter=<string>&filter-crs=http://www.opengis.net/def/crs/EPSG/0/3857&filter-lang=cql-text&key=<API Key>",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "collections",
+                            ":collectionId",
+                            "items"
+                          ],
+                          "query": [
+                            {
+                              "description": "The optional bbox parameter specifies a supported bounding box. Only features that have a geometry that intersects the bounding box are selected. The bounding box is provided as four comma-separated numbers:  <ul><li>Lower left corner, coordinate axis 1 (e.g. min x axis)</li><li> Lower left corner, coordinate axis 2 (e.g. min y axis)</li><li> Upper right corner, coordinate axis 1 (e.g. max x axis)</li><li> Upper right corner, coordinate axis 2 (e.g. max y axis)</li></ul>The default coordinate reference system of the values is WGS 84 longitude/latitude (http://www.opengis.net/def/crs/OGC/1.3/CRS84) unless a different coordinate reference system is specified in the parameter `bbox-crs`.",
+                              "key": "bbox",
+                              "value": "<number>,<number>,<number>,<number>"
+                            },
+                            {
+                              "description": "The coordinate reference system of the `bbox` parameter. It must be a 2D coordinate reference system supported by the collection. Default is WGS84 longitude/latitude (http://www.opengis.net/def/crs/OGC/1.3/CRS84).",
+                              "key": "bbox-crs",
+                              "value": "http://www.opengis.net/def/crs/EPSG/0/3857"
+                            },
+                            {
+                              "description": "The coordinate reference system of the response geometries. It must be a coordinate reference system supported by the collection. Default is WGS84 longitude/latitude (http://www.opengis.net/def/crs/OGC/1.3/CRS84).",
+                              "key": "crs",
+                              "value": "http://www.opengis.net/def/crs/EPSG/0/4326"
+                            },
+                            {
+                              "description": "Either a local date, a date-time with UTC time zone (Z) or an open or closed interval. Open ranges in time intervals at the start or end are supported using a double-dot (..) or an empty string for the start/end. Date and time expressions adhere to RFC 3339. Examples:<ul><li>A date-time: '2021-12-12T23:20:50Z'</li><li>A closed interval: '2021-12-12T00:00:00Z/2021-12-18T12:31:12Z'</li><li>Open intervals: '2021-12-12T00:00:00Z/..' or '../2021-12-18T12:31:12Z'</li><li>An interval until now: '2018-02-12T00:00:00Z/..' or '2018-02-12T00:00:00Z/'</li></ul>Selects features that have a temporal property that intersects the value of the parameter.",
+                              "key": "datetime",
+                              "value": "<string>"
+                            },
+                            {
+                              "description": "The optional limit parameter limits the number of items that are presented in the response document. Minimum = 1. Maximum = 100. Default = 100.",
+                              "key": "limit",
+                              "value": "<integer>"
+                            },
+                            {
+                              "description": "The optional offset parameter skips past the specified number of features in the collection. Minimum = 0. Default = 0.",
+                              "key": "offset",
+                              "value": "<integer>"
+                            },
+                            {
+                              "description": "The optional filter parameter is a filter expression in CQL format which is applied when retrieving resources to determine which resources are included in a result set.",
+                              "key": "filter",
+                              "value": "<string>"
+                            },
+                            {
+                              "description": "Specify which of the supported CRSs to use to encode geometric values in a filter expression. It must be a 2D coordinate reference system supported by the collection. Default is WGS84 longitude/latitude (http://www.opengis.net/def/crs/OGC/1.3/CRS84).",
+                              "key": "filter-crs",
+                              "value": "http://www.opengis.net/def/crs/EPSG/0/3857"
+                            },
+                            {
+                              "description": "The optional filter-lang parameter is the specific language used for the filter parameter. Default = cql-text",
+                              "key": "filter-lang",
+                              "value": "cql-text"
+                            },
+                            {
+                              "description": "Added as a part of security scheme: apikey",
+                              "key": "key",
+                              "value": "<API Key>"
+                            }
+                          ],
+                          "variable": [
+                            {
+                              "key": "collectionId"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Bad Request",
+                      "code": 400,
+                      "_postman_previewlanguage": "text",
+                      "header": [],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": null,
+                      "createdAt": "2026-07-28T02:28:43.000Z",
+                      "updatedAt": "2026-07-28T02:28:43.000Z",
+                      "uid": "35240-8d2bfb01-3fd1-421c-be17-8d02dbf58684"
+                    },
+                    {
+                      "id": "7e020d3a-6dfa-45b2-ba04-b847c9b9b71a",
+                      "name": "Collection '{collectionId}' is not a supported Collection. Please refer to the documentation for a list of supported Collections.",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [],
+                        "url": {
+                          "raw": "{{baseUrl}}/collections/:collectionId/items?bbox=<number>,<number>,<number>,<number>&bbox-crs=http://www.opengis.net/def/crs/EPSG/0/3857&crs=http://www.opengis.net/def/crs/EPSG/0/4326&datetime=<string>&limit=<integer>&offset=<integer>&filter=<string>&filter-crs=http://www.opengis.net/def/crs/EPSG/0/3857&filter-lang=cql-text&key=<API Key>",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "collections",
+                            ":collectionId",
+                            "items"
+                          ],
+                          "query": [
+                            {
+                              "description": "The optional bbox parameter specifies a supported bounding box. Only features that have a geometry that intersects the bounding box are selected. The bounding box is provided as four comma-separated numbers:  <ul><li>Lower left corner, coordinate axis 1 (e.g. min x axis)</li><li> Lower left corner, coordinate axis 2 (e.g. min y axis)</li><li> Upper right corner, coordinate axis 1 (e.g. max x axis)</li><li> Upper right corner, coordinate axis 2 (e.g. max y axis)</li></ul>The default coordinate reference system of the values is WGS 84 longitude/latitude (http://www.opengis.net/def/crs/OGC/1.3/CRS84) unless a different coordinate reference system is specified in the parameter `bbox-crs`.",
+                              "key": "bbox",
+                              "value": "<number>,<number>,<number>,<number>"
+                            },
+                            {
+                              "description": "The coordinate reference system of the `bbox` parameter. It must be a 2D coordinate reference system supported by the collection. Default is WGS84 longitude/latitude (http://www.opengis.net/def/crs/OGC/1.3/CRS84).",
+                              "key": "bbox-crs",
+                              "value": "http://www.opengis.net/def/crs/EPSG/0/3857"
+                            },
+                            {
+                              "description": "The coordinate reference system of the response geometries. It must be a coordinate reference system supported by the collection. Default is WGS84 longitude/latitude (http://www.opengis.net/def/crs/OGC/1.3/CRS84).",
+                              "key": "crs",
+                              "value": "http://www.opengis.net/def/crs/EPSG/0/4326"
+                            },
+                            {
+                              "description": "Either a local date, a date-time with UTC time zone (Z) or an open or closed interval. Open ranges in time intervals at the start or end are supported using a double-dot (..) or an empty string for the start/end. Date and time expressions adhere to RFC 3339. Examples:<ul><li>A date-time: '2021-12-12T23:20:50Z'</li><li>A closed interval: '2021-12-12T00:00:00Z/2021-12-18T12:31:12Z'</li><li>Open intervals: '2021-12-12T00:00:00Z/..' or '../2021-12-18T12:31:12Z'</li><li>An interval until now: '2018-02-12T00:00:00Z/..' or '2018-02-12T00:00:00Z/'</li></ul>Selects features that have a temporal property that intersects the value of the parameter.",
+                              "key": "datetime",
+                              "value": "<string>"
+                            },
+                            {
+                              "description": "The optional limit parameter limits the number of items that are presented in the response document. Minimum = 1. Maximum = 100. Default = 100.",
+                              "key": "limit",
+                              "value": "<integer>"
+                            },
+                            {
+                              "description": "The optional offset parameter skips past the specified number of features in the collection. Minimum = 0. Default = 0.",
+                              "key": "offset",
+                              "value": "<integer>"
+                            },
+                            {
+                              "description": "The optional filter parameter is a filter expression in CQL format which is applied when retrieving resources to determine which resources are included in a result set.",
+                              "key": "filter",
+                              "value": "<string>"
+                            },
+                            {
+                              "description": "Specify which of the supported CRSs to use to encode geometric values in a filter expression. It must be a 2D coordinate reference system supported by the collection. Default is WGS84 longitude/latitude (http://www.opengis.net/def/crs/OGC/1.3/CRS84).",
+                              "key": "filter-crs",
+                              "value": "http://www.opengis.net/def/crs/EPSG/0/3857"
+                            },
+                            {
+                              "description": "The optional filter-lang parameter is the specific language used for the filter parameter. Default = cql-text",
+                              "key": "filter-lang",
+                              "value": "cql-text"
+                            },
+                            {
+                              "description": "Added as a part of security scheme: apikey",
+                              "key": "key",
+                              "value": "<API Key>"
+                            }
+                          ],
+                          "variable": [
+                            {
+                              "key": "collectionId"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Not Found",
+                      "code": 404,
+                      "_postman_previewlanguage": "text",
+                      "header": [],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": null,
+                      "createdAt": "2026-07-28T02:28:43.000Z",
+                      "updatedAt": "2026-07-28T02:28:43.000Z",
+                      "uid": "35240-7e020d3a-6dfa-45b2-ba04-b847c9b9b71a"
+                    },
+                    {
+                      "id": "4ae3fb12-326b-4b92-9e0e-a3b191765cc8",
+                      "name": "The HTTP method requested is not supported. This endpoint only supports 'GET' requests.",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [],
+                        "url": {
+                          "raw": "{{baseUrl}}/collections/:collectionId/items?bbox=<number>,<number>,<number>,<number>&bbox-crs=http://www.opengis.net/def/crs/EPSG/0/3857&crs=http://www.opengis.net/def/crs/EPSG/0/4326&datetime=<string>&limit=<integer>&offset=<integer>&filter=<string>&filter-crs=http://www.opengis.net/def/crs/EPSG/0/3857&filter-lang=cql-text&key=<API Key>",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "collections",
+                            ":collectionId",
+                            "items"
+                          ],
+                          "query": [
+                            {
+                              "description": "The optional bbox parameter specifies a supported bounding box. Only features that have a geometry that intersects the bounding box are selected. The bounding box is provided as four comma-separated numbers:  <ul><li>Lower left corner, coordinate axis 1 (e.g. min x axis)</li><li> Lower left corner, coordinate axis 2 (e.g. min y axis)</li><li> Upper right corner, coordinate axis 1 (e.g. max x axis)</li><li> Upper right corner, coordinate axis 2 (e.g. max y axis)</li></ul>The default coordinate reference system of the values is WGS 84 longitude/latitude (http://www.opengis.net/def/crs/OGC/1.3/CRS84) unless a different coordinate reference system is specified in the parameter `bbox-crs`.",
+                              "key": "bbox",
+                              "value": "<number>,<number>,<number>,<number>"
+                            },
+                            {
+                              "description": "The coordinate reference system of the `bbox` parameter. It must be a 2D coordinate reference system supported by the collection. Default is WGS84 longitude/latitude (http://www.opengis.net/def/crs/OGC/1.3/CRS84).",
+                              "key": "bbox-crs",
+                              "value": "http://www.opengis.net/def/crs/EPSG/0/3857"
+                            },
+                            {
+                              "description": "The coordinate reference system of the response geometries. It must be a coordinate reference system supported by the collection. Default is WGS84 longitude/latitude (http://www.opengis.net/def/crs/OGC/1.3/CRS84).",
+                              "key": "crs",
+                              "value": "http://www.opengis.net/def/crs/EPSG/0/4326"
+                            },
+                            {
+                              "description": "Either a local date, a date-time with UTC time zone (Z) or an open or closed interval. Open ranges in time intervals at the start or end are supported using a double-dot (..) or an empty string for the start/end. Date and time expressions adhere to RFC 3339. Examples:<ul><li>A date-time: '2021-12-12T23:20:50Z'</li><li>A closed interval: '2021-12-12T00:00:00Z/2021-12-18T12:31:12Z'</li><li>Open intervals: '2021-12-12T00:00:00Z/..' or '../2021-12-18T12:31:12Z'</li><li>An interval until now: '2018-02-12T00:00:00Z/..' or '2018-02-12T00:00:00Z/'</li></ul>Selects features that have a temporal property that intersects the value of the parameter.",
+                              "key": "datetime",
+                              "value": "<string>"
+                            },
+                            {
+                              "description": "The optional limit parameter limits the number of items that are presented in the response document. Minimum = 1. Maximum = 100. Default = 100.",
+                              "key": "limit",
+                              "value": "<integer>"
+                            },
+                            {
+                              "description": "The optional offset parameter skips past the specified number of features in the collection. Minimum = 0. Default = 0.",
+                              "key": "offset",
+                              "value": "<integer>"
+                            },
+                            {
+                              "description": "The optional filter parameter is a filter expression in CQL format which is applied when retrieving resources to determine which resources are included in a result set.",
+                              "key": "filter",
+                              "value": "<string>"
+                            },
+                            {
+                              "description": "Specify which of the supported CRSs to use to encode geometric values in a filter expression. It must be a 2D coordinate reference system supported by the collection. Default is WGS84 longitude/latitude (http://www.opengis.net/def/crs/OGC/1.3/CRS84).",
+                              "key": "filter-crs",
+                              "value": "http://www.opengis.net/def/crs/EPSG/0/3857"
+                            },
+                            {
+                              "description": "The optional filter-lang parameter is the specific language used for the filter parameter. Default = cql-text",
+                              "key": "filter-lang",
+                              "value": "cql-text"
+                            },
+                            {
+                              "description": "Added as a part of security scheme: apikey",
+                              "key": "key",
+                              "value": "<API Key>"
+                            }
+                          ],
+                          "variable": [
+                            {
+                              "key": "collectionId"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Method Not Allowed",
+                      "code": 405,
+                      "_postman_previewlanguage": "text",
+                      "header": [],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": null,
+                      "createdAt": "2026-07-28T02:28:43.000Z",
+                      "updatedAt": "2026-07-28T02:28:43.000Z",
+                      "uid": "35240-4ae3fb12-326b-4b92-9e0e-a3b191765cc8"
+                    },
+                    {
+                      "id": "4e8870a8-abba-46d1-b3ce-86f9031f7be0",
+                      "name": "A request header value was not supported.",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [],
+                        "url": {
+                          "raw": "{{baseUrl}}/collections/:collectionId/items?bbox=<number>,<number>,<number>,<number>&bbox-crs=http://www.opengis.net/def/crs/EPSG/0/3857&crs=http://www.opengis.net/def/crs/EPSG/0/4326&datetime=<string>&limit=<integer>&offset=<integer>&filter=<string>&filter-crs=http://www.opengis.net/def/crs/EPSG/0/3857&filter-lang=cql-text&key=<API Key>",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "collections",
+                            ":collectionId",
+                            "items"
+                          ],
+                          "query": [
+                            {
+                              "description": "The optional bbox parameter specifies a supported bounding box. Only features that have a geometry that intersects the bounding box are selected. The bounding box is provided as four comma-separated numbers:  <ul><li>Lower left corner, coordinate axis 1 (e.g. min x axis)</li><li> Lower left corner, coordinate axis 2 (e.g. min y axis)</li><li> Upper right corner, coordinate axis 1 (e.g. max x axis)</li><li> Upper right corner, coordinate axis 2 (e.g. max y axis)</li></ul>The default coordinate reference system of the values is WGS 84 longitude/latitude (http://www.opengis.net/def/crs/OGC/1.3/CRS84) unless a different coordinate reference system is specified in the parameter `bbox-crs`.",
+                              "key": "bbox",
+                              "value": "<number>,<number>,<number>,<number>"
+                            },
+                            {
+                              "description": "The coordinate reference system of the `bbox` parameter. It must be a 2D coordinate reference system supported by the collection. Default is WGS84 longitude/latitude (http://www.opengis.net/def/crs/OGC/1.3/CRS84).",
+                              "key": "bbox-crs",
+                              "value": "http://www.opengis.net/def/crs/EPSG/0/3857"
+                            },
+                            {
+                              "description": "The coordinate reference system of the response geometries. It must be a coordinate reference system supported by the collection. Default is WGS84 longitude/latitude (http://www.opengis.net/def/crs/OGC/1.3/CRS84).",
+                              "key": "crs",
+                              "value": "http://www.opengis.net/def/crs/EPSG/0/4326"
+                            },
+                            {
+                              "description": "Either a local date, a date-time with UTC time zone (Z) or an open or closed interval. Open ranges in time intervals at the start or end are supported using a double-dot (..) or an empty string for the start/end. Date and time expressions adhere to RFC 3339. Examples:<ul><li>A date-time: '2021-12-12T23:20:50Z'</li><li>A closed interval: '2021-12-12T00:00:00Z/2021-12-18T12:31:12Z'</li><li>Open intervals: '2021-12-12T00:00:00Z/..' or '../2021-12-18T12:31:12Z'</li><li>An interval until now: '2018-02-12T00:00:00Z/..' or '2018-02-12T00:00:00Z/'</li></ul>Selects features that have a temporal property that intersects the value of the parameter.",
+                              "key": "datetime",
+                              "value": "<string>"
+                            },
+                            {
+                              "description": "The optional limit parameter limits the number of items that are presented in the response document. Minimum = 1. Maximum = 100. Default = 100.",
+                              "key": "limit",
+                              "value": "<integer>"
+                            },
+                            {
+                              "description": "The optional offset parameter skips past the specified number of features in the collection. Minimum = 0. Default = 0.",
+                              "key": "offset",
+                              "value": "<integer>"
+                            },
+                            {
+                              "description": "The optional filter parameter is a filter expression in CQL format which is applied when retrieving resources to determine which resources are included in a result set.",
+                              "key": "filter",
+                              "value": "<string>"
+                            },
+                            {
+                              "description": "Specify which of the supported CRSs to use to encode geometric values in a filter expression. It must be a 2D coordinate reference system supported by the collection. Default is WGS84 longitude/latitude (http://www.opengis.net/def/crs/OGC/1.3/CRS84).",
+                              "key": "filter-crs",
+                              "value": "http://www.opengis.net/def/crs/EPSG/0/3857"
+                            },
+                            {
+                              "description": "The optional filter-lang parameter is the specific language used for the filter parameter. Default = cql-text",
+                              "key": "filter-lang",
+                              "value": "cql-text"
+                            },
+                            {
+                              "description": "Added as a part of security scheme: apikey",
+                              "key": "key",
+                              "value": "<API Key>"
+                            }
+                          ],
+                          "variable": [
+                            {
+                              "key": "collectionId"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Not Acceptable",
+                      "code": 406,
+                      "_postman_previewlanguage": "text",
+                      "header": [],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": null,
+                      "createdAt": "2026-07-28T02:28:43.000Z",
+                      "updatedAt": "2026-07-28T02:28:43.000Z",
+                      "uid": "35240-4e8870a8-abba-46d1-b3ce-86f9031f7be0"
+                    },
+                    {
+                      "id": "92264fa5-cf6a-460c-b1a0-e702c0d7f9cb",
+                      "name": "The request has timed out. Please check the service availability dashboard: https://osdatahub.os.uk/serviceStatus .",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [],
+                        "url": {
+                          "raw": "{{baseUrl}}/collections/:collectionId/items?bbox=<number>,<number>,<number>,<number>&bbox-crs=http://www.opengis.net/def/crs/EPSG/0/3857&crs=http://www.opengis.net/def/crs/EPSG/0/4326&datetime=<string>&limit=<integer>&offset=<integer>&filter=<string>&filter-crs=http://www.opengis.net/def/crs/EPSG/0/3857&filter-lang=cql-text&key=<API Key>",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "collections",
+                            ":collectionId",
+                            "items"
+                          ],
+                          "query": [
+                            {
+                              "description": "The optional bbox parameter specifies a supported bounding box. Only features that have a geometry that intersects the bounding box are selected. The bounding box is provided as four comma-separated numbers:  <ul><li>Lower left corner, coordinate axis 1 (e.g. min x axis)</li><li> Lower left corner, coordinate axis 2 (e.g. min y axis)</li><li> Upper right corner, coordinate axis 1 (e.g. max x axis)</li><li> Upper right corner, coordinate axis 2 (e.g. max y axis)</li></ul>The default coordinate reference system of the values is WGS 84 longitude/latitude (http://www.opengis.net/def/crs/OGC/1.3/CRS84) unless a different coordinate reference system is specified in the parameter `bbox-crs`.",
+                              "key": "bbox",
+                              "value": "<number>,<number>,<number>,<number>"
+                            },
+                            {
+                              "description": "The coordinate reference system of the `bbox` parameter. It must be a 2D coordinate reference system supported by the collection. Default is WGS84 longitude/latitude (http://www.opengis.net/def/crs/OGC/1.3/CRS84).",
+                              "key": "bbox-crs",
+                              "value": "http://www.opengis.net/def/crs/EPSG/0/3857"
+                            },
+                            {
+                              "description": "The coordinate reference system of the response geometries. It must be a coordinate reference system supported by the collection. Default is WGS84 longitude/latitude (http://www.opengis.net/def/crs/OGC/1.3/CRS84).",
+                              "key": "crs",
+                              "value": "http://www.opengis.net/def/crs/EPSG/0/4326"
+                            },
+                            {
+                              "description": "Either a local date, a date-time with UTC time zone (Z) or an open or closed interval. Open ranges in time intervals at the start or end are supported using a double-dot (..) or an empty string for the start/end. Date and time expressions adhere to RFC 3339. Examples:<ul><li>A date-time: '2021-12-12T23:20:50Z'</li><li>A closed interval: '2021-12-12T00:00:00Z/2021-12-18T12:31:12Z'</li><li>Open intervals: '2021-12-12T00:00:00Z/..' or '../2021-12-18T12:31:12Z'</li><li>An interval until now: '2018-02-12T00:00:00Z/..' or '2018-02-12T00:00:00Z/'</li></ul>Selects features that have a temporal property that intersects the value of the parameter.",
+                              "key": "datetime",
+                              "value": "<string>"
+                            },
+                            {
+                              "description": "The optional limit parameter limits the number of items that are presented in the response document. Minimum = 1. Maximum = 100. Default = 100.",
+                              "key": "limit",
+                              "value": "<integer>"
+                            },
+                            {
+                              "description": "The optional offset parameter skips past the specified number of features in the collection. Minimum = 0. Default = 0.",
+                              "key": "offset",
+                              "value": "<integer>"
+                            },
+                            {
+                              "description": "The optional filter parameter is a filter expression in CQL format which is applied when retrieving resources to determine which resources are included in a result set.",
+                              "key": "filter",
+                              "value": "<string>"
+                            },
+                            {
+                              "description": "Specify which of the supported CRSs to use to encode geometric values in a filter expression. It must be a 2D coordinate reference system supported by the collection. Default is WGS84 longitude/latitude (http://www.opengis.net/def/crs/OGC/1.3/CRS84).",
+                              "key": "filter-crs",
+                              "value": "http://www.opengis.net/def/crs/EPSG/0/3857"
+                            },
+                            {
+                              "description": "The optional filter-lang parameter is the specific language used for the filter parameter. Default = cql-text",
+                              "key": "filter-lang",
+                              "value": "cql-text"
+                            },
+                            {
+                              "description": "Added as a part of security scheme: apikey",
+                              "key": "key",
+                              "value": "<API Key>"
+                            }
+                          ],
+                          "variable": [
+                            {
+                              "key": "collectionId"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Gateway Timeout",
+                      "code": 504,
+                      "_postman_previewlanguage": "text",
+                      "header": [],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": null,
+                      "createdAt": "2026-07-28T02:28:43.000Z",
+                      "updatedAt": "2026-07-28T02:28:43.000Z",
+                      "uid": "35240-92264fa5-cf6a-460c-b1a0-e702c0d7f9cb"
+                    }
+                  ],
+                  "createdAt": "2026-07-28T02:28:43.000Z",
+                  "updatedAt": "2026-07-28T02:28:43.000Z",
+                  "uid": "35240-24dd7136-095c-495e-8ab7-9478a1555ecb"
+                }
+              ],
+              "id": "ed74c47f-46a9-4166-9786-fc4c34870640",
+              "createdAt": "2026-07-28T02:28:43.000Z",
+              "updatedAt": "2026-07-28T02:28:43.000Z",
+              "uid": "35240-ed74c47f-46a9-4166-9786-fc4c34870640"
+            },
+            {
+              "name": "Get a single OS NGD feature collection",
+              "id": "1e2ec6ec-9952-43be-b8cc-b528a781e7e8",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/collections/:collectionId",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "collections",
+                    ":collectionId"
+                  ],
+                  "variable": [
+                    {
+                      "id": "e8b71261-4d43-46da-892b-c881948ee255",
+                      "key": "collectionId",
+                      "value": "bld-fts-building-3",
+                      "description": "(Required) A known collection ID."
+                    }
+                  ]
+                },
+                "description": "Get information about an OS NGD feature collection"
+              },
+              "response": [
+                {
+                  "id": "3fc27a70-dfea-4298-a296-f2159cd6f6f3",
+                  "name": "A single Ordnance Survey National Geographic Database feature collection.",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/collections/:collectionId",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "collections",
+                        ":collectionId"
+                      ],
+                      "variable": [
+                        {
+                          "key": "collectionId"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "OK",
+                  "code": 200,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"id\": \"<string>\",\n  \"title\": \"<string>\",\n  \"description\": \"<string>\",\n  \"crs\": [\n    \"http://www.opengis.net/def/crs/EPSG/0/4326\",\n    \"http://www.opengis.net/def/crs/EPSG/0/27700\"\n  ],\n  \"storageCrs\": \"http://www.opengis.net/def/crs/EPSG/0/3857\",\n  \"itemType\": \"<string>\",\n  \"extent\": {\n    \"spatial\": {\n      \"bbox\": [\n        [\n          \"<double>\",\n          \"<double>\"\n        ],\n        [\n          \"<double>\",\n          \"<double>\"\n        ]\n      ],\n      \"crs\": \"<string>\"\n    },\n    \"temporal\": {\n      \"interval\": [\n        [\n          \"<string>\",\n          \"<string>\"\n        ],\n        [\n          \"<string>\",\n          \"<string>\"\n        ]\n      ],\n      \"trs\": \"<string>\"\n    }\n  },\n  \"links\": [\n    {\n      \"href\": \"<string>\",\n      \"rel\": \"<string>\",\n      \"type\": \"<string>\",\n      \"title\": \"<string>\"\n    },\n    {\n      \"href\": \"<string>\",\n      \"rel\": \"<string>\",\n      \"type\": \"<string>\",\n      \"title\": \"<string>\"\n    }\n  ]\n}",
+                  "createdAt": "2026-07-28T02:28:43.000Z",
+                  "updatedAt": "2026-07-28T02:28:43.000Z",
+                  "uid": "35240-3fc27a70-dfea-4298-a296-f2159cd6f6f3"
+                },
+                {
+                  "id": "35e15cb7-6fd1-4caf-8a93-a8444be6ef1e",
+                  "name": "The request was not supported.",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [],
+                    "url": {
+                      "raw": "{{baseUrl}}/collections/:collectionId",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "collections",
+                        ":collectionId"
+                      ],
+                      "variable": [
+                        {
+                          "key": "collectionId"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Bad Request",
+                  "code": 400,
+                  "_postman_previewlanguage": "text",
+                  "header": [],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": null,
+                  "createdAt": "2026-07-28T02:28:43.000Z",
+                  "updatedAt": "2026-07-28T02:28:43.000Z",
+                  "uid": "35240-35e15cb7-6fd1-4caf-8a93-a8444be6ef1e"
+                },
+                {
+                  "id": "eea696fe-e9ca-434a-b824-5e57ac6c2cd6",
+                  "name": "Collection '{collectionId}' is not a supported Collection. Please refer to the documentation for a list of supported Collections.",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [],
+                    "url": {
+                      "raw": "{{baseUrl}}/collections/:collectionId",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "collections",
+                        ":collectionId"
+                      ],
+                      "variable": [
+                        {
+                          "key": "collectionId"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Not Found",
+                  "code": 404,
+                  "_postman_previewlanguage": "text",
+                  "header": [],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": null,
+                  "createdAt": "2026-07-28T02:28:43.000Z",
+                  "updatedAt": "2026-07-28T02:28:43.000Z",
+                  "uid": "35240-eea696fe-e9ca-434a-b824-5e57ac6c2cd6"
+                },
+                {
+                  "id": "da01a11b-6d8d-43a0-8616-260fb00fc3a3",
+                  "name": "The HTTP method requested is not supported. This endpoint only supports 'GET' requests.",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [],
+                    "url": {
+                      "raw": "{{baseUrl}}/collections/:collectionId",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "collections",
+                        ":collectionId"
+                      ],
+                      "variable": [
+                        {
+                          "key": "collectionId"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Method Not Allowed",
+                  "code": 405,
+                  "_postman_previewlanguage": "text",
+                  "header": [],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": null,
+                  "createdAt": "2026-07-28T02:28:43.000Z",
+                  "updatedAt": "2026-07-28T02:28:43.000Z",
+                  "uid": "35240-da01a11b-6d8d-43a0-8616-260fb00fc3a3"
+                },
+                {
+                  "id": "9d74eb36-25eb-437a-831f-490955206465",
+                  "name": "A request header value was not supported.",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [],
+                    "url": {
+                      "raw": "{{baseUrl}}/collections/:collectionId",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "collections",
+                        ":collectionId"
+                      ],
+                      "variable": [
+                        {
+                          "key": "collectionId"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Not Acceptable",
+                  "code": 406,
+                  "_postman_previewlanguage": "text",
+                  "header": [],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": null,
+                  "createdAt": "2026-07-28T02:28:43.000Z",
+                  "updatedAt": "2026-07-28T02:28:43.000Z",
+                  "uid": "35240-9d74eb36-25eb-437a-831f-490955206465"
+                }
+              ],
+              "createdAt": "2026-07-28T02:28:43.000Z",
+              "updatedAt": "2026-07-28T02:28:43.000Z",
+              "uid": "35240-1e2ec6ec-9952-43be-b8cc-b528a781e7e8"
+            }
+          ],
+          "id": "facda495-02f4-44a5-a6ae-e068c159855a",
+          "createdAt": "2026-07-28T02:28:43.000Z",
+          "updatedAt": "2026-07-28T02:28:43.000Z",
+          "uid": "35240-facda495-02f4-44a5-a6ae-e068c159855a"
+        },
+        {
+          "name": "Get list of all OS NGD feature collections",
+          "id": "a46594c7-1cf6-4830-976f-97e6cc2bd434",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/collections",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "collections"
+              ]
+            },
+            "description": "Get a list of all the available OS NGD feature collections"
+          },
+          "response": [
+            {
+              "id": "94721831-d7b7-4af8-a35f-bf902e0dd60f",
+              "name": "All Ordnance Survey National Geographic Database feature collections.",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/collections",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "collections"
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"links\": [\n    {\n      \"href\": \"<string>\",\n      \"rel\": \"<string>\",\n      \"type\": \"<string>\",\n      \"title\": \"<string>\"\n    },\n    {\n      \"href\": \"<string>\",\n      \"rel\": \"<string>\",\n      \"type\": \"<string>\",\n      \"title\": \"<string>\"\n    }\n  ],\n  \"crs\": [\n    \"http://www.opengis.net/def/crs/EPSG/0/7405\",\n    \"http://www.opengis.net/def/crs/EPSG/0/4326\"\n  ],\n  \"collections\": [\n    {\n      \"id\": \"<string>\",\n      \"title\": \"<string>\",\n      \"description\": \"<string>\",\n      \"crs\": [\n        \"http://www.opengis.net/def/crs/EPSG/0/27700\",\n        \"http://www.opengis.net/def/crs/EPSG/0/3857\"\n      ],\n      \"storageCrs\": \"http://www.opengis.net/def/crs/OGC/1.3/CRS84\",\n      \"itemType\": \"<string>\",\n      \"extent\": {\n        \"spatial\": {\n          \"bbox\": [\n            [\n              \"<double>\",\n              \"<double>\"\n            ],\n            [\n              \"<double>\",\n              \"<double>\"\n            ]\n          ],\n          \"crs\": \"<string>\"\n        },\n        \"temporal\": {\n          \"interval\": [\n            [\n              \"<string>\",\n              \"<string>\"\n            ],\n            [\n              \"<string>\",\n              \"<string>\"\n            ]\n          ],\n          \"trs\": \"<string>\"\n        }\n      },\n      \"links\": [\n        {\n          \"href\": \"<string>\",\n          \"rel\": \"<string>\",\n          \"type\": \"<string>\",\n          \"title\": \"<string>\"\n        },\n        {\n          \"href\": \"<string>\",\n          \"rel\": \"<string>\",\n          \"type\": \"<string>\",\n          \"title\": \"<string>\"\n        }\n      ]\n    },\n    {\n      \"id\": \"<string>\",\n      \"title\": \"<string>\",\n      \"description\": \"<string>\",\n      \"crs\": [\n        \"http://www.opengis.net/def/crs/EPSG/0/4326\",\n        \"http://www.opengis.net/def/crs/EPSG/0/4326\"\n      ],\n      \"storageCrs\": \"http://www.opengis.net/def/crs/EPSG/0/27700\",\n      \"itemType\": \"<string>\",\n      \"extent\": {\n        \"spatial\": {\n          \"bbox\": [\n            [\n              \"<double>\",\n              \"<double>\"\n            ],\n            [\n              \"<double>\",\n              \"<double>\"\n            ]\n          ],\n          \"crs\": \"<string>\"\n        },\n        \"temporal\": {\n          \"interval\": [\n            [\n              \"<string>\",\n              \"<string>\"\n            ],\n            [\n              \"<string>\",\n              \"<string>\"\n            ]\n          ],\n          \"trs\": \"<string>\"\n        }\n      },\n      \"links\": [\n        {\n          \"href\": \"<string>\",\n          \"rel\": \"<string>\",\n          \"type\": \"<string>\",\n          \"title\": \"<string>\"\n        },\n        {\n          \"href\": \"<string>\",\n          \"rel\": \"<string>\",\n          \"type\": \"<string>\",\n          \"title\": \"<string>\"\n        }\n      ]\n    }\n  ]\n}",
+              "createdAt": "2026-07-28T02:28:43.000Z",
+              "updatedAt": "2026-07-28T02:28:43.000Z",
+              "uid": "35240-94721831-d7b7-4af8-a35f-bf902e0dd60f"
+            },
+            {
+              "id": "c2a3c515-5eaf-4c0a-ad71-4f29362252de",
+              "name": "The request was not supported.",
+              "originalRequest": {
+                "method": "GET",
+                "header": [],
+                "url": {
+                  "raw": "{{baseUrl}}/collections",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "collections"
+                  ]
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "_postman_previewlanguage": "text",
+              "header": [],
+              "cookie": [],
+              "responseTime": null,
+              "body": null,
+              "createdAt": "2026-07-28T02:28:43.000Z",
+              "updatedAt": "2026-07-28T02:28:43.000Z",
+              "uid": "35240-c2a3c515-5eaf-4c0a-ad71-4f29362252de"
+            },
+            {
+              "id": "ba8e174a-1eb5-462a-8cd2-47f5a9f77ac6",
+              "name": "The HTTP method requested is not supported. This endpoint only supports 'GET' requests.",
+              "originalRequest": {
+                "method": "GET",
+                "header": [],
+                "url": {
+                  "raw": "{{baseUrl}}/collections",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "collections"
+                  ]
+                }
+              },
+              "status": "Method Not Allowed",
+              "code": 405,
+              "_postman_previewlanguage": "text",
+              "header": [],
+              "cookie": [],
+              "responseTime": null,
+              "body": null,
+              "createdAt": "2026-07-28T02:28:43.000Z",
+              "updatedAt": "2026-07-28T02:28:43.000Z",
+              "uid": "35240-ba8e174a-1eb5-462a-8cd2-47f5a9f77ac6"
+            },
+            {
+              "id": "5956d7f6-7fcd-49b8-adc7-6911514ba22f",
+              "name": "A request header value was not supported.",
+              "originalRequest": {
+                "method": "GET",
+                "header": [],
+                "url": {
+                  "raw": "{{baseUrl}}/collections",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "collections"
+                  ]
+                }
+              },
+              "status": "Not Acceptable",
+              "code": 406,
+              "_postman_previewlanguage": "text",
+              "header": [],
+              "cookie": [],
+              "responseTime": null,
+              "body": null,
+              "createdAt": "2026-07-28T02:28:43.000Z",
+              "updatedAt": "2026-07-28T02:28:43.000Z",
+              "uid": "35240-5956d7f6-7fcd-49b8-adc7-6911514ba22f"
+            }
+          ],
+          "createdAt": "2026-07-28T02:28:43.000Z",
+          "updatedAt": "2026-07-28T02:28:43.000Z",
+          "uid": "35240-a46594c7-1cf6-4830-976f-97e6cc2bd434"
+        }
+      ],
+      "id": "2ed9067b-67ee-4899-8460-bfe63d409d78",
+      "createdAt": "2026-07-28T02:28:43.000Z",
+      "updatedAt": "2026-07-28T02:28:43.000Z",
+      "uid": "35240-2ed9067b-67ee-4899-8460-bfe63d409d78"
+    }
+  ],
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "https://api.os.uk/features/ngd/ofa/v1"
+    }
+  ]
+}
