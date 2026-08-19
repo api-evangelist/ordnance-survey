@@ -1,0 +1,614 @@
+{
+  "item": [
+    {
+      "id": "b084a153-4bae-4f6f-852a-023dc7c81d54",
+      "name": "Service Metadata",
+      "description": {
+        "content": "Service Metadata for OS Vector Tiles API",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "edfc2dd5-5069-4bcf-bb17-8e8e81d73951",
+          "name": "Service Metadata for OS Vector Tiles API",
+          "request": {
+            "name": "Service Metadata for OS Vector Tiles API",
+            "description": {},
+            "url": {
+              "path": [
+                "vts"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "srs",
+                  "value": "27700",
+                  "description": "The Spatial Reference System for the service."
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "64f48261-9261-40e7-83d5-51bfbbd11740",
+              "name": "Retrieves Service Metadata for OS Vector Tiles API",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "vts"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "srs",
+                      "value": "27700"
+                    },
+                    {
+                      "key": "key",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"currentVersion\": 8794.297769083249,\n  \"name\": \"string\",\n  \"capabilities\": \"string\",\n  \"type\": \"string\",\n  \"defaultStyles\": \"string\",\n  \"tiles\": [\n    \"string\",\n    \"string\"\n  ],\n  \"exportTilesAllowed\": false,\n  \"initialExtent\": {\n    \"xmin\": 7532.738234826584,\n    \"ymin\": 6676.6565000786095,\n    \"xmax\": 2212.4675926664927,\n    \"ymax\": 2247.194559009501,\n    \"spatialReference\": {\n      \"wkid\": 4719,\n      \"latestWkid\": 2543\n    }\n  },\n  \"fullExtent\": {\n    \"xmin\": 844.3814907930857,\n    \"ymin\": 3695.17959726534,\n    \"xmax\": 4845.479079817846,\n    \"ymax\": 9210.695209140113,\n    \"spatialReference\": {\n      \"wkid\": 1140,\n      \"latestWkid\": 6692\n    }\n  },\n  \"minScale\": 3322.367135363008,\n  \"maxScale\": 7991.664077120676,\n  \"tileInfo\": {\n    \"rows\": 5090,\n    \"cols\": 4530,\n    \"dpi\": 3918,\n    \"format\": \"string\",\n    \"origin\": {\n      \"x\": 6040.128044034641,\n      \"y\": 8660.411283236172\n    },\n    \"spatialReference\": {\n      \"xmin\": 4542.463462870858,\n      \"ymin\": 434.7734803110215,\n      \"xmax\": 5699.558471855961,\n      \"ymax\": 7683.681766265918,\n      \"spatialReference\": {\n        \"wkid\": 3252,\n        \"latestWkid\": 7137\n      }\n    },\n    \"lods\": [\n      {\n        \"level\": 2392,\n        \"resolution\": 2465.511392847183,\n        \"scale\": 9861.381153850976\n      },\n      {\n        \"level\": 7740,\n        \"resolution\": 567.8815715064667,\n        \"scale\": 9424.486286696625\n      }\n    ]\n  },\n  \"maxzoom\": 92,\n  \"minLOD\": 7246,\n  \"maxLOD\": 6686,\n  \"resourceInfo\": {\n    \"styleVersion\": 9139,\n    \"tileCompression\": \"string\",\n    \"cacheInfo\": {\n      \"storageInfo\": {\n        \"packetSize\": 3868,\n        \"storageFormat\": \"string\"\n      }\n    }\n  },\n  \"serviceItemId\": \"string\",\n  \"maxExportTilesCount\": 3842\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    },
+    {
+      "id": "1b466640-0aae-49f6-b07d-5b83dd0afb4d",
+      "name": "Styles",
+      "description": {
+        "content": "Discover compatible stylesheets for the OS Vector Tiles API",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "30913e3b-a346-49e0-8660-dc148e9a9c52",
+          "name": "Discover compatible stylesheets",
+          "request": {
+            "name": "Discover compatible stylesheets",
+            "description": {},
+            "url": {
+              "path": [
+                "vts",
+                "resources",
+                "styles"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "srs",
+                  "value": "27700",
+                  "description": "The Spatial Reference System for the service."
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "61aa0e51-bf15-47ba-826e-8848fc61bdda",
+              "name": "Retrieves compatible stylesheets",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "vts",
+                    "resources",
+                    "styles"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "srs",
+                      "value": "27700"
+                    },
+                    {
+                      "key": "key",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"version\": 3412,\n  \"sprite\": \"string\",\n  \"glyphs\": \"string\",\n  \"sources\": {\n    \"key_0\": {\n      \"type\": \"string\",\n      \"url\": \"string\"\n    },\n    \"key_1\": {\n      \"type\": \"string\",\n      \"url\": \"string\"\n    }\n  },\n  \"layers\": [\n    {\n      \"id\": \"string\",\n      \"type\": \"string\",\n      \"source\": \"string\",\n      \"source-layer\": \"string\",\n      \"filter\": [\n        \"string\",\n        \"string\"\n      ],\n      \"minzoom\": 4867,\n      \"maxzoom\": 8322,\n      \"layout\": {},\n      \"paint\": {}\n    },\n    {\n      \"id\": \"string\",\n      \"type\": \"string\",\n      \"source\": \"string\",\n      \"source-layer\": \"string\",\n      \"filter\": [\n        \"string\",\n        \"string\"\n      ],\n      \"minzoom\": 2811,\n      \"maxzoom\": 5818,\n      \"layout\": {},\n      \"paint\": {}\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "f374a521-35f2-495d-9b57-8ff9c82bf24d",
+          "name": "Discover compatible stylesheets for a data overlay",
+          "request": {
+            "name": "Discover compatible stylesheets for a data overlay",
+            "description": {},
+            "url": {
+              "path": [
+                "vts",
+                ":layer-name",
+                "resources",
+                "styles"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "srs",
+                  "value": "27700",
+                  "description": "The Spatial Reference System for the service."
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "layer-name",
+                  "description": "(Required) The name of the data overlay."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "b64d864b-8db2-4995-8b3e-dd2736de1afd",
+              "name": "Returns compatible stylesheets for a data overlay.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "vts",
+                    ":layer-name",
+                    "resources",
+                    "styles"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "srs",
+                      "value": "27700"
+                    },
+                    {
+                      "key": "key",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "layer-name",
+                      "description": "(Required) The name of the data overlay."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"version\": 900,\n  \"sprite\": \"string\",\n  \"glyphs\": \"string\",\n  \"sources\": {\n    \"key_0\": {\n      \"type\": \"string\",\n      \"url\": \"string\"\n    },\n    \"key_1\": {\n      \"type\": \"string\",\n      \"url\": \"string\"\n    },\n    \"key_2\": {\n      \"type\": \"string\",\n      \"url\": \"string\"\n    }\n  },\n  \"layers\": [\n    {\n      \"id\": \"string\",\n      \"type\": \"string\",\n      \"source\": \"string\",\n      \"source-layer\": \"string\",\n      \"filter\": [\n        \"string\",\n        \"string\"\n      ],\n      \"minzoom\": 6091,\n      \"maxzoom\": 1836,\n      \"layout\": {},\n      \"paint\": {}\n    },\n    {\n      \"id\": \"string\",\n      \"type\": \"string\",\n      \"source\": \"string\",\n      \"source-layer\": \"string\",\n      \"filter\": [\n        \"string\",\n        \"string\"\n      ],\n      \"minzoom\": 1362,\n      \"maxzoom\": 1127,\n      \"layout\": {},\n      \"paint\": {}\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    },
+    {
+      "id": "208a42a4-e2d4-4985-a5e4-f44b7993b902",
+      "name": "Tile Request",
+      "description": {
+        "content": "Access and download data for a specific tile",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "6736f031-b55a-48fe-999a-76ea2bd01df2",
+          "name": "Access and download data for a specific tile",
+          "request": {
+            "name": "Access and download data for a specific tile",
+            "description": {},
+            "url": {
+              "path": [
+                "vts",
+                "tile",
+                ":z",
+                ":y",
+                "{{x}}.pbf"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "srs",
+                  "value": "27700",
+                  "description": "The Spatial Reference System for the service."
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<integer>",
+                  "key": "z",
+                  "description": "(Required) Zoom level"
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<integer>",
+                  "key": "y",
+                  "description": "(Required) Y coordinate"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/octet-stream"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "1de67ee2-cef6-4686-bd1d-3d5777d55f51",
+              "name": "Tile data retrieved successfully",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "vts",
+                    "tile",
+                    ":z",
+                    ":y",
+                    "{{x}}.pbf"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "srs",
+                      "value": "27700"
+                    },
+                    {
+                      "key": "key",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "z",
+                      "description": "(Required) Zoom level"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "y",
+                      "description": "(Required) Y coordinate"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/octet-stream"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/octet-stream"
+                }
+              ],
+              "body": "string",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "a76b8e15-85e5-4315-8e5c-1f7293cd11f5",
+          "name": "Access and download data for a specific tile from a data overlay",
+          "request": {
+            "name": "Access and download data for a specific tile from a data overlay",
+            "description": {},
+            "url": {
+              "path": [
+                "vts",
+                ":layer-name",
+                "tile",
+                ":z",
+                ":y",
+                "{{x}}.pbf"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "srs",
+                  "value": "27700",
+                  "description": "The Spatial Reference System for the service."
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "layer-name",
+                  "description": "(Required) The name of the data overlay."
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<integer>",
+                  "key": "z",
+                  "description": "(Required) Zoom level"
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<integer>",
+                  "key": "y",
+                  "description": "(Required) Y coordinate"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/octet-stream"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "3474b1b7-1c0b-414f-a58f-9b7baa69a990",
+              "name": "Tile data retrieved successfully",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "vts",
+                    ":layer-name",
+                    "tile",
+                    ":z",
+                    ":y",
+                    "{{x}}.pbf"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "srs",
+                      "value": "27700"
+                    },
+                    {
+                      "key": "key",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "layer-name",
+                      "description": "(Required) The name of the data overlay."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "z",
+                      "description": "(Required) Zoom level"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "y",
+                      "description": "(Required) Y coordinate"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/octet-stream"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/octet-stream"
+                }
+              ],
+              "body": "string",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api.os.uk/maps/vector/v1",
+      "key": "baseUrl"
+    },
+    {
+      "disabled": false,
+      "description": {
+        "content": "(Required) X coordinate",
+        "type": "text/plain"
+      },
+      "type": "any",
+      "value": "<integer>",
+      "key": "x"
+    }
+  ],
+  "auth": {
+    "type": "apikey",
+    "apikey": [
+      {
+        "key": "key",
+        "value": "key"
+      },
+      {
+        "key": "value",
+        "value": "{{apiKey}}"
+      },
+      {
+        "key": "in",
+        "value": "query"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "448c5ae5-12b9-471c-a2cd-93549dba0e04",
+    "name": "OS Vector Tiles API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "",
+      "type": "text/plain"
+    }
+  }
+}

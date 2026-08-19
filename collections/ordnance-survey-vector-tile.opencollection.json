@@ -1,0 +1,185 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "OS Vector Tiles API",
+    "version": "v1.0"
+  },
+  "request": {
+    "auth": {
+      "type": "apikey",
+      "key": "key",
+      "value": "{{key}}",
+      "placement": "query"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Service Metadata",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Service Metadata for OS Vector Tiles API",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.os.uk/maps/vector/v1/vts",
+            "params": [
+              {
+                "name": "srs",
+                "value": "",
+                "type": "query",
+                "description": "The Spatial Reference System for the service."
+              }
+            ]
+          },
+          "docs": "Service Metadata for OS Vector Tiles API"
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Styles",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Discover compatible stylesheets",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.os.uk/maps/vector/v1/vts/resources/styles",
+            "params": [
+              {
+                "name": "srs",
+                "value": "",
+                "type": "query",
+                "description": "The Spatial Reference System for the service."
+              }
+            ]
+          },
+          "docs": "Discover compatible stylesheets"
+        },
+        {
+          "info": {
+            "name": "Discover compatible stylesheets for a data overlay",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.os.uk/maps/vector/v1/vts/:layer-name/resources/styles",
+            "params": [
+              {
+                "name": "layer-name",
+                "value": "",
+                "type": "path",
+                "description": "The name of the data overlay."
+              },
+              {
+                "name": "srs",
+                "value": "",
+                "type": "query",
+                "description": "The Spatial Reference System for the service."
+              }
+            ]
+          },
+          "docs": "Discover compatible stylesheets for a data overlay"
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Tile Request",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Access and download data for a specific tile",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.os.uk/maps/vector/v1/vts/tile/:z/:y/:x.pbf",
+            "params": [
+              {
+                "name": "z",
+                "value": "",
+                "type": "path",
+                "description": "Zoom level"
+              },
+              {
+                "name": "y",
+                "value": "",
+                "type": "path",
+                "description": "Y coordinate"
+              },
+              {
+                "name": "x",
+                "value": "",
+                "type": "path",
+                "description": "X coordinate"
+              },
+              {
+                "name": "srs",
+                "value": "",
+                "type": "query",
+                "description": "The Spatial Reference System for the service."
+              }
+            ]
+          },
+          "docs": "Access and download data for a specific tile"
+        },
+        {
+          "info": {
+            "name": "Access and download data for a specific tile from a data overlay",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.os.uk/maps/vector/v1/vts/:layer-name/tile/:z/:y/:x.pbf",
+            "params": [
+              {
+                "name": "layer-name",
+                "value": "",
+                "type": "path",
+                "description": "The name of the data overlay."
+              },
+              {
+                "name": "z",
+                "value": "",
+                "type": "path",
+                "description": "Zoom level"
+              },
+              {
+                "name": "y",
+                "value": "",
+                "type": "path",
+                "description": "Y coordinate"
+              },
+              {
+                "name": "x",
+                "value": "",
+                "type": "path",
+                "description": "X coordinate"
+              },
+              {
+                "name": "srs",
+                "value": "",
+                "type": "query",
+                "description": "The Spatial Reference System for the service."
+              }
+            ]
+          },
+          "docs": "Access and download data for a specific tile from a data overlay"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

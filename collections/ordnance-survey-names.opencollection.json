@@ -1,0 +1,120 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "OS Names API",
+    "version": "v1.0"
+  },
+  "request": {
+    "auth": {
+      "type": "apikey",
+      "key": "key",
+      "value": "{{key}}",
+      "placement": "query"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Find",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "A free string text search, intended to be an ambiguous/fuzzy search.",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.os.uk/search/names/v1/find",
+            "params": [
+              {
+                "name": "query",
+                "value": "",
+                "type": "query",
+                "description": "Free text search parameter."
+              },
+              {
+                "name": "format",
+                "value": "",
+                "type": "query",
+                "description": "The format the response will be returned in."
+              },
+              {
+                "name": "maxresults",
+                "value": "",
+                "type": "query",
+                "description": "The maximum number of results to return. Minimum = 1. Maximum = 100. Default = 100."
+              },
+              {
+                "name": "offset",
+                "value": "",
+                "type": "query",
+                "description": "Offset the list of returned results by this amount."
+              },
+              {
+                "name": "bounds",
+                "value": "",
+                "type": "query",
+                "description": "Biases the results to a certain area. The <BoundingBox> is a British National Grid bounding box in the form: XMIN,YMIN,XMAX,YMAX"
+              },
+              {
+                "name": "fq",
+                "value": "",
+                "type": "query",
+                "description": "Filters the results by bounding box or local_type. "
+              }
+            ]
+          },
+          "docs": "A free string text search, intended to be an ambiguous/fuzzy search."
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Nearest",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Find the features closest to a given point",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.os.uk/search/names/v1/nearest",
+            "params": [
+              {
+                "name": "point",
+                "value": "",
+                "type": "query",
+                "description": "A set of British National Grid coordinates to which the nearest record in a straight line should be found."
+              },
+              {
+                "name": "radius",
+                "value": "",
+                "type": "query",
+                "description": "The radius in metres to search within. Minimum = 0.01, Maximum = 1,000 . Default = 100"
+              },
+              {
+                "name": "format",
+                "value": "",
+                "type": "query",
+                "description": "The format the response will be returned in."
+              },
+              {
+                "name": "fq",
+                "value": "",
+                "type": "query",
+                "description": "Filters the results by bounding box or local_type. "
+              }
+            ]
+          },
+          "docs": "Find the features closest to a given point"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

@@ -1,0 +1,148 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "OS Maps API",
+    "version": "v1.0"
+  },
+  "request": {
+    "auth": {
+      "type": "apikey",
+      "key": "key",
+      "value": "{{key}}",
+      "placement": "query"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Tile Request",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Access and download data for a specific tile",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.os.uk/maps/raster/v1/wmts",
+            "params": [
+              {
+                "name": "layer",
+                "value": "",
+                "type": "query",
+                "description": "The tile set layer that will be requested."
+              },
+              {
+                "name": "tileMatrixSet",
+                "value": "",
+                "type": "query",
+                "description": "The identifier of the tile matrix set."
+              },
+              {
+                "name": "tileMatrix",
+                "value": "",
+                "type": "query",
+                "description": "The identifier of the tile matrix within the specified tile matrix set."
+              },
+              {
+                "name": "tileRow",
+                "value": "",
+                "type": "query",
+                "description": "The row index of the tile."
+              },
+              {
+                "name": "tileCol",
+                "value": "",
+                "type": "query",
+                "description": "The column index of the tile."
+              },
+              {
+                "name": "service",
+                "value": "",
+                "type": "query",
+                "description": "The service that is being accessed."
+              },
+              {
+                "name": "request",
+                "value": "",
+                "type": "query",
+                "description": "The type of request being made. If a GetCapabilities request is being made, the other parameters are not required other than authentication."
+              },
+              {
+                "name": "style",
+                "value": "",
+                "type": "query",
+                "description": "Taken from the Identifier of the chosen Layer's Style property"
+              },
+              {
+                "name": "version",
+                "value": "",
+                "type": "query",
+                "description": "The version number of the service."
+              },
+              {
+                "name": "height",
+                "value": "",
+                "type": "query",
+                "description": "The Height of the tile."
+              },
+              {
+                "name": "width",
+                "value": "",
+                "type": "query",
+                "description": "The Width of the tile."
+              },
+              {
+                "name": "outputformat",
+                "value": "",
+                "type": "query",
+                "description": "The format of the returned tile."
+              }
+            ]
+          },
+          "docs": "Access and download data for a specific tile"
+        },
+        {
+          "info": {
+            "name": "Access and download data for a specific tile",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.os.uk/maps/raster/v1/zxy/:layer/:z/:x/:y.png",
+            "params": [
+              {
+                "name": "layer",
+                "value": "",
+                "type": "path",
+                "description": "The tile set layer that will be requested."
+              },
+              {
+                "name": "z",
+                "value": "",
+                "type": "path",
+                "description": "Zoom level"
+              },
+              {
+                "name": "x",
+                "value": "",
+                "type": "path",
+                "description": "X coordinate"
+              },
+              {
+                "name": "y",
+                "value": "",
+                "type": "path",
+                "description": "Y coordinate"
+              }
+            ]
+          },
+          "docs": "Access and download data for a specific tile"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

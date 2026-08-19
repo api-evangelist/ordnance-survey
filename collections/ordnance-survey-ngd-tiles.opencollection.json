@@ -1,0 +1,351 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "OS NGD API - Tiles",
+    "version": "v1.8"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Landing Page",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Retrieve the OS NGD API – Tiles landing page for this service.",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.os.uk/maps/vector/ngd/ota/v1/"
+          },
+          "docs": "Retrieve the OS NGD API – Tiles landing page for this service."
+        },
+        {
+          "info": {
+            "name": "Retrieve the set of OS NGD API – Tiles conformance classes that are supported by this service.",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.os.uk/maps/vector/ngd/ota/v1/conformance"
+          },
+          "docs": "Retrieve the set of OS NGD API – Tiles conformance classes that are supported by this service."
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Data Collections",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Retrieve the list of geospatial data collections available from this service.",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.os.uk/maps/vector/ngd/ota/v1/collections"
+          },
+          "docs": "Retrieve the list of geospatial data collections available from this service."
+        },
+        {
+          "info": {
+            "name": "Retrieve the description of a collection available from this service.",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.os.uk/maps/vector/ngd/ota/v1/collections/:collectionId",
+            "params": [
+              {
+                "name": "collectionId",
+                "value": "",
+                "type": "path",
+                "description": "Local identifier of a collection"
+              }
+            ]
+          },
+          "docs": "Retrieve the description of a collection available from this service."
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Tiling Schemes",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Retrieve the list of available tiling schemes (tile matrix sets)",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.os.uk/maps/vector/ngd/ota/v1/tilematrixsets"
+          },
+          "docs": "Retrieve the list of available tiling schemes (tile matrix sets)"
+        },
+        {
+          "info": {
+            "name": "Retrieve the definition of the specified tiling scheme (tile matrix set)",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.os.uk/maps/vector/ngd/ota/v1/tilematrixsets/:tileMatrixSetId",
+            "params": [
+              {
+                "name": "tileMatrixSetId",
+                "value": "",
+                "type": "path",
+                "description": "Identifier for a supported TileMatrixSet"
+              }
+            ]
+          },
+          "docs": "Retrieve the definition of the specified tiling scheme (tile matrix set)"
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Tile Sets",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Retrieve a list of available vector tilesets for the specified collection.",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.os.uk/maps/vector/ngd/ota/v1/collections/:collectionId/tiles",
+            "params": [
+              {
+                "name": "collectionId",
+                "value": "",
+                "type": "path",
+                "description": "Local identifier of a collection"
+              }
+            ]
+          },
+          "docs": "Retrieve a list of available vector tilesets for the specified collection."
+        },
+        {
+          "info": {
+            "name": "Retrieve the vector tileset metadata for the specified collection and tiling scheme (tile matrix set)",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.os.uk/maps/vector/ngd/ota/v1/collections/:collectionId/tiles/:tileMatrixSetId",
+            "params": [
+              {
+                "name": "collectionId",
+                "value": "",
+                "type": "path",
+                "description": "Local identifier of a collection"
+              },
+              {
+                "name": "tileMatrixSetId",
+                "value": "",
+                "type": "path",
+                "description": "Identifier for a supported TileMatrixSet"
+              }
+            ]
+          },
+          "docs": "Retrieve the vector tileset metadata for the specified collection and tiling scheme (tile matrix set)"
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Vector Tiles",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Retrieve a vector tile from a collection.",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.os.uk/maps/vector/ngd/ota/v1/collections/:collectionId/tiles/:tileMatrixSetId/:tileMatrix/:tileRow/:tileCol",
+            "params": [
+              {
+                "name": "tileMatrix",
+                "value": "15",
+                "type": "path",
+                "description": "Identifier selecting one of the scales defined in the TileMatrixSet and representing the scaleDenominator the tile."
+              },
+              {
+                "name": "tileRow",
+                "value": "11179",
+                "type": "path",
+                "description": "Row index of the tile on the selected TileMatrix."
+              },
+              {
+                "name": "tileCol",
+                "value": "16558",
+                "type": "path",
+                "description": "Column index of the tile on the selected TileMatrix."
+              },
+              {
+                "name": "collectionId",
+                "value": "",
+                "type": "path",
+                "description": "Local identifier of a collection"
+              },
+              {
+                "name": "tileMatrixSetId",
+                "value": "",
+                "type": "path",
+                "description": "Identifier for a supported TileMatrixSet"
+              }
+            ],
+            "auth": {
+              "type": "apikey",
+              "key": "key",
+              "value": "{{key}}",
+              "placement": "query"
+            }
+          },
+          "docs": "Retrieve a vector tile from a collection."
+        },
+        {
+          "info": {
+            "name": "Retrieve a vector tile from a collection for Web Mercator Quad EPSG: 3857 tile matrix set.",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.os.uk/maps/vector/ngd/ota/v1/collections/:collectionId/tiles/:tileMatrix/:tileRow/:tileCol",
+            "params": [
+              {
+                "name": "tileMatrix",
+                "value": "15",
+                "type": "path",
+                "description": "Identifier selecting one of the scales defined in the TileMatrixSet and representing the scaleDenominator the tile."
+              },
+              {
+                "name": "tileRow",
+                "value": "11179",
+                "type": "path",
+                "description": "Row index of the tile on the selected TileMatrix."
+              },
+              {
+                "name": "tileCol",
+                "value": "16558",
+                "type": "path",
+                "description": "Column index of the tile on the selected TileMatrix."
+              },
+              {
+                "name": "collectionId",
+                "value": "",
+                "type": "path",
+                "description": "Local identifier of a collection"
+              }
+            ],
+            "auth": {
+              "type": "apikey",
+              "key": "key",
+              "value": "{{key}}",
+              "placement": "query"
+            }
+          },
+          "docs": "Retrieve a vector tile from a collection for Web Mercator Quad EPSG: 3857 tile matrix set."
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Styles",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Retrieve the list of styles available from this service.",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.os.uk/maps/vector/ngd/ota/v1/collections/:collectionId/styles",
+            "params": [
+              {
+                "name": "collectionId",
+                "value": "",
+                "type": "path",
+                "description": "Local identifier of a collection"
+              }
+            ]
+          },
+          "docs": "Retrieve the list of styles available from this service."
+        },
+        {
+          "info": {
+            "name": "Root level properties of a style specify the map's layers, tile sources and other resources, and default values for the initial camera position when not specified elsewhere.",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.os.uk/maps/vector/ngd/ota/v1/collections/:collectionId/styles/:styleId",
+            "params": [
+              {
+                "name": "collectionId",
+                "value": "",
+                "type": "path",
+                "description": "Local identifier of a collection"
+              },
+              {
+                "name": "styleId",
+                "value": "",
+                "type": "path",
+                "description": "An identifier representing a specific style."
+              }
+            ]
+          },
+          "docs": "Root level properties of a style specify the map's layers, tile sources and other resources, and default values for the initial camera position when not specified elsewhere."
+        },
+        {
+          "info": {
+            "name": "Styling resources such as fonts and sprites",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.os.uk/maps/vector/ngd/ota/v1/collections/:collectionId/styles/:styleId/:resourceBaseName/**",
+            "params": [
+              {
+                "name": "collectionId",
+                "value": "",
+                "type": "path",
+                "description": "Local identifier of a collection"
+              },
+              {
+                "name": "styleId",
+                "value": "",
+                "type": "path",
+                "description": "An identifier representing a specific style."
+              },
+              {
+                "name": "resourceBaseName",
+                "value": "sprites",
+                "type": "path",
+                "description": "Styling resourece base name."
+              }
+            ]
+          },
+          "docs": "Styling resources such as fonts and sprites"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

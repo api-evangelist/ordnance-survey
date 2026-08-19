@@ -1,0 +1,2259 @@
+{
+  "item": [
+    {
+      "id": "3f7f8fe3-ed8e-40a4-ad7a-2c200b26a7c6",
+      "name": "Collections",
+      "description": {
+        "content": "Retrieve information about collections",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "4c06c367-718d-40fb-a78c-0ac962d7b796",
+          "name": "Get list of all OS NGD feature collections",
+          "request": {
+            "name": "Get list of all OS NGD feature collections",
+            "description": {
+              "content": "Get a list of all the available OS NGD feature collections",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "collections"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "13a5fe85-2a09-42e0-9033-c0437013a176",
+              "name": "All Ordnance Survey National Geographic Database feature collections.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "collections"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"links\": [\n    {\n      \"href\": \"string\",\n      \"rel\": \"string\",\n      \"type\": \"string\",\n      \"title\": \"string\"\n    },\n    {\n      \"href\": \"string\",\n      \"rel\": \"string\",\n      \"type\": \"string\",\n      \"title\": \"string\"\n    }\n  ],\n  \"crs\": [\n    \"http://www.opengis.net/def/crs/OGC/1.3/CRS84\",\n    \"http://www.opengis.net/def/crs/EPSG/0/7405\"\n  ],\n  \"collections\": [\n    {\n      \"id\": \"string\",\n      \"title\": \"string\",\n      \"description\": \"string\",\n      \"crs\": [\n        \"http://www.opengis.net/def/crs/EPSG/0/7405\",\n        \"http://www.opengis.net/def/crs/EPSG/0/7405\"\n      ],\n      \"storageCrs\": \"http://www.opengis.net/def/crs/OGC/1.3/CRS84\",\n      \"itemType\": \"string\",\n      \"extent\": {\n        \"spatial\": {\n          \"bbox\": [\n            [\n              {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            ],\n            [\n              {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            ]\n          ],\n          \"crs\": \"string\"\n        },\n        \"temporal\": {\n          \"interval\": [\n            [\n              {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            ],\n            [\n              {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            ]\n          ],\n          \"trs\": \"string\"\n        }\n      },\n      \"links\": [\n        {\n          \"href\": \"string\",\n          \"rel\": \"string\",\n          \"type\": \"string\",\n          \"title\": \"string\"\n        },\n        {\n          \"href\": \"string\",\n          \"rel\": \"string\",\n          \"type\": \"string\",\n          \"title\": \"string\"\n        }\n      ]\n    },\n    {\n      \"id\": \"string\",\n      \"title\": \"string\",\n      \"description\": \"string\",\n      \"crs\": [\n        \"http://www.opengis.net/def/crs/EPSG/0/27700\",\n        \"http://www.opengis.net/def/crs/EPSG/0/3857\"\n      ],\n      \"storageCrs\": \"http://www.opengis.net/def/crs/EPSG/0/27700\",\n      \"itemType\": \"string\",\n      \"extent\": {\n        \"spatial\": {\n          \"bbox\": [\n            [\n              {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            ],\n            [\n              {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            ]\n          ],\n          \"crs\": \"string\"\n        },\n        \"temporal\": {\n          \"interval\": [\n            [\n              {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            ],\n            [\n              {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            ]\n          ],\n          \"trs\": \"string\"\n        }\n      },\n      \"links\": [\n        {\n          \"href\": \"string\",\n          \"rel\": \"string\",\n          \"type\": \"string\",\n          \"title\": \"string\"\n        },\n        {\n          \"href\": \"string\",\n          \"rel\": \"string\",\n          \"type\": \"string\",\n          \"title\": \"string\"\n        }\n      ]\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "3165ab36-a4e2-4d67-b7a6-c1b702b79026",
+              "name": "The request was not supported.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "collections"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "5bdbe790-d385-460a-9d97-b0adc65508ac",
+              "name": "The HTTP method requested is not supported. This endpoint only supports 'GET' requests.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "collections"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Method Not Allowed",
+              "code": 405,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "f89784d5-84a3-4853-9adb-7019d64bb16f",
+              "name": "A request header value was not supported.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "collections"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Acceptable",
+              "code": 406,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "2726155b-733b-49ba-98e9-8a54252004b1",
+          "name": "Get a single OS NGD feature collection",
+          "request": {
+            "name": "Get a single OS NGD feature collection",
+            "description": {
+              "content": "Get information about an OS NGD feature collection",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "collections",
+                ":collectionId"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "collectionId",
+                  "description": "(Required) A known collection ID."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "8a4d64f6-43e5-4462-9c0e-89b3bb1e5b27",
+              "name": "A single Ordnance Survey National Geographic Database feature collection.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "collections",
+                    ":collectionId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "collectionId",
+                      "description": "(Required) A known collection ID."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": \"string\",\n  \"title\": \"string\",\n  \"description\": \"string\",\n  \"crs\": [\n    \"http://www.opengis.net/def/crs/OGC/1.3/CRS84\",\n    \"http://www.opengis.net/def/crs/EPSG/0/3857\"\n  ],\n  \"storageCrs\": \"http://www.opengis.net/def/crs/EPSG/0/27700\",\n  \"itemType\": \"string\",\n  \"extent\": {\n    \"spatial\": {\n      \"bbox\": [\n        [\n          3638.136684647997,\n          5527.606745421021\n        ],\n        [\n          9282.308365843148,\n          1514.0596768357561\n        ]\n      ],\n      \"crs\": \"string\"\n    },\n    \"temporal\": {\n      \"interval\": [\n        [\n          \"string\",\n          \"string\"\n        ],\n        [\n          \"string\",\n          \"string\"\n        ]\n      ],\n      \"trs\": \"string\"\n    }\n  },\n  \"links\": [\n    {\n      \"href\": \"string\",\n      \"rel\": \"string\",\n      \"type\": \"string\",\n      \"title\": \"string\"\n    },\n    {\n      \"href\": \"string\",\n      \"rel\": \"string\",\n      \"type\": \"string\",\n      \"title\": \"string\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "ba309e5d-1558-493d-8ee2-891cf756f014",
+              "name": "The request was not supported.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "collections",
+                    ":collectionId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "collectionId",
+                      "description": "(Required) A known collection ID."
+                    }
+                  ]
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "d706f092-da32-4e66-9c9c-4ffff23daf7c",
+              "name": "Collection '{collectionId}' is not a supported Collection. Please refer to the documentation for a list of supported Collections.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "collections",
+                    ":collectionId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "collectionId",
+                      "description": "(Required) A known collection ID."
+                    }
+                  ]
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "08581df6-80a7-460b-a220-a59e7e3d4d5d",
+              "name": "The HTTP method requested is not supported. This endpoint only supports 'GET' requests.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "collections",
+                    ":collectionId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "collectionId",
+                      "description": "(Required) A known collection ID."
+                    }
+                  ]
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Method Not Allowed",
+              "code": 405,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "20b1f76e-1f62-4818-8dd0-346a654d7760",
+              "name": "A request header value was not supported.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "collections",
+                    ":collectionId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "collectionId",
+                      "description": "(Required) A known collection ID."
+                    }
+                  ]
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Acceptable",
+              "code": 406,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "066479f8-9e51-46db-9c55-8e147bd99fb6",
+          "name": "Get schema for a single OS NGD feature collection",
+          "request": {
+            "name": "Get schema for a single OS NGD feature collection",
+            "description": {},
+            "url": {
+              "path": [
+                "collections",
+                ":collectionId",
+                "schema"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "collectionId",
+                  "description": "(Required) A known collection ID."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "*/*"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "df9b5261-32a9-49b5-b9bf-dc46c7e82492",
+              "name": "Schema for an Ordnance Survey National Geographic Database feature collection.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "collections",
+                    ":collectionId",
+                    "schema"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "collectionId",
+                      "description": "(Required) A known collection ID."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "*/*"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "*/*"
+                }
+              ],
+              "body": "{\n  \"key_0\": {},\n  \"key_1\": {},\n  \"key_2\": {}\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "2f5338ae-7353-4ffb-9ab0-eb0b510549c4",
+              "name": "The schema request is not supported. Please refer to documentation for examples.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "collections",
+                    ":collectionId",
+                    "schema"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "collectionId",
+                      "description": "(Required) A known collection ID."
+                    }
+                  ]
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "77572cbf-9f4c-4261-8989-cfe0ed8640ab",
+              "name": "Collection '{collectionId}' is not a supported Collection. Please refer to the documentation for a list of supported Collections.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "collections",
+                    ":collectionId",
+                    "schema"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "collectionId",
+                      "description": "(Required) A known collection ID."
+                    }
+                  ]
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "4ecfcfe8-1ff6-49ca-b42f-86a756802b99",
+              "name": "The HTTP method requested is not supported. This endpoint only supports 'GET' requests.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "collections",
+                    ":collectionId",
+                    "schema"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "collectionId",
+                      "description": "(Required) A known collection ID."
+                    }
+                  ]
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Method Not Allowed",
+              "code": 405,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "f0829665-3252-4a9d-96f8-1f331b88c3e7",
+              "name": "A request header value was not supported.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "collections",
+                    ":collectionId",
+                    "schema"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "collectionId",
+                      "description": "(Required) A known collection ID."
+                    }
+                  ]
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Acceptable",
+              "code": 406,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "433b1f3b-fa7c-4470-8e10-fb2cbff847ec",
+          "name": "Get a list of queryable attributes for this feature collection",
+          "request": {
+            "name": "Get a list of queryable attributes for this feature collection",
+            "description": {},
+            "url": {
+              "path": [
+                "collections",
+                ":collectionId",
+                "queryables"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "collectionId",
+                  "description": "(Required) A known collection ID."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "6832ba0c-e1f6-4d0f-a08e-29b196ed10f6",
+              "name": "A list of queryable attributes and their types for this feature collection.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "collections",
+                    ":collectionId",
+                    "queryables"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "collectionId",
+                      "description": "(Required) A known collection ID."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"$schema\": \"string\",\n  \"$id\": \"string\",\n  \"type\": \"string\",\n  \"title\": \"string\",\n  \"description\": \"string\",\n  \"properties\": {\n    \"key_0\": {\n      \"title\": \"string\",\n      \"type\": \"string\",\n      \"format\": \"string\",\n      \"maxLength\": 5216,\n      \"pattern\": \"string\",\n      \"description\": \"string\",\n      \"hierarchy\": \"string\",\n      \"parent\": \"string\",\n      \"child\": \"string\",\n      \"minItems\": 2606,\n      \"maxItems\": 7192,\n      \"items\": {\n        \"value\": \"<Circular reference to #/components/schemas/Queryable detected>\"\n      },\n      \"enum\": [\n        \"string\",\n        \"string\"\n      ]\n    }\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "6ff84770-13d1-4bc2-9144-566a6c142295",
+              "name": "The queryable request is not supported. Please refer to documentation for examples.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "collections",
+                    ":collectionId",
+                    "queryables"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "collectionId",
+                      "description": "(Required) A known collection ID."
+                    }
+                  ]
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "25458b04-1be2-49a5-a324-be24217d061a",
+              "name": "Collection '{collectionId}' is not a supported Collection. Please refer to the documentation for a list of supported Collections.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "collections",
+                    ":collectionId",
+                    "queryables"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "collectionId",
+                      "description": "(Required) A known collection ID."
+                    }
+                  ]
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "04da0ea5-5107-4dd1-93a0-10bbc5cd6dd7",
+              "name": "The HTTP method requested is not supported. This endpoint only supports 'GET' requests.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "collections",
+                    ":collectionId",
+                    "queryables"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "collectionId",
+                      "description": "(Required) A known collection ID."
+                    }
+                  ]
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Method Not Allowed",
+              "code": 405,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "862c92f6-657c-4a8e-be57-52be34984d7b",
+              "name": "A request header value was not supported.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "collections",
+                    ":collectionId",
+                    "queryables"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "collectionId",
+                      "description": "(Required) A known collection ID."
+                    }
+                  ]
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Acceptable",
+              "code": 406,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    },
+    {
+      "id": "51bd3209-531f-4c0a-a024-f9ef48878a57",
+      "name": "Landing Page",
+      "description": {
+        "content": "Ordnance Survey NGD API – Features",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "e01d8521-1b20-4829-b477-78a29ede2683",
+          "name": "OS NGD API – Features landing page",
+          "request": {
+            "name": "OS NGD API – Features landing page",
+            "description": {},
+            "url": {
+              "path": [
+                ""
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "f0d34af9-a4eb-4366-8696-31d3c29bd81a",
+              "name": "Ordnance Survey National Geographic Database API – Features landing page.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"title\": \"string\",\n  \"description\": \"string\",\n  \"links\": [\n    {\n      \"href\": \"string\",\n      \"rel\": \"string\",\n      \"type\": \"string\",\n      \"title\": \"string\"\n    },\n    {\n      \"href\": \"string\",\n      \"rel\": \"string\",\n      \"type\": \"string\",\n      \"title\": \"string\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "0c412f3e-4058-4779-b00b-e2a4f7b26bc2",
+              "name": "The request was not supported.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "10b262cf-5160-4aa3-99ef-816a3442fdcf",
+              "name": "The HTTP method requested is not supported. This endpoint only supports 'GET' requests.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Method Not Allowed",
+              "code": 405,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "18796a07-369e-453f-ae74-3e7150c03322",
+              "name": "A request header value was not supported.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Acceptable",
+              "code": 406,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "907bba3c-7916-440e-83a3-896b3b99b4a8",
+          "name": "OS NGD API – Features conformance page",
+          "request": {
+            "name": "OS NGD API – Features conformance page",
+            "description": {},
+            "url": {
+              "path": [
+                "conformance"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "20720f6c-218e-4715-a21e-7395a6ea6192",
+              "name": "Ordnance Survey National Geographic Database API – Features conformance page.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "conformance"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"conformsTo\": [\n    \"string\",\n    \"string\"\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "022069cd-c21e-41e7-aa84-44fb636fbd9b",
+              "name": "The request was not supported.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "conformance"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "e390f49a-9a3d-490d-b612-45ab83970ec6",
+              "name": "The HTTP method requested is not supported. This endpoint only supports 'GET' requests.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "conformance"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Method Not Allowed",
+              "code": 405,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "fa25f639-42c7-4127-84be-5e04dc6589a4",
+              "name": "A request header value was not supported.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "conformance"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Acceptable",
+              "code": 406,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    },
+    {
+      "id": "6e466570-309c-4578-a738-421d7841be71",
+      "name": "Features",
+      "description": {
+        "content": "Retrieve features",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "7909b851-dd5f-4039-a479-99845461c251",
+          "name": "Retrieve features in the feature collection",
+          "request": {
+            "name": "Retrieve features in the feature collection",
+            "description": {},
+            "url": {
+              "path": [
+                "collections",
+                ":collectionId",
+                "items"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "bbox",
+                  "value": "<number>,<number>,<number>,<number>",
+                  "description": "The optional bbox parameter specifies a supported bounding box. Only features that have a geometry that intersects the bounding box are selected. The bounding box is provided as four comma-separated numbers:  <ul><li>Lower left corner, coordinate axis 1 (e.g. min x axis)</li><li> Lower left corner, coordinate axis 2 (e.g. min y axis)</li><li> Upper right corner, coordinate axis 1 (e.g. max x axis)</li><li> Upper right corner, coordinate axis 2 (e.g. max y axis)</li></ul>The default coordinate reference system of the values is WGS 84 longitude/latitude (http://www.opengis.net/def/crs/OGC/1.3/CRS84) unless a different coordinate reference system is specified in the parameter `bbox-crs`."
+                },
+                {
+                  "disabled": false,
+                  "key": "bbox-crs",
+                  "value": "<string>",
+                  "description": "The coordinate reference system of the `bbox` parameter. It must be a 2D coordinate reference system supported by the collection. Default is WGS84 longitude/latitude (http://www.opengis.net/def/crs/OGC/1.3/CRS84)."
+                },
+                {
+                  "disabled": false,
+                  "key": "crs",
+                  "value": "<string>",
+                  "description": "The coordinate reference system of the response geometries. It must be a coordinate reference system supported by the collection. Default is WGS84 longitude/latitude (http://www.opengis.net/def/crs/OGC/1.3/CRS84)."
+                },
+                {
+                  "disabled": false,
+                  "key": "datetime",
+                  "value": "<string>",
+                  "description": "Either a local date, a date-time with UTC time zone (Z) or an open or closed interval. Open ranges in time intervals at the start or end are supported using a double-dot (..) or an empty string for the start/end. Date and time expressions adhere to RFC 3339. Examples:<ul><li>A date-time: '2021-12-12T23:20:50Z'</li><li>A closed interval: '2021-12-12T00:00:00Z/2021-12-18T12:31:12Z'</li><li>Open intervals: '2021-12-12T00:00:00Z/..' or '../2021-12-18T12:31:12Z'</li><li>An interval until now: '2018-02-12T00:00:00Z/..' or '2018-02-12T00:00:00Z/'</li></ul>Selects features that have a temporal property that intersects the value of the parameter."
+                },
+                {
+                  "disabled": false,
+                  "key": "limit",
+                  "value": "<integer>",
+                  "description": "The optional limit parameter limits the number of items that are presented in the response document. Minimum = 1. Maximum = 100. Default = 100."
+                },
+                {
+                  "disabled": false,
+                  "key": "offset",
+                  "value": "<integer>",
+                  "description": "The optional offset parameter skips past the specified number of features in the collection. Minimum = 0. Default = 0."
+                },
+                {
+                  "disabled": false,
+                  "key": "filter",
+                  "value": "<string>",
+                  "description": "The optional filter parameter is a filter expression in CQL format which is applied when retrieving resources to determine which resources are included in a result set."
+                },
+                {
+                  "disabled": false,
+                  "key": "filter-crs",
+                  "value": "<string>",
+                  "description": "Specify which of the supported CRSs to use to encode geometric values in a filter expression. It must be a 2D coordinate reference system supported by the collection. Default is WGS84 longitude/latitude (http://www.opengis.net/def/crs/OGC/1.3/CRS84)."
+                },
+                {
+                  "disabled": false,
+                  "key": "filter-lang",
+                  "value": "<string>",
+                  "description": "The optional filter-lang parameter is the specific language used for the filter parameter. Default = cql-text"
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "collectionId",
+                  "description": "(Required) A known collection ID."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/geo+json"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "apikey",
+              "apikey": [
+                {
+                  "key": "key",
+                  "value": "key"
+                },
+                {
+                  "key": "value",
+                  "value": "{{apiKey}}"
+                },
+                {
+                  "key": "in",
+                  "value": "query"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "2469435e-5ad4-4fcb-aa0c-e8fa3a3569d8",
+              "name": "A list of features in a feature collection.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "collections",
+                    ":collectionId",
+                    "items"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "bbox",
+                      "value": "-0.183678,51.474968,-0.068321,51.540143"
+                    },
+                    {
+                      "key": "bbox-crs",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "crs",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "datetime",
+                      "value": "2018-02-12T00:00:00Z/.."
+                    },
+                    {
+                      "key": "limit",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "offset",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "filter",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "filter-crs",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "filter-lang",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "key",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "collectionId",
+                      "description": "(Required) A known collection ID."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/geo+json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/geo+json"
+                }
+              ],
+              "body": "{\n  \"type\": \"string\",\n  \"links\": [\n    {\n      \"href\": \"string\",\n      \"rel\": \"string\",\n      \"type\": \"string\",\n      \"title\": \"string\"\n    },\n    {\n      \"href\": \"string\",\n      \"rel\": \"string\",\n      \"type\": \"string\",\n      \"title\": \"string\"\n    }\n  ],\n  \"timeStamp\": \"1972-02-18T19:16:44.433Z\",\n  \"features\": [\n    {\n      \"id\": \"string\",\n      \"type\": \"string\",\n      \"geometry\": {\n        \"type\": \"string\",\n        \"coordinates\": [\n          {\n            \"x\": 4865.658958146416,\n            \"y\": 508.2013993712331\n          },\n          {\n            \"x\": 7562.549747003215,\n            \"y\": 2827.2306971186936\n          }\n        ]\n      },\n      \"properties\": {\n        \"key_0\": {}\n      }\n    },\n    {\n      \"id\": \"string\",\n      \"type\": \"string\",\n      \"geometry\": {\n        \"type\": \"string\",\n        \"coordinates\": [\n          {\n            \"x\": 4081.800015042841,\n            \"y\": 8125.158263286852\n          },\n          {\n            \"x\": 421.87998398139695,\n            \"y\": 2102.046729626843\n          }\n        ]\n      },\n      \"properties\": {\n        \"key_0\": {},\n        \"key_1\": {},\n        \"key_2\": {},\n        \"key_3\": {}\n      }\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "7326cd70-e334-4c7e-b345-96bb3d642ea1",
+              "name": "The items request is not supported. Please refer to documentation for examples.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "collections",
+                    ":collectionId",
+                    "items"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "bbox",
+                      "value": "-0.183678,51.474968,-0.068321,51.540143"
+                    },
+                    {
+                      "key": "bbox-crs",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "crs",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "datetime",
+                      "value": "2018-02-12T00:00:00Z/.."
+                    },
+                    {
+                      "key": "limit",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "offset",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "filter",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "filter-crs",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "filter-lang",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "key",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "collectionId",
+                      "description": "(Required) A known collection ID."
+                    }
+                  ]
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "cbc04375-1776-4451-b3c4-9f85fad370aa",
+              "name": "Collection '{collectionId}' is not a supported Collection. Please refer to the documentation for a list of supported Collections.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "collections",
+                    ":collectionId",
+                    "items"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "bbox",
+                      "value": "-0.183678,51.474968,-0.068321,51.540143"
+                    },
+                    {
+                      "key": "bbox-crs",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "crs",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "datetime",
+                      "value": "2018-02-12T00:00:00Z/.."
+                    },
+                    {
+                      "key": "limit",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "offset",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "filter",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "filter-crs",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "filter-lang",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "key",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "collectionId",
+                      "description": "(Required) A known collection ID."
+                    }
+                  ]
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "9d211146-c73f-4d65-90f8-0f81de2e9cbe",
+              "name": "The HTTP method requested is not supported. This endpoint only supports 'GET' requests.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "collections",
+                    ":collectionId",
+                    "items"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "bbox",
+                      "value": "-0.183678,51.474968,-0.068321,51.540143"
+                    },
+                    {
+                      "key": "bbox-crs",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "crs",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "datetime",
+                      "value": "2018-02-12T00:00:00Z/.."
+                    },
+                    {
+                      "key": "limit",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "offset",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "filter",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "filter-crs",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "filter-lang",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "key",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "collectionId",
+                      "description": "(Required) A known collection ID."
+                    }
+                  ]
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Method Not Allowed",
+              "code": 405,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "4d4b2a82-866d-4095-bda3-6f75b686d0c6",
+              "name": "A request header value was not supported.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "collections",
+                    ":collectionId",
+                    "items"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "bbox",
+                      "value": "-0.183678,51.474968,-0.068321,51.540143"
+                    },
+                    {
+                      "key": "bbox-crs",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "crs",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "datetime",
+                      "value": "2018-02-12T00:00:00Z/.."
+                    },
+                    {
+                      "key": "limit",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "offset",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "filter",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "filter-crs",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "filter-lang",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "key",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "collectionId",
+                      "description": "(Required) A known collection ID."
+                    }
+                  ]
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Acceptable",
+              "code": 406,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "f0b7c9d1-8451-415c-adda-0db97a2b2cb5",
+              "name": "The request has timed out. Please check the service availability dashboard: https://osdatahub.os.uk/serviceStatus .",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "collections",
+                    ":collectionId",
+                    "items"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "bbox",
+                      "value": "-0.183678,51.474968,-0.068321,51.540143"
+                    },
+                    {
+                      "key": "bbox-crs",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "crs",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "datetime",
+                      "value": "2018-02-12T00:00:00Z/.."
+                    },
+                    {
+                      "key": "limit",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "offset",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "filter",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "filter-crs",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "filter-lang",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "key",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "collectionId",
+                      "description": "(Required) A known collection ID."
+                    }
+                  ]
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Gateway Timeout",
+              "code": 504,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "a4a07969-2f63-4b50-b560-612eea9c6558",
+          "name": "Retrieve a feature from the feature collection",
+          "request": {
+            "name": "Retrieve a feature from the feature collection",
+            "description": {},
+            "url": {
+              "path": [
+                "collections",
+                ":collectionId",
+                "items",
+                ":featureId"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "crs",
+                  "value": "<string>",
+                  "description": "The coordinate reference system of the response geometries. It must be a coordinate reference system supported by the collection. Default is WGS84 longitude/latitude (http://www.opengis.net/def/crs/OGC/1.3/CRS84)."
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "collectionId",
+                  "description": "(Required) A known collection ID."
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "featureId",
+                  "description": "(Required) A feature ID which is the identifier(id) for the feature."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/geo+json"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "apikey",
+              "apikey": [
+                {
+                  "key": "key",
+                  "value": "key"
+                },
+                {
+                  "key": "value",
+                  "value": "{{apiKey}}"
+                },
+                {
+                  "key": "in",
+                  "value": "query"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "7f0ac7e8-b4f1-4731-8e86-597195b57645",
+              "name": "A single feature in the feature collection.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "collections",
+                    ":collectionId",
+                    "items",
+                    ":featureId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "crs",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "key",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "collectionId",
+                      "description": "(Required) A known collection ID."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "featureId",
+                      "description": "(Required) A feature ID which is the identifier(id) for the feature."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/geo+json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/geo+json"
+                }
+              ],
+              "body": "{\n  \"id\": \"string\",\n  \"type\": \"string\",\n  \"geometry\": {\n    \"type\": \"string\",\n    \"coordinates\": [\n      {\n        \"x\": 9241.512871425715,\n        \"y\": 295.70097347796144\n      },\n      {\n        \"x\": 5423.135687218372,\n        \"y\": 5401.832595013715\n      }\n    ]\n  },\n  \"properties\": {\n    \"key_0\": {},\n    \"key_1\": {}\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "b8cb2cd1-4bc8-4f86-a60c-8f090c878ccc",
+              "name": "The feature request contains elements that are not supported. Please refer to documentation for examples.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "collections",
+                    ":collectionId",
+                    "items",
+                    ":featureId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "crs",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "key",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "collectionId",
+                      "description": "(Required) A known collection ID."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "featureId",
+                      "description": "(Required) A feature ID which is the identifier(id) for the feature."
+                    }
+                  ]
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "b63cd242-2b0d-4893-b696-9869b64fa98e",
+              "name": "The feature collection '{collectionId}' or feature with id:'{featureId}' could not be found. Please check it is a supported collection or feature.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "collections",
+                    ":collectionId",
+                    "items",
+                    ":featureId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "crs",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "key",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "collectionId",
+                      "description": "(Required) A known collection ID."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "featureId",
+                      "description": "(Required) A feature ID which is the identifier(id) for the feature."
+                    }
+                  ]
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "890763ad-9414-436d-9ee6-fc35c64d18f9",
+              "name": "The HTTP method requested is not supported. This endpoint only supports 'GET' requests.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "collections",
+                    ":collectionId",
+                    "items",
+                    ":featureId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "crs",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "key",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "collectionId",
+                      "description": "(Required) A known collection ID."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "featureId",
+                      "description": "(Required) A feature ID which is the identifier(id) for the feature."
+                    }
+                  ]
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Method Not Allowed",
+              "code": 405,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "207596ad-ce81-4870-a4bf-3974c2f8fd50",
+              "name": "A request header value was not supported.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "collections",
+                    ":collectionId",
+                    "items",
+                    ":featureId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "crs",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "key",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "collectionId",
+                      "description": "(Required) A known collection ID."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "featureId",
+                      "description": "(Required) A feature ID which is the identifier(id) for the feature."
+                    }
+                  ]
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Acceptable",
+              "code": 406,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "d5f2a535-45d3-458c-852d-55ca1205a216",
+              "name": "The request has timed out. Please check the service availability dashboard: https://osdatahub.os.uk/serviceStatus .",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "collections",
+                    ":collectionId",
+                    "items",
+                    ":featureId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "crs",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "key",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "collectionId",
+                      "description": "(Required) A known collection ID."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "featureId",
+                      "description": "(Required) A feature ID which is the identifier(id) for the feature."
+                    }
+                  ]
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Gateway Timeout",
+              "code": 504,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api.os.uk/features/ngd/ofa/v1",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "62ce9c6d-c504-47c3-9a73-38c2f47d873e",
+    "name": "OS NGD API – Features",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "",
+      "type": "text/plain"
+    }
+  }
+}

@@ -1,0 +1,214 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "OS Features API",
+    "version": "v1.0"
+  },
+  "request": {
+    "auth": {
+      "type": "apikey",
+      "key": "key",
+      "value": "{{key}}",
+      "placement": "query"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "GetCapabilities",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Access to features matching a given query",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.os.uk/features/v1/wfs",
+            "params": [
+              {
+                "name": "request",
+                "value": "",
+                "type": "query",
+                "description": "The type of request being made."
+              },
+              {
+                "name": "service",
+                "value": "",
+                "type": "query",
+                "description": "The type of service being requested."
+              },
+              {
+                "name": "version",
+                "value": "",
+                "type": "query",
+                "description": "The type of service being requested."
+              },
+              {
+                "name": "typeNames",
+                "value": "",
+                "type": "query",
+                "description": "The Feature Type being requested."
+              },
+              {
+                "name": "bbox",
+                "value": "",
+                "type": "query",
+                "description": "A set of valid WFS BBOX coordinates, in the order <bottom-left y, bottom-left x, top-right y, top-right x> (Dependent on CRS)"
+              },
+              {
+                "name": "filter",
+                "value": "",
+                "type": "query",
+                "description": "A valid OGC XML filter object"
+              },
+              {
+                "name": "count",
+                "value": "",
+                "type": "query",
+                "description": "An integer stating the maximum number of features to be returned in a single response. In version 1.0.0 and 1.1.0 this is known as maxFeatures"
+              },
+              {
+                "name": "maxFeatures",
+                "value": "",
+                "type": "query",
+                "description": "An integer stating the maximum number of features to be returned in a single response. In version 2.0.0 this is known as count"
+              },
+              {
+                "name": "propertyName",
+                "value": "",
+                "type": "query",
+                "description": "A list of valid feature attribute names, for example, ChangeDate, TOID, PhysicalLevel"
+              },
+              {
+                "name": "startIndex",
+                "value": "",
+                "type": "query",
+                "description": "An integer stating which result to start from, when returning a response"
+              },
+              {
+                "name": "outputFormat",
+                "value": "",
+                "type": "query",
+                "description": "The format the response will be returned in. Default: XML."
+              },
+              {
+                "name": "resultType",
+                "value": "",
+                "type": "query",
+                "description": "Type of the results. Default: results."
+              },
+              {
+                "name": "srsName",
+                "value": "",
+                "type": "query",
+                "description": "Allows the user to reproject the selected features into another CRS. Default: EPSG:27700"
+              }
+            ]
+          },
+          "docs": "Access to features matching a given query"
+        },
+        {
+          "info": {
+            "name": "Access to features matching a given query for a particular year (as an annual snapshot - taking the last full release in the calendar year)",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.os.uk/features/v1/wfs/archive/:year",
+            "params": [
+              {
+                "name": "year",
+                "value": "",
+                "type": "path",
+                "description": "The year being requested."
+              },
+              {
+                "name": "request",
+                "value": "",
+                "type": "query",
+                "description": "The type of request being made."
+              },
+              {
+                "name": "service",
+                "value": "",
+                "type": "query",
+                "description": "The type of service being requested."
+              },
+              {
+                "name": "version",
+                "value": "",
+                "type": "query",
+                "description": "The type of service being requested."
+              },
+              {
+                "name": "typeNames",
+                "value": "",
+                "type": "query",
+                "description": "The Feature Type being requested."
+              },
+              {
+                "name": "bbox",
+                "value": "",
+                "type": "query",
+                "description": "A set of valid WFS BBOX coordinates, in the order <bottom-left y, bottom-left x, top-right y, top-right x> (Dependent on CRS)"
+              },
+              {
+                "name": "filter",
+                "value": "",
+                "type": "query",
+                "description": "A valid OGC XML filter object"
+              },
+              {
+                "name": "count",
+                "value": "",
+                "type": "query",
+                "description": "An integer stating the maximum number of features to be returned in a single response. In version 1.0.0 and 1.1.0 this is known as maxFeatures"
+              },
+              {
+                "name": "maxFeatures",
+                "value": "",
+                "type": "query",
+                "description": "An integer stating the maximum number of features to be returned in a single response. In version 2.0.0 this is known as count"
+              },
+              {
+                "name": "propertyName",
+                "value": "",
+                "type": "query",
+                "description": "A list of valid feature attribute names, for example, ChangeDate, TOID, PhysicalLevel"
+              },
+              {
+                "name": "startIndex",
+                "value": "",
+                "type": "query",
+                "description": "An integer stating which result to start from, when returning a response"
+              },
+              {
+                "name": "outputFormat",
+                "value": "",
+                "type": "query",
+                "description": "The format the response will be returned in. Default: XML."
+              },
+              {
+                "name": "resultType",
+                "value": "",
+                "type": "query",
+                "description": "Type of the results. Default: results."
+              },
+              {
+                "name": "srsName",
+                "value": "",
+                "type": "query",
+                "description": "Allows the user to reproject the selected features into another CRS. Default: EPSG:27700"
+              }
+            ]
+          },
+          "docs": "Access to features matching a given query for a particular year (as an annual snapshot - taking the last full release in the calendar year)"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

@@ -1,0 +1,114 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "OS Linked Identifiers API",
+    "version": "1.0.0"
+  },
+  "request": {
+    "auth": {
+      "type": "apikey",
+      "key": "key",
+      "value": "{{key}}",
+      "placement": "query"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "OS OpenData Users",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Query ID when input featureType is known",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.os.uk/search/links/v1/featureTypes/:featureType/:id",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "ID of the feature that is being matched"
+              },
+              {
+                "name": "featureType",
+                "value": "",
+                "type": "path",
+                "description": "Feature type of ID being queried"
+              }
+            ]
+          },
+          "docs": "Returns associated Linked Identifiers, when feature type is known. Returns an object."
+        },
+        {
+          "info": {
+            "name": "Queries ID when input identifierType is known",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.os.uk/search/links/v1/identifierTypes/:identifierType/:id",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "ID of the feature that is being matched"
+              },
+              {
+                "name": "identifierType",
+                "value": "",
+                "type": "path",
+                "description": "Identifier type of ID being queried"
+              }
+            ]
+          },
+          "docs": "Returns associated Linked Identifiers, when the input identifier type is known. Returns an object.\n"
+        },
+        {
+          "info": {
+            "name": "Query identifer",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.os.uk/search/links/v1/identifiers/:id",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "ID of the feature that is being matched"
+              }
+            ]
+          },
+          "docs": "Query by identifier and find its associated IDs. May return more than one set of links due to the namespace overlap between UPRNs and USRNs."
+        },
+        {
+          "info": {
+            "name": "Returns product version details of the source data products",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.os.uk/search/links/v1/productVersionInfo/:correlationMethod",
+            "params": [
+              {
+                "name": "correlationMethod",
+                "value": "",
+                "type": "path",
+                "description": "Correlation method being queried"
+              }
+            ]
+          },
+          "docs": "Returns current valid version information for identifier relationships"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

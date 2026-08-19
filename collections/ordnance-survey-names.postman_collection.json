@@ -1,0 +1,306 @@
+{
+  "item": [
+    {
+      "id": "58084c00-849b-43d6-8107-56850502fb03",
+      "name": "Find",
+      "description": {
+        "content": "A free string text search of OS Names, intended to be an ambiguous/fuzzy search.",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "0a5f5efe-1380-489a-8915-d32b5ecd283c",
+          "name": "A free string text search, intended to be an ambiguous/fuzzy search.",
+          "request": {
+            "name": "A free string text search, intended to be an ambiguous/fuzzy search.",
+            "description": {},
+            "url": {
+              "path": [
+                "find"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "query",
+                  "value": "<string>",
+                  "description": "(Required) Free text search parameter."
+                },
+                {
+                  "disabled": false,
+                  "key": "format",
+                  "value": "<string>",
+                  "description": "The format the response will be returned in."
+                },
+                {
+                  "disabled": false,
+                  "key": "maxresults",
+                  "value": "<integer>",
+                  "description": "The maximum number of results to return. Minimum = 1. Maximum = 100. Default = 100."
+                },
+                {
+                  "disabled": false,
+                  "key": "offset",
+                  "value": "<integer>",
+                  "description": "Offset the list of returned results by this amount."
+                },
+                {
+                  "disabled": false,
+                  "key": "bounds",
+                  "value": "<number>,<number>,<number>,<number>",
+                  "description": "Biases the results to a certain area. The <BoundingBox> is a British National Grid bounding box in the form: XMIN,YMIN,XMAX,YMAX"
+                },
+                {
+                  "disabled": false,
+                  "key": "fq",
+                  "value": "<string>",
+                  "description": "Filters the results by bounding box or local_type. "
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "1bc1e354-4bcc-40cf-9620-c145f4645638",
+              "name": "Retrieves addresses based on a free text search.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "find"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "query",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "format",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "maxresults",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "offset",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "bounds",
+                      "value": "<number>,<number>,<number>,<number>"
+                    },
+                    {
+                      "key": "fq",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "key",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"header\": {\n    \"uri\": \"string\",\n    \"query\": \"string\",\n    \"format\": \"string\",\n    \"maxresults\": 9475,\n    \"offset\": 5975,\n    \"totalresults\": 3488\n  },\n  \"results\": [\n    {\n      \"GAZETTEER_ENTRY\": {\n        \"ID\": \"string\",\n        \"NAMES_URI\": \"string\",\n        \"NAME1\": \"string\",\n        \"TYPE\": \"string\",\n        \"LOCAL_TYPE\": \"string\",\n        \"GEOMETRY_X\": 1802.8286052900999,\n        \"GEOMETRY_Y\": 9643.726682977778,\n        \"MOST_DETAIL_VIEW_RES\": 1706,\n        \"LEAST_DETAIL_VIEW_RES\": 5573,\n        \"MBR_XMIN\": 6415.726173123083,\n        \"MBR_YMIN\": 1072.282090011878,\n        \"MBR_XMAX\": 1215.1473173932015,\n        \"MBR_YMAX\": 6682.746158000311,\n        \"POSTCODE_DISTRICT\": \"string\",\n        \"POSTCODE_DISTRICT_URI\": \"string\",\n        \"POPULATED_PLACE\": \"string\",\n        \"POPULATED_PLACE_URI\": \"string\",\n        \"POPULATED_PLACE_TYPE\": \"string\",\n        \"COUNTY_UNITARY\": \"string\",\n        \"COUNTY_UNITARY_URI\": \"string\",\n        \"COUNTY_UNITARY_TYPE\": \"string\",\n        \"REGION\": \"string\",\n        \"REGION_URI\": \"string\",\n        \"COUNTRY\": \"string\",\n        \"COUNTRY_URI\": \"string\"\n      }\n    },\n    {\n      \"GAZETTEER_ENTRY\": {\n        \"ID\": \"string\",\n        \"NAMES_URI\": \"string\",\n        \"NAME1\": \"string\",\n        \"TYPE\": \"string\",\n        \"LOCAL_TYPE\": \"string\",\n        \"GEOMETRY_X\": 5572.770001368851,\n        \"GEOMETRY_Y\": 5087.898703150527,\n        \"MOST_DETAIL_VIEW_RES\": 445,\n        \"LEAST_DETAIL_VIEW_RES\": 2105,\n        \"MBR_XMIN\": 7769.7763126490945,\n        \"MBR_YMIN\": 6082.755901383666,\n        \"MBR_XMAX\": 6363.222910335508,\n        \"MBR_YMAX\": 8506.464044360258,\n        \"POSTCODE_DISTRICT\": \"string\",\n        \"POSTCODE_DISTRICT_URI\": \"string\",\n        \"POPULATED_PLACE\": \"string\",\n        \"POPULATED_PLACE_URI\": \"string\",\n        \"POPULATED_PLACE_TYPE\": \"string\",\n        \"COUNTY_UNITARY\": \"string\",\n        \"COUNTY_UNITARY_URI\": \"string\",\n        \"COUNTY_UNITARY_TYPE\": \"string\",\n        \"REGION\": \"string\",\n        \"REGION_URI\": \"string\",\n        \"COUNTRY\": \"string\",\n        \"COUNTRY_URI\": \"string\"\n      }\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    },
+    {
+      "id": "b2769093-347e-4eec-922e-e4ba995cc05d",
+      "name": "Nearest",
+      "description": {
+        "content": "Find the features closest to a given point.",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "5e5d54e1-8cf6-4eaf-a91b-d2a17dd228fb",
+          "name": "Find the features closest to a given point",
+          "request": {
+            "name": "Find the features closest to a given point",
+            "description": {},
+            "url": {
+              "path": [
+                "nearest"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "point",
+                  "value": "<string>",
+                  "description": "(Required) A set of British National Grid coordinates to which the nearest record in a straight line should be found."
+                },
+                {
+                  "disabled": false,
+                  "key": "radius",
+                  "value": "<number>",
+                  "description": "The radius in metres to search within. Minimum = 0.01, Maximum = 1,000 . Default = 100"
+                },
+                {
+                  "disabled": false,
+                  "key": "format",
+                  "value": "<string>",
+                  "description": "The format the response will be returned in."
+                },
+                {
+                  "disabled": false,
+                  "key": "fq",
+                  "value": "<string>",
+                  "description": "Filters the results by bounding box or local_type. "
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "c5d45aec-f5a6-4a64-8082-2991dea39f67",
+              "name": "Retrieves addresses based on a free text search.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "nearest"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "point",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "radius",
+                      "value": "<number>"
+                    },
+                    {
+                      "key": "format",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "fq",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "key",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"header\": {\n    \"uri\": \"string\",\n    \"query\": \"string\",\n    \"format\": \"string\",\n    \"maxresults\": 2065,\n    \"offset\": 9184,\n    \"totalresults\": 4106\n  },\n  \"results\": [\n    {\n      \"GAZETTEER_ENTRY\": {\n        \"ID\": \"string\",\n        \"NAMES_URI\": \"string\",\n        \"NAME1\": \"string\",\n        \"TYPE\": \"string\",\n        \"LOCAL_TYPE\": \"string\",\n        \"GEOMETRY_X\": 3386.0239670230276,\n        \"GEOMETRY_Y\": 5833.660833046983,\n        \"MOST_DETAIL_VIEW_RES\": 2737,\n        \"LEAST_DETAIL_VIEW_RES\": 1488,\n        \"MBR_XMIN\": 1462.1947420861381,\n        \"MBR_YMIN\": 2070.0450907022437,\n        \"MBR_XMAX\": 8059.9120766147635,\n        \"MBR_YMAX\": 238.92218027591338,\n        \"POSTCODE_DISTRICT\": \"string\",\n        \"POSTCODE_DISTRICT_URI\": \"string\",\n        \"POPULATED_PLACE\": \"string\",\n        \"POPULATED_PLACE_URI\": \"string\",\n        \"POPULATED_PLACE_TYPE\": \"string\",\n        \"COUNTY_UNITARY\": \"string\",\n        \"COUNTY_UNITARY_URI\": \"string\",\n        \"COUNTY_UNITARY_TYPE\": \"string\",\n        \"REGION\": \"string\",\n        \"REGION_URI\": \"string\",\n        \"COUNTRY\": \"string\",\n        \"COUNTRY_URI\": \"string\"\n      }\n    },\n    {\n      \"GAZETTEER_ENTRY\": {\n        \"ID\": \"string\",\n        \"NAMES_URI\": \"string\",\n        \"NAME1\": \"string\",\n        \"TYPE\": \"string\",\n        \"LOCAL_TYPE\": \"string\",\n        \"GEOMETRY_X\": 8568.00733087237,\n        \"GEOMETRY_Y\": 1358.1096960548878,\n        \"MOST_DETAIL_VIEW_RES\": 3565,\n        \"LEAST_DETAIL_VIEW_RES\": 9992,\n        \"MBR_XMIN\": 3777.8705058752225,\n        \"MBR_YMIN\": 9425.974723317502,\n        \"MBR_XMAX\": 5054.834428915238,\n        \"MBR_YMAX\": 6938.1599350882925,\n        \"POSTCODE_DISTRICT\": \"string\",\n        \"POSTCODE_DISTRICT_URI\": \"string\",\n        \"POPULATED_PLACE\": \"string\",\n        \"POPULATED_PLACE_URI\": \"string\",\n        \"POPULATED_PLACE_TYPE\": \"string\",\n        \"COUNTY_UNITARY\": \"string\",\n        \"COUNTY_UNITARY_URI\": \"string\",\n        \"COUNTY_UNITARY_TYPE\": \"string\",\n        \"REGION\": \"string\",\n        \"REGION_URI\": \"string\",\n        \"COUNTRY\": \"string\",\n        \"COUNTRY_URI\": \"string\"\n      }\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api.os.uk/search/names/v1",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "apikey",
+    "apikey": [
+      {
+        "key": "key",
+        "value": "key"
+      },
+      {
+        "key": "value",
+        "value": "{{apiKey}}"
+      },
+      {
+        "key": "in",
+        "value": "query"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "cbbafb59-43dc-490c-9c86-ce17579257f2",
+    "name": "OS Names API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "",
+      "type": "text/plain"
+    }
+  }
+}
