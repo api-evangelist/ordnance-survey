@@ -19,6 +19,22 @@ description: 'Ordnance Survey is Great Britain''s national mapping agency, a gov
   in the OS estate. Home market is the United Kingdom.'
 image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/icons/groq.png
 tags:
+- Real-Estate
+- United Kingdom
+- Land Registry
+- Geospatial
+- Addressing
+- Open Data
+- Property Data
+- PropTech
+- Government
+- Mapping
+- OGC
+- UPRN
+- National Mapping
+- GNSS
+- Vector Tiles
+tags_raw:
 - Real Estate
 - United Kingdom
 - Land Registry
@@ -265,6 +281,8 @@ apis:
   humanURL: https://docs.os.uk/os-apis/accessing-os-apis/oauth-2-api
   baseURL: https://api.os.uk/oauth2/token/v1
   tags:
+  - Authentication
+  tags_raw:
   - Authentication
   - OAuth2
   properties:
