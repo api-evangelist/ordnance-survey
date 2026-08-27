@@ -60,156 +60,14 @@ created: '2026-07-26'
 modified: '2026-07-26'
 specificationVersion: '0.23'
 apis:
-- aid: ordnance-survey:os-ngd-api-features
-  name: OS NGD API - Features
-  description: OGC API - Features conformant access to the OS National Geographic Database, serving
-    building, land, address, and transport feature collections as GeoJSON. The OpenAPI 3.0.1 description
-    is served live and anonymously at /api.
-  humanURL: https://docs.os.uk/os-apis/accessing-os-apis/os-ngd-api-features
-  baseURL: https://api.os.uk/features/ngd/ofa/v1
-  tags:
-  - Features
-  - OGC API
-  - Geospatial
-  - Property Data
-  properties:
-  - type: OpenAPI
-    url: openapi/ordnance-survey-ngd-features-openapi.json
-  - type: Documentation
-    url: https://docs.os.uk/os-apis/accessing-os-apis/os-ngd-api-features
-  - type: APIReference
-    url: https://api.os.uk/features/ngd/ofa/v1/api
-  - type: Overlay
-    url: overlays/ordnance-survey-ngd-features-overlay.yaml
-- aid: ordnance-survey:os-ngd-api-tiles
-  name: OS NGD API - Tiles
-  description: OGC API - Tiles conformant vector tile service over the OS National Geographic Database,
-    including tile matrix sets and styles. The OpenAPI 3.0.1 description is served live and anonymously
-    at /api.
-  humanURL: https://docs.os.uk/os-apis/accessing-os-apis/os-ngd-api-tiles
-  baseURL: https://api.os.uk/maps/vector/ngd/ota/v1
-  tags:
-  - Tiles
-  - OGC API
-  - Vector Tiles
-  - Mapping
-  properties:
-  - type: OpenAPI
-    url: openapi/ordnance-survey-ngd-tiles-openapi.json
-  - type: Documentation
-    url: https://docs.os.uk/os-apis/accessing-os-apis/os-ngd-api-tiles
-  - type: APIReference
-    url: https://api.os.uk/maps/vector/ngd/ota/v1/api
-  - type: Overlay
-    url: overlays/ordnance-survey-ngd-tiles-overlay.yaml
-- aid: ordnance-survey:os-downloads-api
-  name: OS Downloads API
-  description: Automated bulk download of OS OpenData and OS Premium datasets. The OpenData half of
-    this API answers anonymously with no key - 26 open products including OS Open UPRN, OS Open TOID,
-    Code-Point Open, OS Open Names, and Boundary-Line, each with direct zip download URLs.
-  humanURL: https://docs.os.uk/os-apis/accessing-os-apis/os-downloads-api
-  baseURL: https://api.os.uk/downloads/v1
-  tags:
-  - Downloads
-  - Open Data
-  - Bulk Data
-  - Addressing
-  properties:
-  - type: OpenAPI
-    url: openapi/ordnance-survey-downloads-openapi.yaml
-  - type: Documentation
-    url: https://docs.os.uk/os-apis/accessing-os-apis/os-downloads-api
-  - type: APIReference
-    url: https://api.os.uk/downloads/v1/openapi.yaml
-  - type: Overlay
-    url: overlays/ordnance-survey-downloads-overlay.yaml
-- aid: ordnance-survey:os-net-api
-  name: OS Net API
-  description: High-precision GNSS data from the OS Net network of continuously operating reference
-    stations across Great Britain, including station metadata, health, and RINEX observation files.
-  humanURL: https://docs.os.uk/os-apis/accessing-os-apis/os-net-api
-  baseURL: https://api.os.uk/positioning/osnet/v1
-  tags:
-  - Positioning
-  - GNSS
-  - Surveying
-  properties:
-  - type: OpenAPI
-    url: openapi/ordnance-survey-osnet-openapi.yaml
-  - type: Documentation
-    url: https://docs.os.uk/os-apis/accessing-os-apis/os-net-api
-  - type: APIReference
-    url: https://api.os.uk/positioning/osnet/v1/openapi.yaml
-  - type: Overlay
-    url: overlays/ordnance-survey-osnet-overlay.yaml
-- aid: ordnance-survey:os-places-api
-  name: OS Places API
-  description: Address search and geocoding over AddressBase Premium - every UPRN in the United Kingdom,
-    Jersey, Guernsey, and the Isle of Man, with current, provisional, and historic address records and
-    TOID cross-references. Premium or PSGA licensed; no OpenAPI is published.
-  humanURL: https://docs.os.uk/os-apis/accessing-os-apis/os-places-api
-  baseURL: https://api.os.uk/search/places/v1
-  tags:
-  - Addressing
-  - Geocoding
-  - UPRN
-  - Property Data
-  properties:
-  - type: OpenAPI
-    url: openapi/ordnance-survey-places-openapi.json
-  - type: Documentation
-    url: https://docs.os.uk/os-apis/accessing-os-apis/os-places-api
-  - type: Overlay
-    url: overlays/ordnance-survey-places-overlay.yaml
-  - type: APIReference
-    url: https://docs.os.uk/os-apis/accessing-os-apis/os-places-api/technical-specification
-- aid: ordnance-survey:os-names-api
-  name: OS Names API
-  description: A geographic directory of identifiable places, roads, and settlements in Great Britain,
-    with find and nearest operations.
-  humanURL: https://docs.os.uk/os-apis/accessing-os-apis/os-names-api
-  baseURL: https://api.os.uk/search/names/v1
-  tags:
-  - Search
-  - Gazetteer
-  - Geospatial
-  properties:
-  - type: OpenAPI
-    url: openapi/ordnance-survey-names-openapi.json
-  - type: Documentation
-    url: https://docs.os.uk/os-apis/accessing-os-apis/os-names-api
-  - type: Overlay
-    url: overlays/ordnance-survey-names-overlay.yaml
-  - type: APIReference
-    url: https://docs.os.uk/os-apis/accessing-os-apis/os-names-api/technical-specification
-- aid: ordnance-survey:os-linked-identifiers-api
-  name: OS Linked Identifiers API
-  description: Resolves the relationships between properties, streets, and OS MasterMap identifiers
-    - UPRN to TOID to USRN - which is the join key between OS data, HM Land Registry records, and local
-    authority property data.
-  humanURL: https://docs.os.uk/os-apis/accessing-os-apis/os-linked-identifiers-api
-  baseURL: https://api.os.uk/search/links/v1
-  tags:
-  - Identifiers
-  - UPRN
-  - TOID
-  - Property Data
-  properties:
-  - type: OpenAPI
-    url: openapi/ordnance-survey-linked-identifiers-openapi.json
-  - type: Documentation
-    url: https://docs.os.uk/os-apis/accessing-os-apis/os-linked-identifiers-api
-  - type: Overlay
-    url: overlays/ordnance-survey-linked-identifiers-overlay.yaml
-  - type: APIReference
-    url: https://docs.os.uk/os-apis/accessing-os-apis/os-linked-identifiers-api/technical-specification
 - aid: ordnance-survey:os-match-and-cleanse-api
   name: OS Match & Cleanse API (withdrawn)
-  description: 'Matched and cleansed supplied address strings against OS authoritative addressing data,
-    returning a matched AddressBase record and confidence score. WITHDRAWN: end of life 31 March 2026,
-    announced 24 February 2025. The API has been removed from existing API projects and requests now
-    fail. OS recommends the OS Places API FIND endpoint, or an OS Partner bulk address-matching solution,
-    as the migration path.'
+  description: >-
+    Matched and cleansed supplied address strings against OS authoritative addressing data, returning
+    a matched AddressBase record and confidence score. WITHDRAWN: end of life 31 March 2026, announced
+    24 February 2025. The API has been removed from existing API projects and requests now fail. OS recommends
+    the OS Places API FIND endpoint, or an OS Partner bulk address-matching solution, as the migration
+    path.
   humanURL: https://docs.os.uk/os-apis/accessing-os-apis/os-match-and-cleanse-api
   baseURL: https://api.os.uk/search/match/v1
   tags:
@@ -220,69 +78,16 @@ apis:
   - type: Documentation
     url: https://docs.os.uk/os-apis/accessing-os-apis/os-match-and-cleanse-api
   - type: APIReference
-    url: https://docs.os.uk/os-apis/accessing-os-apis/os-match-and-cleanse-api/technical-specification
+    url: >-
+      https://docs.os.uk/os-apis/accessing-os-apis/os-match-and-cleanse-api/technical-specification
   - type: Deprecation
-    url: https://docs.os.uk/os-apis/accessing-os-apis/os-match-and-cleanse-api/end-of-life-information
-- aid: ordnance-survey:os-features-api
-  name: OS Features API
-  description: OGC Web Feature Service (WFS 2.0.0) over OS MasterMap and premium feature data, with
-    getCapabilities, describeFeatureType, and getFeature operations plus a product archive. XML/WFS
-    rather than OpenAPI.
-  humanURL: https://docs.os.uk/os-apis/accessing-os-apis/os-features-api
-  baseURL: https://api.os.uk/features/v1/wfs
-  tags:
-  - WFS
-  - OGC
-  - Features
-  - Geospatial
-  properties:
-  - type: OpenAPI
-    url: openapi/ordnance-survey-features-wfs-openapi.json
-  - type: Documentation
-    url: https://docs.os.uk/os-apis/accessing-os-apis/os-features-api
-  - type: Overlay
-    url: overlays/ordnance-survey-features-wfs-overlay.yaml
-  - type: APIReference
-    url: https://docs.os.uk/os-apis/accessing-os-apis/os-features-api/technical-specification
-- aid: ordnance-survey:os-maps-api
-  name: OS Maps API
-  description: Pre-rendered raster map tiles in multiple OS styles, served as OGC WMTS and as ZXY tiles.
-  humanURL: https://docs.os.uk/os-apis/accessing-os-apis/os-maps-api
-  baseURL: https://api.os.uk/maps/raster/v1
-  tags:
-  - Mapping
-  - Raster Tiles
-  - WMTS
-  properties:
-  - type: OpenAPI
-    url: openapi/ordnance-survey-maps-openapi.json
-  - type: Documentation
-    url: https://docs.os.uk/os-apis/accessing-os-apis/os-maps-api
-  - type: Overlay
-    url: overlays/ordnance-survey-maps-overlay.yaml
-  - type: APIReference
-    url: https://docs.os.uk/os-apis/accessing-os-apis/os-maps-api/technical-specification
-- aid: ordnance-survey:os-vector-tile-api
-  name: OS Vector Tile API
-  description: Vector tile service delivering detailed OS MasterMap data as styleable vector tiles.
-  humanURL: https://docs.os.uk/os-apis/accessing-os-apis/os-vector-tile-api
-  baseURL: https://api.os.uk/maps/vector/v1/vts
-  tags:
-  - Mapping
-  - Vector Tiles
-  properties:
-  - type: OpenAPI
-    url: openapi/ordnance-survey-vector-tile-openapi.json
-  - type: Documentation
-    url: https://docs.os.uk/os-apis/accessing-os-apis/os-vector-tile-api
-  - type: Overlay
-    url: overlays/ordnance-survey-vector-tile-overlay.yaml
-  - type: APIReference
-    url: https://docs.os.uk/os-apis/accessing-os-apis/os-vector-tile-api/technical-specification
+    url: >-
+      https://docs.os.uk/os-apis/accessing-os-apis/os-match-and-cleanse-api/end-of-life-information
 - aid: ordnance-survey:os-oauth2-api
   name: OS OAuth 2 API
-  description: OAuth 2.0 client credentials token service issuing time-limited access tokens for OS
-    Data Hub APIs, so project API keys need not be embedded in browser code. The token URL is https://api.os.uk/oauth2/token/v1
+  description: >-
+    OAuth 2.0 client credentials token service issuing time-limited access tokens for OS Data Hub APIs,
+    so project API keys need not be embedded in browser code. The token URL is https://api.os.uk/oauth2/token/v1
     and no named scopes are published.
   humanURL: https://docs.os.uk/os-apis/accessing-os-apis/oauth-2-api
   baseURL: https://api.os.uk/oauth2/token/v1
@@ -298,7 +103,1205 @@ apis:
     url: https://docs.os.uk/os-apis/core-concepts/authentication
   - type: APIReference
     url: https://docs.os.uk/os-apis/accessing-os-apis/oauth-2-api/technical-specification
+- aid: ordnance-survey:ordnance-survey-bounding-box-api
+  name: Ordnance Survey Bounding box API
+  description: Find all addresses inside a bounding box.
+  humanURL: https://docs.os.uk/os-apis/accessing-os-apis/os-ngd-api-features
+  baseURL: https://api.os.uk/features/ngd/ofa/v1
+  tags:
+  - Bounding box
+  properties:
+  - type: OpenAPI
+    url: openapi/ordnance-survey-bounding-box-api-openapi.yml
+  - type: Documentation
+    url: https://docs.os.uk/os-apis/accessing-os-apis/os-ngd-api-features
+  - type: APIReference
+    url: https://api.os.uk/features/ngd/ofa/v1/api
+  - type: Documentation
+    url: https://docs.os.uk/os-apis/accessing-os-apis/os-ngd-api-tiles
+  - type: APIReference
+    url: https://api.os.uk/maps/vector/ngd/ota/v1/api
+  - type: Documentation
+    url: https://docs.os.uk/os-apis/accessing-os-apis/os-downloads-api
+  - type: APIReference
+    url: https://api.os.uk/downloads/v1/openapi.yaml
+  - type: Documentation
+    url: https://docs.os.uk/os-apis/accessing-os-apis/os-net-api
+  - type: APIReference
+    url: https://api.os.uk/positioning/osnet/v1/openapi.yaml
+  - type: Documentation
+    url: https://docs.os.uk/os-apis/accessing-os-apis/os-places-api
+  - type: APIReference
+    url: https://docs.os.uk/os-apis/accessing-os-apis/os-places-api/technical-specification
+  - type: Documentation
+    url: https://docs.os.uk/os-apis/accessing-os-apis/os-names-api
+  - type: APIReference
+    url: https://docs.os.uk/os-apis/accessing-os-apis/os-names-api/technical-specification
+  - type: Documentation
+    url: https://docs.os.uk/os-apis/accessing-os-apis/os-linked-identifiers-api
+  - type: APIReference
+    url: >-
+      https://docs.os.uk/os-apis/accessing-os-apis/os-linked-identifiers-api/technical-specification
+  - type: Documentation
+    url: https://docs.os.uk/os-apis/accessing-os-apis/os-features-api
+  - type: APIReference
+    url: https://docs.os.uk/os-apis/accessing-os-apis/os-features-api/technical-specification
+  - type: Documentation
+    url: https://docs.os.uk/os-apis/accessing-os-apis/os-maps-api
+  - type: APIReference
+    url: https://docs.os.uk/os-apis/accessing-os-apis/os-maps-api/technical-specification
+  - type: Documentation
+    url: https://docs.os.uk/os-apis/accessing-os-apis/os-vector-tile-api
+  - type: APIReference
+    url: https://docs.os.uk/os-apis/accessing-os-apis/os-vector-tile-api/technical-specification
+- aid: ordnance-survey:ordnance-survey-collections-api
+  name: Ordnance Survey Collections API
+  description: Retrieve information about collections
+  humanURL: https://docs.os.uk/os-apis/accessing-os-apis/os-ngd-api-features
+  baseURL: https://api.os.uk/features/ngd/ofa/v1
+  tags:
+  - Collections
+  properties:
+  - type: OpenAPI
+    url: openapi/ordnance-survey-collections-api-openapi.yml
+  - type: Documentation
+    url: https://docs.os.uk/os-apis/accessing-os-apis/os-ngd-api-features
+  - type: APIReference
+    url: https://api.os.uk/features/ngd/ofa/v1/api
+  - type: Documentation
+    url: https://docs.os.uk/os-apis/accessing-os-apis/os-ngd-api-tiles
+  - type: APIReference
+    url: https://api.os.uk/maps/vector/ngd/ota/v1/api
+  - type: Documentation
+    url: https://docs.os.uk/os-apis/accessing-os-apis/os-downloads-api
+  - type: APIReference
+    url: https://api.os.uk/downloads/v1/openapi.yaml
+  - type: Documentation
+    url: https://docs.os.uk/os-apis/accessing-os-apis/os-net-api
+  - type: APIReference
+    url: https://api.os.uk/positioning/osnet/v1/openapi.yaml
+  - type: Documentation
+    url: https://docs.os.uk/os-apis/accessing-os-apis/os-places-api
+  - type: APIReference
+    url: https://docs.os.uk/os-apis/accessing-os-apis/os-places-api/technical-specification
+  - type: Documentation
+    url: https://docs.os.uk/os-apis/accessing-os-apis/os-names-api
+  - type: APIReference
+    url: https://docs.os.uk/os-apis/accessing-os-apis/os-names-api/technical-specification
+  - type: Documentation
+    url: https://docs.os.uk/os-apis/accessing-os-apis/os-linked-identifiers-api
+  - type: APIReference
+    url: >-
+      https://docs.os.uk/os-apis/accessing-os-apis/os-linked-identifiers-api/technical-specification
+  - type: Documentation
+    url: https://docs.os.uk/os-apis/accessing-os-apis/os-features-api
+  - type: APIReference
+    url: https://docs.os.uk/os-apis/accessing-os-apis/os-features-api/technical-specification
+  - type: Documentation
+    url: https://docs.os.uk/os-apis/accessing-os-apis/os-maps-api
+  - type: APIReference
+    url: https://docs.os.uk/os-apis/accessing-os-apis/os-maps-api/technical-specification
+  - type: Documentation
+    url: https://docs.os.uk/os-apis/accessing-os-apis/os-vector-tile-api
+  - type: APIReference
+    url: https://docs.os.uk/os-apis/accessing-os-apis/os-vector-tile-api/technical-specification
+- aid: ordnance-survey:ordnance-survey-data-collections-api
+  name: Ordnance Survey Data Collections API
+  description: The Data Collections API from Ordnance Survey — 2 operation(s) for data collections.
+  humanURL: https://docs.os.uk/os-apis/accessing-os-apis/os-ngd-api-features
+  baseURL: https://api.os.uk/features/ngd/ofa/v1
+  tags:
+  - Data Collections
+  properties:
+  - type: OpenAPI
+    url: openapi/ordnance-survey-data-collections-api-openapi.yml
+  - type: Documentation
+    url: https://docs.os.uk/os-apis/accessing-os-apis/os-ngd-api-features
+  - type: APIReference
+    url: https://api.os.uk/features/ngd/ofa/v1/api
+  - type: Documentation
+    url: https://docs.os.uk/os-apis/accessing-os-apis/os-ngd-api-tiles
+  - type: APIReference
+    url: https://api.os.uk/maps/vector/ngd/ota/v1/api
+  - type: Documentation
+    url: https://docs.os.uk/os-apis/accessing-os-apis/os-downloads-api
+  - type: APIReference
+    url: https://api.os.uk/downloads/v1/openapi.yaml
+  - type: Documentation
+    url: https://docs.os.uk/os-apis/accessing-os-apis/os-net-api
+  - type: APIReference
+    url: https://api.os.uk/positioning/osnet/v1/openapi.yaml
+  - type: Documentation
+    url: https://docs.os.uk/os-apis/accessing-os-apis/os-places-api
+  - type: APIReference
+    url: https://docs.os.uk/os-apis/accessing-os-apis/os-places-api/technical-specification
+  - type: Documentation
+    url: https://docs.os.uk/os-apis/accessing-os-apis/os-names-api
+  - type: APIReference
+    url: https://docs.os.uk/os-apis/accessing-os-apis/os-names-api/technical-specification
+  - type: Documentation
+    url: https://docs.os.uk/os-apis/accessing-os-apis/os-linked-identifiers-api
+  - type: APIReference
+    url: >-
+      https://docs.os.uk/os-apis/accessing-os-apis/os-linked-identifiers-api/technical-specification
+  - type: Documentation
+    url: https://docs.os.uk/os-apis/accessing-os-apis/os-features-api
+  - type: APIReference
+    url: https://docs.os.uk/os-apis/accessing-os-apis/os-features-api/technical-specification
+  - type: Documentation
+    url: https://docs.os.uk/os-apis/accessing-os-apis/os-maps-api
+  - type: APIReference
+    url: https://docs.os.uk/os-apis/accessing-os-apis/os-maps-api/technical-specification
+  - type: Documentation
+    url: https://docs.os.uk/os-apis/accessing-os-apis/os-vector-tile-api
+  - type: APIReference
+    url: https://docs.os.uk/os-apis/accessing-os-apis/os-vector-tile-api/technical-specification
+- aid: ordnance-survey:ordnance-survey-data-packages-api
+  name: Ordnance Survey Data Packages API
+  description: >-
+    Operations providing access to data packages.
+
+    To access data packages you must supply a valid API key or OAuth 2 access token.
+  humanURL: https://docs.os.uk/os-apis/accessing-os-apis/os-ngd-api-features
+  baseURL: https://api.os.uk/features/ngd/ofa/v1
+  tags:
+  - Data Packages
+  properties:
+  - type: OpenAPI
+    url: openapi/ordnance-survey-data-packages-api-openapi.yml
+  - type: Documentation
+    url: https://docs.os.uk/os-apis/accessing-os-apis/os-ngd-api-features
+  - type: APIReference
+    url: https://api.os.uk/features/ngd/ofa/v1/api
+  - type: Documentation
+    url: https://docs.os.uk/os-apis/accessing-os-apis/os-ngd-api-tiles
+  - type: APIReference
+    url: https://api.os.uk/maps/vector/ngd/ota/v1/api
+  - type: Documentation
+    url: https://docs.os.uk/os-apis/accessing-os-apis/os-downloads-api
+  - type: APIReference
+    url: https://api.os.uk/downloads/v1/openapi.yaml
+  - type: Documentation
+    url: https://docs.os.uk/os-apis/accessing-os-apis/os-net-api
+  - type: APIReference
+    url: https://api.os.uk/positioning/osnet/v1/openapi.yaml
+  - type: Documentation
+    url: https://docs.os.uk/os-apis/accessing-os-apis/os-places-api
+  - type: APIReference
+    url: https://docs.os.uk/os-apis/accessing-os-apis/os-places-api/technical-specification
+  - type: Documentation
+    url: https://docs.os.uk/os-apis/accessing-os-apis/os-names-api
+  - type: APIReference
+    url: https://docs.os.uk/os-apis/accessing-os-apis/os-names-api/technical-specification
+  - type: Documentation
+    url: https://docs.os.uk/os-apis/accessing-os-apis/os-linked-identifiers-api
+  - type: APIReference
+    url: >-
+      https://docs.os.uk/os-apis/accessing-os-apis/os-linked-identifiers-api/technical-specification
+  - type: Documentation
+    url: https://docs.os.uk/os-apis/accessing-os-apis/os-features-api
+  - type: APIReference
+    url: https://docs.os.uk/os-apis/accessing-os-apis/os-features-api/technical-specification
+  - type: Documentation
+    url: https://docs.os.uk/os-apis/accessing-os-apis/os-maps-api
+  - type: APIReference
+    url: https://docs.os.uk/os-apis/accessing-os-apis/os-maps-api/technical-specification
+  - type: Documentation
+    url: https://docs.os.uk/os-apis/accessing-os-apis/os-vector-tile-api
+  - type: APIReference
+    url: https://docs.os.uk/os-apis/accessing-os-apis/os-vector-tile-api/technical-specification
+- aid: ordnance-survey:ordnance-survey-features-api
+  name: Ordnance Survey Features API
+  description: Retrieve features
+  humanURL: https://docs.os.uk/os-apis/accessing-os-apis/os-ngd-api-features
+  baseURL: https://api.os.uk/features/ngd/ofa/v1
+  tags:
+  - Features
+  properties:
+  - type: OpenAPI
+    url: openapi/ordnance-survey-features-api-openapi.yml
+  - type: Documentation
+    url: https://docs.os.uk/os-apis/accessing-os-apis/os-ngd-api-features
+  - type: APIReference
+    url: https://api.os.uk/features/ngd/ofa/v1/api
+  - type: Documentation
+    url: https://docs.os.uk/os-apis/accessing-os-apis/os-ngd-api-tiles
+  - type: APIReference
+    url: https://api.os.uk/maps/vector/ngd/ota/v1/api
+  - type: Documentation
+    url: https://docs.os.uk/os-apis/accessing-os-apis/os-downloads-api
+  - type: APIReference
+    url: https://api.os.uk/downloads/v1/openapi.yaml
+  - type: Documentation
+    url: https://docs.os.uk/os-apis/accessing-os-apis/os-net-api
+  - type: APIReference
+    url: https://api.os.uk/positioning/osnet/v1/openapi.yaml
+  - type: Documentation
+    url: https://docs.os.uk/os-apis/accessing-os-apis/os-places-api
+  - type: APIReference
+    url: https://docs.os.uk/os-apis/accessing-os-apis/os-places-api/technical-specification
+  - type: Documentation
+    url: https://docs.os.uk/os-apis/accessing-os-apis/os-names-api
+  - type: APIReference
+    url: https://docs.os.uk/os-apis/accessing-os-apis/os-names-api/technical-specification
+  - type: Documentation
+    url: https://docs.os.uk/os-apis/accessing-os-apis/os-linked-identifiers-api
+  - type: APIReference
+    url: >-
+      https://docs.os.uk/os-apis/accessing-os-apis/os-linked-identifiers-api/technical-specification
+  - type: Documentation
+    url: https://docs.os.uk/os-apis/accessing-os-apis/os-features-api
+  - type: APIReference
+    url: https://docs.os.uk/os-apis/accessing-os-apis/os-features-api/technical-specification
+  - type: Documentation
+    url: https://docs.os.uk/os-apis/accessing-os-apis/os-maps-api
+  - type: APIReference
+    url: https://docs.os.uk/os-apis/accessing-os-apis/os-maps-api/technical-specification
+  - type: Documentation
+    url: https://docs.os.uk/os-apis/accessing-os-apis/os-vector-tile-api
+  - type: APIReference
+    url: https://docs.os.uk/os-apis/accessing-os-apis/os-vector-tile-api/technical-specification
+- aid: ordnance-survey:ordnance-survey-find-api
+  name: Ordnance Survey Find API
+  description: A free string text search of OS Names, intended to be an ambiguous/fuzzy search.
+  humanURL: https://docs.os.uk/os-apis/accessing-os-apis/os-ngd-api-features
+  baseURL: https://api.os.uk/features/ngd/ofa/v1
+  tags:
+  - Find
+  properties:
+  - type: OpenAPI
+    url: openapi/ordnance-survey-find-api-openapi.yml
+  - type: Documentation
+    url: https://docs.os.uk/os-apis/accessing-os-apis/os-ngd-api-features
+  - type: APIReference
+    url: https://api.os.uk/features/ngd/ofa/v1/api
+  - type: Documentation
+    url: https://docs.os.uk/os-apis/accessing-os-apis/os-ngd-api-tiles
+  - type: APIReference
+    url: https://api.os.uk/maps/vector/ngd/ota/v1/api
+  - type: Documentation
+    url: https://docs.os.uk/os-apis/accessing-os-apis/os-downloads-api
+  - type: APIReference
+    url: https://api.os.uk/downloads/v1/openapi.yaml
+  - type: Documentation
+    url: https://docs.os.uk/os-apis/accessing-os-apis/os-net-api
+  - type: APIReference
+    url: https://api.os.uk/positioning/osnet/v1/openapi.yaml
+  - type: Documentation
+    url: https://docs.os.uk/os-apis/accessing-os-apis/os-places-api
+  - type: APIReference
+    url: https://docs.os.uk/os-apis/accessing-os-apis/os-places-api/technical-specification
+  - type: Documentation
+    url: https://docs.os.uk/os-apis/accessing-os-apis/os-names-api
+  - type: APIReference
+    url: https://docs.os.uk/os-apis/accessing-os-apis/os-names-api/technical-specification
+  - type: Documentation
+    url: https://docs.os.uk/os-apis/accessing-os-apis/os-linked-identifiers-api
+  - type: APIReference
+    url: >-
+      https://docs.os.uk/os-apis/accessing-os-apis/os-linked-identifiers-api/technical-specification
+  - type: Documentation
+    url: https://docs.os.uk/os-apis/accessing-os-apis/os-features-api
+  - type: APIReference
+    url: https://docs.os.uk/os-apis/accessing-os-apis/os-features-api/technical-specification
+  - type: Documentation
+    url: https://docs.os.uk/os-apis/accessing-os-apis/os-maps-api
+  - type: APIReference
+    url: https://docs.os.uk/os-apis/accessing-os-apis/os-maps-api/technical-specification
+  - type: Documentation
+    url: https://docs.os.uk/os-apis/accessing-os-apis/os-vector-tile-api
+  - type: APIReference
+    url: https://docs.os.uk/os-apis/accessing-os-apis/os-vector-tile-api/technical-specification
+- aid: ordnance-survey:ordnance-survey-getcapabilities-api
+  name: Ordnance Survey Get Capabilities API
+  description: >-
+    Returns a metadata document describing the WFS service provided by the server as well as valid WFS
+    operations and parameters.
+  humanURL: https://docs.os.uk/os-apis/accessing-os-apis/os-ngd-api-features
+  baseURL: https://api.os.uk/features/ngd/ofa/v1
+  tags:
+  - GetCapabilities
+  properties:
+  - type: OpenAPI
+    url: openapi/ordnance-survey-getcapabilities-api-openapi.yml
+  - type: Documentation
+    url: https://docs.os.uk/os-apis/accessing-os-apis/os-ngd-api-features
+  - type: APIReference
+    url: https://api.os.uk/features/ngd/ofa/v1/api
+  - type: Documentation
+    url: https://docs.os.uk/os-apis/accessing-os-apis/os-ngd-api-tiles
+  - type: APIReference
+    url: https://api.os.uk/maps/vector/ngd/ota/v1/api
+  - type: Documentation
+    url: https://docs.os.uk/os-apis/accessing-os-apis/os-downloads-api
+  - type: APIReference
+    url: https://api.os.uk/downloads/v1/openapi.yaml
+  - type: Documentation
+    url: https://docs.os.uk/os-apis/accessing-os-apis/os-net-api
+  - type: APIReference
+    url: https://api.os.uk/positioning/osnet/v1/openapi.yaml
+  - type: Documentation
+    url: https://docs.os.uk/os-apis/accessing-os-apis/os-places-api
+  - type: APIReference
+    url: https://docs.os.uk/os-apis/accessing-os-apis/os-places-api/technical-specification
+  - type: Documentation
+    url: https://docs.os.uk/os-apis/accessing-os-apis/os-names-api
+  - type: APIReference
+    url: https://docs.os.uk/os-apis/accessing-os-apis/os-names-api/technical-specification
+  - type: Documentation
+    url: https://docs.os.uk/os-apis/accessing-os-apis/os-linked-identifiers-api
+  - type: APIReference
+    url: >-
+      https://docs.os.uk/os-apis/accessing-os-apis/os-linked-identifiers-api/technical-specification
+  - type: Documentation
+    url: https://docs.os.uk/os-apis/accessing-os-apis/os-features-api
+  - type: APIReference
+    url: https://docs.os.uk/os-apis/accessing-os-apis/os-features-api/technical-specification
+  - type: Documentation
+    url: https://docs.os.uk/os-apis/accessing-os-apis/os-maps-api
+  - type: APIReference
+    url: https://docs.os.uk/os-apis/accessing-os-apis/os-maps-api/technical-specification
+  - type: Documentation
+    url: https://docs.os.uk/os-apis/accessing-os-apis/os-vector-tile-api
+  - type: APIReference
+    url: https://docs.os.uk/os-apis/accessing-os-apis/os-vector-tile-api/technical-specification
+- aid: ordnance-survey:ordnance-survey-landing-page-api
+  name: Ordnance Survey Landing Page API
+  description: Ordnance Survey NGD API – Features
+  humanURL: https://docs.os.uk/os-apis/accessing-os-apis/os-ngd-api-features
+  baseURL: https://api.os.uk/features/ngd/ofa/v1
+  tags:
+  - Landing Page
+  properties:
+  - type: OpenAPI
+    url: openapi/ordnance-survey-landing-page-api-openapi.yml
+  - type: Documentation
+    url: https://docs.os.uk/os-apis/accessing-os-apis/os-ngd-api-features
+  - type: APIReference
+    url: https://api.os.uk/features/ngd/ofa/v1/api
+  - type: Documentation
+    url: https://docs.os.uk/os-apis/accessing-os-apis/os-ngd-api-tiles
+  - type: APIReference
+    url: https://api.os.uk/maps/vector/ngd/ota/v1/api
+  - type: Documentation
+    url: https://docs.os.uk/os-apis/accessing-os-apis/os-downloads-api
+  - type: APIReference
+    url: https://api.os.uk/downloads/v1/openapi.yaml
+  - type: Documentation
+    url: https://docs.os.uk/os-apis/accessing-os-apis/os-net-api
+  - type: APIReference
+    url: https://api.os.uk/positioning/osnet/v1/openapi.yaml
+  - type: Documentation
+    url: https://docs.os.uk/os-apis/accessing-os-apis/os-places-api
+  - type: APIReference
+    url: https://docs.os.uk/os-apis/accessing-os-apis/os-places-api/technical-specification
+  - type: Documentation
+    url: https://docs.os.uk/os-apis/accessing-os-apis/os-names-api
+  - type: APIReference
+    url: https://docs.os.uk/os-apis/accessing-os-apis/os-names-api/technical-specification
+  - type: Documentation
+    url: https://docs.os.uk/os-apis/accessing-os-apis/os-linked-identifiers-api
+  - type: APIReference
+    url: >-
+      https://docs.os.uk/os-apis/accessing-os-apis/os-linked-identifiers-api/technical-specification
+  - type: Documentation
+    url: https://docs.os.uk/os-apis/accessing-os-apis/os-features-api
+  - type: APIReference
+    url: https://docs.os.uk/os-apis/accessing-os-apis/os-features-api/technical-specification
+  - type: Documentation
+    url: https://docs.os.uk/os-apis/accessing-os-apis/os-maps-api
+  - type: APIReference
+    url: https://docs.os.uk/os-apis/accessing-os-apis/os-maps-api/technical-specification
+  - type: Documentation
+    url: https://docs.os.uk/os-apis/accessing-os-apis/os-vector-tile-api
+  - type: APIReference
+    url: https://docs.os.uk/os-apis/accessing-os-apis/os-vector-tile-api/technical-specification
+- aid: ordnance-survey:ordnance-survey-nearest-api
+  name: Ordnance Survey Nearest API
+  description: Find the features closest to a given point.
+  humanURL: https://docs.os.uk/os-apis/accessing-os-apis/os-ngd-api-features
+  baseURL: https://api.os.uk/features/ngd/ofa/v1
+  tags:
+  - Nearest
+  properties:
+  - type: OpenAPI
+    url: openapi/ordnance-survey-nearest-api-openapi.yml
+  - type: Documentation
+    url: https://docs.os.uk/os-apis/accessing-os-apis/os-ngd-api-features
+  - type: APIReference
+    url: https://api.os.uk/features/ngd/ofa/v1/api
+  - type: Documentation
+    url: https://docs.os.uk/os-apis/accessing-os-apis/os-ngd-api-tiles
+  - type: APIReference
+    url: https://api.os.uk/maps/vector/ngd/ota/v1/api
+  - type: Documentation
+    url: https://docs.os.uk/os-apis/accessing-os-apis/os-downloads-api
+  - type: APIReference
+    url: https://api.os.uk/downloads/v1/openapi.yaml
+  - type: Documentation
+    url: https://docs.os.uk/os-apis/accessing-os-apis/os-net-api
+  - type: APIReference
+    url: https://api.os.uk/positioning/osnet/v1/openapi.yaml
+  - type: Documentation
+    url: https://docs.os.uk/os-apis/accessing-os-apis/os-places-api
+  - type: APIReference
+    url: https://docs.os.uk/os-apis/accessing-os-apis/os-places-api/technical-specification
+  - type: Documentation
+    url: https://docs.os.uk/os-apis/accessing-os-apis/os-names-api
+  - type: APIReference
+    url: https://docs.os.uk/os-apis/accessing-os-apis/os-names-api/technical-specification
+  - type: Documentation
+    url: https://docs.os.uk/os-apis/accessing-os-apis/os-linked-identifiers-api
+  - type: APIReference
+    url: >-
+      https://docs.os.uk/os-apis/accessing-os-apis/os-linked-identifiers-api/technical-specification
+  - type: Documentation
+    url: https://docs.os.uk/os-apis/accessing-os-apis/os-features-api
+  - type: APIReference
+    url: https://docs.os.uk/os-apis/accessing-os-apis/os-features-api/technical-specification
+  - type: Documentation
+    url: https://docs.os.uk/os-apis/accessing-os-apis/os-maps-api
+  - type: APIReference
+    url: https://docs.os.uk/os-apis/accessing-os-apis/os-maps-api/technical-specification
+  - type: Documentation
+    url: https://docs.os.uk/os-apis/accessing-os-apis/os-vector-tile-api
+  - type: APIReference
+    url: https://docs.os.uk/os-apis/accessing-os-apis/os-vector-tile-api/technical-specification
+- aid: ordnance-survey:ordnance-survey-opendata-api
+  name: Ordnance Survey Open Data API
+  description: Operations providing access to OpenData products.
+  humanURL: https://docs.os.uk/os-apis/accessing-os-apis/os-ngd-api-features
+  baseURL: https://api.os.uk/features/ngd/ofa/v1
+  tags:
+  - OpenData
+  properties:
+  - type: OpenAPI
+    url: openapi/ordnance-survey-opendata-api-openapi.yml
+  - type: Documentation
+    url: https://docs.os.uk/os-apis/accessing-os-apis/os-ngd-api-features
+  - type: APIReference
+    url: https://api.os.uk/features/ngd/ofa/v1/api
+  - type: Documentation
+    url: https://docs.os.uk/os-apis/accessing-os-apis/os-ngd-api-tiles
+  - type: APIReference
+    url: https://api.os.uk/maps/vector/ngd/ota/v1/api
+  - type: Documentation
+    url: https://docs.os.uk/os-apis/accessing-os-apis/os-downloads-api
+  - type: APIReference
+    url: https://api.os.uk/downloads/v1/openapi.yaml
+  - type: Documentation
+    url: https://docs.os.uk/os-apis/accessing-os-apis/os-net-api
+  - type: APIReference
+    url: https://api.os.uk/positioning/osnet/v1/openapi.yaml
+  - type: Documentation
+    url: https://docs.os.uk/os-apis/accessing-os-apis/os-places-api
+  - type: APIReference
+    url: https://docs.os.uk/os-apis/accessing-os-apis/os-places-api/technical-specification
+  - type: Documentation
+    url: https://docs.os.uk/os-apis/accessing-os-apis/os-names-api
+  - type: APIReference
+    url: https://docs.os.uk/os-apis/accessing-os-apis/os-names-api/technical-specification
+  - type: Documentation
+    url: https://docs.os.uk/os-apis/accessing-os-apis/os-linked-identifiers-api
+  - type: APIReference
+    url: >-
+      https://docs.os.uk/os-apis/accessing-os-apis/os-linked-identifiers-api/technical-specification
+  - type: Documentation
+    url: https://docs.os.uk/os-apis/accessing-os-apis/os-features-api
+  - type: APIReference
+    url: https://docs.os.uk/os-apis/accessing-os-apis/os-features-api/technical-specification
+  - type: Documentation
+    url: https://docs.os.uk/os-apis/accessing-os-apis/os-maps-api
+  - type: APIReference
+    url: https://docs.os.uk/os-apis/accessing-os-apis/os-maps-api/technical-specification
+  - type: Documentation
+    url: https://docs.os.uk/os-apis/accessing-os-apis/os-vector-tile-api
+  - type: APIReference
+    url: https://docs.os.uk/os-apis/accessing-os-apis/os-vector-tile-api/technical-specification
+- aid: ordnance-survey:ordnance-survey-os-opendata-users-api
+  name: Ordnance Survey OS OpenData Users API
+  description: Operations available to customers using the OpenData plan
+  humanURL: https://docs.os.uk/os-apis/accessing-os-apis/os-ngd-api-features
+  baseURL: https://api.os.uk/features/ngd/ofa/v1
+  tags:
+  - OS OpenData Users
+  properties:
+  - type: OpenAPI
+    url: openapi/ordnance-survey-os-opendata-users-api-openapi.yml
+  - type: Documentation
+    url: https://docs.os.uk/os-apis/accessing-os-apis/os-ngd-api-features
+  - type: APIReference
+    url: https://api.os.uk/features/ngd/ofa/v1/api
+  - type: Documentation
+    url: https://docs.os.uk/os-apis/accessing-os-apis/os-ngd-api-tiles
+  - type: APIReference
+    url: https://api.os.uk/maps/vector/ngd/ota/v1/api
+  - type: Documentation
+    url: https://docs.os.uk/os-apis/accessing-os-apis/os-downloads-api
+  - type: APIReference
+    url: https://api.os.uk/downloads/v1/openapi.yaml
+  - type: Documentation
+    url: https://docs.os.uk/os-apis/accessing-os-apis/os-net-api
+  - type: APIReference
+    url: https://api.os.uk/positioning/osnet/v1/openapi.yaml
+  - type: Documentation
+    url: https://docs.os.uk/os-apis/accessing-os-apis/os-places-api
+  - type: APIReference
+    url: https://docs.os.uk/os-apis/accessing-os-apis/os-places-api/technical-specification
+  - type: Documentation
+    url: https://docs.os.uk/os-apis/accessing-os-apis/os-names-api
+  - type: APIReference
+    url: https://docs.os.uk/os-apis/accessing-os-apis/os-names-api/technical-specification
+  - type: Documentation
+    url: https://docs.os.uk/os-apis/accessing-os-apis/os-linked-identifiers-api
+  - type: APIReference
+    url: >-
+      https://docs.os.uk/os-apis/accessing-os-apis/os-linked-identifiers-api/technical-specification
+  - type: Documentation
+    url: https://docs.os.uk/os-apis/accessing-os-apis/os-features-api
+  - type: APIReference
+    url: https://docs.os.uk/os-apis/accessing-os-apis/os-features-api/technical-specification
+  - type: Documentation
+    url: https://docs.os.uk/os-apis/accessing-os-apis/os-maps-api
+  - type: APIReference
+    url: https://docs.os.uk/os-apis/accessing-os-apis/os-maps-api/technical-specification
+  - type: Documentation
+    url: https://docs.os.uk/os-apis/accessing-os-apis/os-vector-tile-api
+  - type: APIReference
+    url: https://docs.os.uk/os-apis/accessing-os-apis/os-vector-tile-api/technical-specification
+- aid: ordnance-survey:ordnance-survey-polygon-api
+  name: Ordnance Survey Polygon API
+  description: Find all addresses in a polygon or multi-polygon object.
+  humanURL: https://docs.os.uk/os-apis/accessing-os-apis/os-ngd-api-features
+  baseURL: https://api.os.uk/features/ngd/ofa/v1
+  tags:
+  - Polygon
+  properties:
+  - type: OpenAPI
+    url: openapi/ordnance-survey-polygon-api-openapi.yml
+  - type: Documentation
+    url: https://docs.os.uk/os-apis/accessing-os-apis/os-ngd-api-features
+  - type: APIReference
+    url: https://api.os.uk/features/ngd/ofa/v1/api
+  - type: Documentation
+    url: https://docs.os.uk/os-apis/accessing-os-apis/os-ngd-api-tiles
+  - type: APIReference
+    url: https://api.os.uk/maps/vector/ngd/ota/v1/api
+  - type: Documentation
+    url: https://docs.os.uk/os-apis/accessing-os-apis/os-downloads-api
+  - type: APIReference
+    url: https://api.os.uk/downloads/v1/openapi.yaml
+  - type: Documentation
+    url: https://docs.os.uk/os-apis/accessing-os-apis/os-net-api
+  - type: APIReference
+    url: https://api.os.uk/positioning/osnet/v1/openapi.yaml
+  - type: Documentation
+    url: https://docs.os.uk/os-apis/accessing-os-apis/os-places-api
+  - type: APIReference
+    url: https://docs.os.uk/os-apis/accessing-os-apis/os-places-api/technical-specification
+  - type: Documentation
+    url: https://docs.os.uk/os-apis/accessing-os-apis/os-names-api
+  - type: APIReference
+    url: https://docs.os.uk/os-apis/accessing-os-apis/os-names-api/technical-specification
+  - type: Documentation
+    url: https://docs.os.uk/os-apis/accessing-os-apis/os-linked-identifiers-api
+  - type: APIReference
+    url: >-
+      https://docs.os.uk/os-apis/accessing-os-apis/os-linked-identifiers-api/technical-specification
+  - type: Documentation
+    url: https://docs.os.uk/os-apis/accessing-os-apis/os-features-api
+  - type: APIReference
+    url: https://docs.os.uk/os-apis/accessing-os-apis/os-features-api/technical-specification
+  - type: Documentation
+    url: https://docs.os.uk/os-apis/accessing-os-apis/os-maps-api
+  - type: APIReference
+    url: https://docs.os.uk/os-apis/accessing-os-apis/os-maps-api/technical-specification
+  - type: Documentation
+    url: https://docs.os.uk/os-apis/accessing-os-apis/os-vector-tile-api
+  - type: APIReference
+    url: https://docs.os.uk/os-apis/accessing-os-apis/os-vector-tile-api/technical-specification
+- aid: ordnance-survey:ordnance-survey-postcode-api
+  name: Ordnance Survey Postcode API
+  description: A search based on a property’s postcode
+  humanURL: https://docs.os.uk/os-apis/accessing-os-apis/os-ngd-api-features
+  baseURL: https://api.os.uk/features/ngd/ofa/v1
+  tags:
+  - Postcode
+  properties:
+  - type: OpenAPI
+    url: openapi/ordnance-survey-postcode-api-openapi.yml
+  - type: Documentation
+    url: https://docs.os.uk/os-apis/accessing-os-apis/os-ngd-api-features
+  - type: APIReference
+    url: https://api.os.uk/features/ngd/ofa/v1/api
+  - type: Documentation
+    url: https://docs.os.uk/os-apis/accessing-os-apis/os-ngd-api-tiles
+  - type: APIReference
+    url: https://api.os.uk/maps/vector/ngd/ota/v1/api
+  - type: Documentation
+    url: https://docs.os.uk/os-apis/accessing-os-apis/os-downloads-api
+  - type: APIReference
+    url: https://api.os.uk/downloads/v1/openapi.yaml
+  - type: Documentation
+    url: https://docs.os.uk/os-apis/accessing-os-apis/os-net-api
+  - type: APIReference
+    url: https://api.os.uk/positioning/osnet/v1/openapi.yaml
+  - type: Documentation
+    url: https://docs.os.uk/os-apis/accessing-os-apis/os-places-api
+  - type: APIReference
+    url: https://docs.os.uk/os-apis/accessing-os-apis/os-places-api/technical-specification
+  - type: Documentation
+    url: https://docs.os.uk/os-apis/accessing-os-apis/os-names-api
+  - type: APIReference
+    url: https://docs.os.uk/os-apis/accessing-os-apis/os-names-api/technical-specification
+  - type: Documentation
+    url: https://docs.os.uk/os-apis/accessing-os-apis/os-linked-identifiers-api
+  - type: APIReference
+    url: >-
+      https://docs.os.uk/os-apis/accessing-os-apis/os-linked-identifiers-api/technical-specification
+  - type: Documentation
+    url: https://docs.os.uk/os-apis/accessing-os-apis/os-features-api
+  - type: APIReference
+    url: https://docs.os.uk/os-apis/accessing-os-apis/os-features-api/technical-specification
+  - type: Documentation
+    url: https://docs.os.uk/os-apis/accessing-os-apis/os-maps-api
+  - type: APIReference
+    url: https://docs.os.uk/os-apis/accessing-os-apis/os-maps-api/technical-specification
+  - type: Documentation
+    url: https://docs.os.uk/os-apis/accessing-os-apis/os-vector-tile-api
+  - type: APIReference
+    url: https://docs.os.uk/os-apis/accessing-os-apis/os-vector-tile-api/technical-specification
+- aid: ordnance-survey:ordnance-survey-radius-api
+  name: Ordnance Survey Radius API
+  description: Find all addresses that intersect a given circle.
+  humanURL: https://docs.os.uk/os-apis/accessing-os-apis/os-ngd-api-features
+  baseURL: https://api.os.uk/features/ngd/ofa/v1
+  tags:
+  - Radius
+  properties:
+  - type: OpenAPI
+    url: openapi/ordnance-survey-radius-api-openapi.yml
+  - type: Documentation
+    url: https://docs.os.uk/os-apis/accessing-os-apis/os-ngd-api-features
+  - type: APIReference
+    url: https://api.os.uk/features/ngd/ofa/v1/api
+  - type: Documentation
+    url: https://docs.os.uk/os-apis/accessing-os-apis/os-ngd-api-tiles
+  - type: APIReference
+    url: https://api.os.uk/maps/vector/ngd/ota/v1/api
+  - type: Documentation
+    url: https://docs.os.uk/os-apis/accessing-os-apis/os-downloads-api
+  - type: APIReference
+    url: https://api.os.uk/downloads/v1/openapi.yaml
+  - type: Documentation
+    url: https://docs.os.uk/os-apis/accessing-os-apis/os-net-api
+  - type: APIReference
+    url: https://api.os.uk/positioning/osnet/v1/openapi.yaml
+  - type: Documentation
+    url: https://docs.os.uk/os-apis/accessing-os-apis/os-places-api
+  - type: APIReference
+    url: https://docs.os.uk/os-apis/accessing-os-apis/os-places-api/technical-specification
+  - type: Documentation
+    url: https://docs.os.uk/os-apis/accessing-os-apis/os-names-api
+  - type: APIReference
+    url: https://docs.os.uk/os-apis/accessing-os-apis/os-names-api/technical-specification
+  - type: Documentation
+    url: https://docs.os.uk/os-apis/accessing-os-apis/os-linked-identifiers-api
+  - type: APIReference
+    url: >-
+      https://docs.os.uk/os-apis/accessing-os-apis/os-linked-identifiers-api/technical-specification
+  - type: Documentation
+    url: https://docs.os.uk/os-apis/accessing-os-apis/os-features-api
+  - type: APIReference
+    url: https://docs.os.uk/os-apis/accessing-os-apis/os-features-api/technical-specification
+  - type: Documentation
+    url: https://docs.os.uk/os-apis/accessing-os-apis/os-maps-api
+  - type: APIReference
+    url: https://docs.os.uk/os-apis/accessing-os-apis/os-maps-api/technical-specification
+  - type: Documentation
+    url: https://docs.os.uk/os-apis/accessing-os-apis/os-vector-tile-api
+  - type: APIReference
+    url: https://docs.os.uk/os-apis/accessing-os-apis/os-vector-tile-api/technical-specification
+- aid: ordnance-survey:ordnance-survey-rinex-api
+  name: Ordnance Survey Rinex API
+  description: The Rinex API from Ordnance Survey — 5 operation(s) for rinex.
+  humanURL: https://docs.os.uk/os-apis/accessing-os-apis/os-ngd-api-features
+  baseURL: https://api.os.uk/features/ngd/ofa/v1
+  tags:
+  - Rinex
+  properties:
+  - type: OpenAPI
+    url: openapi/ordnance-survey-rinex-api-openapi.yml
+  - type: Documentation
+    url: https://docs.os.uk/os-apis/accessing-os-apis/os-ngd-api-features
+  - type: APIReference
+    url: https://api.os.uk/features/ngd/ofa/v1/api
+  - type: Documentation
+    url: https://docs.os.uk/os-apis/accessing-os-apis/os-ngd-api-tiles
+  - type: APIReference
+    url: https://api.os.uk/maps/vector/ngd/ota/v1/api
+  - type: Documentation
+    url: https://docs.os.uk/os-apis/accessing-os-apis/os-downloads-api
+  - type: APIReference
+    url: https://api.os.uk/downloads/v1/openapi.yaml
+  - type: Documentation
+    url: https://docs.os.uk/os-apis/accessing-os-apis/os-net-api
+  - type: APIReference
+    url: https://api.os.uk/positioning/osnet/v1/openapi.yaml
+  - type: Documentation
+    url: https://docs.os.uk/os-apis/accessing-os-apis/os-places-api
+  - type: APIReference
+    url: https://docs.os.uk/os-apis/accessing-os-apis/os-places-api/technical-specification
+  - type: Documentation
+    url: https://docs.os.uk/os-apis/accessing-os-apis/os-names-api
+  - type: APIReference
+    url: https://docs.os.uk/os-apis/accessing-os-apis/os-names-api/technical-specification
+  - type: Documentation
+    url: https://docs.os.uk/os-apis/accessing-os-apis/os-linked-identifiers-api
+  - type: APIReference
+    url: >-
+      https://docs.os.uk/os-apis/accessing-os-apis/os-linked-identifiers-api/technical-specification
+  - type: Documentation
+    url: https://docs.os.uk/os-apis/accessing-os-apis/os-features-api
+  - type: APIReference
+    url: https://docs.os.uk/os-apis/accessing-os-apis/os-features-api/technical-specification
+  - type: Documentation
+    url: https://docs.os.uk/os-apis/accessing-os-apis/os-maps-api
+  - type: APIReference
+    url: https://docs.os.uk/os-apis/accessing-os-apis/os-maps-api/technical-specification
+  - type: Documentation
+    url: https://docs.os.uk/os-apis/accessing-os-apis/os-vector-tile-api
+  - type: APIReference
+    url: https://docs.os.uk/os-apis/accessing-os-apis/os-vector-tile-api/technical-specification
+- aid: ordnance-survey:ordnance-survey-service-metadata-api
+  name: Ordnance Survey Service Metadata API
+  description: Service Metadata for OS Vector Tiles API
+  humanURL: https://docs.os.uk/os-apis/accessing-os-apis/os-ngd-api-features
+  baseURL: https://api.os.uk/features/ngd/ofa/v1
+  tags:
+  - Service Metadata
+  properties:
+  - type: OpenAPI
+    url: openapi/ordnance-survey-service-metadata-api-openapi.yml
+  - type: Documentation
+    url: https://docs.os.uk/os-apis/accessing-os-apis/os-ngd-api-features
+  - type: APIReference
+    url: https://api.os.uk/features/ngd/ofa/v1/api
+  - type: Documentation
+    url: https://docs.os.uk/os-apis/accessing-os-apis/os-ngd-api-tiles
+  - type: APIReference
+    url: https://api.os.uk/maps/vector/ngd/ota/v1/api
+  - type: Documentation
+    url: https://docs.os.uk/os-apis/accessing-os-apis/os-downloads-api
+  - type: APIReference
+    url: https://api.os.uk/downloads/v1/openapi.yaml
+  - type: Documentation
+    url: https://docs.os.uk/os-apis/accessing-os-apis/os-net-api
+  - type: APIReference
+    url: https://api.os.uk/positioning/osnet/v1/openapi.yaml
+  - type: Documentation
+    url: https://docs.os.uk/os-apis/accessing-os-apis/os-places-api
+  - type: APIReference
+    url: https://docs.os.uk/os-apis/accessing-os-apis/os-places-api/technical-specification
+  - type: Documentation
+    url: https://docs.os.uk/os-apis/accessing-os-apis/os-names-api
+  - type: APIReference
+    url: https://docs.os.uk/os-apis/accessing-os-apis/os-names-api/technical-specification
+  - type: Documentation
+    url: https://docs.os.uk/os-apis/accessing-os-apis/os-linked-identifiers-api
+  - type: APIReference
+    url: >-
+      https://docs.os.uk/os-apis/accessing-os-apis/os-linked-identifiers-api/technical-specification
+  - type: Documentation
+    url: https://docs.os.uk/os-apis/accessing-os-apis/os-features-api
+  - type: APIReference
+    url: https://docs.os.uk/os-apis/accessing-os-apis/os-features-api/technical-specification
+  - type: Documentation
+    url: https://docs.os.uk/os-apis/accessing-os-apis/os-maps-api
+  - type: APIReference
+    url: https://docs.os.uk/os-apis/accessing-os-apis/os-maps-api/technical-specification
+  - type: Documentation
+    url: https://docs.os.uk/os-apis/accessing-os-apis/os-vector-tile-api
+  - type: APIReference
+    url: https://docs.os.uk/os-apis/accessing-os-apis/os-vector-tile-api/technical-specification
+- aid: ordnance-survey:ordnance-survey-stations-api
+  name: Ordnance Survey Stations API
+  description: The Stations API from Ordnance Survey — 5 operation(s) for stations.
+  humanURL: https://docs.os.uk/os-apis/accessing-os-apis/os-ngd-api-features
+  baseURL: https://api.os.uk/features/ngd/ofa/v1
+  tags:
+  - Stations
+  properties:
+  - type: OpenAPI
+    url: openapi/ordnance-survey-stations-api-openapi.yml
+  - type: Documentation
+    url: https://docs.os.uk/os-apis/accessing-os-apis/os-ngd-api-features
+  - type: APIReference
+    url: https://api.os.uk/features/ngd/ofa/v1/api
+  - type: Documentation
+    url: https://docs.os.uk/os-apis/accessing-os-apis/os-ngd-api-tiles
+  - type: APIReference
+    url: https://api.os.uk/maps/vector/ngd/ota/v1/api
+  - type: Documentation
+    url: https://docs.os.uk/os-apis/accessing-os-apis/os-downloads-api
+  - type: APIReference
+    url: https://api.os.uk/downloads/v1/openapi.yaml
+  - type: Documentation
+    url: https://docs.os.uk/os-apis/accessing-os-apis/os-net-api
+  - type: APIReference
+    url: https://api.os.uk/positioning/osnet/v1/openapi.yaml
+  - type: Documentation
+    url: https://docs.os.uk/os-apis/accessing-os-apis/os-places-api
+  - type: APIReference
+    url: https://docs.os.uk/os-apis/accessing-os-apis/os-places-api/technical-specification
+  - type: Documentation
+    url: https://docs.os.uk/os-apis/accessing-os-apis/os-names-api
+  - type: APIReference
+    url: https://docs.os.uk/os-apis/accessing-os-apis/os-names-api/technical-specification
+  - type: Documentation
+    url: https://docs.os.uk/os-apis/accessing-os-apis/os-linked-identifiers-api
+  - type: APIReference
+    url: >-
+      https://docs.os.uk/os-apis/accessing-os-apis/os-linked-identifiers-api/technical-specification
+  - type: Documentation
+    url: https://docs.os.uk/os-apis/accessing-os-apis/os-features-api
+  - type: APIReference
+    url: https://docs.os.uk/os-apis/accessing-os-apis/os-features-api/technical-specification
+  - type: Documentation
+    url: https://docs.os.uk/os-apis/accessing-os-apis/os-maps-api
+  - type: APIReference
+    url: https://docs.os.uk/os-apis/accessing-os-apis/os-maps-api/technical-specification
+  - type: Documentation
+    url: https://docs.os.uk/os-apis/accessing-os-apis/os-vector-tile-api
+  - type: APIReference
+    url: https://docs.os.uk/os-apis/accessing-os-apis/os-vector-tile-api/technical-specification
+- aid: ordnance-survey:ordnance-survey-styles-api
+  name: Ordnance Survey Styles API
+  description: The Styles API from Ordnance Survey — 5 operation(s) for styles.
+  humanURL: https://docs.os.uk/os-apis/accessing-os-apis/os-ngd-api-features
+  baseURL: https://api.os.uk/features/ngd/ofa/v1
+  tags:
+  - Styles
+  properties:
+  - type: OpenAPI
+    url: openapi/ordnance-survey-styles-api-openapi.yml
+  - type: Documentation
+    url: https://docs.os.uk/os-apis/accessing-os-apis/os-ngd-api-features
+  - type: APIReference
+    url: https://api.os.uk/features/ngd/ofa/v1/api
+  - type: Documentation
+    url: https://docs.os.uk/os-apis/accessing-os-apis/os-ngd-api-tiles
+  - type: APIReference
+    url: https://api.os.uk/maps/vector/ngd/ota/v1/api
+  - type: Documentation
+    url: https://docs.os.uk/os-apis/accessing-os-apis/os-downloads-api
+  - type: APIReference
+    url: https://api.os.uk/downloads/v1/openapi.yaml
+  - type: Documentation
+    url: https://docs.os.uk/os-apis/accessing-os-apis/os-net-api
+  - type: APIReference
+    url: https://api.os.uk/positioning/osnet/v1/openapi.yaml
+  - type: Documentation
+    url: https://docs.os.uk/os-apis/accessing-os-apis/os-places-api
+  - type: APIReference
+    url: https://docs.os.uk/os-apis/accessing-os-apis/os-places-api/technical-specification
+  - type: Documentation
+    url: https://docs.os.uk/os-apis/accessing-os-apis/os-names-api
+  - type: APIReference
+    url: https://docs.os.uk/os-apis/accessing-os-apis/os-names-api/technical-specification
+  - type: Documentation
+    url: https://docs.os.uk/os-apis/accessing-os-apis/os-linked-identifiers-api
+  - type: APIReference
+    url: >-
+      https://docs.os.uk/os-apis/accessing-os-apis/os-linked-identifiers-api/technical-specification
+  - type: Documentation
+    url: https://docs.os.uk/os-apis/accessing-os-apis/os-features-api
+  - type: APIReference
+    url: https://docs.os.uk/os-apis/accessing-os-apis/os-features-api/technical-specification
+  - type: Documentation
+    url: https://docs.os.uk/os-apis/accessing-os-apis/os-maps-api
+  - type: APIReference
+    url: https://docs.os.uk/os-apis/accessing-os-apis/os-maps-api/technical-specification
+  - type: Documentation
+    url: https://docs.os.uk/os-apis/accessing-os-apis/os-vector-tile-api
+  - type: APIReference
+    url: https://docs.os.uk/os-apis/accessing-os-apis/os-vector-tile-api/technical-specification
+- aid: ordnance-survey:ordnance-survey-tile-request-api
+  name: Ordnance Survey Tile Request API
+  description: Access and download data for a specific tile
+  humanURL: https://docs.os.uk/os-apis/accessing-os-apis/os-ngd-api-features
+  baseURL: https://api.os.uk/features/ngd/ofa/v1
+  tags:
+  - Tile Request
+  properties:
+  - type: OpenAPI
+    url: openapi/ordnance-survey-tile-request-api-openapi.yml
+  - type: Documentation
+    url: https://docs.os.uk/os-apis/accessing-os-apis/os-ngd-api-features
+  - type: APIReference
+    url: https://api.os.uk/features/ngd/ofa/v1/api
+  - type: Documentation
+    url: https://docs.os.uk/os-apis/accessing-os-apis/os-ngd-api-tiles
+  - type: APIReference
+    url: https://api.os.uk/maps/vector/ngd/ota/v1/api
+  - type: Documentation
+    url: https://docs.os.uk/os-apis/accessing-os-apis/os-downloads-api
+  - type: APIReference
+    url: https://api.os.uk/downloads/v1/openapi.yaml
+  - type: Documentation
+    url: https://docs.os.uk/os-apis/accessing-os-apis/os-net-api
+  - type: APIReference
+    url: https://api.os.uk/positioning/osnet/v1/openapi.yaml
+  - type: Documentation
+    url: https://docs.os.uk/os-apis/accessing-os-apis/os-places-api
+  - type: APIReference
+    url: https://docs.os.uk/os-apis/accessing-os-apis/os-places-api/technical-specification
+  - type: Documentation
+    url: https://docs.os.uk/os-apis/accessing-os-apis/os-names-api
+  - type: APIReference
+    url: https://docs.os.uk/os-apis/accessing-os-apis/os-names-api/technical-specification
+  - type: Documentation
+    url: https://docs.os.uk/os-apis/accessing-os-apis/os-linked-identifiers-api
+  - type: APIReference
+    url: >-
+      https://docs.os.uk/os-apis/accessing-os-apis/os-linked-identifiers-api/technical-specification
+  - type: Documentation
+    url: https://docs.os.uk/os-apis/accessing-os-apis/os-features-api
+  - type: APIReference
+    url: https://docs.os.uk/os-apis/accessing-os-apis/os-features-api/technical-specification
+  - type: Documentation
+    url: https://docs.os.uk/os-apis/accessing-os-apis/os-maps-api
+  - type: APIReference
+    url: https://docs.os.uk/os-apis/accessing-os-apis/os-maps-api/technical-specification
+  - type: Documentation
+    url: https://docs.os.uk/os-apis/accessing-os-apis/os-vector-tile-api
+  - type: APIReference
+    url: https://docs.os.uk/os-apis/accessing-os-apis/os-vector-tile-api/technical-specification
+- aid: ordnance-survey:ordnance-survey-tile-sets-api
+  name: Ordnance Survey Tile Sets API
+  description: The Tile Sets API from Ordnance Survey — 2 operation(s) for tile sets.
+  humanURL: https://docs.os.uk/os-apis/accessing-os-apis/os-ngd-api-features
+  baseURL: https://api.os.uk/features/ngd/ofa/v1
+  tags:
+  - Tile Sets
+  properties:
+  - type: OpenAPI
+    url: openapi/ordnance-survey-tile-sets-api-openapi.yml
+  - type: Documentation
+    url: https://docs.os.uk/os-apis/accessing-os-apis/os-ngd-api-features
+  - type: APIReference
+    url: https://api.os.uk/features/ngd/ofa/v1/api
+  - type: Documentation
+    url: https://docs.os.uk/os-apis/accessing-os-apis/os-ngd-api-tiles
+  - type: APIReference
+    url: https://api.os.uk/maps/vector/ngd/ota/v1/api
+  - type: Documentation
+    url: https://docs.os.uk/os-apis/accessing-os-apis/os-downloads-api
+  - type: APIReference
+    url: https://api.os.uk/downloads/v1/openapi.yaml
+  - type: Documentation
+    url: https://docs.os.uk/os-apis/accessing-os-apis/os-net-api
+  - type: APIReference
+    url: https://api.os.uk/positioning/osnet/v1/openapi.yaml
+  - type: Documentation
+    url: https://docs.os.uk/os-apis/accessing-os-apis/os-places-api
+  - type: APIReference
+    url: https://docs.os.uk/os-apis/accessing-os-apis/os-places-api/technical-specification
+  - type: Documentation
+    url: https://docs.os.uk/os-apis/accessing-os-apis/os-names-api
+  - type: APIReference
+    url: https://docs.os.uk/os-apis/accessing-os-apis/os-names-api/technical-specification
+  - type: Documentation
+    url: https://docs.os.uk/os-apis/accessing-os-apis/os-linked-identifiers-api
+  - type: APIReference
+    url: >-
+      https://docs.os.uk/os-apis/accessing-os-apis/os-linked-identifiers-api/technical-specification
+  - type: Documentation
+    url: https://docs.os.uk/os-apis/accessing-os-apis/os-features-api
+  - type: APIReference
+    url: https://docs.os.uk/os-apis/accessing-os-apis/os-features-api/technical-specification
+  - type: Documentation
+    url: https://docs.os.uk/os-apis/accessing-os-apis/os-maps-api
+  - type: APIReference
+    url: https://docs.os.uk/os-apis/accessing-os-apis/os-maps-api/technical-specification
+  - type: Documentation
+    url: https://docs.os.uk/os-apis/accessing-os-apis/os-vector-tile-api
+  - type: APIReference
+    url: https://docs.os.uk/os-apis/accessing-os-apis/os-vector-tile-api/technical-specification
+- aid: ordnance-survey:ordnance-survey-tiling-schemes-api
+  name: Ordnance Survey Tiling Schemes API
+  description: The Tiling Schemes API from Ordnance Survey — 2 operation(s) for tiling schemes.
+  humanURL: https://docs.os.uk/os-apis/accessing-os-apis/os-ngd-api-features
+  baseURL: https://api.os.uk/features/ngd/ofa/v1
+  tags:
+  - Tiling Schemes
+  properties:
+  - type: OpenAPI
+    url: openapi/ordnance-survey-tiling-schemes-api-openapi.yml
+  - type: Documentation
+    url: https://docs.os.uk/os-apis/accessing-os-apis/os-ngd-api-features
+  - type: APIReference
+    url: https://api.os.uk/features/ngd/ofa/v1/api
+  - type: Documentation
+    url: https://docs.os.uk/os-apis/accessing-os-apis/os-ngd-api-tiles
+  - type: APIReference
+    url: https://api.os.uk/maps/vector/ngd/ota/v1/api
+  - type: Documentation
+    url: https://docs.os.uk/os-apis/accessing-os-apis/os-downloads-api
+  - type: APIReference
+    url: https://api.os.uk/downloads/v1/openapi.yaml
+  - type: Documentation
+    url: https://docs.os.uk/os-apis/accessing-os-apis/os-net-api
+  - type: APIReference
+    url: https://api.os.uk/positioning/osnet/v1/openapi.yaml
+  - type: Documentation
+    url: https://docs.os.uk/os-apis/accessing-os-apis/os-places-api
+  - type: APIReference
+    url: https://docs.os.uk/os-apis/accessing-os-apis/os-places-api/technical-specification
+  - type: Documentation
+    url: https://docs.os.uk/os-apis/accessing-os-apis/os-names-api
+  - type: APIReference
+    url: https://docs.os.uk/os-apis/accessing-os-apis/os-names-api/technical-specification
+  - type: Documentation
+    url: https://docs.os.uk/os-apis/accessing-os-apis/os-linked-identifiers-api
+  - type: APIReference
+    url: >-
+      https://docs.os.uk/os-apis/accessing-os-apis/os-linked-identifiers-api/technical-specification
+  - type: Documentation
+    url: https://docs.os.uk/os-apis/accessing-os-apis/os-features-api
+  - type: APIReference
+    url: https://docs.os.uk/os-apis/accessing-os-apis/os-features-api/technical-specification
+  - type: Documentation
+    url: https://docs.os.uk/os-apis/accessing-os-apis/os-maps-api
+  - type: APIReference
+    url: https://docs.os.uk/os-apis/accessing-os-apis/os-maps-api/technical-specification
+  - type: Documentation
+    url: https://docs.os.uk/os-apis/accessing-os-apis/os-vector-tile-api
+  - type: APIReference
+    url: https://docs.os.uk/os-apis/accessing-os-apis/os-vector-tile-api/technical-specification
+- aid: ordnance-survey:ordnance-survey-uprn-api
+  name: Ordnance Survey UPRN API
+  description: A search that takes a UPRN as the search parameter.
+  humanURL: https://docs.os.uk/os-apis/accessing-os-apis/os-ngd-api-features
+  baseURL: https://api.os.uk/features/ngd/ofa/v1
+  tags:
+  - UPRN
+  properties:
+  - type: OpenAPI
+    url: openapi/ordnance-survey-uprn-api-openapi.yml
+  - type: Documentation
+    url: https://docs.os.uk/os-apis/accessing-os-apis/os-ngd-api-features
+  - type: APIReference
+    url: https://api.os.uk/features/ngd/ofa/v1/api
+  - type: Documentation
+    url: https://docs.os.uk/os-apis/accessing-os-apis/os-ngd-api-tiles
+  - type: APIReference
+    url: https://api.os.uk/maps/vector/ngd/ota/v1/api
+  - type: Documentation
+    url: https://docs.os.uk/os-apis/accessing-os-apis/os-downloads-api
+  - type: APIReference
+    url: https://api.os.uk/downloads/v1/openapi.yaml
+  - type: Documentation
+    url: https://docs.os.uk/os-apis/accessing-os-apis/os-net-api
+  - type: APIReference
+    url: https://api.os.uk/positioning/osnet/v1/openapi.yaml
+  - type: Documentation
+    url: https://docs.os.uk/os-apis/accessing-os-apis/os-places-api
+  - type: APIReference
+    url: https://docs.os.uk/os-apis/accessing-os-apis/os-places-api/technical-specification
+  - type: Documentation
+    url: https://docs.os.uk/os-apis/accessing-os-apis/os-names-api
+  - type: APIReference
+    url: https://docs.os.uk/os-apis/accessing-os-apis/os-names-api/technical-specification
+  - type: Documentation
+    url: https://docs.os.uk/os-apis/accessing-os-apis/os-linked-identifiers-api
+  - type: APIReference
+    url: >-
+      https://docs.os.uk/os-apis/accessing-os-apis/os-linked-identifiers-api/technical-specification
+  - type: Documentation
+    url: https://docs.os.uk/os-apis/accessing-os-apis/os-features-api
+  - type: APIReference
+    url: https://docs.os.uk/os-apis/accessing-os-apis/os-features-api/technical-specification
+  - type: Documentation
+    url: https://docs.os.uk/os-apis/accessing-os-apis/os-maps-api
+  - type: APIReference
+    url: https://docs.os.uk/os-apis/accessing-os-apis/os-maps-api/technical-specification
+  - type: Documentation
+    url: https://docs.os.uk/os-apis/accessing-os-apis/os-vector-tile-api
+  - type: APIReference
+    url: https://docs.os.uk/os-apis/accessing-os-apis/os-vector-tile-api/technical-specification
+- aid: ordnance-survey:ordnance-survey-vector-tiles-api
+  name: Ordnance Survey Vector Tiles API
+  description: The Vector Tiles API from Ordnance Survey — 2 operation(s) for vector tiles.
+  humanURL: https://docs.os.uk/os-apis/accessing-os-apis/os-ngd-api-features
+  baseURL: https://api.os.uk/features/ngd/ofa/v1
+  tags:
+  - Vector Tiles
+  properties:
+  - type: OpenAPI
+    url: openapi/ordnance-survey-vector-tiles-api-openapi.yml
+  - type: Documentation
+    url: https://docs.os.uk/os-apis/accessing-os-apis/os-ngd-api-features
+  - type: APIReference
+    url: https://api.os.uk/features/ngd/ofa/v1/api
+  - type: Documentation
+    url: https://docs.os.uk/os-apis/accessing-os-apis/os-ngd-api-tiles
+  - type: APIReference
+    url: https://api.os.uk/maps/vector/ngd/ota/v1/api
+  - type: Documentation
+    url: https://docs.os.uk/os-apis/accessing-os-apis/os-downloads-api
+  - type: APIReference
+    url: https://api.os.uk/downloads/v1/openapi.yaml
+  - type: Documentation
+    url: https://docs.os.uk/os-apis/accessing-os-apis/os-net-api
+  - type: APIReference
+    url: https://api.os.uk/positioning/osnet/v1/openapi.yaml
+  - type: Documentation
+    url: https://docs.os.uk/os-apis/accessing-os-apis/os-places-api
+  - type: APIReference
+    url: https://docs.os.uk/os-apis/accessing-os-apis/os-places-api/technical-specification
+  - type: Documentation
+    url: https://docs.os.uk/os-apis/accessing-os-apis/os-names-api
+  - type: APIReference
+    url: https://docs.os.uk/os-apis/accessing-os-apis/os-names-api/technical-specification
+  - type: Documentation
+    url: https://docs.os.uk/os-apis/accessing-os-apis/os-linked-identifiers-api
+  - type: APIReference
+    url: >-
+      https://docs.os.uk/os-apis/accessing-os-apis/os-linked-identifiers-api/technical-specification
+  - type: Documentation
+    url: https://docs.os.uk/os-apis/accessing-os-apis/os-features-api
+  - type: APIReference
+    url: https://docs.os.uk/os-apis/accessing-os-apis/os-features-api/technical-specification
+  - type: Documentation
+    url: https://docs.os.uk/os-apis/accessing-os-apis/os-maps-api
+  - type: APIReference
+    url: https://docs.os.uk/os-apis/accessing-os-apis/os-maps-api/technical-specification
+  - type: Documentation
+    url: https://docs.os.uk/os-apis/accessing-os-apis/os-vector-tile-api
+  - type: APIReference
+    url: https://docs.os.uk/os-apis/accessing-os-apis/os-vector-tile-api/technical-specification
 common:
+- type: Overlay
+  url: overlays/ordnance-survey-ngd-features-overlay.yaml
+- type: Overlay
+  url: overlays/ordnance-survey-ngd-tiles-overlay.yaml
+- type: Overlay
+  url: overlays/ordnance-survey-downloads-overlay.yaml
+- type: Overlay
+  url: overlays/ordnance-survey-osnet-overlay.yaml
+- type: Overlay
+  url: overlays/ordnance-survey-places-overlay.yaml
+- type: Overlay
+  url: overlays/ordnance-survey-names-overlay.yaml
+- type: Overlay
+  url: overlays/ordnance-survey-linked-identifiers-overlay.yaml
+- type: Overlay
+  url: overlays/ordnance-survey-features-wfs-overlay.yaml
+- type: Overlay
+  url: overlays/ordnance-survey-maps-overlay.yaml
+- type: Overlay
+  url: overlays/ordnance-survey-vector-tile-overlay.yaml
 - type: PostmanWorkspace
   url: https://www.postman.com/kinlaneapi/ordnance-survey/overview
 - type: AgenticAccess
