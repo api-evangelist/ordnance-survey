@@ -1,0 +1,161 @@
+openapi: 3.2.0
+info:
+  title: OS Vector Tiles Service Metadata API
+  version: v1.0
+  x-apievangelist-provenance:
+    method: searched
+    generated: '2026-07-26'
+    assembly: Assembled by the API Evangelist enrichment pipeline from the per-operation OpenAPI 3.0.1 documents Ordnance Survey publishes inline on each docs.os.uk technical-specification page. Paths, parameters, schemas, security schemes and responses are verbatim from those published documents; only the per-page fragments were merged into one document per API.
+    sources:
+    - https://docs.os.uk/os-apis/accessing-os-apis/os-vector-tile-api/technical-specification/service-metadata.md
+    - https://docs.os.uk/os-apis/accessing-os-apis/os-vector-tile-api/technical-specification/stylesheet.md
+    - https://docs.os.uk/os-apis/accessing-os-apis/os-vector-tile-api/technical-specification/tile-request.md
+  description: Service Metadata for OS Vector Tiles API
+servers:
+- url: https://api.os.uk/maps/vector/v1
+security:
+- api-key: []
+  api-key-header: []
+  oauth2: []
+tags:
+- name: Service Metadata
+  description: Service Metadata for OS Vector Tiles API
+paths:
+  /vts:
+    get:
+      tags:
+      - Service Metadata
+      summary: Service Metadata for OS Vector Tiles API
+      operationId: getServiceMetadata
+      parameters:
+      - name: srs
+        in: query
+        description: The Spatial Reference System for the service.
+        required: false
+        schema:
+          type: string
+          default: '27700'
+          enum:
+          - '27700'
+          - '3857'
+      responses:
+        '200':
+          description: Retrieves Service Metadata for OS Vector Tiles API
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ServiceMetadata'
+components:
+  schemas:
+    TileInfo:
+      type: object
+      properties:
+        rows:
+          type: integer
+        cols:
+          type: integer
+        dpi:
+          type: integer
+        format:
+          type: string
+        origin:
+          type: object
+          properties:
+            x:
+              type: number
+            y:
+              type: number
+        spatialReference:
+          $ref: '#/components/schemas/Extent'
+        lods:
+          type: array
+          items:
+            $ref: '#/components/schemas/Lod'
+    Lod:
+      type: object
+      properties:
+        level:
+          type: integer
+        resolution:
+          type: number
+        scale:
+          type: number
+    Extent:
+      type: object
+      properties:
+        xmin:
+          type: number
+        ymin:
+          type: number
+        xmax:
+          type: number
+        ymax:
+          type: number
+        spatialReference:
+          type: object
+          properties:
+            wkid:
+              type: integer
+            latestWkid:
+              type: integer
+    ServiceMetadata:
+      type: object
+      properties:
+        currentVersion:
+          type: number
+        name:
+          type: string
+        capabilities:
+          type: string
+        type:
+          type: string
+        defaultStyles:
+          type: string
+        tiles:
+          type: array
+          items:
+            type: string
+        exportTilesAllowed:
+          type: boolean
+        initialExtent:
+          $ref: '#/components/schemas/Extent'
+        fullExtent:
+          $ref: '#/components/schemas/Extent'
+        minScale:
+          type: number
+        maxScale:
+          type: number
+        tileInfo:
+          $ref: '#/components/schemas/TileInfo'
+        maxzoom:
+          type: integer
+        minLOD:
+          type: integer
+        maxLOD:
+          type: integer
+        resourceInfo:
+          type: object
+          properties:
+            styleVersion:
+              type: integer
+            tileCompression:
+              type: string
+            cacheInfo:
+              type: object
+              properties:
+                storageInfo:
+                  type: object
+                  properties:
+                    packetSize:
+                      type: integer
+                    storageFormat:
+                      type: string
+        serviceItemId:
+          type: string
+        maxExportTilesCount:
+          type: integer
+  securitySchemes:
+    api-key:
+      type: apiKey
+      name: key
+      in: query

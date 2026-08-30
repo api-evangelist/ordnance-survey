@@ -1,0 +1,331 @@
+openapi: 3.2.0
+info:
+  title: OS NGD API - Tiles Tiling Schemes API
+  version: v1.8
+servers:
+- description: NGD OGC API - Tiles server
+  url: https://api.os.uk/maps/vector/ngd/ota/v1
+tags:
+- name: Tiling Schemes
+paths:
+  /tilematrixsets:
+    get:
+      operationId: getTileMatrixSetsList
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/getTileMatrixSetsList_200_response'
+          description: List of tile matrix sets (tiling schemes).
+        '400':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/exceptionDto'
+          description: The request was not supported.
+        '404':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/exceptionDto'
+          description: The requested resource does not exist on the server. For example, a path parameter had an incorrect value.
+        '405':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/exceptionDto'
+          description: The HTTP method requested is not supported. This endpoint only supports 'GET' requests.
+        '406':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/exceptionDto'
+          description: A request header value was not supported.
+        '500':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/exceptionDto'
+          description: A server error occurred.
+        '504':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/exceptionDto'
+          description: Gateway Timeout.
+      summary: Retrieve the list of available tiling schemes (tile matrix sets)
+      tags:
+      - Tiling Schemes
+  /tilematrixsets/{tileMatrixSetId}:
+    get:
+      operationId: getTileMatrixSet
+      parameters:
+      - allowEmptyValue: false
+        description: Identifier for a supported TileMatrixSet
+        in: path
+        name: tileMatrixSetId
+        required: true
+        schema:
+          $ref: '#/components/schemas/TileMatrixSets'
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/tileMatrixSet'
+          description: tile matrix set
+        '400':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/exceptionDto'
+          description: The request was not supported.
+        '404':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/exceptionDto'
+          description: The requested resource does not exist on the server. For example, a path parameter had an incorrect value.
+        '405':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/exceptionDto'
+          description: The HTTP method requested is not supported. This endpoint only supports 'GET' requests.
+        '406':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/exceptionDto'
+          description: A request header value was not supported.
+        '500':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/exceptionDto'
+          description: A server error occurred.
+        '504':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/exceptionDto'
+          description: Gateway Timeout.
+      summary: Retrieve the definition of the specified tiling scheme (tile matrix set)
+      tags:
+      - Tiling Schemes
+components:
+  schemas:
+    TileMatrixSets:
+      enum:
+      - '3857'
+      - '27700'
+      type: string
+    exceptionDto:
+      description: JSON schema for exceptions based on RFC 7807
+      properties:
+        type:
+          type: string
+        title:
+          type: string
+        status:
+          type: integer
+        detail:
+          type: string
+        instance:
+          type: string
+        code:
+          type: integer
+        description:
+          type: string
+        help:
+          type: string
+      required:
+      - type
+      title: Exception Schema
+      type: object
+    tileMatrixSet:
+      description: A definition of a tile matrix set following the Tile Matrix Set standard. For tileset metadata, such a description (in `tileMatrixSet` property) is only required for offline use, as an alternative to a link with a `http://www.opengis.net/def/rel/ogc/1.0/tiling-scheme` relation type.
+      properties:
+        title:
+          description: Title of this tile matrix set, normally used for display to a human
+          type: string
+        id:
+          description: Tile matrix set identifier. Implementation of 'identifier'
+          type: string
+        uri:
+          description: Reference to an official source for this tileMatrixSet
+          format: uri
+          type: string
+        orderedAxes:
+          items:
+            type: string
+          minItems: 1
+          type: array
+        crs:
+          allOf:
+          - $ref: '#/components/schemas/crs'
+        wellKnownScaleSet:
+          description: Reference to a well-known scale set
+          format: uri
+          type: string
+        tileMatrices:
+          description: Describes scale levels and its tile matrices
+          items:
+            $ref: '#/components/schemas/tileMatrix'
+          type: array
+      required:
+      - crs
+      - tileMatrices
+      title: Tile Matrix Set Definition
+      type: object
+    tileMatrix:
+      description: A tile matrix, usually corresponding to a particular zoom level of a TileMatrixSet.
+      properties:
+        id:
+          description: Identifier selecting one of the scales defined in the TileMatrixSet and representing the scaleDenominator the tile. Implementation of 'identifier'
+          type: string
+        scaleDenominator:
+          description: Scale denominator of this tile matrix
+          type: number
+        cellSize:
+          description: Cell size of this tile matrix
+          type: number
+        cornerOfOrigin:
+          default: topLeft
+          description: The corner of the tile matrix (_topLeft_ or _bottomLeft_) used as the origin for numbering tile rows and columns. This corner is also a corner of the (0, 0) tile.
+          enum:
+          - topLeft
+          - bottomLeft
+          type: string
+        pointOfOrigin:
+          description: Precise position in CRS coordinates of the corner of origin (e.g. the top-left corner) for this tile matrix. This position is also a corner of the (0, 0) tile. In previous version, this was 'topLeftCorner' and 'cornerOfOrigin' did not exist.
+          items:
+            type: number
+          maxItems: 2
+          minItems: 2
+          type: array
+        tileWidth:
+          description: Width of each tile of this tile matrix in pixels
+          format: integer
+          minimum: 1
+          multipleOf: 1
+          type: number
+        tileHeight:
+          description: Height of each tile of this tile matrix in pixels
+          format: integer
+          minimum: 1
+          multipleOf: 1
+          type: number
+        matrixHeight:
+          description: Width of the matrix (number of tiles in width)
+          format: integer
+          minimum: 1
+          multipleOf: 1
+          type: number
+        matrixWidth:
+          description: Height of the matrix (number of tiles in height)
+          format: integer
+          minimum: 1
+          multipleOf: 1
+          type: number
+      required:
+      - cellSize
+      - id
+      - matrixHeight
+      - matrixWidth
+      - pointOfOrigin
+      - scaleDenominator
+      - tileHeight
+      - tileWidth
+      type: object
+    crs:
+      description: Reference to one coordinate reference system (CRS)
+      format: uri
+      title: CRS
+      type: string
+    tileMatrixSet-item:
+      description: A minimal tile matrix set element for use within a list of tile matrix sets linking to a full definition.
+      properties:
+        id:
+          description: Optional local tile matrix set identifier, e.g. for use as unspecified `{tileMatrixSetId}` parameter. Implementation of 'identifier'
+          type: string
+        title:
+          description: Title of this tile matrix set, normally used for display to a human
+          type: string
+        uri:
+          description: Reference to an official source for this tileMatrixSet
+          format: uri
+          type: string
+        crs:
+          allOf:
+          - description: Coordinate Reference System (CRS)
+            type: object
+          - $ref: '#/components/schemas/crs'
+        links:
+          description: Links to related resources. A 'self' link to the tile matrix set definition is required.
+          items:
+            $ref: '#/components/schemas/link'
+          type: array
+      required:
+      - links
+      title: Tile Matrix Set Item
+      type: object
+    getTileMatrixSetsList_200_response:
+      properties:
+        tileMatrixSets:
+          items:
+            $ref: '#/components/schemas/tileMatrixSet-item'
+          type: array
+      type: object
+    link:
+      properties:
+        href:
+          description: Supplies the URI to a remote resource (or resource fragment).
+          example: http://data.example.com/buildingpart/123
+          type: string
+        rel:
+          description: The type or semantics of the relation.
+          example: alternate
+          type: string
+        type:
+          description: A hint indicating what the media type of the result of dereferencing the link should be.
+          example: application/geo+json
+          type: string
+        templated:
+          description: This flag set to true if the link is a URL template.
+          type: boolean
+        varBase:
+          description: A base path to retrieve semantic information about the variables used in URL template.
+          example: /ogcapi/vars/
+          type: string
+        hreflang:
+          description: A hint indicating what the language of the result of dereferencing the link should be.
+          example: en
+          type: string
+        title:
+          description: Used to label the destination of a link such that it can be used as a human-readable identifier.
+          example: Building Part
+          type: string
+        length:
+          type: integer
+      required:
+      - href
+      - rel
+      type: object
+  securitySchemes:
+    api-key:
+      type: apiKey
+      name: key
+      in: query
+    api-key-header:
+      type: apiKey
+      name: key
+      in: header
+    oauth2:
+      type: oauth2
+      name: oauth2
+      flows:
+        clientCredentials:
+          tokenUrl: https://api.os.uk/oauth2/token/v1
+          scopes: {}

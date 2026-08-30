@@ -1,0 +1,388 @@
+openapi: 3.2.0
+info:
+  title: OS Linked Identifiers OS OpenData Users API
+  version: 1.0.0
+  x-apievangelist-provenance:
+    method: searched
+    generated: '2026-07-26'
+    assembly: Assembled by the API Evangelist enrichment pipeline from the per-operation OpenAPI 3.0.1 documents Ordnance Survey publishes inline on each docs.os.uk technical-specification page. Paths, parameters, schemas, security schemes and responses are verbatim from those published documents; only the per-page fragments were merged into one document per API.
+    sources:
+    - https://docs.os.uk/os-apis/accessing-os-apis/os-linked-identifiers-api/technical-specification/feature-types.md
+    - https://docs.os.uk/os-apis/accessing-os-apis/os-linked-identifiers-api/technical-specification/identifier-types.md
+    - https://docs.os.uk/os-apis/accessing-os-apis/os-linked-identifiers-api/technical-specification/identifier.md
+    - https://docs.os.uk/os-apis/accessing-os-apis/os-linked-identifiers-api/technical-specification/product-version-information.md
+    server_url_published:
+    - ${lids.api.server}/search/links/v1
+    server_url_note: The published fragments carry an unresolved deployment template variable; substituted with the production host documented at https://api.os.uk/search/links/v1 and in the api.os.uk link index.
+  description: Operations available to customers using the OpenData plan
+servers:
+- url: https://api.os.uk/search/links/v1
+security:
+- ApiKeyAuth: []
+- OAuth2:
+  - read
+tags:
+- name: OS OpenData Users
+  description: Operations available to customers using the OpenData plan
+paths:
+  /featureTypes/{featureType}/{id}:
+    get:
+      tags:
+      - OS OpenData Users
+      summary: Query ID when input featureType is known
+      description: Returns associated Linked Identifiers, when feature type is known. Returns an object.
+      parameters:
+      - $ref: '#/components/parameters/featureIdentifier'
+      - name: featureType
+        in: path
+        description: Feature type of ID being queried
+        explode: true
+        required: true
+        schema:
+          type: string
+          enum:
+          - BLPU
+          - ORRoadNode
+          - ORRoadLink
+          - Road
+          - RoadLink
+          - Street
+          - TopographicArea
+      responses:
+        '200':
+          description: Search results matching criteria
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/linkedIdentifier'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '404':
+          $ref: '#/components/responses/NotFound'
+        '405':
+          $ref: '#/components/responses/MethodNotAllowed'
+        '429':
+          $ref: '#/components/responses/TooManyRequests'
+        '500':
+          $ref: '#/components/responses/InternalServerError'
+        '503':
+          $ref: '#/components/responses/ServiceUnavailable'
+  /identifierTypes/{identifierType}/{id}:
+    get:
+      tags:
+      - OS OpenData Users
+      summary: Queries ID when input identifierType is known
+      description: 'Returns associated Linked Identifiers, when the input identifier type is known. Returns an object.
+
+        '
+      parameters:
+      - $ref: '#/components/parameters/featureIdentifier'
+      - name: identifierType
+        in: path
+        description: Identifier type of ID being queried
+        explode: true
+        required: true
+        schema:
+          type: string
+          enum:
+          - GUID
+          - TOID
+          - UPRN
+          - USRN
+      responses:
+        '200':
+          description: Search results matching criteria
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/linkedIdentifier'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '404':
+          $ref: '#/components/responses/NotFound'
+        '405':
+          $ref: '#/components/responses/MethodNotAllowed'
+        '429':
+          $ref: '#/components/responses/TooManyRequests'
+        '500':
+          $ref: '#/components/responses/InternalServerError'
+        '503':
+          $ref: '#/components/responses/ServiceUnavailable'
+  /identifiers/{id}:
+    get:
+      tags:
+      - OS OpenData Users
+      summary: Query identifer
+      description: Query by identifier and find its associated IDs. May return more than one set of links due to the namespace overlap between UPRNs and USRNs.
+      parameters:
+      - $ref: '#/components/parameters/featureIdentifier'
+      responses:
+        '200':
+          description: Search results matching criteria
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/linkedIdentifierSet'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '404':
+          $ref: '#/components/responses/NotFound'
+        '405':
+          $ref: '#/components/responses/MethodNotAllowed'
+        '429':
+          $ref: '#/components/responses/TooManyRequests'
+        '500':
+          $ref: '#/components/responses/InternalServerError'
+        '503':
+          $ref: '#/components/responses/ServiceUnavailable'
+  /productVersionInfo/{correlationMethod}:
+    get:
+      tags:
+      - OS OpenData Users
+      summary: Returns product version details of the source data products
+      description: Returns current valid version information for identifier relationships
+      parameters:
+      - name: correlationMethod
+        in: path
+        description: Correlation method being queried
+        explode: true
+        required: true
+        schema:
+          type: string
+          enum:
+          - RoadLink_TOID_TopographicArea_TOID_2
+          - Road_TOID_TopographicArea_TOID_3
+          - Street_USRN_TopographicArea_TOID_4
+          - BLPU_UPRN_TopographicArea_TOID_5
+          - RoadLink_TOID_Road_TOID_7
+          - RoadLink_TOID_Street_USRN_8
+          - BLPU_UPRN_RoadLink_TOID_9
+          - Road_TOID_Street_USRN_10
+          - BLPU_UPRN_Street_USRN_11
+          - ORRoadLink_GUID_RoadLink_TOID_12
+          - ORRoadNode_GUID_RoadLink_TOID_13
+      responses:
+        '200':
+          description: Returns product version information about the requested correlation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/correlationMethodInformation'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '404':
+          $ref: '#/components/responses/NotFound'
+        '405':
+          $ref: '#/components/responses/MethodNotAllowed'
+        '429':
+          $ref: '#/components/responses/TooManyRequests'
+        '500':
+          $ref: '#/components/responses/InternalServerError'
+        '503':
+          $ref: '#/components/responses/ServiceUnavailable'
+components:
+  responses:
+    MethodNotAllowed:
+      description: Request used an unsupported HTTP method, e.g. DELETE or PUT.
+    InternalServerError:
+      description: Generic internal server error.
+    Unauthorized:
+      description: The client has not provided authentication or incorrect authentication.
+    Forbidden:
+      description: The client has authenticated its access but does not have sufficient rights to complete the request.
+    NotFound:
+      description: The server has not found anything matching the Request-URI.
+    ServiceUnavailable:
+      description: Temporary outage due to overloading or maintenance.
+    TooManyRequests:
+      description: Exceeded the number of requests per minute (rate-limit).
+    BadRequest:
+      description: E.g. missing query parameter, malformed syntax.
+  parameters:
+    featureIdentifier:
+      name: id
+      in: path
+      description: ID of the feature that is being matched
+      required: true
+      schema:
+        type: string
+        minLength: 1
+        maxLength: 36
+  schemas:
+    correlationMethodIdentifier:
+      type: string
+      enum:
+      - RoadLink_TOID_TopographicArea_TOID_2
+      - Road_TOID_TopographicArea_TOID_3
+      - Street_USRN_TopographicArea_TOID_4
+      - BLPU_UPRN_TopographicArea_TOID_5
+      - RoadLink_TOID_Road_TOID_7
+      - RoadLink_TOID_Street_USRN_8
+      - BLPU_UPRN_RoadLink_TOID_9
+      - Road_TOID_Street_USRN_10
+      - BLPU_UPRN_Street_USRN_11
+      - ORRoadLink_GUID_RoadLink_TOID_12
+      - ORRoadNode_GUID_RoadLink_TOID_13
+    identifierType:
+      type: string
+      enum:
+      - GUID
+      - TOID
+      - UPRN
+      - USRN
+    featureType:
+      type: string
+      enum:
+      - BLPU
+      - ORRoadNode
+      - ORRoadLink
+      - Road
+      - RoadLink
+      - Street
+      - TopographicArea
+    correlationMethodInformation:
+      type: object
+      required:
+      - methodIdentfier
+      - productCreationDate
+      - identifier1Source
+      - identifier2Source
+      additionalProperties: false
+      properties:
+        methodIdentifier:
+          $ref: '#/components/schemas/correlationMethodIdentifier'
+        productCreationDate:
+          type: string
+        productPublicationName:
+          type: string
+        identifier1Source:
+          $ref: '#/components/schemas/identifierSource'
+        identifier2Source:
+          $ref: '#/components/schemas/identifierSource'
+    identifierSource:
+      type: object
+      required:
+      - productName
+      - productPublicationDate
+      - featureType
+      - identifierType
+      additionalProperties: false
+      properties:
+        productName:
+          type: string
+          enum:
+          - AddressBase Premium
+          - OS MasterMap Highways Network - Roads
+          - OS MasterMap Topography Layer
+          - OS Open Roads
+        productPublicationDate:
+          type: string
+        productPublicationName:
+          type: string
+        featureType:
+          $ref: '#/components/schemas/featureType'
+        identifierType:
+          $ref: '#/components/schemas/identifierType'
+    linkedIdentifier:
+      type: object
+      required:
+      - linkedIdentifier
+      - correlations
+      additionalProperties: false
+      properties:
+        linkedIdentifier:
+          title: linkedIdentifier
+          type: object
+          required:
+          - identifier
+          - featureType
+          - identifierType
+          additionalProperties: false
+          properties:
+            identifier:
+              type: string
+            featureType:
+              $ref: '#/components/schemas/featureType'
+            identifierType:
+              $ref: '#/components/schemas/identifierType'
+        correlations:
+          type: array
+          title: correlations
+          items:
+            type: object
+            required:
+            - correlationMethodIdentifier
+            - correlatedFeatureType
+            - correlatedIdentifierType
+            - correlatedIdentifiers
+            additionalProperties: false
+            properties:
+              searchedIdentifierVersionDate:
+                type: string
+              searchedIdentifierVersionNumber:
+                type: number
+              correlationMethodIdentifier:
+                $ref: '#/components/schemas/correlationMethodIdentifier'
+              correlatedFeatureType:
+                $ref: '#/components/schemas/featureType'
+              correlatedIdentifierType:
+                $ref: '#/components/schemas/identifierType'
+              correlatedIdentifiers:
+                type: array
+                required:
+                - identifier
+                - confidence
+                - correlationIdentifier
+                additionalProperties: false
+                items:
+                  type: object
+                  properties:
+                    identifier:
+                      type: string
+                    versionNumber:
+                      type: number
+                    versionDate:
+                      type: string
+                    confidence:
+                      type: string
+                    correlationIdentifier:
+                      type: string
+    linkedIdentifierSet:
+      type: object
+      required:
+      - linkedIdentifiers
+      additionalProperties: false
+      properties:
+        linkedIdentifiers:
+          type: array
+          title: linkedIdentifiers
+          items:
+            $ref: '#/components/schemas/linkedIdentifier'
+  securitySchemes:
+    ApiKeyAuth:
+      type: apiKey
+      in: query
+      name: key
+    OAuth2:
+      type: oauth2
+      flows:
+        clientCredentials:
+          tokenUrl: https://api.os.uk/oauth2/token/v1
+          scopes:
+            read: Grants read access

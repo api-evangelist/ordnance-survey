@@ -1,0 +1,463 @@
+openapi: 3.2.0
+info:
+  title: Ordnance Survey Styles API
+  x-refined-note:
+  - x-apievangelist-provenance differs across the merged source definitions and was not carried
+  version: '1.0'
+  description: 'Operations tagged Styles across 2 of this provider''s published API definitions: ordnance-survey-ngd-tiles-openapi.json, ordnance-survey-vector-tile-openapi.json. Each path carries the servers of the definition it was published in.'
+servers:
+- description: NGD OGC API - Tiles server
+  url: https://api.os.uk/maps/vector/ngd/ota/v1
+- url: https://api.os.uk/maps/vector/v1
+tags:
+- name: Styles
+paths:
+  /collections/{collectionId}/styles:
+    get:
+      operationId: getStylesList
+      parameters:
+      - description: Local identifier of a collection
+        in: path
+        name: collectionId
+        required: true
+        schema:
+          $ref: '#/components/schemas/AllCollections'
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/getStylesList_200_response'
+          description: List of available styles.
+        '400':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/exceptionDto'
+          description: The request was not supported.
+        '404':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/exceptionDto'
+          description: The requested resource does not exist on the server. For example, a path parameter had an incorrect value.
+        '405':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/exceptionDto'
+          description: The HTTP method requested is not supported. This endpoint only supports 'GET' requests.
+        '406':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/exceptionDto'
+          description: A request header value was not supported.
+        '500':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/exceptionDto'
+          description: A server error occurred.
+        '504':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/exceptionDto'
+          description: Gateway Timeout.
+      summary: Retrieve the list of styles available from this service.
+      tags:
+      - Styles
+    servers:
+    - description: NGD OGC API - Tiles server
+      url: https://api.os.uk/maps/vector/ngd/ota/v1
+  /collections/{collectionId}/styles/{styleId}:
+    get:
+      operationId: getStyleRoot
+      parameters:
+      - description: Local identifier of a collection
+        in: path
+        name: collectionId
+        required: true
+        schema:
+          $ref: '#/components/schemas/AllCollections'
+      - description: An identifier representing a specific style.
+        in: path
+        name: styleId
+        required: true
+        schema:
+          $ref: '#/components/schemas/Styles'
+      responses:
+        '200':
+          content:
+            '*/*':
+              schema:
+                type: object
+          description: OK
+        '400':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/exceptionDto'
+          description: The request was not supported.
+        '404':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/exceptionDto'
+          description: The requested resource does not exist on the server. For example, a path parameter had an incorrect value.
+        '405':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/exceptionDto'
+          description: The HTTP method requested is not supported. This endpoint only supports 'GET' requests.
+        '406':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/exceptionDto'
+          description: A request header value was not supported.
+        '500':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/exceptionDto'
+          description: A server error occurred.
+        '504':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/exceptionDto'
+          description: Gateway Timeout.
+      summary: Root level properties of a style specify the map's layers, tile sources and other resources, and default values for the initial camera position when not specified elsewhere.
+      tags:
+      - Styles
+    servers:
+    - description: NGD OGC API - Tiles server
+      url: https://api.os.uk/maps/vector/ngd/ota/v1
+  /collections/{collectionId}/styles/{styleId}/{resourceBaseName}/**:
+    get:
+      operationId: getStyleResources
+      parameters:
+      - description: Local identifier of a collection
+        in: path
+        name: collectionId
+        required: true
+        schema:
+          $ref: '#/components/schemas/AllCollections'
+      - description: An identifier representing a specific style.
+        in: path
+        name: styleId
+        required: true
+        schema:
+          $ref: '#/components/schemas/Styles'
+      - description: Styling resourece base name.
+        example: sprites
+        in: path
+        name: resourceBaseName
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          content:
+            '*/*':
+              schema:
+                type: object
+          description: OK
+        '400':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/exceptionDto'
+          description: The request was not supported.
+        '404':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/exceptionDto'
+          description: The requested resource does not exist on the server. For example, a path parameter had an incorrect value.
+        '405':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/exceptionDto'
+          description: The HTTP method requested is not supported. This endpoint only supports 'GET' requests.
+        '406':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/exceptionDto'
+          description: A request header value was not supported.
+        '500':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/exceptionDto'
+          description: A server error occurred.
+        '504':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/exceptionDto'
+          description: Gateway Timeout.
+      summary: Styling resources such as fonts and sprites
+      tags:
+      - Styles
+    servers:
+    - description: NGD OGC API - Tiles server
+      url: https://api.os.uk/maps/vector/ngd/ota/v1
+  /vts/resources/styles:
+    get:
+      tags:
+      - Styles
+      summary: Discover compatible stylesheets
+      operationId: discoverStyles
+      parameters:
+      - name: srs
+        in: query
+        description: The Spatial Reference System for the service.
+        required: false
+        schema:
+          type: string
+          default: '27700'
+          enum:
+          - '27700'
+          - '3857'
+      responses:
+        '200':
+          description: Retrieves compatible stylesheets
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/StylesResponse'
+      security:
+      - api-key: []
+        api-key-header: []
+        oauth2: []
+    servers:
+    - url: https://api.os.uk/maps/vector/v1
+  /vts/{layer-name}/resources/styles:
+    get:
+      tags:
+      - Styles
+      summary: Discover compatible stylesheets for a data overlay
+      operationId: discoverOverlayStyles
+      parameters:
+      - name: layer-name
+        in: path
+        description: The name of the data overlay.
+        required: true
+        schema:
+          type: string
+          enum:
+          - boundaries
+          - greenspace
+          - sites
+          - water
+          - highways
+          - paths
+      - name: srs
+        in: query
+        description: The Spatial Reference System for the service.
+        schema:
+          type: string
+          default: '27700'
+          enum:
+          - '27700'
+          - '3857'
+      responses:
+        '200':
+          description: Returns compatible stylesheets for a data overlay.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/StylesResponse'
+      security:
+      - api-key: []
+        api-key-header: []
+        oauth2: []
+    servers:
+    - url: https://api.os.uk/maps/vector/v1
+components:
+  schemas:
+    exceptionDto:
+      description: JSON schema for exceptions based on RFC 7807
+      properties:
+        type:
+          type: string
+        title:
+          type: string
+        status:
+          type: integer
+        detail:
+          type: string
+        instance:
+          type: string
+        code:
+          type: integer
+        description:
+          type: string
+        help:
+          type: string
+      required:
+      - type
+      title: Exception Schema
+      type: object
+    getStylesList_200_response:
+      properties:
+        links:
+          items:
+            $ref: '#/components/schemas/link'
+          type: array
+        styles:
+          items:
+            $ref: '#/components/schemas/style-item'
+          type: array
+      required:
+      - styles
+      type: object
+    Styles:
+      enum:
+      - '3857'
+      - '27700'
+      - road-27700
+      - road-3857
+      - light-27700
+      - light-3857
+      - blackwhite-27700
+      - blackwhite-3857
+      type: string
+    AllCollections:
+      enum:
+      - ngd-base
+      - asu-bdy
+      - wtr-ctch
+      - trn-ntwk-railway
+      - wtr-tidalboundary
+      type: string
+    style-item:
+      properties:
+        id:
+          type: string
+        title:
+          type: string
+        links:
+          items:
+            $ref: '#/components/schemas/link'
+          type: array
+      required:
+      - id
+      - links
+      type: object
+    link:
+      properties:
+        href:
+          description: Supplies the URI to a remote resource (or resource fragment).
+          example: http://data.example.com/buildingpart/123
+          type: string
+        rel:
+          description: The type or semantics of the relation.
+          example: alternate
+          type: string
+        type:
+          description: A hint indicating what the media type of the result of dereferencing the link should be.
+          example: application/geo+json
+          type: string
+        templated:
+          description: This flag set to true if the link is a URL template.
+          type: boolean
+        varBase:
+          description: A base path to retrieve semantic information about the variables used in URL template.
+          example: /ogcapi/vars/
+          type: string
+        hreflang:
+          description: A hint indicating what the language of the result of dereferencing the link should be.
+          example: en
+          type: string
+        title:
+          description: Used to label the destination of a link such that it can be used as a human-readable identifier.
+          example: Building Part
+          type: string
+        length:
+          type: integer
+      required:
+      - href
+      - rel
+      type: object
+    StylesResponse:
+      type: object
+      properties:
+        version:
+          type: integer
+        sprite:
+          type: string
+        glyphs:
+          type: string
+        sources:
+          type: object
+          additionalProperties:
+            type: object
+            properties:
+              type:
+                type: string
+              url:
+                type: string
+            required:
+            - type
+            - url
+        layers:
+          type: array
+          items:
+            type: object
+            properties:
+              id:
+                type: string
+              type:
+                type: string
+              source:
+                type: string
+              source-layer:
+                type: string
+              filter:
+                type: array
+                items:
+                  type: string
+              minzoom:
+                type: integer
+              maxzoom:
+                type: integer
+              layout:
+                type: object
+              paint:
+                type: object
+            required:
+            - id
+            - type
+            - source
+      required:
+      - version
+      - sprite
+      - glyphs
+      - sources
+      - layers
+  securitySchemes:
+    api-key:
+      type: apiKey
+      name: key
+      in: query
+    api-key-header:
+      type: apiKey
+      name: key
+      in: header
+    oauth2:
+      type: oauth2
+      name: oauth2
+      flows:
+        clientCredentials:
+          tokenUrl: https://api.os.uk/oauth2/token/v1
+          scopes: {}
+x-refined-from:
+- ordnance-survey-ngd-tiles-openapi.json
+- ordnance-survey-vector-tile-openapi.json

@@ -1,0 +1,391 @@
+openapi: 3.2.0
+info:
+  title: OS Places Bounding box API
+  version: v1.0
+  x-apievangelist-provenance:
+    method: searched
+    generated: '2026-07-26'
+    assembly: Assembled by the API Evangelist enrichment pipeline from the per-operation OpenAPI 3.0.1 documents Ordnance Survey publishes inline on each docs.os.uk technical-specification page. Paths, parameters, schemas, security schemes and responses are verbatim from those published documents; only the per-page fragments were merged into one document per API.
+    sources:
+    - https://docs.os.uk/os-apis/accessing-os-apis/os-places-api/technical-specification/bbox.md
+    - https://docs.os.uk/os-apis/accessing-os-apis/os-places-api/technical-specification/find.md
+    - https://docs.os.uk/os-apis/accessing-os-apis/os-places-api/technical-specification/nearest.md
+    - https://docs.os.uk/os-apis/accessing-os-apis/os-places-api/technical-specification/polygon.md
+    - https://docs.os.uk/os-apis/accessing-os-apis/os-places-api/technical-specification/postcode.md
+    - https://docs.os.uk/os-apis/accessing-os-apis/os-places-api/technical-specification/radius.md
+    - https://docs.os.uk/os-apis/accessing-os-apis/os-places-api/technical-specification/uprn.md
+  description: Find all addresses inside a bounding box.
+servers:
+- url: https://api.os.uk/search/places/v1
+security:
+- api-key: []
+  api-key-header: []
+  oauth2: []
+tags:
+- name: Bounding box
+  description: Find all addresses inside a bounding box.
+paths:
+  /bbox:
+    get:
+      tags:
+      - Bounding box
+      summary: Returns matched addresses within a bounding box.
+      operationId: getBbox
+      parameters:
+      - name: bbox
+        in: query
+        description: A pair of comma-separated coordinates with an accuracy of two decimal places or less, that specify the lower left and upper right coordinates of the bounding box. The maximum size of the bounding box is 1 km2. If the bounding box exceeds this, an error message is returned. The precision of the coordinates is to an accuracy of 8 metres.
+        required: true
+        schema:
+          type: string
+      - name: format
+        in: query
+        description: 'The format the response will be returned in. Default: JSON.'
+        required: false
+        schema:
+          type: string
+          default: JSON
+          enum:
+          - JSON
+          - XML
+      - name: maxresults
+        in: query
+        description: 'The maximum number of results to return. Default: 100.'
+        required: false
+        schema:
+          type: integer
+          default: '100'
+          minimum: 1
+          maximum: 100
+      - name: offset
+        in: query
+        description: Offset the list of returned results by this amount.
+        required: false
+        schema:
+          type: integer
+          default: '0'
+      - name: dataset
+        in: query
+        description: 'The dataset to return. Multiple values can be sent, separated by a comma. Default: DPA.'
+        required: false
+        schema:
+          type: string
+          default: DPA
+          enum:
+          - DPA
+          - LPI
+      - name: lr
+        in: query
+        description: 'Which language of addresses to return. Default: EN, CY.'
+        required: false
+        schema:
+          type: string
+          enum:
+          - EN
+          - CY
+      - name: output_srs
+        in: query
+        description: 'The intended output spatial reference system. Default: EPSG:27700'
+        required: false
+        schema:
+          type: string
+          default: EPSG:27700
+          enum:
+          - BNG
+          - EPSG:27700
+          - WGS84
+          - EPSG:4326
+          - EPSG:3857
+          - EPSG:4258
+      - name: srs
+        in: query
+        description: The spatial reference system for the input coordinate set.
+        required: false
+        schema:
+          type: string
+          enum:
+          - BNG
+          - EPSG:27700
+          - WGS84
+          - EPSG:4326
+          - EPSG:3857
+          - EPSG:4258
+      - name: fq
+        in: query
+        description: Filter for classification code, logical status code, LPI logical status code and/or country code. Filtering for classification code will accept wildcard ( * ) searches. Multiple searches can be done by separating the codes with a space. Multiple filters can be used together by including the parameter multiple times
+        required: false
+        schema:
+          type: array
+          items:
+            type: string
+      responses:
+        '200':
+          description: Retrieves matched addresses
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SearchResult'
+            application/xml:
+              schema:
+                $ref: '#/components/schemas/SearchResult'
+components:
+  schemas:
+    LPI:
+      type: object
+      properties:
+        UPRN:
+          type: string
+        ADDRESS:
+          type: string
+        USRN:
+          type: string
+        LPI_KEY:
+          type: string
+        ORGANISATION:
+          type: string
+        SAO_START_NUMBER:
+          type: string
+        SAO_START_SUFFIX:
+          type: string
+        SAO_END_NUMBER:
+          type: string
+        SAO_END_SUFFIX:
+          type: string
+        SAO_TEXT:
+          type: string
+        PAO_START_NUMBER:
+          type: string
+        PAO_START_SUFFIX:
+          type: string
+        PAO_END_NUMBER:
+          type: string
+        PAO_END_SUFFIX:
+          type: string
+        PAO_TEXT:
+          type: string
+        STREET_DESCRIPTION:
+          type: string
+        LOCALITY_NAME:
+          type: string
+        TOWN_NAME:
+          type: string
+        ADMINISTRATIVE_AREA:
+          type: string
+        AREA_NAME:
+          type: string
+        POSTCODE_LOCATOR:
+          type: string
+        RPC:
+          type: string
+        X_COORDINATE:
+          type: number
+        Y_COORDINATE:
+          type: number
+        LNG:
+          type: number
+        LAT:
+          type: number
+        STATUS:
+          type: string
+        LOGICAL_STATUS_CODE:
+          type: string
+        CLASSIFICATION_CODE:
+          type: string
+        CLASSIFICATION_CODE_DESCRIPTION:
+          type: string
+        LOCAL_CUSTODIAN_CODE:
+          type: integer
+        LOCAL_CUSTODIAN_CODE_DESCRIPTION:
+          type: string
+        COUNTRY_CODE:
+          type: string
+        COUNTRY_CODE_DESCRIPTION:
+          type: string
+        POSTAL_ADDRESS_CODE:
+          type: string
+        POSTAL_ADDRESS_CODE_DESCRIPTION:
+          type: string
+        BLPU_STATE_CODE:
+          type: string
+        BLPU_STATE_CODE_DESCRIPTION:
+          type: string
+        TOPOGRAPHY_LAYER_TOID:
+          type: string
+        WARD_CODE:
+          type: string
+        PARISH_CODE:
+          type: string
+        PARENT_UPRN:
+          type: string
+        LAST_UPDATE_DATE:
+          type: string
+        ENTRY_DATE:
+          type: string
+        LEGAL_NAME:
+          type: string
+        BLPU_STATE_DATE:
+          type: string
+        STREET_STATE_CODE:
+          type: string
+        STREET_STATE_CODE_DESCRIPTION:
+          type: string
+        STREET_CLASSIFICATION_CODE:
+          type: string
+        STREET_CLASSIFICATION_CODE_DESCRIPTION:
+          type: string
+        LPI_LOGICAL_STATUS_CODE:
+          type: string
+        LPI_LOGICAL_STATUS_CODE_DESCRIPTION:
+          type: string
+        LANGUAGE:
+          type: string
+        MATCH:
+          type: number
+        MATCH_DESCRIPTION:
+          type: string
+    SearchResult:
+      type: object
+      properties:
+        header:
+          type: object
+          properties:
+            uri:
+              type: string
+            query:
+              type: string
+            offset:
+              type: integer
+            totalresults:
+              type: integer
+            format:
+              type: string
+            dataset:
+              type: string
+            lr:
+              type: string
+            maxresults:
+              type: integer
+            matchprecision:
+              type: integer
+            epoch:
+              type: string
+            lastupdate:
+              type: string
+            output_srs:
+              type: string
+          required:
+          - uri
+          - query
+          - offset
+          - totalresults
+          - format
+          - dataset
+          - lr
+          - maxresults
+          - matchprecision
+          - epoch
+          - lastupdate
+          - output_srs
+        results:
+          type: array
+          items:
+            type: object
+            properties:
+              DPA:
+                $ref: '#/components/schemas/DPA'
+              LPI:
+                $ref: '#/components/schemas/LPI'
+    DPA:
+      type: object
+      properties:
+        UPRN:
+          type: string
+        UDPRN:
+          type: string
+        ADDRESS:
+          type: string
+        ORGANISATION_NAME:
+          type: string
+        DEPARTMENT_NAME:
+          type: string
+        SUB_BUILDING_NAME:
+          type: string
+        BUILDING_NAME:
+          type: string
+        BUILDING_NUMBER:
+          type: string
+        DEPENDENT_THOROUGHFARE_NAME:
+          type: string
+        THOROUGHFARE_NAME:
+          type: string
+        DOUBLE_DEPENDENT_LOCALITY:
+          type: string
+        DEPENDENT_LOCALITY:
+          type: string
+        POST_TOWN:
+          type: string
+        POSTCODE:
+          type: string
+        RPC:
+          type: string
+        X_COORDINATE:
+          type: number
+        Y_COORDINATE:
+          type: number
+        LNG:
+          type: number
+        LAT:
+          type: number
+        STATUS:
+          type: string
+        LOGICAL_STATUS_CODE:
+          type: string
+        CLASSIFICATION_CODE:
+          type: string
+        CLASSIFICATION_CODE_DESCRIPTION:
+          type: string
+        LOCAL_CUSTODIAN_CODE:
+          type: integer
+        LOCAL_CUSTODIAN_CODE_DESCRIPTION:
+          type: string
+        COUNTRY_CODE:
+          type: string
+        COUNTRY_CODE_DESCRIPTION:
+          type: string
+        POSTAL_ADDRESS_CODE:
+          type: string
+        POSTAL_ADDRESS_CODE_DESCRIPTION:
+          type: string
+        BLPU_STATE_CODE:
+          type: string
+        BLPU_STATE_CODE_DESCRIPTION:
+          type: string
+        TOPOGRAPHY_LAYER_TOID:
+          type: string
+        WARD_CODE:
+          type: string
+        PARISH_CODE:
+          type: string
+        PARENT_UPRN:
+          type: string
+        LAST_UPDATE_DATE:
+          type: string
+        ENTRY_DATE:
+          type: string
+        LEGAL_NAME:
+          type: string
+        BLPU_STATE_DATE:
+          type: string
+        LANGUAGE:
+          type: string
+        MATCH:
+          type: number
+        MATCH_DESCRIPTION:
+          type: string
+        DELIVERY_POINT_SUFFIX:
+          type: string
+  securitySchemes:
+    api-key:
+      type: apiKey
+      name: key
+      in: query

@@ -1,0 +1,239 @@
+openapi: 3.2.0
+info:
+  title: OS NGD API - Tiles Vector Tiles API
+  version: v1.8
+servers:
+- description: NGD OGC API - Tiles server
+  url: https://api.os.uk/maps/vector/ngd/ota/v1
+tags:
+- name: Vector Tiles
+paths:
+  /collections/{collectionId}/tiles/{tileMatrixSetId}/{tileMatrix}/{tileRow}/{tileCol}:
+    get:
+      security:
+      - api-key: []
+        api-key-header: []
+        oauth2: []
+      operationId: .collection.vector.getTile
+      parameters:
+      - description: Identifier selecting one of the scales defined in the TileMatrixSet and representing the scaleDenominator the tile.
+        example: '15'
+        in: path
+        name: tileMatrix
+        required: true
+        schema:
+          type: string
+      - description: Row index of the tile on the selected TileMatrix.
+        example: 11179
+        in: path
+        name: tileRow
+        required: true
+        schema:
+          minimum: 0
+          type: integer
+      - description: Column index of the tile on the selected TileMatrix.
+        example: 16558
+        in: path
+        name: tileCol
+        required: true
+        schema:
+          minimum: 0
+          type: integer
+      - description: Local identifier of a collection
+        in: path
+        name: collectionId
+        required: true
+        schema:
+          $ref: '#/components/schemas/AllCollections'
+      - allowEmptyValue: false
+        description: Identifier for a supported TileMatrixSet
+        in: path
+        name: tileMatrixSetId
+        required: true
+        schema:
+          $ref: '#/components/schemas/TileSets'
+      responses:
+        '200':
+          content:
+            application/octet-stream:
+              schema:
+                format: binary
+                type: string
+          description: A vector tile returned as a response.
+        '400':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/exceptionDto'
+          description: The request was not supported.
+        '404':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/exceptionDto'
+          description: The requested resource does not exist on the server. For example, a path parameter had an incorrect value.
+        '405':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/exceptionDto'
+          description: The HTTP method requested is not supported. This endpoint only supports 'GET' requests.
+        '406':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/exceptionDto'
+          description: A request header value was not supported.
+        '500':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/exceptionDto'
+          description: A server error occurred.
+        '504':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/exceptionDto'
+          description: Gateway Timeout.
+      summary: Retrieve a vector tile from a collection.
+      tags:
+      - Vector Tiles
+  /collections/{collectionId}/tiles/{tileMatrix}/{tileRow}/{tileCol}:
+    get:
+      security:
+      - api-key: []
+        api-key-header: []
+        oauth2: []
+      operationId: 3857.collection.vector.getTile
+      parameters:
+      - description: Identifier selecting one of the scales defined in the TileMatrixSet and representing the scaleDenominator the tile.
+        example: '15'
+        in: path
+        name: tileMatrix
+        required: true
+        schema:
+          type: string
+      - description: Row index of the tile on the selected TileMatrix.
+        example: 11179
+        in: path
+        name: tileRow
+        required: true
+        schema:
+          minimum: 0
+          type: integer
+      - description: Column index of the tile on the selected TileMatrix.
+        example: 16558
+        in: path
+        name: tileCol
+        required: true
+        schema:
+          minimum: 0
+          type: integer
+      - description: Local identifier of a collection
+        in: path
+        name: collectionId
+        required: true
+        schema:
+          $ref: '#/components/schemas/AllCollections'
+      responses:
+        '200':
+          content:
+            application/octet-stream:
+              schema:
+                format: binary
+                type: string
+          description: A vector tile returned as a response.
+        '400':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/exceptionDto'
+          description: The request was not supported.
+        '404':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/exceptionDto'
+          description: The requested resource does not exist on the server. For example, a path parameter had an incorrect value.
+        '405':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/exceptionDto'
+          description: The HTTP method requested is not supported. This endpoint only supports 'GET' requests.
+        '406':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/exceptionDto'
+          description: A request header value was not supported.
+        '500':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/exceptionDto'
+          description: A server error occurred.
+        '504':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/exceptionDto'
+          description: Gateway Timeout.
+      summary: 'Retrieve a vector tile from a collection for Web Mercator Quad EPSG: 3857 tile matrix set.'
+      tags:
+      - Vector Tiles
+components:
+  schemas:
+    AllCollections:
+      enum:
+      - ngd-base
+      - asu-bdy
+      - wtr-ctch
+      - trn-ntwk-railway
+      - wtr-tidalboundary
+      type: string
+    exceptionDto:
+      description: JSON schema for exceptions based on RFC 7807
+      properties:
+        type:
+          type: string
+        title:
+          type: string
+        status:
+          type: integer
+        detail:
+          type: string
+        instance:
+          type: string
+        code:
+          type: integer
+        description:
+          type: string
+        help:
+          type: string
+      required:
+      - type
+      title: Exception Schema
+      type: object
+    TileSets:
+      enum:
+      - '3857'
+      - '27700'
+      type: string
+  securitySchemes:
+    api-key:
+      type: apiKey
+      name: key
+      in: query
+    api-key-header:
+      type: apiKey
+      name: key
+      in: header
+    oauth2:
+      type: oauth2
+      name: oauth2
+      flows:
+        clientCredentials:
+          tokenUrl: https://api.os.uk/oauth2/token/v1
+          scopes: {}

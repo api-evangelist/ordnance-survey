@@ -1,0 +1,333 @@
+openapi: 3.2.0
+info:
+  title: Ordnance Survey Tile Request API
+  version: v1.0
+  x-refined-note:
+  - x-apievangelist-provenance differs across the merged source definitions and was not carried
+  description: 'Operations tagged Tile Request across 2 of this provider''s published API definitions: ordnance-survey-maps-openapi.json, ordnance-survey-vector-tile-openapi.json. Each path carries the servers of the definition it was published in.'
+servers:
+- url: https://api.os.uk/maps/raster/v1
+- url: https://api.os.uk/maps/vector/v1
+security:
+- api-key: []
+  api-key-header: []
+  oauth2: []
+tags:
+- name: Tile Request
+  description: Access and download data for a specific tile
+paths:
+  /wmts:
+    get:
+      tags:
+      - Tile Request
+      summary: Access and download data for a specific tile
+      operationId: getWMTSTileData
+      parameters:
+      - name: layer
+        in: query
+        description: The tile set layer that will be requested.
+        required: true
+        schema:
+          type: string
+          enum:
+          - Road_27700
+          - Road_3857
+          - Outdoor_27700
+          - Outdoor_3857
+          - Light_27700
+          - Light_3857
+          - Leisure_27700
+      - name: tileMatrixSet
+        in: query
+        description: The identifier of the tile matrix set.
+        required: true
+        schema:
+          type: string
+          enum:
+          - EPSG:27700
+          - EPSG:3857
+      - name: tileMatrix
+        in: query
+        description: The identifier of the tile matrix within the specified tile matrix set.
+        required: true
+        schema:
+          type: string
+      - name: tileRow
+        in: query
+        description: The row index of the tile.
+        required: true
+        schema:
+          type: integer
+      - name: tileCol
+        in: query
+        description: The column index of the tile.
+        required: true
+        schema:
+          type: integer
+      - name: service
+        in: query
+        description: The service that is being accessed.
+        required: true
+        schema:
+          type: string
+          enum:
+          - wmts
+      - name: request
+        in: query
+        description: The type of request being made. If a GetCapabilities request is being made, the other parameters are not required other than authentication.
+        required: true
+        schema:
+          type: string
+          enum:
+          - GetCapabilities
+          - GetTile
+      - name: style
+        in: query
+        description: Taken from the Identifier of the chosen Layer's Style property
+        required: true
+        schema:
+          type: string
+          enum:
+          - default
+      - name: version
+        in: query
+        description: The version number of the service.
+        required: false
+        schema:
+          type: string
+          enum:
+          - 1.0.0
+          - 2.0.0
+      - name: height
+        in: query
+        description: The Height of the tile.
+        required: false
+        schema:
+          type: integer
+      - name: width
+        in: query
+        description: The Width of the tile.
+        required: false
+        schema:
+          type: integer
+      - name: outputformat
+        in: query
+        description: The format of the returned tile.
+        required: false
+        schema:
+          type: string
+          enum:
+          - image/png
+      responses:
+        '200':
+          description: Tile image retrieved successfully
+          content:
+            image/png: {}
+        ServiceMetadata:
+          description: Retrieves Service Metadata for OS Maps API when request parameter is 'GetCapabilities'
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ServiceMetadata'
+    servers:
+    - url: https://api.os.uk/maps/raster/v1
+  /zxy/{layer}/{z}/{x}/{y}.png:
+    get:
+      tags:
+      - Tile Request
+      summary: Access and download data for a specific tile
+      operationId: getZXYTileData
+      parameters:
+      - name: layer
+        in: path
+        description: The tile set layer that will be requested.
+        required: true
+        schema:
+          type: string
+          enum:
+          - Road_27700
+          - Road_3857
+          - Outdoor_27700
+          - Outdoor_3857
+          - Light_27700
+          - Light_3857
+          - Leisure_27700
+      - name: z
+        in: path
+        description: Zoom level
+        required: true
+        schema:
+          type: integer
+          format: int32
+      - name: x
+        in: path
+        description: X coordinate
+        required: true
+        schema:
+          type: integer
+          format: int32
+      - name: y
+        in: path
+        description: Y coordinate
+        required: true
+        schema:
+          type: integer
+          format: int32
+      responses:
+        '200':
+          description: Tile image retrieved successfully
+          content:
+            image/png: {}
+    servers:
+    - url: https://api.os.uk/maps/raster/v1
+  /vts/tile/{z}/{y}/{x}.pbf:
+    get:
+      tags:
+      - Tile Request
+      summary: Access and download data for a specific tile
+      operationId: getTileData
+      parameters:
+      - name: z
+        in: path
+        description: Zoom level
+        required: true
+        schema:
+          type: integer
+          format: int32
+      - name: y
+        in: path
+        description: Y coordinate
+        required: true
+        schema:
+          type: integer
+          format: int32
+      - name: x
+        in: path
+        description: X coordinate
+        required: true
+        schema:
+          type: integer
+          format: int32
+      - name: srs
+        in: query
+        description: The Spatial Reference System for the service.
+        required: false
+        schema:
+          type: string
+          default: '27700'
+          enum:
+          - '27700'
+          - '3857'
+      responses:
+        '200':
+          description: Tile data retrieved successfully
+          content:
+            application/octet-stream:
+              schema:
+                type: string
+                format: binary
+    servers:
+    - url: https://api.os.uk/maps/vector/v1
+  /vts/{layer-name}/tile/{z}/{y}/{x}.pbf:
+    get:
+      tags:
+      - Tile Request
+      summary: Access and download data for a specific tile from a data overlay
+      operationId: getOverlayTileData
+      parameters:
+      - name: layer-name
+        in: path
+        description: The name of the data overlay.
+        required: true
+        schema:
+          type: string
+          enum:
+          - boundaries
+          - greenspace
+          - sites
+          - water
+          - highways
+          - paths
+      - name: z
+        in: path
+        description: Zoom level
+        required: true
+        schema:
+          type: integer
+          format: int32
+      - name: y
+        in: path
+        description: Y coordinate
+        required: true
+        schema:
+          type: integer
+          format: int32
+      - name: x
+        in: path
+        description: X coordinate
+        required: true
+        schema:
+          type: integer
+          format: int32
+      - name: srs
+        in: query
+        description: The Spatial Reference System for the service.
+        schema:
+          type: string
+          default: '27700'
+          enum:
+          - '27700'
+          - '3857'
+      responses:
+        '200':
+          description: Tile data retrieved successfully
+          content:
+            application/octet-stream:
+              schema:
+                type: string
+                format: binary
+    servers:
+    - url: https://api.os.uk/maps/vector/v1
+components:
+  schemas:
+    ServiceMetadata:
+      type: object
+      properties:
+        service:
+          type: object
+          properties:
+            title:
+              type: string
+            description:
+              type: string
+            version:
+              type: string
+          required:
+          - title
+          - description
+          - version
+        operations:
+          type: array
+          items:
+            type: string
+        tileMatrixSets:
+          type: array
+          items:
+            type: string
+        layers:
+          type: array
+          items:
+            type: string
+      required:
+      - service
+      - operations
+      - tileMatrixSets
+      - layers
+  securitySchemes:
+    api-key:
+      type: apiKey
+      name: key
+      in: query
+x-refined-from:
+- ordnance-survey-maps-openapi.json
+- ordnance-survey-vector-tile-openapi.json

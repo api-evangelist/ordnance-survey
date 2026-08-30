@@ -1,0 +1,403 @@
+openapi: 3.2.0
+info:
+  title: OS Features Get Capabilities API
+  version: v1.0
+  x-apievangelist-provenance:
+    method: searched
+    generated: '2026-07-26'
+    assembly: Assembled by the API Evangelist enrichment pipeline from the per-operation OpenAPI 3.0.1 documents Ordnance Survey publishes inline on each docs.os.uk technical-specification page. Paths, parameters, schemas, security schemes and responses are verbatim from those published documents; only the per-page fragments were merged into one document per API.
+    sources:
+    - https://docs.os.uk/os-apis/accessing-os-apis/os-features-api/technical-specification/getfeature.md
+  description: Returns a metadata document describing the WFS service provided by the server as well as valid WFS operations and parameters.
+servers:
+- url: https://api.os.uk/features/v1
+security:
+- api-key: []
+  api-key-header: []
+  oauth2: []
+tags:
+- name: GetCapabilities
+  description: Returns a metadata document describing the WFS service provided by the server as well as valid WFS operations and parameters.
+paths:
+  /wfs:
+    get:
+      tags:
+      - GetCapabilities
+      summary: Access to features matching a given query
+      operationId: GetFeature
+      parameters:
+      - name: request
+        in: query
+        description: The type of request being made.
+        required: true
+        schema:
+          type: string
+          default: GetFeature
+          enum:
+          - GetCapabilities
+          - DescribeFeatureType
+          - GetFeature
+      - name: service
+        in: query
+        description: The type of service being requested.
+        required: true
+        schema:
+          type: string
+          enum:
+          - WFS
+      - name: version
+        in: query
+        description: The type of service being requested.
+        required: true
+        schema:
+          type: string
+          default: 2.0.0
+          enum:
+          - 1.0.0
+          - 1.1.0
+          - 2.0.0
+      - name: typeNames
+        in: query
+        description: The Feature Type being requested.
+        required: true
+        schema:
+          type: string
+          enum:
+          - DetailedPathNetwork_RouteLink
+          - DetailedPathNetwork_RouteNode
+          - Highways_RoadLink
+          - Highways_RoadNode
+          - Highways_FerryLink
+          - Highways_FerryNode
+          - Highways_Street
+          - Highways_ConnectingLink
+          - Highways_ConnectingNode
+          - Highways_PathLink
+          - Highways_PathNode
+          - Greenspace_GreenspaceArea
+          - Sites_AccessPoint
+          - Sites_RoutingPoint
+          - Sites_FunctionalSite
+          - Topography_CartographicText
+          - Topography_CartographicSymbol
+          - Topography_TopographicPoint
+          - Topography_TopographicLine
+          - Topography_TopographicArea
+          - Topography_BoundaryLine
+          - WaterNetwork_HydroNode
+          - WaterNetwork_WatercourseLink
+          - Zoomstack_Airports
+          - Zoomstack_Boundaries
+          - Zoomstack_Contours
+          - Zoomstack_DistrictBuildings
+          - Zoomstack_ETL
+          - Zoomstack_Foreshore
+          - Zoomstack_Greenspace
+          - Zoomstack_LocalBuildings
+          - Zoomstack_Names
+          - Zoomstack_NationalParks
+          - Zoomstack_RailwayStations
+          - Zoomstack_Rail
+          - Zoomstack_RoadsLocal
+          - Zoomstack_RoadsNational
+          - Zoomstack_RoadsRegional
+          - Zoomstack_Sites
+          - Zoomstack_Surfacewater
+          - Zoomstack_UrbanAreas
+          - Zoomstack_Waterlines
+          - Zoomstack_Woodland
+          - OpenUPRN_Address
+          - OpenUSRN_USRN
+          - OpenTOID_TopographyLayer
+          - OpenTOID_HighwaysNetwork
+          - OpenTOID_SitesLayer
+      - name: bbox
+        in: query
+        description: A set of valid WFS BBOX coordinates, in the order <bottom-left y, bottom-left x, top-right y, top-right x> (Dependent on CRS)
+        required: false
+        schema:
+          type: string
+      - name: filter
+        in: query
+        description: A valid OGC XML filter object
+        required: false
+        schema:
+          type: string
+      - name: count
+        in: query
+        description: An integer stating the maximum number of features to be returned in a single response. In version 1.0.0 and 1.1.0 this is known as maxFeatures
+        required: false
+        schema:
+          type: integer
+          default: '100'
+          minimum: 1
+          maximum: 100
+      - name: maxFeatures
+        in: query
+        description: An integer stating the maximum number of features to be returned in a single response. In version 2.0.0 this is known as count
+        required: false
+        schema:
+          type: integer
+          default: '100'
+          minimum: 1
+          maximum: 100
+      - name: propertyName
+        in: query
+        description: A list of valid feature attribute names, for example, ChangeDate, TOID, PhysicalLevel
+        required: false
+        schema:
+          type: string
+      - name: startIndex
+        in: query
+        description: An integer stating which result to start from, when returning a response
+        required: false
+        schema:
+          type: integer
+          default: '0'
+      - name: outputFormat
+        in: query
+        description: 'The format the response will be returned in. Default: XML.'
+        required: false
+        schema:
+          type: string
+          default: GML32
+          enum:
+          - GML32
+          - GML3
+          - GML2
+          - GEOJSON
+      - name: resultType
+        in: query
+        description: 'Type of the results. Default: results.'
+        required: false
+        schema:
+          type: string
+          default: results
+          enum:
+          - results
+          - hits
+      - name: srsName
+        in: query
+        description: 'Allows the user to reproject the selected features into another CRS. Default: EPSG:27700'
+        required: false
+        schema:
+          type: string
+          default: EPSG:27700
+          enum:
+          - EPSG:27700
+          - EPSG:4326
+          - EPSG:3857
+      responses:
+        '200':
+          description: Returns a description of the attributes for each feature type supported by the WFS service.
+          content:
+            application/xml:
+              schema:
+                $ref: '#/components/schemas/FeatureCollection'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/FeatureCollection'
+  /wfs/archive/{year}:
+    get:
+      tags:
+      - GetCapabilities
+      summary: Access to features matching a given query for a particular year (as an annual snapshot - taking the last full release in the calendar year)
+      operationId: GetArchiveFeature
+      parameters:
+      - name: year
+        in: path
+        description: The year being requested.
+        required: true
+        schema:
+          type: string
+      - name: request
+        in: query
+        description: The type of request being made.
+        required: true
+        schema:
+          type: string
+          default: GetFeature
+          enum:
+          - GetCapabilities
+          - DescribeFeatureType
+          - GetFeature
+      - name: service
+        in: query
+        description: The type of service being requested.
+        required: true
+        schema:
+          type: string
+          enum:
+          - WFS
+      - name: version
+        in: query
+        description: The type of service being requested.
+        required: true
+        schema:
+          type: string
+          default: 2.0.0
+          enum:
+          - 1.0.0
+          - 1.1.0
+          - 2.0.0
+      - name: typeNames
+        in: query
+        description: The Feature Type being requested.
+        required: true
+        schema:
+          type: string
+          enum:
+          - Highways_RoadLink
+          - Highways_RoadNode
+          - Highways_FerryLink
+          - Highways_FerryNode
+          - Highways_Street
+          - Highways_ConnectingLink
+          - Highways_ConnectingNode
+          - Highways_PathLink
+          - Highways_PathNode
+          - Topography_CartographicText
+          - Topography_CartographicSymbol
+          - Topography_TopographicPoint
+          - Topography_TopographicLine
+          - Topography_TopographicArea
+          - Topography_BoundaryLine
+          - OpenUPRN_Address
+          - ITN_Roads_FerryNode
+          - ITN_Roads_RoadLink
+          - ITN_Roads_RoadNode
+          - ITN_UrbanPaths_ConnectingNode
+          - ITN_UrbanPaths_FerryNode
+          - ITN_UrbanPaths_PathLink
+          - ITN_UrbanPaths_PathNode
+      - name: bbox
+        in: query
+        description: A set of valid WFS BBOX coordinates, in the order <bottom-left y, bottom-left x, top-right y, top-right x> (Dependent on CRS)
+        required: false
+        schema:
+          type: string
+      - name: filter
+        in: query
+        description: A valid OGC XML filter object
+        required: false
+        schema:
+          type: string
+      - name: count
+        in: query
+        description: An integer stating the maximum number of features to be returned in a single response. In version 1.0.0 and 1.1.0 this is known as maxFeatures
+        required: false
+        schema:
+          type: integer
+          default: '100'
+          minimum: 1
+          maximum: 100
+      - name: maxFeatures
+        in: query
+        description: An integer stating the maximum number of features to be returned in a single response. In version 2.0.0 this is known as count
+        required: false
+        schema:
+          type: integer
+          default: '100'
+          minimum: 1
+          maximum: 100
+      - name: propertyName
+        in: query
+        description: A list of valid feature attribute names, for example, ChangeDate, TOID, PhysicalLevel
+        required: false
+        schema:
+          type: string
+      - name: startIndex
+        in: query
+        description: An integer stating which result to start from, when returning a response
+        required: false
+        schema:
+          type: integer
+          default: '0'
+      - name: outputFormat
+        in: query
+        description: 'The format the response will be returned in. Default: XML.'
+        required: false
+        schema:
+          type: string
+          default: GML32
+          enum:
+          - GML32
+          - GML3
+          - GML2
+          - GEOJSON
+      - name: resultType
+        in: query
+        description: 'Type of the results. Default: results.'
+        required: false
+        schema:
+          type: string
+          default: results
+          enum:
+          - results
+          - hits
+      - name: srsName
+        in: query
+        description: 'Allows the user to reproject the selected features into another CRS. Default: EPSG:27700'
+        required: false
+        schema:
+          type: string
+          default: EPSG:27700
+          enum:
+          - EPSG:27700
+          - EPSG:4326
+          - EPSG:3857
+      responses:
+        '200':
+          description: Returns a description of the attributes for each feature type supported by the WFS service.
+          content:
+            application/xml:
+              schema:
+                $ref: '#/components/schemas/FeatureCollection'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/FeatureCollection'
+components:
+  schemas:
+    Coordinate:
+      type: object
+      properties:
+        x:
+          type: number
+          format: double
+        y:
+          type: number
+          format: double
+    Geometry:
+      type: object
+      properties:
+        type:
+          type: string
+        coordinates:
+          type: array
+          items:
+            $ref: '#/components/schemas/Coordinate'
+    Feature:
+      type: object
+      properties:
+        type:
+          type: string
+        geometry:
+          $ref: '#/components/schemas/Geometry'
+        properties:
+          type: object
+          additionalProperties:
+            type: object
+    FeatureCollection:
+      type: object
+      properties:
+        type:
+          type: string
+        features:
+          type: array
+          items:
+            $ref: '#/components/schemas/Feature'
+  securitySchemes:
+    api-key:
+      type: apiKey
+      name: key
+      in: query

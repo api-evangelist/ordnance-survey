@@ -1,0 +1,409 @@
+openapi: 3.2.0
+info:
+  title: OS Net Rinex API
+  description: 'This is the API definition for the OS Net spring boot app. It is a working subset of the overall design
+
+    '
+  version: 1.6.0
+servers:
+- url: https://api.os.uk/positioning/osnet/v1
+tags:
+- name: Rinex
+paths:
+  /stations/{stationId}/rinex:
+    get:
+      security:
+      - OAuth2: []
+      - APIKeyQuery: []
+      - APIKeyHeader: []
+      tags:
+      - Rinex
+      description: Get RINEX v3 files for a specific station
+      operationId: Get station data
+      parameters:
+      - $ref: '#/components/parameters/stationId'
+      - $ref: '#/components/parameters/RequiredTemporalParameters'
+      - $ref: '#/components/parameters/dataFrequency'
+      responses:
+        '200':
+          description: Returns the list of available files
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/RinexFile'
+        '400':
+          description: Returned if the input parameters are not valid
+          content:
+            application/problem+json:
+              schema:
+                type: object
+        '403':
+          description: Returned if the request is valid, but you do not have access to the resource
+          content:
+            application/problem+json:
+              schema:
+                type: object
+  /rinex:
+    get:
+      security:
+      - OAuth2: []
+      - APIKeyQuery: []
+      - APIKeyHeader: []
+      tags:
+      - Rinex
+      description: List the years that have RINEX data available
+      operationId: Get Rinex Data Years
+      responses:
+        '200':
+          description: List the years that have RINEX data available
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/MetaData'
+              example:
+                title: OS Net API RINEX data years
+                description: List the years that have RINEX data available
+                links:
+                - href: https://api.os.uk/positioning/osnet/v1/rinex
+                  rel: self
+                  type: application/json
+                  title: Self link
+                  description: This document
+                - href: https://api.os.uk/positioning/osnet/v1/rinex/2024
+                  rel: service-endpoint
+                  type: application/json
+                  title: 2024
+                  description: List RINEX data days for 2024
+  /rinex/{year}:
+    get:
+      security:
+      - OAuth2: []
+      - APIKeyQuery: []
+      - APIKeyHeader: []
+      tags:
+      - Rinex
+      description: List the days that have RINEX data available, for the given year
+      operationId: Get Rinex Data Days
+      parameters:
+      - $ref: '#/components/parameters/year'
+      responses:
+        '200':
+          description: List the days that have RINEX data available, for the given year
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/MetaData'
+              example:
+                title: OS Net API RINEX data days
+                description: List the days that have RINEX data available, for the given year
+                links:
+                - href: https://api.os.uk/positioning/osnet/v1/rinex/2024
+                  rel: self
+                  type: application/json
+                  title: Self link
+                  description: This document
+                - href: https://api.os.uk/positioning/osnet/v1/rinex/2024/1
+                  rel: service-endpoint
+                  type: application/json
+                  title: 1
+                  description: List RINEX data files for 2024 day 1
+                - href: https://api.os.uk/positioning/osnet/v1/rinex/2024/2
+                  rel: service-endpoint
+                  type: application/json
+                  title: 2
+                  description: List RINEX data files for 2024 day 2
+  /rinex/{year}/{dayOfYear}:
+    get:
+      security:
+      - OAuth2: []
+      - APIKeyQuery: []
+      - APIKeyHeader: []
+      tags:
+      - Rinex
+      description: List the files available via this service, for the given year and day
+      operationId: Get Rinex Data Files
+      parameters:
+      - $ref: '#/components/parameters/year'
+      - $ref: '#/components/parameters/dayOfYear'
+      - $ref: '#/components/parameters/dataFrequency'
+      responses:
+        '200':
+          description: List the days available via this service, for the given year and day
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/RinexFile'
+              example:
+              - url: https://api.os.uk/positioning/osnet/v1/rinex/2024/001/EPHM00GBR_S_20240010000_01D_MN.rnx.zip
+                filename: EPHM00GBR_S_20241470000_01D_MN.rnx.zip
+                size: 1234,
+                md5: 2f9dd13abd56140afa3b5621e8864f59
+                format: RINEX
+                subformat: 3
+        '400':
+          description: Returned if the input parameters are not valid
+          content:
+            application/problem+json:
+              schema:
+                type: object
+        '403':
+          description: Returned if request is valid, but you do not have access to the resource
+          content:
+            application/problem+json:
+              schema:
+                type: object
+  /rinex/{year}/{dayOfYear}/{filename}:
+    get:
+      security:
+      - OAuth2: []
+      - APIKeyQuery: []
+      - APIKeyHeader: []
+      tags:
+      - Rinex
+      description: Get a specific RINEX v3 file
+      operationId: GetRinexFile
+      parameters:
+      - $ref: '#/components/parameters/year'
+      - $ref: '#/components/parameters/dayOfYear'
+      - $ref: '#/components/parameters/filename'
+      responses:
+        '200':
+          description: Returns the requested RINEX file
+          content:
+            application/octet-stream:
+              schema:
+                type: string
+                format: binary
+        '307':
+          description: 'Temporary redirect, returned for files larger than 10MB. The Location header contains a time-limited URL that can be used to download the file.  Most HTTP clients can be configured to follow redirects automatically.
+
+            '
+          headers:
+            Location:
+              description: URL to download the file directly
+              schema:
+                type: string
+                format: uri
+        '404':
+          description: Not Found
+          content:
+            application/problem+json:
+              schema:
+                type: object
+        '204':
+          description: No Content
+          content:
+            application/problem+json:
+              schema:
+                type: object
+        '400':
+          description: Bad request
+          content:
+            application/problem+json:
+              schema:
+                type: object
+        '403':
+          description: Returned if the request is valid, but you do not have access to the resource
+          content:
+            application/problem+json:
+              schema:
+                type: object
+components:
+  schemas:
+    OSNetDownload:
+      required:
+      - fileName
+      - url
+      type: object
+      properties:
+        url:
+          type: string
+          description: Getting this URL will return a HTTP redirect to the actual data.
+          format: uri
+          example: https://api.os.uk/positioning/osnet/v1/stations/ABEP/rinex/ABEP00GBR_S_20243550100_01H_30S_MO.rnx.zip
+        fileName:
+          type: string
+          description: The name of the file.
+          example: ABEP00GBR_S_20243550100_01H_30S_MO.rnx.zip
+        size:
+          type: integer
+          description: The file size, in bytes.
+          format: int64
+          example: 1234
+        md5:
+          type: string
+          description: A MD5 checksum of the file data. This can be used to verify the integrity of the data once you have downloaded it.
+          example: 2f9dd13abd56140afa3b5621e8864f59
+        format:
+          type: string
+          description: This describes the format of the data.
+          example: RINEX
+        subformat:
+          type: string
+          description: This describes the subformat of the data.
+          example: '3'
+      description: 'Information about a specific download file that is made available through this API.
+
+        '
+    Link:
+      title: Link
+      required:
+      - description
+      - href
+      - rel
+      - title
+      - type
+      type: object
+      properties:
+        href:
+          type: string
+          format: uri
+        rel:
+          type: string
+        type:
+          type: string
+        title:
+          type: string
+        description:
+          type: string
+      description: Provides a link leading to further information about a resource
+    MetaData:
+      required:
+      - description
+      - links
+      - title
+      type: object
+      properties:
+        title:
+          type: string
+        description:
+          type: string
+        links:
+          type: array
+          items:
+            $ref: '#/components/schemas/Link'
+    RequiredTemporalParameters:
+      required:
+      - end
+      - start
+      type: object
+      properties:
+        start:
+          type: string
+          description: Start date-time for the search window
+          format: date-time
+          example: 2024-12-31 01:00:00+00:00
+        end:
+          type: string
+          description: End date-time for the search window
+          format: date-time
+          example: 2024-12-31 02:00:00+00:00
+      description: Parameters that provide a temporal window (from start to end) for a query. Please note that the start time should be within the last 45 days, and the end should be no more than 24 hours after the start.
+    RinexFile:
+      title: RinexFile
+      description: Metadata about a rinex file that is available for download
+      allOf:
+      - $ref: '#/components/schemas/OSNetDownload'
+      - type: object
+        properties:
+          station:
+            maxLength: 4
+            minLength: 4
+            type: string
+            example: ABEP
+          start:
+            type: string
+            format: date-time
+            example: 2024-12-31 01:00:00
+          duration:
+            type: string
+            description: The duration that this file covers, using RINEX filename conventions.
+            example: 01H
+          dataFrequency:
+            type: string
+            description: The data frequency of this file, using RINEX filename conventions.
+            example: 30S
+          percentageComplete:
+            maximum: 100
+            minimum: 0
+            type: integer
+            description: Health percentage, based on expected and actual data in the file
+  parameters:
+    year:
+      name: year
+      in: path
+      description: The year to be queried
+      required: true
+      schema:
+        minimum: 2024
+        type: integer
+        format: int32
+    dataFrequency:
+      name: dataFrequency
+      in: query
+      description: Parameter that selects the data frequency for a query. If the parameter is omitted then the query will proceed as if 30S data has been requested. Ephemeris files do not have a data frequency, and will be returned regardless of the dataFrequency parameter. Every organisation has access to 30S data. Access to 01S data is restricted to organisations on the Public Sector Plan.
+      required: false
+      schema:
+        type: string
+      examples:
+        30S:
+          summary: Data every 30 seconds
+          value: 30S
+        01S:
+          summary: Data every second
+          value: 01S
+    dayOfYear:
+      name: dayOfYear
+      in: path
+      description: The day to be queried, within the given year
+      required: true
+      schema:
+        maximum: 366
+        minimum: 1
+        type: integer
+    RequiredTemporalParameters:
+      name: RequiredTemporalParameters
+      in: query
+      description: Parameters that provide a temporal window (from start to end) for a query. These parameters can be used to restrict the query to a specific time range. Please note that the start time should be within the last 45 days, and the end should be no more than 24 hours after the start.
+      required: true
+      explode: true
+      schema:
+        $ref: '#/components/schemas/RequiredTemporalParameters'
+    stationId:
+      name: stationId
+      in: path
+      description: Specific station ID.
+      required: true
+      schema:
+        maxLength: 4
+        minLength: 4
+        pattern: ^[a-zA-Z0-9]*$
+        type: string
+      example: ABEP
+    filename:
+      name: filename
+      in: path
+      description: Name of the file
+      required: true
+      schema:
+        type: string
+        example: ABEP00GBR_S_20243550100_01H_30S_MO.rnx
+  securitySchemes:
+    OAuth2:
+      type: oauth2
+      flows:
+        clientCredentials:
+          tokenUrl: OAUTH_TOKEN_URL
+          scopes: {}
+    APIKeyQuery:
+      type: apiKey
+      in: query
+      name: key
+    APIKeyHeader:
+      type: apiKey
+      in: header
+      name: key

@@ -1,0 +1,492 @@
+openapi: 3.2.0
+info:
+  title: Ordnance Survey Find API
+  version: v1.0
+  x-refined-note:
+  - x-apievangelist-provenance differs across the merged source definitions and was not carried
+  description: 'Operations tagged Find across 2 of this provider''s published API definitions: ordnance-survey-names-openapi.json, ordnance-survey-places-openapi.json. Each path carries the servers of the definition it was published in.'
+servers:
+- url: https://api.os.uk/search/names/v1
+- url: https://api.os.uk/search/places/v1
+security:
+- api-key: []
+  api-key-header: []
+  oauth2: []
+tags:
+- name: Find
+  description: A free string text search of OS Names, intended to be an ambiguous/fuzzy search.
+paths:
+  /find:
+    get:
+      tags:
+      - Find
+      summary: A free string text search, intended to be an ambiguous/fuzzy search.
+      operationId: findAddress
+      parameters:
+      - name: query
+        in: query
+        description: Free text search parameter.
+        required: true
+        schema:
+          type: string
+      - name: format
+        in: query
+        description: The format the response will be returned in.
+        schema:
+          type: string
+          enum:
+          - JSON
+          - XML
+      - name: maxresults
+        in: query
+        description: The maximum number of results to return. Minimum = 1. Maximum = 100. Default = 100.
+        style: form
+        schema:
+          minimum: 1
+          maximum: 100
+          type: integer
+      - name: offset
+        in: query
+        description: Offset the list of returned results by this amount.
+        schema:
+          minimum: 1
+          type: integer
+      - name: bounds
+        in: query
+        description: 'Biases the results to a certain area. The <BoundingBox> is a British National Grid bounding box in the form: XMIN,YMIN,XMAX,YMAX'
+        style: form
+        explode: false
+        schema:
+          minItems: 4
+          maxItems: 4
+          type: array
+          items:
+            type: number
+      - name: fq
+        in: query
+        description: 'Filters the results by bounding box or local_type. '
+        schema:
+          type: string
+          enum:
+          - Airfield
+          - Airport
+          - Bay
+          - Beach
+          - Bus_Station
+          - Channel
+          - Chemical_Works
+          - Cirque_Or_Hollow
+          - City
+          - Cliff_Or_Slope
+          - Coach_Station
+          - Coastal_Headland
+          - Electricity_Distribution
+          - Electricity_Production
+          - Estuary
+          - Further_Education
+          - Gas_Distribution_or_Storage
+          - Group_Of_Islands
+          - Hamlet
+          - Harbour
+          - Helicopter_Station
+          - Heliport
+          - Higher_or_University_Education
+          - Hill_Or_Mountain
+          - Hill_Or_Mountain_Ranges
+          - Hospice
+          - Hospital
+          - Inland_Water
+          - Island
+          - Medical_Care_Accommodation
+          - Named_Road
+          - Non_State_Primary_Education
+          - Non_State_Secondary_Education
+          - Numbered_Road
+          - Oil_Distribution_or_Storage
+          - Oil_Refining
+          - Oil_Terminal
+          - Other_Coastal_Landform
+          - Other_Landcover
+          - Other_Landform
+          - Other_Settlement
+          - Passenger_Ferry_Terminal
+          - Port_Consisting_of_Docks_and_Nautical_Berthing
+          - Postcode
+          - Primary_Education
+          - Railway
+          - Railway_Station
+          - Road_User_Services
+          - Sea
+          - Secondary_Education
+          - Section_Of_Named_Road
+          - Section_Of_Numbered_Road
+          - Special_Needs_Education
+          - Spot_Height
+          - Suburban_Area
+          - Tidal_Water
+          - Town
+          - Tramway
+          - Urban_Greenspace
+          - Valley
+          - Vehicular_Ferry_Terminal
+          - Vehicular_Rail_Terminal
+          - Village
+          - Waterfall
+          - Wetland
+          - Woodland_Or_Forest
+      responses:
+        '200':
+          description: Retrieves addresses based on a free text search.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SearchResponse'
+            application/xml:
+              schema:
+                $ref: '#/components/schemas/SearchResponse'
+    servers:
+    - url: https://api.os.uk/search/names/v1
+components:
+  schemas:
+    Header:
+      type: object
+      properties:
+        uri:
+          type: string
+        query:
+          type: string
+        format:
+          type: string
+        maxresults:
+          type: integer
+        offset:
+          type: integer
+        totalresults:
+          type: integer
+    GazetteerEntry:
+      type: object
+      properties:
+        GAZETTEER_ENTRY:
+          type: object
+          properties:
+            ID:
+              type: string
+            NAMES_URI:
+              type: string
+            NAME1:
+              type: string
+            TYPE:
+              type: string
+            LOCAL_TYPE:
+              type: string
+            GEOMETRY_X:
+              type: number
+            GEOMETRY_Y:
+              type: number
+            MOST_DETAIL_VIEW_RES:
+              type: integer
+            LEAST_DETAIL_VIEW_RES:
+              type: integer
+            MBR_XMIN:
+              type: number
+            MBR_YMIN:
+              type: number
+            MBR_XMAX:
+              type: number
+            MBR_YMAX:
+              type: number
+            POSTCODE_DISTRICT:
+              type: string
+            POSTCODE_DISTRICT_URI:
+              type: string
+            POPULATED_PLACE:
+              type: string
+            POPULATED_PLACE_URI:
+              type: string
+            POPULATED_PLACE_TYPE:
+              type: string
+            COUNTY_UNITARY:
+              type: string
+            COUNTY_UNITARY_URI:
+              type: string
+            COUNTY_UNITARY_TYPE:
+              type: string
+            REGION:
+              type: string
+            REGION_URI:
+              type: string
+            COUNTRY:
+              type: string
+            COUNTRY_URI:
+              type: string
+    SearchResponse:
+      type: object
+      properties:
+        header:
+          $ref: '#/components/schemas/Header'
+        results:
+          type: array
+          items:
+            $ref: '#/components/schemas/GazetteerEntry'
+    LPI:
+      type: object
+      properties:
+        UPRN:
+          type: string
+        ADDRESS:
+          type: string
+        USRN:
+          type: string
+        LPI_KEY:
+          type: string
+        ORGANISATION:
+          type: string
+        SAO_START_NUMBER:
+          type: string
+        SAO_START_SUFFIX:
+          type: string
+        SAO_END_NUMBER:
+          type: string
+        SAO_END_SUFFIX:
+          type: string
+        SAO_TEXT:
+          type: string
+        PAO_START_NUMBER:
+          type: string
+        PAO_START_SUFFIX:
+          type: string
+        PAO_END_NUMBER:
+          type: string
+        PAO_END_SUFFIX:
+          type: string
+        PAO_TEXT:
+          type: string
+        STREET_DESCRIPTION:
+          type: string
+        LOCALITY_NAME:
+          type: string
+        TOWN_NAME:
+          type: string
+        ADMINISTRATIVE_AREA:
+          type: string
+        AREA_NAME:
+          type: string
+        POSTCODE_LOCATOR:
+          type: string
+        RPC:
+          type: string
+        X_COORDINATE:
+          type: number
+        Y_COORDINATE:
+          type: number
+        LNG:
+          type: number
+        LAT:
+          type: number
+        STATUS:
+          type: string
+        LOGICAL_STATUS_CODE:
+          type: string
+        CLASSIFICATION_CODE:
+          type: string
+        CLASSIFICATION_CODE_DESCRIPTION:
+          type: string
+        LOCAL_CUSTODIAN_CODE:
+          type: integer
+        LOCAL_CUSTODIAN_CODE_DESCRIPTION:
+          type: string
+        COUNTRY_CODE:
+          type: string
+        COUNTRY_CODE_DESCRIPTION:
+          type: string
+        POSTAL_ADDRESS_CODE:
+          type: string
+        POSTAL_ADDRESS_CODE_DESCRIPTION:
+          type: string
+        BLPU_STATE_CODE:
+          type: string
+        BLPU_STATE_CODE_DESCRIPTION:
+          type: string
+        TOPOGRAPHY_LAYER_TOID:
+          type: string
+        WARD_CODE:
+          type: string
+        PARISH_CODE:
+          type: string
+        PARENT_UPRN:
+          type: string
+        LAST_UPDATE_DATE:
+          type: string
+        ENTRY_DATE:
+          type: string
+        LEGAL_NAME:
+          type: string
+        BLPU_STATE_DATE:
+          type: string
+        STREET_STATE_CODE:
+          type: string
+        STREET_STATE_CODE_DESCRIPTION:
+          type: string
+        STREET_CLASSIFICATION_CODE:
+          type: string
+        STREET_CLASSIFICATION_CODE_DESCRIPTION:
+          type: string
+        LPI_LOGICAL_STATUS_CODE:
+          type: string
+        LPI_LOGICAL_STATUS_CODE_DESCRIPTION:
+          type: string
+        LANGUAGE:
+          type: string
+        MATCH:
+          type: number
+        MATCH_DESCRIPTION:
+          type: string
+    SearchResult:
+      type: object
+      properties:
+        header:
+          type: object
+          properties:
+            uri:
+              type: string
+            query:
+              type: string
+            offset:
+              type: integer
+            totalresults:
+              type: integer
+            format:
+              type: string
+            dataset:
+              type: string
+            lr:
+              type: string
+            maxresults:
+              type: integer
+            matchprecision:
+              type: integer
+            epoch:
+              type: string
+            lastupdate:
+              type: string
+            output_srs:
+              type: string
+          required:
+          - uri
+          - query
+          - offset
+          - totalresults
+          - format
+          - dataset
+          - lr
+          - maxresults
+          - matchprecision
+          - epoch
+          - lastupdate
+          - output_srs
+        results:
+          type: array
+          items:
+            type: object
+            properties:
+              DPA:
+                $ref: '#/components/schemas/DPA'
+              LPI:
+                $ref: '#/components/schemas/LPI'
+    DPA:
+      type: object
+      properties:
+        UPRN:
+          type: string
+        UDPRN:
+          type: string
+        ADDRESS:
+          type: string
+        ORGANISATION_NAME:
+          type: string
+        DEPARTMENT_NAME:
+          type: string
+        SUB_BUILDING_NAME:
+          type: string
+        BUILDING_NAME:
+          type: string
+        BUILDING_NUMBER:
+          type: string
+        DEPENDENT_THOROUGHFARE_NAME:
+          type: string
+        THOROUGHFARE_NAME:
+          type: string
+        DOUBLE_DEPENDENT_LOCALITY:
+          type: string
+        DEPENDENT_LOCALITY:
+          type: string
+        POST_TOWN:
+          type: string
+        POSTCODE:
+          type: string
+        RPC:
+          type: string
+        X_COORDINATE:
+          type: number
+        Y_COORDINATE:
+          type: number
+        LNG:
+          type: number
+        LAT:
+          type: number
+        STATUS:
+          type: string
+        LOGICAL_STATUS_CODE:
+          type: string
+        CLASSIFICATION_CODE:
+          type: string
+        CLASSIFICATION_CODE_DESCRIPTION:
+          type: string
+        LOCAL_CUSTODIAN_CODE:
+          type: integer
+        LOCAL_CUSTODIAN_CODE_DESCRIPTION:
+          type: string
+        COUNTRY_CODE:
+          type: string
+        COUNTRY_CODE_DESCRIPTION:
+          type: string
+        POSTAL_ADDRESS_CODE:
+          type: string
+        POSTAL_ADDRESS_CODE_DESCRIPTION:
+          type: string
+        BLPU_STATE_CODE:
+          type: string
+        BLPU_STATE_CODE_DESCRIPTION:
+          type: string
+        TOPOGRAPHY_LAYER_TOID:
+          type: string
+        WARD_CODE:
+          type: string
+        PARISH_CODE:
+          type: string
+        PARENT_UPRN:
+          type: string
+        LAST_UPDATE_DATE:
+          type: string
+        ENTRY_DATE:
+          type: string
+        LEGAL_NAME:
+          type: string
+        BLPU_STATE_DATE:
+          type: string
+        LANGUAGE:
+          type: string
+        MATCH:
+          type: number
+        MATCH_DESCRIPTION:
+          type: string
+        DELIVERY_POINT_SUFFIX:
+          type: string
+  securitySchemes:
+    api-key:
+      type: apiKey
+      name: key
+      in: query
+x-refined-from:
+- ordnance-survey-names-openapi.json
+- ordnance-survey-places-openapi.json

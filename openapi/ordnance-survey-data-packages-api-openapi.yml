@@ -1,0 +1,351 @@
+openapi: 3.2.0
+info:
+  version: 1.0.0
+  title: Ordnance Survey Download Data Packages API
+  description: This api provides access to the OS products that are available to download.
+servers:
+- url: https://api.os.uk/downloads/v1/
+tags:
+- name: Data Packages
+  description: 'Operations providing access to data packages.
+
+    To access data packages you must supply a valid API key or OAuth 2 access token.
+
+    '
+paths:
+  /dataPackages:
+    get:
+      summary: List the data packages that are available to you.
+      tags:
+      - Data Packages
+      security:
+      - OAuth2: []
+      - APIKeyQuery: []
+      - APIKeyHeader: []
+      responses:
+        '200':
+          description: A list of data packages.
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/DataPackage'
+        '401':
+          $ref: '#/components/responses/UnauthorizedError'
+  /dataPackages/{dataPackageId}:
+    get:
+      summary: Get a specific data package.
+      tags:
+      - Data Packages
+      security:
+      - OAuth2: []
+      - APIKeyQuery: []
+      - APIKeyHeader: []
+      parameters:
+      - $ref: '#/components/parameters/dataPackageId'
+      responses:
+        '200':
+          description: A data package.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/DataPackage'
+        '401':
+          $ref: '#/components/responses/UnauthorizedError'
+        '404':
+          $ref: '#/components/responses/NotFoundError'
+  /dataPackages/{dataPackageId}/versions:
+    get:
+      summary: Get the list of versions for a specific data package.
+      tags:
+      - Data Packages
+      security:
+      - OAuth2: []
+      - APIKeyQuery: []
+      - APIKeyHeader: []
+      parameters:
+      - $ref: '#/components/parameters/dataPackageId'
+      responses:
+        '200':
+          description: A list of data package versions.
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/DataPackageVersionSummary'
+        '401':
+          $ref: '#/components/responses/UnauthorizedError'
+        '404':
+          $ref: '#/components/responses/NotFoundError'
+  /dataPackages/{dataPackageId}/versions/{versionId}:
+    get:
+      summary: Get a specific data package version, including details of the files that are available to download.
+      tags:
+      - Data Packages
+      security:
+      - OAuth2: []
+      - APIKeyQuery: []
+      - APIKeyHeader: []
+      parameters:
+      - $ref: '#/components/parameters/dataPackageId'
+      - name: versionId
+        in: path
+        description: The id of the data package version, or the string 'latest'.
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: A data package version, including download details.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/DataPackageVersion'
+        '401':
+          $ref: '#/components/responses/UnauthorizedError'
+        '404':
+          $ref: '#/components/responses/NotFoundError'
+  /dataPackages/{dataPackageId}/versions/{versionId}/downloads:
+    get:
+      summary: Get a specific file from a data package version.
+      tags:
+      - Data Packages
+      security:
+      - OAuth2: []
+      - APIKeyQuery: []
+      - APIKeyHeader: []
+      parameters:
+      - $ref: '#/components/parameters/dataPackageId'
+      - name: versionId
+        in: path
+        description: The id of the data package version.
+        required: true
+        schema:
+          type: string
+      - name: fileName
+        in: query
+        description: The name of the file.
+        required: true
+        schema:
+          type: string
+      responses:
+        '307':
+          description: A redirect to the actual file data.
+          headers:
+            Location:
+              schema:
+                type: string
+                format: uri
+              description: Direct URL for the download file.
+        '401':
+          $ref: '#/components/responses/UnauthorizedError'
+        '404':
+          $ref: '#/components/responses/NotFoundError'
+components:
+  responses:
+    UnauthorizedError:
+      description: The API key or OAuth 2 access token is missing or invalid.
+      content:
+        application/json:
+          schema:
+            type: object
+            required:
+            - message
+            properties:
+              message:
+                type: string
+                example: Invalid APIKey
+    NotFoundError:
+      description: 'The request does not match any known content.
+
+        The response will contain a human readable message, and may also contain links to help you
+
+        navigate to other API endpoints.
+
+        '
+      content:
+        application/json:
+          schema:
+            type: object
+            required:
+            - message
+            properties:
+              message:
+                type: string
+              dataPackagesUrl:
+                type: string
+                format: uri
+              downloadCatalogueUrl:
+                type: string
+                format: uri
+              productUrl:
+                type: string
+                format: uri
+              productDownloadsUrl:
+                type: string
+                format: uri
+  parameters:
+    dataPackageId:
+      name: dataPackageId
+      in: path
+      description: The id of the data package.
+      required: true
+      schema:
+        type: string
+  schemas:
+    DataPackage:
+      type: object
+      description: 'A data package provides access to OS products that are not OpenData. If you have access to to products that
+
+        are available as data packages then you can create new data packages using the OS Data Hub. Once you have set
+
+        up your data packages you can use this API to access them.
+
+        '
+      required:
+      - id
+      - name
+      - url
+      - createdOn
+      - productId
+      - productName
+      - versions
+      properties:
+        id:
+          type: string
+          example: 0040046952
+        name:
+          type: string
+          example: Southampton Addresses
+        url:
+          type: string
+          format: uri
+          example: https://api.os.uk/downloads/v1/dataPackages/0040046952
+        createdOn:
+          type: string
+          format: date
+          example: '2021-01-20'
+        productId:
+          type: string
+          example: ABPOSTSLA
+        productName:
+          type: string
+          example: AddressBase
+        versions:
+          type: array
+          items:
+            $ref: '#/components/schemas/DataPackageVersionSummary'
+    DataPackageVersionSummary:
+      type: object
+      description: 'Summary information about a data package version.
+
+        '
+      required:
+      - id
+      - url
+      - createdOn
+      - reason
+      - supplyType
+      - productVersion
+      - productFormat
+      properties:
+        id:
+          type: string
+          example: '110012'
+        url:
+          type: string
+          format: uri
+          example: https://api.os.uk/downloads/v1/dataPackages/0040046952/versions/110012
+        createdOn:
+          type: string
+          format: date
+          example: '2021-04-01'
+        reason:
+          type: string
+          enum:
+          - INITIAL
+          - UPDATE
+          - EXPANSION
+          - RESUPPLY
+          - ONLINE_ORDER
+        supplyType:
+          type: string
+          enum:
+          - FULL
+          - COU
+        productVersion:
+          type: string
+          example: E37 December 2015 Update
+        format:
+          type: string
+          example: CSV
+        dataPackageUrl:
+          type: string
+          format: uri
+          example: https://api.os.uk/downloads/v1/dataPackages/0040046952
+    Download:
+      type: object
+      description: 'Information about a specific download file that is made available through this API.
+
+        '
+      required:
+      - url
+      - fileName
+      properties:
+        url:
+          description: Getting this URL will return a HTTP redirect to the actual data.
+          type: string
+          format: uri
+        fileName:
+          description: The name of the file.
+          type: string
+          example: data.zip
+        size:
+          description: The file size, in bytes.
+          type: integer
+          example: 1234
+        md5:
+          description: A MD5 checksum of the file data. This can be used to verify the integrity of the data once you have downloaded it.
+          type: string
+          example: 2f9dd13abd56140afa3b5621e8864f59
+    DataPackageVersion:
+      description: 'Detailed information about a data package version, including a list of the files available to download.
+
+        '
+      allOf:
+      - $ref: '#/components/schemas/DataPackageVersionSummary'
+      - type: object
+        required:
+        - downloads
+        properties:
+          nextVersionUrl:
+            description: Only populated if there is a newer version of the data package.
+            type: string
+            format: uri
+            example: https://api.os.uk/downloads/v1/dataPackages/0040046952/versions/110013
+          previousVersionUrl:
+            description: Only populated if there is an older version of the data package.
+            type: string
+            format: uri
+            example: https://api.os.uk/downloads/v1/dataPackages/0040046952/versions/110011
+          downloads:
+            type: array
+            items:
+              $ref: '#/components/schemas/Download'
+  securitySchemes:
+    OAuth2:
+      type: oauth2
+      flows:
+        clientCredentials:
+          tokenUrl: https://api.os.uk/oauth2/token/v1
+          scopes: {}
+    APIKeyQuery:
+      type: apiKey
+      in: query
+      name: key
+    APIKeyHeader:
+      type: apiKey
+      in: header
+      name: key

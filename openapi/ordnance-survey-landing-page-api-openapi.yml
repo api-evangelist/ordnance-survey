@@ -1,0 +1,216 @@
+openapi: 3.2.0
+info:
+  title: Ordnance Survey Landing Page API
+  version: '1.0'
+  description: 'Operations tagged Landing Page across 2 of this provider''s published API definitions: ordnance-survey-ngd-features-openapi.json, ordnance-survey-ngd-tiles-openapi.json. Each path carries the servers of the definition it was published in.'
+servers:
+- url: https://api.os.uk/features/ngd/ofa/v1
+- description: NGD OGC API - Tiles server
+  url: https://api.os.uk/maps/vector/ngd/ota/v1
+tags:
+- name: Landing Page
+  description: Ordnance Survey NGD API – Features
+paths:
+  /:
+    get:
+      tags:
+      - Landing Page
+      summary: OS NGD API – Features landing page
+      operationId: getLandingPageResponse
+      responses:
+        '200':
+          description: Ordnance Survey National Geographic Database API – Features landing page.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/LandingPageResponse'
+        '400':
+          description: The request was not supported.
+        '405':
+          description: The HTTP method requested is not supported. This endpoint only supports 'GET' requests.
+        '406':
+          description: A request header value was not supported.
+    servers:
+    - url: https://api.os.uk/features/ngd/ofa/v1
+  /conformance:
+    get:
+      tags:
+      - Landing Page
+      summary: OS NGD API – Features conformance page
+      operationId: getConformanceResponse
+      responses:
+        '200':
+          description: Ordnance Survey National Geographic Database API – Features conformance page.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ConformanceResponse'
+        '400':
+          description: The request was not supported.
+        '405':
+          description: The HTTP method requested is not supported. This endpoint only supports 'GET' requests.
+        '406':
+          description: A request header value was not supported.
+    servers:
+    - url: https://api.os.uk/features/ngd/ofa/v1
+components:
+  schemas:
+    Link:
+      type: object
+      properties:
+        href:
+          type: string
+          format: url
+        rel:
+          type: string
+        type:
+          type: string
+        title:
+          type: string
+    ConformanceResponse:
+      type: object
+      properties:
+        conformsTo:
+          type: array
+          items:
+            type: string
+    LandingPageResponse:
+      type: object
+      properties:
+        title:
+          type: string
+        description:
+          type: string
+        links:
+          type: array
+          items:
+            $ref: '#/components/schemas/Link'
+    confClasses:
+      properties:
+        conformsTo:
+          items:
+            type: string
+          type: array
+      required:
+      - conformsTo
+      type: object
+    exceptionDto:
+      description: JSON schema for exceptions based on RFC 7807
+      properties:
+        type:
+          type: string
+        title:
+          type: string
+        status:
+          type: integer
+        detail:
+          type: string
+        instance:
+          type: string
+        code:
+          type: integer
+        description:
+          type: string
+        help:
+          type: string
+      required:
+      - type
+      title: Exception Schema
+      type: object
+    getConformance_200_response:
+      allOf:
+      - $ref: '#/components/schemas/confClasses'
+      example:
+        conformsTo:
+        - http://www.opengis.net/spec/ogcapi-common-1/1.0/conf/core
+        - http://www.opengis.net/spec/ogcapi-common-1/1.0/conf/json
+        - http://www.opengis.net/spec/ogcapi-common-1/1.0/conf/html
+        - http://www.opengis.net/spec/ogcapi-common-1/1.0/conf/oas30
+        - http://www.opengis.net/spec/ogcapi-common-2/1.0/conf/collections
+        - http://www.opengis.net/spec/ogcapi-tiles-1/1.0/conf/core
+        - http://www.opengis.net/spec/ogcapi-tiles-1/1.0/conf/tileset
+        - http://www.opengis.net/spec/ogcapi-tiles-1/1.0/conf/tilesets-list
+        - http://www.opengis.net/spec/ogcapi-tiles-1/1.0/conf/geodata-tilesets
+        - http://www.opengis.net/spec/ogcapi-tiles-1/1.0/conf/dataset-tilesets
+        - http://www.opengis.net/spec/ogcapi-tiles-1/1.0/conf/geodata-selection
+        - http://www.opengis.net/spec/ogcapi-tiles-1/1.0/conf/jpeg
+        - http://www.opengis.net/spec/ogcapi-tiles-1/1.0/conf/png
+        - http://www.opengis.net/spec/ogcapi-tiles-1/1.0/conf/mvt
+        - http://www.opengis.net/spec/ogcapi-tiles-1/1.0/conf/geojson
+        - http://www.opengis.net/spec/ogcapi-tiles-1/1.0/conf/tiff
+        - http://www.opengis.net/spec/ogcapi-tiles-1/1.0/conf/netcdf
+    link:
+      properties:
+        href:
+          description: Supplies the URI to a remote resource (or resource fragment).
+          example: http://data.example.com/buildingpart/123
+          type: string
+        rel:
+          description: The type or semantics of the relation.
+          example: alternate
+          type: string
+        type:
+          description: A hint indicating what the media type of the result of dereferencing the link should be.
+          example: application/geo+json
+          type: string
+        templated:
+          description: This flag set to true if the link is a URL template.
+          type: boolean
+        varBase:
+          description: A base path to retrieve semantic information about the variables used in URL template.
+          example: /ogcapi/vars/
+          type: string
+        hreflang:
+          description: A hint indicating what the language of the result of dereferencing the link should be.
+          example: en
+          type: string
+        title:
+          description: Used to label the destination of a link such that it can be used as a human-readable identifier.
+          example: Building Part
+          type: string
+        length:
+          type: integer
+      required:
+      - href
+      - rel
+      type: object
+    landingPage:
+      properties:
+        title:
+          description: While a title is not required, implementors are strongly advised to include one.
+          example: OS NGD API
+          title: The title of the API.
+          type: string
+        description:
+          example: Ordnance Survey National Geographic Database API.
+          type: string
+        attribution:
+          description: The `attribution` should be short and intended for presentation to a user, for example, in a corner of a map. Parts of the text can be links to other resources if additional information is needed. The string can include HTML markup.
+          title: attribution for the API
+          type: string
+        links:
+          items:
+            $ref: '#/components/schemas/link'
+          type: array
+      required:
+      - links
+      type: object
+  securitySchemes:
+    api-key:
+      type: apiKey
+      name: key
+      in: query
+    api-key-header:
+      type: apiKey
+      name: key
+      in: header
+    oauth2:
+      type: oauth2
+      name: oauth2
+      flows:
+        clientCredentials:
+          tokenUrl: https://api.os.uk/oauth2/token/v1
+          scopes: {}
+x-refined-from:
+- ordnance-survey-ngd-features-openapi.json
+- ordnance-survey-ngd-tiles-openapi.json

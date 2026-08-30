@@ -1,0 +1,437 @@
+openapi: 3.2.0
+info:
+  title: OS Net Stations API
+  description: 'This is the API definition for the OS Net spring boot app. It is a working subset of the overall design
+
+    '
+  version: 1.6.0
+servers:
+- url: https://api.os.uk/positioning/osnet/v1
+tags:
+- name: Stations
+paths:
+  /stations:
+    get:
+      security:
+      - OAuth2: []
+      - APIKeyQuery: []
+      - APIKeyHeader: []
+      tags:
+      - Stations
+      description: Get a list of the current GPS stations over the specified time period. The info is derived from https://www.ordnancesurvey.co.uk/documents/resources/osnet-coordinates-file.txt. Note that if the start and end date are omitted then the response will not contain the percentageComplete property. The dataFrequency parameter is only relevant if the start and end date are supplied.
+      operationId: Get Stations
+      parameters:
+      - $ref: '#/components/parameters/SpatialParameters'
+      - $ref: '#/components/parameters/TemporalParameters'
+      - $ref: '#/components/parameters/dataFrequency'
+      responses:
+        '200':
+          description: Returns the list of stations, either as structured JSON data or a simple text file
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Station'
+            text/plain:
+              schema:
+                type: object
+              example: '# 2024-04-15
+
+                # ***********************************************************************
+
+                # ***** OS Net coordinates were all updated on 00:00:00 2016-Aug-26 *****
+
+                # ***** Coordinates are now known as ''OS Net v2009''                 *****
+
+                # ***** Previous coordinates are ''OS Net v2001'' and in new section  *****
+
+                # ***********************************************************************
+
+                #
+
+                # Changes:
+
+                # 2024-04-15. WEAR destroyed.
+
+                ...
+
+                '
+        '400':
+          description: Bad request
+          content:
+            application/problem+json:
+              schema:
+                type: object
+  /stations/health:
+    get:
+      security:
+      - OAuth2: []
+      - APIKeyQuery: []
+      - APIKeyHeader: []
+      tags:
+      - Stations
+      description: Get an hour-by-hour breakdown of the OS Net network health for a specific date.
+      operationId: Get Network Health
+      parameters:
+      - $ref: '#/components/parameters/date'
+      - $ref: '#/components/parameters/dataFrequency'
+      responses:
+        '200':
+          description: Returns the network health for the given date. Each station in the network will be included in the response.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/StationNetworkHealth'
+  /stations/{stationId}:
+    get:
+      security:
+      - OAuth2: []
+      - APIKeyQuery: []
+      - APIKeyHeader: []
+      tags:
+      - Stations
+      description: Get info on specified station over a specified time period. Note that if the start and end date are omitted then the response will not contain the percentageComplete property. The dataFrequency parameter is only relevant if the start and end date are supplied.
+      operationId: Get Station
+      parameters:
+      - $ref: '#/components/parameters/stationId'
+      - $ref: '#/components/parameters/TemporalParameters'
+      - $ref: '#/components/parameters/dataFrequency'
+      responses:
+        '200':
+          description: Returns info about the station, as structured JSON data
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Station'
+            text/plain:
+              schema:
+                type: object
+              example:
+                stationId: ABEP
+                ETRS89_Lat: N 52 08 21.903992
+                ETRS89_Long: W 004 34 16.727173
+                ortho_h: 134.238
+                ortho_Datum: Ordnance Datum Newlyn
+                tranModel: '15'
+                links: []
+                ETRS89_X: 3910361.3337
+                ETRS89_Y: -312649.7649
+                ETRS89_Z: 5012487.9118
+                ETRS89_H: 188.467
+                OSGB36_E: 224134.523
+                OSGB36_N: 252130.77
+        '404':
+          description: Not Found
+          content:
+            application/problem+json:
+              schema:
+                type: object
+        '400':
+          description: Bad request
+          content:
+            application/problem+json:
+              schema:
+                type: object
+  /stations/{stationId}/health:
+    get:
+      security:
+      - OAuth2: []
+      - APIKeyQuery: []
+      - APIKeyHeader: []
+      tags:
+      - Stations
+      description: Get health information about a specific station
+      operationId: Get Station Health
+      parameters:
+      - $ref: '#/components/parameters/stationId'
+      - $ref: '#/components/parameters/dataFrequency'
+      responses:
+        '200':
+          description: Returns the station health, on a day-by-day basis
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HealthByDate'
+  /stations/{stationId}/log:
+    get:
+      security:
+      - OAuth2: []
+      - APIKeyQuery: []
+      - APIKeyHeader: []
+      tags:
+      - Stations
+      description: Get logs for specified station
+      operationId: Get Station Logs
+      parameters:
+      - $ref: '#/components/parameters/stationId'
+      responses:
+        '200':
+          description: Returns the station logs
+          content:
+            text/plain:
+              schema:
+                type: string
+            application/xml:
+              schema:
+                type: string
+        '404':
+          description: Not Found
+          content:
+            application/problem+json:
+              schema:
+                type: object
+        '400':
+          description: Bad request
+          content:
+            application/problem+json:
+              schema:
+                type: object
+components:
+  schemas:
+    SpatialParameters:
+      type: object
+      properties:
+        location:
+          type: string
+          description: 'Optional. A point location for the search. Will reorder the results by distance from this point. Supports: National Grid eastings and northings (space separated), ETRS89 in Cartesian XYZ, decimal degrees (including degrees and decimal minutes / degrees, minutes, and decimal seconds), postcodes (including partial postcodes). More information: https://www.ordnancesurvey.co.uk/geodesy-positioning/coordinate-transformations/tool/formats.'
+        radius:
+          type: integer
+          description: Optional, limits the search to the given radius. 'location' must also be provided.
+        stationCount:
+          type: integer
+          description: Optional, limits the result to a fixed number of stations. 'location' must also be provided.
+      description: Spatial parameters for the /stations endpoint
+    Link:
+      title: Link
+      required:
+      - description
+      - href
+      - rel
+      - title
+      - type
+      type: object
+      properties:
+        href:
+          type: string
+          format: uri
+        rel:
+          type: string
+        type:
+          type: string
+        title:
+          type: string
+        description:
+          type: string
+      description: Provides a link leading to further information about a resource
+    StationNetworkHealth:
+      type: array
+      items:
+        type: object
+        properties:
+          stationId:
+            type: string
+            example: ABEP
+          hourlyData:
+            $ref: '#/components/schemas/HourlyData'
+    HourlyData:
+      type: array
+      items:
+        type: object
+        properties:
+          hour:
+            maximum: 23
+            minimum: 0
+            type: integer
+          percentageComplete:
+            maximum: 100
+            minimum: 0
+            type: integer
+          dataFrequency:
+            type: string
+            description: Gives the data frequency that the percentage complete describes.
+            example: 30S
+    Station:
+      required:
+      - ETRS89_H
+      - ETRS89_Lat
+      - ETRS89_Long
+      - ETRS89_X
+      - ETRS89_Y
+      - ETRS89_Z
+      - OSGB36_E
+      - OSGB36_N
+      - ortho_Datum
+      - ortho_h
+      - percentageComplete
+      - stationId
+      - tranModel
+      type: object
+      properties:
+        stationId:
+          type: string
+          example: ABEP
+        stationName:
+          type: string
+          example: Aberporth
+        ETRS89_X:
+          type: number
+          example: 3910361.3337
+        ETRS89_Y:
+          type: number
+          example: -312649.7649
+        ETRS89_Z:
+          type: number
+          example: 5012487.9118
+        ETRS89_Lat:
+          type: string
+          example: N 52 08 21.903992
+        ETRS89_Long:
+          type: string
+          example: W 004 34 16.727173
+        ETRS89_H:
+          type: number
+          example: 188.467
+        OSGB36_E:
+          type: number
+          example: 224134.523
+        OSGB36_N:
+          type: number
+          example: 252130.77
+        ortho_h:
+          type: number
+          example: 134.238
+        ortho_Datum:
+          type: string
+          example: Ordnance Datum Newlyn
+        tranModel:
+          type: string
+          example: 15
+        percentageComplete:
+          maximum: 100
+          minimum: 0
+          type: integer
+          description: Health percentage, based on expected and actual data for the station, and for the overall time period that was queried. If the time period is omitted then the percentage complete will not be included in the response.
+        dataFrequency:
+          type: string
+          description: Gives the data frequency that the percentage complete describes.
+          example: 30S
+        distance:
+          type: number
+          description: Distance in KM from given search point, to two decimal places. Omitted if the query did not include a location.
+          example: 12.34
+        links:
+          type: array
+          description: 'Links for finding further information about the station.
+
+            '
+          example:
+          - href: https://api.os.uk/positioning/osnet/v1/stations/ABEP
+            rel: self
+            type: application/json
+            title: Self link
+            description: This station
+          - href: https://api.os.uk/positioning/osnet/v1/stations/ABEP/rinex
+            rel: service-endpoint
+            type: application/json
+            title: Station data
+            description: List the data available for this station
+          - href: https://api.os.uk/positioning/osnet/v1/stations/ABEP/log
+            rel: service-endpoint
+            type: application/text
+            title: Station log
+            description: Link to the station log
+          items:
+            $ref: '#/components/schemas/Link'
+      description: Information about a GPS station.
+    TemporalParameters:
+      type: object
+      properties:
+        start:
+          type: string
+          description: Optional start date-time for the search window
+          format: date-time
+          example: 2024-12-31 01:00:00+00:00
+        end:
+          type: string
+          description: Optional end date-time for the search window
+          format: date-time
+          example: 2024-12-31 02:00:00+00:00
+      description: Parameters that provide an optional temporal window (from start to end) for a query. When using start and end, please note that start should be within the last 45 days, and the end should be no more than 24 hours after the start.
+    HealthByDate:
+      type: array
+      items:
+        type: object
+        properties:
+          date:
+            type: string
+            format: date
+            example: 2024-11-30
+          hourlyData:
+            $ref: '#/components/schemas/HourlyData'
+  parameters:
+    TemporalParameters:
+      name: TemporalParameters
+      in: query
+      description: Parameters that provide an optional temporal window (from start to end) for a query. These parameters can be used to restrict the query to a specific time range. When using start and end, please note that start should be within the last 45 days, and the end should be no more than 24 hours after the start.
+      required: false
+      explode: true
+      schema:
+        $ref: '#/components/schemas/TemporalParameters'
+    dataFrequency:
+      name: dataFrequency
+      in: query
+      description: Parameter that selects the data frequency for a query. If the parameter is omitted then the query will proceed as if 30S data has been requested. Ephemeris files do not have a data frequency, and will be returned regardless of the dataFrequency parameter. Every organisation has access to 30S data. Access to 01S data is restricted to organisations on the Public Sector Plan.
+      required: false
+      schema:
+        type: string
+      examples:
+        30S:
+          summary: Data every 30 seconds
+          value: 30S
+        01S:
+          summary: Data every second
+          value: 01S
+    SpatialParameters:
+      name: SpatialParameters
+      in: query
+      description: Spatial parameters for the /stations endpoint. These parameters can be used to restrict the station search to a specific geographic area.
+      required: false
+      explode: true
+      schema:
+        $ref: '#/components/schemas/SpatialParameters'
+    date:
+      name: date
+      in: query
+      description: Date for the network health search. Please note that the date should be within the last 45 days.
+      required: true
+      schema:
+        type: string
+        format: date
+        example: 2024-11-30
+    stationId:
+      name: stationId
+      in: path
+      description: Specific station ID.
+      required: true
+      schema:
+        maxLength: 4
+        minLength: 4
+        pattern: ^[a-zA-Z0-9]*$
+        type: string
+      example: ABEP
+  securitySchemes:
+    OAuth2:
+      type: oauth2
+      flows:
+        clientCredentials:
+          tokenUrl: OAUTH_TOKEN_URL
+          scopes: {}
+    APIKeyQuery:
+      type: apiKey
+      in: query
+      name: key
+    APIKeyHeader:
+      type: apiKey
+      in: header
+      name: key
