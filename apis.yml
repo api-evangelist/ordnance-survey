@@ -121,6 +121,8 @@ apis:
   humanURL: https://docs.os.uk/os-apis/accessing-os-apis/os-ngd-api-features
   baseURL: https://api.os.uk/features/ngd/ofa/v1
   tags:
+  - Bounding Box
+  tags_raw:
   - Bounding box
   properties:
   - type: OpenAPI
@@ -172,6 +174,8 @@ apis:
   humanURL: https://docs.os.uk/os-apis/accessing-os-apis/os-ngd-api-features
   baseURL: https://api.os.uk/features/ngd/ofa/v1
   tags:
+  - Collection
+  tags_raw:
   - Collections
   properties:
   - type: OpenAPI
@@ -432,6 +436,8 @@ apis:
   humanURL: https://docs.os.uk/os-apis/accessing-os-apis/os-ngd-api-features
   baseURL: https://api.os.uk/features/ngd/ofa/v1
   tags:
+  - Get Capabilities
+  tags_raw:
   - GetCapabilities
   properties:
   - type: OpenAPI
@@ -585,6 +591,8 @@ apis:
   humanURL: https://docs.os.uk/os-apis/accessing-os-apis/os-ngd-api-features
   baseURL: https://api.os.uk/features/ngd/ofa/v1
   tags:
+  - Open Data
+  tags_raw:
   - OpenData
   properties:
   - type: OpenAPI
@@ -789,6 +797,8 @@ apis:
   humanURL: https://docs.os.uk/os-apis/accessing-os-apis/os-ngd-api-features
   baseURL: https://api.os.uk/features/ngd/ofa/v1
   tags:
+  - RADIUS
+  tags_raw:
   - Radius
   properties:
   - type: OpenAPI
@@ -1095,6 +1105,8 @@ apis:
   humanURL: https://docs.os.uk/os-apis/accessing-os-apis/os-ngd-api-features
   baseURL: https://api.os.uk/features/ngd/ofa/v1
   tags:
+  - Tilesets
+  tags_raw:
   - Tile Sets
   properties:
   - type: OpenAPI
