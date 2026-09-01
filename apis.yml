@@ -131,6 +131,8 @@ apis:
     url: https://docs.os.uk/os-apis/accessing-os-apis/os-ngd-api-features
   - type: APIReference
     url: https://api.os.uk/features/ngd/ofa/v1/api
+  - type: ConformanceEndpoint
+    url: https://api.os.uk/features/ngd/ofa/v1/conformance
   - type: Documentation
     url: https://docs.os.uk/os-apis/accessing-os-apis/os-ngd-api-tiles
   - type: APIReference
