@@ -68,6 +68,23 @@ deliveryModel:
   - pricing
   generated: '2026-08-28'
   method: derived
+accessModel:
+  pricing: paid
+  onboarding: open
+  trial: false
+  try_now: false
+  public: true
+  label: Paid · Open access
+  confidence: high
+  source:
+  - plans
+  - authentication
+  - scopes
+  - rate-limits
+  - security
+  - sandbox
+  generated: '2026-09-02'
+  method: derived
 created: '2026-07-26'
 modified: '2026-07-26'
 specificationVersion: '0.23'
@@ -1370,8 +1387,9 @@ common:
   url: well-known/ordnance-survey-api-catalog.json
 - type: ContentSignal
   url: well-known/ordnance-survey-docs-robots.txt
-- type: MCPServer
+- type: X-MCPServerCandidate
   url: mcp/ordnance-survey-mcp.yml
+  note: 'Renamed from MCPServer 2026-09-03 (roadmap#247): the manifest self-describes as status: candidate — a tool list derived from the published API contracts, not an existing server. The scorer already read the manifest and reported mcp_server correctly; the MCPServer type was crediting the artifact-type surfaces with a server that does not exist.'
 - type: LLMsTxt
   url: llms/ordnance-survey-llms.txt
 - type: Conformance
