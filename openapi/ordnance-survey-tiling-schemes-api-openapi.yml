@@ -116,68 +116,32 @@ paths:
       - Tiling Schemes
 components:
   schemas:
-    TileMatrixSets:
-      enum:
-      - '3857'
-      - '27700'
-      type: string
-    exceptionDto:
-      description: JSON schema for exceptions based on RFC 7807
+    tileMatrixSet-item:
+      description: A minimal tile matrix set element for use within a list of tile matrix sets linking to a full definition.
       properties:
-        type:
+        id:
+          description: Optional local tile matrix set identifier, e.g. for use as unspecified `{tileMatrixSetId}` parameter. Implementation of 'identifier'
           type: string
-        title:
-          type: string
-        status:
-          type: integer
-        detail:
-          type: string
-        instance:
-          type: string
-        code:
-          type: integer
-        description:
-          type: string
-        help:
-          type: string
-      required:
-      - type
-      title: Exception Schema
-      type: object
-    tileMatrixSet:
-      description: A definition of a tile matrix set following the Tile Matrix Set standard. For tileset metadata, such a description (in `tileMatrixSet` property) is only required for offline use, as an alternative to a link with a `http://www.opengis.net/def/rel/ogc/1.0/tiling-scheme` relation type.
-      properties:
         title:
           description: Title of this tile matrix set, normally used for display to a human
-          type: string
-        id:
-          description: Tile matrix set identifier. Implementation of 'identifier'
           type: string
         uri:
           description: Reference to an official source for this tileMatrixSet
           format: uri
           type: string
-        orderedAxes:
-          items:
-            type: string
-          minItems: 1
-          type: array
         crs:
           allOf:
+          - description: Coordinate Reference System (CRS)
+            type: object
           - $ref: '#/components/schemas/crs'
-        wellKnownScaleSet:
-          description: Reference to a well-known scale set
-          format: uri
-          type: string
-        tileMatrices:
-          description: Describes scale levels and its tile matrices
+        links:
+          description: Links to related resources. A 'self' link to the tile matrix set definition is required.
           items:
-            $ref: '#/components/schemas/tileMatrix'
+            $ref: '#/components/schemas/link'
           type: array
       required:
-      - crs
-      - tileMatrices
-      title: Tile Matrix Set Definition
+      - links
+      title: Tile Matrix Set Item
       type: object
     tileMatrix:
       description: A tile matrix, usually corresponding to a particular zoom level of a TileMatrixSet.
@@ -239,44 +203,28 @@ components:
       - tileHeight
       - tileWidth
       type: object
-    crs:
-      description: Reference to one coordinate reference system (CRS)
-      format: uri
-      title: CRS
-      type: string
-    tileMatrixSet-item:
-      description: A minimal tile matrix set element for use within a list of tile matrix sets linking to a full definition.
+    exceptionDto:
+      description: JSON schema for exceptions based on RFC 7807
       properties:
-        id:
-          description: Optional local tile matrix set identifier, e.g. for use as unspecified `{tileMatrixSetId}` parameter. Implementation of 'identifier'
+        type:
           type: string
         title:
-          description: Title of this tile matrix set, normally used for display to a human
           type: string
-        uri:
-          description: Reference to an official source for this tileMatrixSet
-          format: uri
+        status:
+          type: integer
+        detail:
           type: string
-        crs:
-          allOf:
-          - description: Coordinate Reference System (CRS)
-            type: object
-          - $ref: '#/components/schemas/crs'
-        links:
-          description: Links to related resources. A 'self' link to the tile matrix set definition is required.
-          items:
-            $ref: '#/components/schemas/link'
-          type: array
+        instance:
+          type: string
+        code:
+          type: integer
+        description:
+          type: string
+        help:
+          type: string
       required:
-      - links
-      title: Tile Matrix Set Item
-      type: object
-    getTileMatrixSetsList_200_response:
-      properties:
-        tileMatrixSets:
-          items:
-            $ref: '#/components/schemas/tileMatrixSet-item'
-          type: array
+      - type
+      title: Exception Schema
       type: object
     link:
       properties:
@@ -313,6 +261,58 @@ components:
       - href
       - rel
       type: object
+    tileMatrixSet:
+      description: A definition of a tile matrix set following the Tile Matrix Set standard. For tileset metadata, such a description (in `tileMatrixSet` property) is only required for offline use, as an alternative to a link with a `http://www.opengis.net/def/rel/ogc/1.0/tiling-scheme` relation type.
+      properties:
+        title:
+          description: Title of this tile matrix set, normally used for display to a human
+          type: string
+        id:
+          description: Tile matrix set identifier. Implementation of 'identifier'
+          type: string
+        uri:
+          description: Reference to an official source for this tileMatrixSet
+          format: uri
+          type: string
+        orderedAxes:
+          items:
+            type: string
+          minItems: 1
+          type: array
+        crs:
+          allOf:
+          - $ref: '#/components/schemas/crs'
+        wellKnownScaleSet:
+          description: Reference to a well-known scale set
+          format: uri
+          type: string
+        tileMatrices:
+          description: Describes scale levels and its tile matrices
+          items:
+            $ref: '#/components/schemas/tileMatrix'
+          type: array
+      required:
+      - crs
+      - tileMatrices
+      title: Tile Matrix Set Definition
+      type: object
+    getTileMatrixSetsList_200_response:
+      properties:
+        tileMatrixSets:
+          items:
+            $ref: '#/components/schemas/tileMatrixSet-item'
+          type: array
+      type: object
+    TileMatrixSets:
+      enum:
+      - '3857'
+      - '27700'
+      type: string
+    crs:
+      description: Reference to one coordinate reference system (CRS)
+      format: uri
+      title: CRS
+      type: string
   securitySchemes:
     api-key:
       type: apiKey

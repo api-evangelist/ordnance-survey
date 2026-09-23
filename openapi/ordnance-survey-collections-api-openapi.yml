@@ -406,59 +406,6 @@ paths:
           description: A request header value was not supported.
 components:
   schemas:
-    Link:
-      type: object
-      properties:
-        href:
-          type: string
-          format: url
-        rel:
-          type: string
-        type:
-          type: string
-        title:
-          type: string
-    Queryable:
-      type: object
-      properties:
-        title:
-          type: string
-        type:
-          type: string
-        format:
-          type: string
-        maxLength:
-          type: integer
-          format: int32
-        pattern:
-          type: string
-        description:
-          type: string
-        hierarchy:
-          type: string
-        parent:
-          type: string
-        child:
-          type: string
-        minItems:
-          type: integer
-          format: int32
-        maxItems:
-          type: integer
-          format: int32
-        items:
-          $ref: '#/components/schemas/Queryable'
-        enum:
-          type: array
-          items:
-            type: string
-    Extent:
-      type: object
-      properties:
-        spatial:
-          $ref: '#/components/schemas/SpatialExtent'
-        temporal:
-          $ref: '#/components/schemas/TemporalExtent'
     CollectionResponse:
       type: object
       properties:
@@ -494,23 +441,71 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/Link'
-    QueryablesResponse:
+    Queryable:
       type: object
       properties:
-        $schema:
+        title:
           type: string
-        $id:
+        type:
+          type: string
+        format:
+          type: string
+        maxLength:
+          type: integer
+          format: int32
+        pattern:
+          type: string
+        description:
+          type: string
+        hierarchy:
+          type: string
+        parent:
+          type: string
+        child:
+          type: string
+        minItems:
+          type: integer
+          format: int32
+        maxItems:
+          type: integer
+          format: int32
+        items:
+          $ref: '#/components/schemas/Queryable'
+        enum:
+          type: array
+          items:
+            type: string
+    Link:
+      type: object
+      properties:
+        href:
+          type: string
+          format: url
+        rel:
           type: string
         type:
           type: string
         title:
           type: string
-        description:
+    Extent:
+      type: object
+      properties:
+        spatial:
+          $ref: '#/components/schemas/SpatialExtent'
+        temporal:
+          $ref: '#/components/schemas/TemporalExtent'
+    SpatialExtent:
+      type: object
+      properties:
+        bbox:
+          type: array
+          items:
+            type: array
+            items:
+              type: number
+              format: double
+        crs:
           type: string
-        properties:
-          type: object
-          additionalProperties:
-            $ref: '#/components/schemas/Queryable'
     CollectionsResponse:
       type: object
       properties:
@@ -532,6 +527,23 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/CollectionResponse'
+    QueryablesResponse:
+      type: object
+      properties:
+        $schema:
+          type: string
+        $id:
+          type: string
+        type:
+          type: string
+        title:
+          type: string
+        description:
+          type: string
+        properties:
+          type: object
+          additionalProperties:
+            $ref: '#/components/schemas/Queryable'
     TemporalExtent:
       type: object
       properties:
@@ -542,18 +554,6 @@ components:
             items:
               type: string
         trs:
-          type: string
-    SpatialExtent:
-      type: object
-      properties:
-        bbox:
-          type: array
-          items:
-            type: array
-            items:
-              type: number
-              format: double
-        crs:
           type: string
   securitySchemes:
     api-key:

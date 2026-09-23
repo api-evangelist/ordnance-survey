@@ -9,13 +9,11 @@ tags:
 - name: Data Packages
   description: 'Operations providing access to data packages.
 
-    To access data packages you must supply a valid API key or OAuth 2 access token.
-
-    '
+    To access data packages you must supply a valid API key or OAuth 2 access token.'
 paths:
   /dataPackages:
     get:
-      summary: List the data packages that are available to you.
+      summary: List the data packages that are available to you
       tags:
       - Data Packages
       security:
@@ -33,9 +31,11 @@ paths:
                   $ref: '#/components/schemas/DataPackage'
         '401':
           $ref: '#/components/responses/UnauthorizedError'
+      operationId: getDataPackages
+      x-operation-id-source: derived
   /dataPackages/{dataPackageId}:
     get:
-      summary: Get a specific data package.
+      summary: Get a specific data package
       tags:
       - Data Packages
       security:
@@ -55,9 +55,11 @@ paths:
           $ref: '#/components/responses/UnauthorizedError'
         '404':
           $ref: '#/components/responses/NotFoundError'
+      operationId: getDataPackagesByDataPackageId
+      x-operation-id-source: derived
   /dataPackages/{dataPackageId}/versions:
     get:
-      summary: Get the list of versions for a specific data package.
+      summary: Get the list of versions for a specific data package
       tags:
       - Data Packages
       security:
@@ -79,9 +81,11 @@ paths:
           $ref: '#/components/responses/UnauthorizedError'
         '404':
           $ref: '#/components/responses/NotFoundError'
+      operationId: getDataPackagesByDataPackageIdVersions
+      x-operation-id-source: derived
   /dataPackages/{dataPackageId}/versions/{versionId}:
     get:
-      summary: Get a specific data package version, including details of the files that are available to download.
+      summary: Get a specific data package version, including details of the files that are…
       tags:
       - Data Packages
       security:
@@ -107,9 +111,11 @@ paths:
           $ref: '#/components/responses/UnauthorizedError'
         '404':
           $ref: '#/components/responses/NotFoundError'
+      operationId: getDataPackagesByDataPackageIdVersionsByVersionId
+      x-operation-id-source: derived
   /dataPackages/{dataPackageId}/versions/{versionId}/downloads:
     get:
-      summary: Get a specific file from a data package version.
+      summary: Get a specific file from a data package version
       tags:
       - Data Packages
       security:
@@ -143,57 +149,9 @@ paths:
           $ref: '#/components/responses/UnauthorizedError'
         '404':
           $ref: '#/components/responses/NotFoundError'
+      operationId: getDataPackagesByDataPackageIdVersionsByVersionIdDownloads
+      x-operation-id-source: derived
 components:
-  responses:
-    UnauthorizedError:
-      description: The API key or OAuth 2 access token is missing or invalid.
-      content:
-        application/json:
-          schema:
-            type: object
-            required:
-            - message
-            properties:
-              message:
-                type: string
-                example: Invalid APIKey
-    NotFoundError:
-      description: 'The request does not match any known content.
-
-        The response will contain a human readable message, and may also contain links to help you
-
-        navigate to other API endpoints.
-
-        '
-      content:
-        application/json:
-          schema:
-            type: object
-            required:
-            - message
-            properties:
-              message:
-                type: string
-              dataPackagesUrl:
-                type: string
-                format: uri
-              downloadCatalogueUrl:
-                type: string
-                format: uri
-              productUrl:
-                type: string
-                format: uri
-              productDownloadsUrl:
-                type: string
-                format: uri
-  parameters:
-    dataPackageId:
-      name: dataPackageId
-      in: path
-      description: The id of the data package.
-      required: true
-      schema:
-        type: string
   schemas:
     DataPackage:
       type: object
@@ -237,54 +195,6 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/DataPackageVersionSummary'
-    DataPackageVersionSummary:
-      type: object
-      description: 'Summary information about a data package version.
-
-        '
-      required:
-      - id
-      - url
-      - createdOn
-      - reason
-      - supplyType
-      - productVersion
-      - productFormat
-      properties:
-        id:
-          type: string
-          example: '110012'
-        url:
-          type: string
-          format: uri
-          example: https://api.os.uk/downloads/v1/dataPackages/0040046952/versions/110012
-        createdOn:
-          type: string
-          format: date
-          example: '2021-04-01'
-        reason:
-          type: string
-          enum:
-          - INITIAL
-          - UPDATE
-          - EXPANSION
-          - RESUPPLY
-          - ONLINE_ORDER
-        supplyType:
-          type: string
-          enum:
-          - FULL
-          - COU
-        productVersion:
-          type: string
-          example: E37 December 2015 Update
-        format:
-          type: string
-          example: CSV
-        dataPackageUrl:
-          type: string
-          format: uri
-          example: https://api.os.uk/downloads/v1/dataPackages/0040046952
     Download:
       type: object
       description: 'Information about a specific download file that is made available through this API.
@@ -334,6 +244,104 @@ components:
             type: array
             items:
               $ref: '#/components/schemas/Download'
+    DataPackageVersionSummary:
+      type: object
+      description: 'Summary information about a data package version.
+
+        '
+      required:
+      - id
+      - url
+      - createdOn
+      - reason
+      - supplyType
+      - productVersion
+      - productFormat
+      properties:
+        id:
+          type: string
+          example: '110012'
+        url:
+          type: string
+          format: uri
+          example: https://api.os.uk/downloads/v1/dataPackages/0040046952/versions/110012
+        createdOn:
+          type: string
+          format: date
+          example: '2021-04-01'
+        reason:
+          type: string
+          enum:
+          - INITIAL
+          - UPDATE
+          - EXPANSION
+          - RESUPPLY
+          - ONLINE_ORDER
+        supplyType:
+          type: string
+          enum:
+          - FULL
+          - COU
+        productVersion:
+          type: string
+          example: E37 December 2015 Update
+        format:
+          type: string
+          example: CSV
+        dataPackageUrl:
+          type: string
+          format: uri
+          example: https://api.os.uk/downloads/v1/dataPackages/0040046952
+  parameters:
+    dataPackageId:
+      name: dataPackageId
+      in: path
+      description: The id of the data package.
+      required: true
+      schema:
+        type: string
+  responses:
+    NotFoundError:
+      description: 'The request does not match any known content.
+
+        The response will contain a human readable message, and may also contain links to help you
+
+        navigate to other API endpoints.
+
+        '
+      content:
+        application/json:
+          schema:
+            type: object
+            required:
+            - message
+            properties:
+              message:
+                type: string
+              dataPackagesUrl:
+                type: string
+                format: uri
+              downloadCatalogueUrl:
+                type: string
+                format: uri
+              productUrl:
+                type: string
+                format: uri
+              productDownloadsUrl:
+                type: string
+                format: uri
+    UnauthorizedError:
+      description: The API key or OAuth 2 access token is missing or invalid.
+      content:
+        application/json:
+          schema:
+            type: object
+            required:
+            - message
+            properties:
+              message:
+                type: string
+                example: Invalid APIKey
   securitySchemes:
     OAuth2:
       type: oauth2

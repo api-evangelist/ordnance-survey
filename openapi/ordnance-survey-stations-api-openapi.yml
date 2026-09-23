@@ -1,9 +1,7 @@
 openapi: 3.2.0
 info:
   title: OS Net Stations API
-  description: 'This is the API definition for the OS Net spring boot app. It is a working subset of the overall design
-
-    '
+  description: This is the API definition for the OS Net spring boot app. It is a working subset of the overall design
   version: 1.6.0
 servers:
 - url: https://api.os.uk/positioning/osnet/v1
@@ -63,6 +61,8 @@ paths:
             application/problem+json:
               schema:
                 type: object
+      summary: Get stations
+      x-summary-source: derived
   /stations/health:
     get:
       security:
@@ -83,6 +83,8 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/StationNetworkHealth'
+      summary: Get network health
+      x-summary-source: derived
   /stations/{stationId}:
     get:
       security:
@@ -133,6 +135,8 @@ paths:
             application/problem+json:
               schema:
                 type: object
+      summary: Get station
+      x-summary-source: derived
   /stations/{stationId}/health:
     get:
       security:
@@ -153,6 +157,8 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/HealthByDate'
+      summary: Get station health
+      x-summary-source: derived
   /stations/{stationId}/log:
     get:
       security:
@@ -187,43 +193,61 @@ paths:
             application/problem+json:
               schema:
                 type: object
+      summary: Get station logs
+      x-summary-source: derived
 components:
-  schemas:
+  parameters:
+    stationId:
+      name: stationId
+      in: path
+      description: Specific station ID.
+      required: true
+      schema:
+        maxLength: 4
+        minLength: 4
+        pattern: ^[a-zA-Z0-9]*$
+        type: string
+      example: ABEP
     SpatialParameters:
-      type: object
-      properties:
-        location:
-          type: string
-          description: 'Optional. A point location for the search. Will reorder the results by distance from this point. Supports: National Grid eastings and northings (space separated), ETRS89 in Cartesian XYZ, decimal degrees (including degrees and decimal minutes / degrees, minutes, and decimal seconds), postcodes (including partial postcodes). More information: https://www.ordnancesurvey.co.uk/geodesy-positioning/coordinate-transformations/tool/formats.'
-        radius:
-          type: integer
-          description: Optional, limits the search to the given radius. 'location' must also be provided.
-        stationCount:
-          type: integer
-          description: Optional, limits the result to a fixed number of stations. 'location' must also be provided.
-      description: Spatial parameters for the /stations endpoint
-    Link:
-      title: Link
-      required:
-      - description
-      - href
-      - rel
-      - title
-      - type
-      type: object
-      properties:
-        href:
-          type: string
-          format: uri
-        rel:
-          type: string
-        type:
-          type: string
-        title:
-          type: string
-        description:
-          type: string
-      description: Provides a link leading to further information about a resource
+      name: SpatialParameters
+      in: query
+      description: Spatial parameters for the /stations endpoint. These parameters can be used to restrict the station search to a specific geographic area.
+      required: false
+      explode: true
+      schema:
+        $ref: '#/components/schemas/SpatialParameters'
+    dataFrequency:
+      name: dataFrequency
+      in: query
+      description: Parameter that selects the data frequency for a query. If the parameter is omitted then the query will proceed as if 30S data has been requested. Ephemeris files do not have a data frequency, and will be returned regardless of the dataFrequency parameter. Every organisation has access to 30S data. Access to 01S data is restricted to organisations on the Public Sector Plan.
+      required: false
+      schema:
+        type: string
+      examples:
+        30S:
+          summary: Data every 30 seconds
+          value: 30S
+        01S:
+          summary: Data every second
+          value: 01S
+    date:
+      name: date
+      in: query
+      description: Date for the network health search. Please note that the date should be within the last 45 days.
+      required: true
+      schema:
+        type: string
+        format: date
+        example: 2024-11-30
+    TemporalParameters:
+      name: TemporalParameters
+      in: query
+      description: Parameters that provide an optional temporal window (from start to end) for a query. These parameters can be used to restrict the query to a specific time range. When using start and end, please note that start should be within the last 45 days, and the end should be no more than 24 hours after the start.
+      required: false
+      explode: true
+      schema:
+        $ref: '#/components/schemas/TemporalParameters'
+  schemas:
     StationNetworkHealth:
       type: array
       items:
@@ -251,6 +275,17 @@ components:
             type: string
             description: Gives the data frequency that the percentage complete describes.
             example: 30S
+    HealthByDate:
+      type: array
+      items:
+        type: object
+        properties:
+          date:
+            type: string
+            format: date
+            example: 2024-11-30
+          hourlyData:
+            $ref: '#/components/schemas/HourlyData'
     Station:
       required:
       - ETRS89_H
@@ -344,6 +379,41 @@ components:
           items:
             $ref: '#/components/schemas/Link'
       description: Information about a GPS station.
+    Link:
+      title: Link
+      required:
+      - description
+      - href
+      - rel
+      - title
+      - type
+      type: object
+      properties:
+        href:
+          type: string
+          format: uri
+        rel:
+          type: string
+        type:
+          type: string
+        title:
+          type: string
+        description:
+          type: string
+      description: Provides a link leading to further information about a resource
+    SpatialParameters:
+      type: object
+      properties:
+        location:
+          type: string
+          description: 'Optional. A point location for the search. Will reorder the results by distance from this point. Supports: National Grid eastings and northings (space separated), ETRS89 in Cartesian XYZ, decimal degrees (including degrees and decimal minutes / degrees, minutes, and decimal seconds), postcodes (including partial postcodes). More information: https://www.ordnancesurvey.co.uk/geodesy-positioning/coordinate-transformations/tool/formats.'
+        radius:
+          type: integer
+          description: Optional, limits the search to the given radius. 'location' must also be provided.
+        stationCount:
+          type: integer
+          description: Optional, limits the result to a fixed number of stations. 'location' must also be provided.
+      description: Spatial parameters for the /stations endpoint
     TemporalParameters:
       type: object
       properties:
@@ -358,68 +428,6 @@ components:
           format: date-time
           example: 2024-12-31 02:00:00+00:00
       description: Parameters that provide an optional temporal window (from start to end) for a query. When using start and end, please note that start should be within the last 45 days, and the end should be no more than 24 hours after the start.
-    HealthByDate:
-      type: array
-      items:
-        type: object
-        properties:
-          date:
-            type: string
-            format: date
-            example: 2024-11-30
-          hourlyData:
-            $ref: '#/components/schemas/HourlyData'
-  parameters:
-    TemporalParameters:
-      name: TemporalParameters
-      in: query
-      description: Parameters that provide an optional temporal window (from start to end) for a query. These parameters can be used to restrict the query to a specific time range. When using start and end, please note that start should be within the last 45 days, and the end should be no more than 24 hours after the start.
-      required: false
-      explode: true
-      schema:
-        $ref: '#/components/schemas/TemporalParameters'
-    dataFrequency:
-      name: dataFrequency
-      in: query
-      description: Parameter that selects the data frequency for a query. If the parameter is omitted then the query will proceed as if 30S data has been requested. Ephemeris files do not have a data frequency, and will be returned regardless of the dataFrequency parameter. Every organisation has access to 30S data. Access to 01S data is restricted to organisations on the Public Sector Plan.
-      required: false
-      schema:
-        type: string
-      examples:
-        30S:
-          summary: Data every 30 seconds
-          value: 30S
-        01S:
-          summary: Data every second
-          value: 01S
-    SpatialParameters:
-      name: SpatialParameters
-      in: query
-      description: Spatial parameters for the /stations endpoint. These parameters can be used to restrict the station search to a specific geographic area.
-      required: false
-      explode: true
-      schema:
-        $ref: '#/components/schemas/SpatialParameters'
-    date:
-      name: date
-      in: query
-      description: Date for the network health search. Please note that the date should be within the last 45 days.
-      required: true
-      schema:
-        type: string
-        format: date
-        example: 2024-11-30
-    stationId:
-      name: stationId
-      in: path
-      description: Specific station ID.
-      required: true
-      schema:
-        maxLength: 4
-        minLength: 4
-        pattern: ^[a-zA-Z0-9]*$
-        type: string
-      example: ABEP
   securitySchemes:
     OAuth2:
       type: oauth2

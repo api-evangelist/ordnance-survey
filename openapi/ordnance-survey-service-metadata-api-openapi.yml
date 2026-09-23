@@ -71,33 +71,6 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/Lod'
-    Lod:
-      type: object
-      properties:
-        level:
-          type: integer
-        resolution:
-          type: number
-        scale:
-          type: number
-    Extent:
-      type: object
-      properties:
-        xmin:
-          type: number
-        ymin:
-          type: number
-        xmax:
-          type: number
-        ymax:
-          type: number
-        spatialReference:
-          type: object
-          properties:
-            wkid:
-              type: integer
-            latestWkid:
-              type: integer
     ServiceMetadata:
       type: object
       properties:
@@ -154,6 +127,33 @@ components:
           type: string
         maxExportTilesCount:
           type: integer
+    Lod:
+      type: object
+      properties:
+        level:
+          type: integer
+        resolution:
+          type: number
+        scale:
+          type: number
+    Extent:
+      type: object
+      properties:
+        xmin:
+          type: number
+        ymin:
+          type: number
+        xmax:
+          type: number
+        ymax:
+          type: number
+        spatialReference:
+          type: object
+          properties:
+            wkid:
+              type: integer
+            latestWkid:
+              type: integer
   securitySchemes:
     api-key:
       type: apiKey

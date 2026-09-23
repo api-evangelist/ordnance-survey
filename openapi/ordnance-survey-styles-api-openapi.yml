@@ -65,7 +65,7 @@ paths:
               schema:
                 $ref: '#/components/schemas/exceptionDto'
           description: Gateway Timeout.
-      summary: Retrieve the list of styles available from this service.
+      summary: Retrieve the list of styles available from this service
       tags:
       - Styles
     servers:
@@ -130,7 +130,7 @@ paths:
               schema:
                 $ref: '#/components/schemas/exceptionDto'
           description: Gateway Timeout.
-      summary: Root level properties of a style specify the map's layers, tile sources and other resources, and default values for the initial camera position when not specified elsewhere.
+      summary: Root level properties of a style specify the map's layers, tile sources and…
       tags:
       - Styles
     servers:
@@ -282,6 +282,30 @@ paths:
     - url: https://api.os.uk/maps/vector/v1
 components:
   schemas:
+    Styles:
+      enum:
+      - '3857'
+      - '27700'
+      - road-27700
+      - road-3857
+      - light-27700
+      - light-3857
+      - blackwhite-27700
+      - blackwhite-3857
+      type: string
+    getStylesList_200_response:
+      properties:
+        links:
+          items:
+            $ref: '#/components/schemas/link'
+          type: array
+        styles:
+          items:
+            $ref: '#/components/schemas/style-item'
+          type: array
+      required:
+      - styles
+      type: object
     exceptionDto:
       description: JSON schema for exceptions based on RFC 7807
       properties:
@@ -304,52 +328,6 @@ components:
       required:
       - type
       title: Exception Schema
-      type: object
-    getStylesList_200_response:
-      properties:
-        links:
-          items:
-            $ref: '#/components/schemas/link'
-          type: array
-        styles:
-          items:
-            $ref: '#/components/schemas/style-item'
-          type: array
-      required:
-      - styles
-      type: object
-    Styles:
-      enum:
-      - '3857'
-      - '27700'
-      - road-27700
-      - road-3857
-      - light-27700
-      - light-3857
-      - blackwhite-27700
-      - blackwhite-3857
-      type: string
-    AllCollections:
-      enum:
-      - ngd-base
-      - asu-bdy
-      - wtr-ctch
-      - trn-ntwk-railway
-      - wtr-tidalboundary
-      type: string
-    style-item:
-      properties:
-        id:
-          type: string
-        title:
-          type: string
-        links:
-          items:
-            $ref: '#/components/schemas/link'
-          type: array
-      required:
-      - id
-      - links
       type: object
     link:
       properties:
@@ -385,6 +363,28 @@ components:
       required:
       - href
       - rel
+      type: object
+    AllCollections:
+      enum:
+      - ngd-base
+      - asu-bdy
+      - wtr-ctch
+      - trn-ntwk-railway
+      - wtr-tidalboundary
+      type: string
+    style-item:
+      properties:
+        id:
+          type: string
+        title:
+          type: string
+        links:
+          items:
+            $ref: '#/components/schemas/link'
+          type: array
+      required:
+      - id
+      - links
       type: object
     StylesResponse:
       type: object

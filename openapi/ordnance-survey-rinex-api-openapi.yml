@@ -1,9 +1,7 @@
 openapi: 3.2.0
 info:
   title: OS Net Rinex API
-  description: 'This is the API definition for the OS Net spring boot app. It is a working subset of the overall design
-
-    '
+  description: This is the API definition for the OS Net spring boot app. It is a working subset of the overall design
   version: 1.6.0
 servers:
 - url: https://api.os.uk/positioning/osnet/v1
@@ -45,6 +43,8 @@ paths:
             application/problem+json:
               schema:
                 type: object
+      summary: Get station data
+      x-summary-source: derived
   /rinex:
     get:
       security:
@@ -76,6 +76,8 @@ paths:
                   type: application/json
                   title: 2024
                   description: List RINEX data days for 2024
+      summary: Get rinex data years
+      x-summary-source: derived
   /rinex/{year}:
     get:
       security:
@@ -114,6 +116,8 @@ paths:
                   type: application/json
                   title: 2
                   description: List RINEX data files for 2024 day 2
+      summary: Get rinex data days
+      x-summary-source: derived
   /rinex/{year}/{dayOfYear}:
     get:
       security:
@@ -156,6 +160,8 @@ paths:
             application/problem+json:
               schema:
                 type: object
+      summary: Get rinex data files
+      x-summary-source: derived
   /rinex/{year}/{dayOfYear}/{filename}:
     get:
       security:
@@ -212,8 +218,124 @@ paths:
             application/problem+json:
               schema:
                 type: object
+      summary: Get rinex file
+      x-summary-source: derived
 components:
+  parameters:
+    dayOfYear:
+      name: dayOfYear
+      in: path
+      description: The day to be queried, within the given year
+      required: true
+      schema:
+        maximum: 366
+        minimum: 1
+        type: integer
+    stationId:
+      name: stationId
+      in: path
+      description: Specific station ID.
+      required: true
+      schema:
+        maxLength: 4
+        minLength: 4
+        pattern: ^[a-zA-Z0-9]*$
+        type: string
+      example: ABEP
+    RequiredTemporalParameters:
+      name: RequiredTemporalParameters
+      in: query
+      description: Parameters that provide a temporal window (from start to end) for a query. These parameters can be used to restrict the query to a specific time range. Please note that the start time should be within the last 45 days, and the end should be no more than 24 hours after the start.
+      required: true
+      explode: true
+      schema:
+        $ref: '#/components/schemas/RequiredTemporalParameters'
+    dataFrequency:
+      name: dataFrequency
+      in: query
+      description: Parameter that selects the data frequency for a query. If the parameter is omitted then the query will proceed as if 30S data has been requested. Ephemeris files do not have a data frequency, and will be returned regardless of the dataFrequency parameter. Every organisation has access to 30S data. Access to 01S data is restricted to organisations on the Public Sector Plan.
+      required: false
+      schema:
+        type: string
+      examples:
+        30S:
+          summary: Data every 30 seconds
+          value: 30S
+        01S:
+          summary: Data every second
+          value: 01S
+    filename:
+      name: filename
+      in: path
+      description: Name of the file
+      required: true
+      schema:
+        type: string
+        example: ABEP00GBR_S_20243550100_01H_30S_MO.rnx
+    year:
+      name: year
+      in: path
+      description: The year to be queried
+      required: true
+      schema:
+        minimum: 2024
+        type: integer
+        format: int32
   schemas:
+    Link:
+      title: Link
+      required:
+      - description
+      - href
+      - rel
+      - title
+      - type
+      type: object
+      properties:
+        href:
+          type: string
+          format: uri
+        rel:
+          type: string
+        type:
+          type: string
+        title:
+          type: string
+        description:
+          type: string
+      description: Provides a link leading to further information about a resource
+    RequiredTemporalParameters:
+      required:
+      - end
+      - start
+      type: object
+      properties:
+        start:
+          type: string
+          description: Start date-time for the search window
+          format: date-time
+          example: 2024-12-31 01:00:00+00:00
+        end:
+          type: string
+          description: End date-time for the search window
+          format: date-time
+          example: 2024-12-31 02:00:00+00:00
+      description: Parameters that provide a temporal window (from start to end) for a query. Please note that the start time should be within the last 45 days, and the end should be no more than 24 hours after the start.
+    MetaData:
+      required:
+      - description
+      - links
+      - title
+      type: object
+      properties:
+        title:
+          type: string
+        description:
+          type: string
+        links:
+          type: array
+          items:
+            $ref: '#/components/schemas/Link'
     OSNetDownload:
       required:
       - fileName
@@ -249,60 +371,6 @@ components:
       description: 'Information about a specific download file that is made available through this API.
 
         '
-    Link:
-      title: Link
-      required:
-      - description
-      - href
-      - rel
-      - title
-      - type
-      type: object
-      properties:
-        href:
-          type: string
-          format: uri
-        rel:
-          type: string
-        type:
-          type: string
-        title:
-          type: string
-        description:
-          type: string
-      description: Provides a link leading to further information about a resource
-    MetaData:
-      required:
-      - description
-      - links
-      - title
-      type: object
-      properties:
-        title:
-          type: string
-        description:
-          type: string
-        links:
-          type: array
-          items:
-            $ref: '#/components/schemas/Link'
-    RequiredTemporalParameters:
-      required:
-      - end
-      - start
-      type: object
-      properties:
-        start:
-          type: string
-          description: Start date-time for the search window
-          format: date-time
-          example: 2024-12-31 01:00:00+00:00
-        end:
-          type: string
-          description: End date-time for the search window
-          format: date-time
-          example: 2024-12-31 02:00:00+00:00
-      description: Parameters that provide a temporal window (from start to end) for a query. Please note that the start time should be within the last 45 days, and the end should be no more than 24 hours after the start.
     RinexFile:
       title: RinexFile
       description: Metadata about a rinex file that is available for download
@@ -332,66 +400,6 @@ components:
             minimum: 0
             type: integer
             description: Health percentage, based on expected and actual data in the file
-  parameters:
-    year:
-      name: year
-      in: path
-      description: The year to be queried
-      required: true
-      schema:
-        minimum: 2024
-        type: integer
-        format: int32
-    dataFrequency:
-      name: dataFrequency
-      in: query
-      description: Parameter that selects the data frequency for a query. If the parameter is omitted then the query will proceed as if 30S data has been requested. Ephemeris files do not have a data frequency, and will be returned regardless of the dataFrequency parameter. Every organisation has access to 30S data. Access to 01S data is restricted to organisations on the Public Sector Plan.
-      required: false
-      schema:
-        type: string
-      examples:
-        30S:
-          summary: Data every 30 seconds
-          value: 30S
-        01S:
-          summary: Data every second
-          value: 01S
-    dayOfYear:
-      name: dayOfYear
-      in: path
-      description: The day to be queried, within the given year
-      required: true
-      schema:
-        maximum: 366
-        minimum: 1
-        type: integer
-    RequiredTemporalParameters:
-      name: RequiredTemporalParameters
-      in: query
-      description: Parameters that provide a temporal window (from start to end) for a query. These parameters can be used to restrict the query to a specific time range. Please note that the start time should be within the last 45 days, and the end should be no more than 24 hours after the start.
-      required: true
-      explode: true
-      schema:
-        $ref: '#/components/schemas/RequiredTemporalParameters'
-    stationId:
-      name: stationId
-      in: path
-      description: Specific station ID.
-      required: true
-      schema:
-        maxLength: 4
-        minLength: 4
-        pattern: ^[a-zA-Z0-9]*$
-        type: string
-      example: ABEP
-    filename:
-      name: filename
-      in: path
-      description: Name of the file
-      required: true
-      schema:
-        type: string
-        example: ABEP00GBR_S_20243550100_01H_30S_MO.rnx
   securitySchemes:
     OAuth2:
       type: oauth2

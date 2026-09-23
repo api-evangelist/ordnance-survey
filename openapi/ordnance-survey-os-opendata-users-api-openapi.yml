@@ -71,14 +71,14 @@ paths:
           $ref: '#/components/responses/InternalServerError'
         '503':
           $ref: '#/components/responses/ServiceUnavailable'
+      operationId: getFeatureTypesByFeatureTypeById
+      x-operation-id-source: derived
   /identifierTypes/{identifierType}/{id}:
     get:
       tags:
       - OS OpenData Users
       summary: Queries ID when input identifierType is known
-      description: 'Returns associated Linked Identifiers, when the input identifier type is known. Returns an object.
-
-        '
+      description: Returns associated Linked Identifiers, when the input identifier type is known. Returns an object.
       parameters:
       - $ref: '#/components/parameters/featureIdentifier'
       - name: identifierType
@@ -116,6 +116,8 @@ paths:
           $ref: '#/components/responses/InternalServerError'
         '503':
           $ref: '#/components/responses/ServiceUnavailable'
+      operationId: getIdentifierTypesByIdentifierTypeById
+      x-operation-id-source: derived
   /identifiers/{id}:
     get:
       tags:
@@ -147,6 +149,8 @@ paths:
           $ref: '#/components/responses/InternalServerError'
         '503':
           $ref: '#/components/responses/ServiceUnavailable'
+      operationId: getIdentifiersById
+      x-operation-id-source: derived
   /productVersionInfo/{correlationMethod}:
     get:
       tags:
@@ -196,85 +200,27 @@ paths:
           $ref: '#/components/responses/InternalServerError'
         '503':
           $ref: '#/components/responses/ServiceUnavailable'
+      operationId: getProductVersionInfoByCorrelationMethod
+      x-operation-id-source: derived
 components:
   responses:
+    Unauthorized:
+      description: The client has not provided authentication or incorrect authentication.
+    ServiceUnavailable:
+      description: Temporary outage due to overloading or maintenance.
     MethodNotAllowed:
       description: Request used an unsupported HTTP method, e.g. DELETE or PUT.
     InternalServerError:
       description: Generic internal server error.
-    Unauthorized:
-      description: The client has not provided authentication or incorrect authentication.
-    Forbidden:
-      description: The client has authenticated its access but does not have sufficient rights to complete the request.
-    NotFound:
-      description: The server has not found anything matching the Request-URI.
-    ServiceUnavailable:
-      description: Temporary outage due to overloading or maintenance.
     TooManyRequests:
       description: Exceeded the number of requests per minute (rate-limit).
     BadRequest:
       description: E.g. missing query parameter, malformed syntax.
-  parameters:
-    featureIdentifier:
-      name: id
-      in: path
-      description: ID of the feature that is being matched
-      required: true
-      schema:
-        type: string
-        minLength: 1
-        maxLength: 36
+    Forbidden:
+      description: The client has authenticated its access but does not have sufficient rights to complete the request.
+    NotFound:
+      description: The server has not found anything matching the Request-URI.
   schemas:
-    correlationMethodIdentifier:
-      type: string
-      enum:
-      - RoadLink_TOID_TopographicArea_TOID_2
-      - Road_TOID_TopographicArea_TOID_3
-      - Street_USRN_TopographicArea_TOID_4
-      - BLPU_UPRN_TopographicArea_TOID_5
-      - RoadLink_TOID_Road_TOID_7
-      - RoadLink_TOID_Street_USRN_8
-      - BLPU_UPRN_RoadLink_TOID_9
-      - Road_TOID_Street_USRN_10
-      - BLPU_UPRN_Street_USRN_11
-      - ORRoadLink_GUID_RoadLink_TOID_12
-      - ORRoadNode_GUID_RoadLink_TOID_13
-    identifierType:
-      type: string
-      enum:
-      - GUID
-      - TOID
-      - UPRN
-      - USRN
-    featureType:
-      type: string
-      enum:
-      - BLPU
-      - ORRoadNode
-      - ORRoadLink
-      - Road
-      - RoadLink
-      - Street
-      - TopographicArea
-    correlationMethodInformation:
-      type: object
-      required:
-      - methodIdentfier
-      - productCreationDate
-      - identifier1Source
-      - identifier2Source
-      additionalProperties: false
-      properties:
-        methodIdentifier:
-          $ref: '#/components/schemas/correlationMethodIdentifier'
-        productCreationDate:
-          type: string
-        productPublicationName:
-          type: string
-        identifier1Source:
-          $ref: '#/components/schemas/identifierSource'
-        identifier2Source:
-          $ref: '#/components/schemas/identifierSource'
     identifierSource:
       type: object
       required:
@@ -363,6 +309,25 @@ components:
                       type: string
                     correlationIdentifier:
                       type: string
+    correlationMethodInformation:
+      type: object
+      required:
+      - methodIdentfier
+      - productCreationDate
+      - identifier1Source
+      - identifier2Source
+      additionalProperties: false
+      properties:
+        methodIdentifier:
+          $ref: '#/components/schemas/correlationMethodIdentifier'
+        productCreationDate:
+          type: string
+        productPublicationName:
+          type: string
+        identifier1Source:
+          $ref: '#/components/schemas/identifierSource'
+        identifier2Source:
+          $ref: '#/components/schemas/identifierSource'
     linkedIdentifierSet:
       type: object
       required:
@@ -374,6 +339,47 @@ components:
           title: linkedIdentifiers
           items:
             $ref: '#/components/schemas/linkedIdentifier'
+    correlationMethodIdentifier:
+      type: string
+      enum:
+      - RoadLink_TOID_TopographicArea_TOID_2
+      - Road_TOID_TopographicArea_TOID_3
+      - Street_USRN_TopographicArea_TOID_4
+      - BLPU_UPRN_TopographicArea_TOID_5
+      - RoadLink_TOID_Road_TOID_7
+      - RoadLink_TOID_Street_USRN_8
+      - BLPU_UPRN_RoadLink_TOID_9
+      - Road_TOID_Street_USRN_10
+      - BLPU_UPRN_Street_USRN_11
+      - ORRoadLink_GUID_RoadLink_TOID_12
+      - ORRoadNode_GUID_RoadLink_TOID_13
+    featureType:
+      type: string
+      enum:
+      - BLPU
+      - ORRoadNode
+      - ORRoadLink
+      - Road
+      - RoadLink
+      - Street
+      - TopographicArea
+    identifierType:
+      type: string
+      enum:
+      - GUID
+      - TOID
+      - UPRN
+      - USRN
+  parameters:
+    featureIdentifier:
+      name: id
+      in: path
+      description: ID of the feature that is being matched
+      required: true
+      schema:
+        type: string
+        minLength: 1
+        maxLength: 36
   securitySchemes:
     ApiKeyAuth:
       type: apiKey

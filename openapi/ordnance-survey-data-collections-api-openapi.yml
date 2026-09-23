@@ -93,7 +93,7 @@ paths:
               schema:
                 $ref: '#/components/schemas/exceptionDto'
           description: Gateway Timeout.
-      summary: Retrieve the list of geospatial data collections available from this service.
+      summary: Retrieve the list of geospatial data collections available from this service
       tags:
       - Data Collections
   /collections/{collectionId}:
@@ -179,77 +179,11 @@ paths:
               schema:
                 $ref: '#/components/schemas/exceptionDto'
           description: Gateway Timeout.
-      summary: Retrieve the description of a collection available from this service.
+      summary: Retrieve the description of a collection available from this service
       tags:
       - Data Collections
 components:
   schemas:
-    exceptionDto:
-      description: JSON schema for exceptions based on RFC 7807
-      properties:
-        type:
-          type: string
-        title:
-          type: string
-        status:
-          type: integer
-        detail:
-          type: string
-        instance:
-          type: string
-        code:
-          type: integer
-        description:
-          type: string
-        help:
-          type: string
-      required:
-      - type
-      title: Exception Schema
-      type: object
-    extent-uad:
-      allOf:
-      - $ref: '#/components/schemas/extent'
-      - type: object
-      description: 'The extent module only addresses spatial and temporal extents. This module extends extent by specifying how
-
-        intervals and crs properties can be used to specify additional geometries.'
-      title: Extent with Uniform Additional Dimensions Schema
-    extent:
-      description: 'The extent of the data in the collection. In the Core only spatial and temporal
-
-        extents are specified. Extensions may add additional members to represent other
-
-        extents, for example, thermal or pressure ranges.
-
-
-        The first item in the array describes the overall extent of
-
-        the data. All subsequent items describe more precise extents,
-
-        e.g., to identify clusters of data.
-
-        Clients only interested in the overall extent will only need to
-
-        access the first item in each array.'
-      properties:
-        spatial:
-          $ref: '#/components/schemas/extent_spatial'
-      type: object
-    collections:
-      properties:
-        links:
-          items:
-            $ref: '#/components/schemas/link'
-          type: array
-        collections:
-          items:
-            $ref: '#/components/schemas/collectionInfo'
-          type: array
-      required:
-      - collections
-      - links
-      type: object
     extent_spatial:
       description: The spatial extent of the data in the collection.
       properties:
@@ -356,14 +290,6 @@ components:
           - http://www.opengis.net/def/crs/OGC/0/CRS84h
           type: string
       type: object
-    AllCollections:
-      enum:
-      - ngd-base
-      - asu-bdy
-      - wtr-ctch
-      - trn-ntwk-railway
-      - wtr-tidalboundary
-      type: string
     link:
       properties:
         href:
@@ -399,6 +325,80 @@ components:
       - href
       - rel
       type: object
+    exceptionDto:
+      description: JSON schema for exceptions based on RFC 7807
+      properties:
+        type:
+          type: string
+        title:
+          type: string
+        status:
+          type: integer
+        detail:
+          type: string
+        instance:
+          type: string
+        code:
+          type: integer
+        description:
+          type: string
+        help:
+          type: string
+      required:
+      - type
+      title: Exception Schema
+      type: object
+    AllCollections:
+      enum:
+      - ngd-base
+      - asu-bdy
+      - wtr-ctch
+      - trn-ntwk-railway
+      - wtr-tidalboundary
+      type: string
+    extent:
+      description: 'The extent of the data in the collection. In the Core only spatial and temporal
+
+        extents are specified. Extensions may add additional members to represent other
+
+        extents, for example, thermal or pressure ranges.
+
+
+        The first item in the array describes the overall extent of
+
+        the data. All subsequent items describe more precise extents,
+
+        e.g., to identify clusters of data.
+
+        Clients only interested in the overall extent will only need to
+
+        access the first item in each array.'
+      properties:
+        spatial:
+          $ref: '#/components/schemas/extent_spatial'
+      type: object
+    collections:
+      properties:
+        links:
+          items:
+            $ref: '#/components/schemas/link'
+          type: array
+        collections:
+          items:
+            $ref: '#/components/schemas/collectionInfo'
+          type: array
+      required:
+      - collections
+      - links
+      type: object
+    extent-uad:
+      allOf:
+      - $ref: '#/components/schemas/extent'
+      - type: object
+      description: 'The extent module only addresses spatial and temporal extents. This module extends extent by specifying how
+
+        intervals and crs properties can be used to specify additional geometries.'
+      title: Extent with Uniform Additional Dimensions Schema
     collectionInfo:
       properties:
         id:

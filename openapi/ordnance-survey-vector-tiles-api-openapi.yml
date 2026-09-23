@@ -96,7 +96,7 @@ paths:
               schema:
                 $ref: '#/components/schemas/exceptionDto'
           description: Gateway Timeout.
-      summary: Retrieve a vector tile from a collection.
+      summary: Retrieve a vector tile from a collection
       tags:
       - Vector Tiles
   /collections/{collectionId}/tiles/{tileMatrix}/{tileRow}/{tileCol}:
@@ -180,18 +180,15 @@ paths:
               schema:
                 $ref: '#/components/schemas/exceptionDto'
           description: Gateway Timeout.
-      summary: 'Retrieve a vector tile from a collection for Web Mercator Quad EPSG: 3857 tile matrix set.'
+      summary: 'Retrieve a vector tile from a collection for Web Mercator Quad EPSG: 3857 tile…'
       tags:
       - Vector Tiles
 components:
   schemas:
-    AllCollections:
+    TileSets:
       enum:
-      - ngd-base
-      - asu-bdy
-      - wtr-ctch
-      - trn-ntwk-railway
-      - wtr-tidalboundary
+      - '3857'
+      - '27700'
       type: string
     exceptionDto:
       description: JSON schema for exceptions based on RFC 7807
@@ -216,10 +213,13 @@ components:
       - type
       title: Exception Schema
       type: object
-    TileSets:
+    AllCollections:
       enum:
-      - '3857'
-      - '27700'
+      - ngd-base
+      - asu-bdy
+      - wtr-ctch
+      - trn-ntwk-railway
+      - wtr-tidalboundary
       type: string
   securitySchemes:
     api-key:

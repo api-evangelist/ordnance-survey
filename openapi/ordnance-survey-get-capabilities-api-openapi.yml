@@ -16,13 +16,13 @@ security:
   api-key-header: []
   oauth2: []
 tags:
-- name: GetCapabilities
+- name: Get Capabilities
   description: Returns a metadata document describing the WFS service provided by the server as well as valid WFS operations and parameters.
 paths:
   /wfs:
     get:
       tags:
-      - GetCapabilities
+      - Get Capabilities
       summary: Access to features matching a given query
       operationId: GetFeature
       parameters:
@@ -200,8 +200,8 @@ paths:
   /wfs/archive/{year}:
     get:
       tags:
-      - GetCapabilities
-      summary: Access to features matching a given query for a particular year (as an annual snapshot - taking the last full release in the calendar year)
+      - Get Capabilities
+      summary: Access to features matching a given query for a particular year (as an annual…
       operationId: GetArchiveFeature
       parameters:
       - name: year
@@ -358,15 +358,6 @@ paths:
                 $ref: '#/components/schemas/FeatureCollection'
 components:
   schemas:
-    Coordinate:
-      type: object
-      properties:
-        x:
-          type: number
-          format: double
-        y:
-          type: number
-          format: double
     Geometry:
       type: object
       properties:
@@ -376,6 +367,15 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/Coordinate'
+    Coordinate:
+      type: object
+      properties:
+        x:
+          type: number
+          format: double
+        y:
+          type: number
+          format: double
     Feature:
       type: object
       properties:

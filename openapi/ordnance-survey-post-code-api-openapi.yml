@@ -22,14 +22,14 @@ security:
   api-key-header: []
   oauth2: []
 tags:
-- name: Postcode
+- name: Post Code
   description: A search based on a property’s postcode
 paths:
   /postcode:
     get:
       tags:
-      - Postcode
-      summary: Returns matched addresses based on a property's postcode.
+      - Post Code
+      summary: Returns matched addresses based on a property's postcode
       operationId: getPostcode
       parameters:
       - name: postcode
@@ -230,58 +230,6 @@ components:
           type: number
         MATCH_DESCRIPTION:
           type: string
-    SearchResult:
-      type: object
-      properties:
-        header:
-          type: object
-          properties:
-            uri:
-              type: string
-            query:
-              type: string
-            offset:
-              type: integer
-            totalresults:
-              type: integer
-            format:
-              type: string
-            dataset:
-              type: string
-            lr:
-              type: string
-            maxresults:
-              type: integer
-            matchprecision:
-              type: integer
-            epoch:
-              type: string
-            lastupdate:
-              type: string
-            output_srs:
-              type: string
-          required:
-          - uri
-          - query
-          - offset
-          - totalresults
-          - format
-          - dataset
-          - lr
-          - maxresults
-          - matchprecision
-          - epoch
-          - lastupdate
-          - output_srs
-        results:
-          type: array
-          items:
-            type: object
-            properties:
-              DPA:
-                $ref: '#/components/schemas/DPA'
-              LPI:
-                $ref: '#/components/schemas/LPI'
     DPA:
       type: object
       properties:
@@ -371,6 +319,58 @@ components:
           type: string
         DELIVERY_POINT_SUFFIX:
           type: string
+    SearchResult:
+      type: object
+      properties:
+        header:
+          type: object
+          properties:
+            uri:
+              type: string
+            query:
+              type: string
+            offset:
+              type: integer
+            totalresults:
+              type: integer
+            format:
+              type: string
+            dataset:
+              type: string
+            lr:
+              type: string
+            maxresults:
+              type: integer
+            matchprecision:
+              type: integer
+            epoch:
+              type: string
+            lastupdate:
+              type: string
+            output_srs:
+              type: string
+          required:
+          - uri
+          - query
+          - offset
+          - totalresults
+          - format
+          - dataset
+          - lr
+          - maxresults
+          - matchprecision
+          - epoch
+          - lastupdate
+          - output_srs
+        results:
+          type: array
+          items:
+            type: object
+            properties:
+              DPA:
+                $ref: '#/components/schemas/DPA'
+              LPI:
+                $ref: '#/components/schemas/LPI'
   securitySchemes:
     api-key:
       type: apiKey

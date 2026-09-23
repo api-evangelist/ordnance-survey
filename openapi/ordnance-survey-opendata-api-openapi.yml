@@ -11,7 +11,7 @@ tags:
 paths:
   /products:
     get:
-      summary: Returns a list of the OpenData products that are available to download.
+      summary: Returns a list of the OpenData products that are available to download
       tags:
       - OpenData
       parameters:
@@ -30,9 +30,11 @@ paths:
                 type: array
                 items:
                   $ref: '#/components/schemas/Product'
+      operationId: getProducts
+      x-operation-id-source: derived
   /products/{productId}:
     get:
-      summary: Returns details about a specific OpenData product.
+      summary: Returns details about a specific OpenData product
       tags:
       - OpenData
       parameters:
@@ -51,9 +53,11 @@ paths:
                 $ref: '#/components/schemas/Product'
         '404':
           $ref: '#/components/responses/NotFoundError'
+      operationId: getProductsByProductId
+      x-operation-id-source: derived
   /products/{productId}/downloads:
     get:
-      summary: Returns a list of downloads for a specific OpenData product, or redirects to the actual download if requested.
+      summary: Returns a list of downloads for a specific OpenData product, or redirects to…
       tags:
       - OpenData
       parameters:
@@ -111,9 +115,11 @@ paths:
                 $ref: '#/components/schemas/ProductDownload'
         '404':
           $ref: '#/components/responses/NotFoundError'
+      operationId: getProductsByProductIdDownloads
+      x-operation-id-source: derived
   /products/{productId}/images/{index}:
     get:
-      summary: Returns a HTTP redirect, pointing to thumbnail images for the specified OpenData product.
+      summary: Returns a HTTP redirect, pointing to thumbnail images for the specified…
       tags:
       - OpenData
       parameters:
@@ -152,6 +158,8 @@ paths:
               description: Direct URL for the product image.
         '404':
           $ref: '#/components/responses/NotFoundError'
+      operationId: getProductsByProductIdImagesByIndex
+      x-operation-id-source: derived
 components:
   schemas:
     Area:
@@ -218,18 +226,27 @@ components:
       - SY
       - SZ
       - TV
-    Format:
-      type: object
-      description: Information about the format that a download is available in.
-      required:
-      - format
-      properties:
-        format:
-          type: string
-          description: File format used for the download.
-        subformat:
-          type: string
-          description: Optional subformat, used when a product is available in more than one style.
+    ProductDownload:
+      description: 'Information about a specific OpenData file that is made available through this API.
+
+        '
+      allOf:
+      - $ref: '#/components/schemas/Download'
+      - type: object
+        required:
+        - area
+        - format
+        properties:
+          area:
+            $ref: '#/components/schemas/Area'
+          format:
+            description: This describes the format of the data.
+            type: string
+            example: GML
+          subformat:
+            description: This describes the subformat of the data.
+            type: string
+            example: '3'
     Download:
       type: object
       description: 'Information about a specific download file that is made available through this API.
@@ -255,27 +272,18 @@ components:
           description: A MD5 checksum of the file data. This can be used to verify the integrity of the data once you have downloaded it.
           type: string
           example: 2f9dd13abd56140afa3b5621e8864f59
-    ProductDownload:
-      description: 'Information about a specific OpenData file that is made available through this API.
-
-        '
-      allOf:
-      - $ref: '#/components/schemas/Download'
-      - type: object
-        required:
-        - area
-        - format
-        properties:
-          area:
-            $ref: '#/components/schemas/Area'
-          format:
-            description: This describes the format of the data.
-            type: string
-            example: GML
-          subformat:
-            description: This describes the subformat of the data.
-            type: string
-            example: '3'
+    Format:
+      type: object
+      description: Information about the format that a download is available in.
+      required:
+      - format
+      properties:
+        format:
+          type: string
+          description: File format used for the download.
+        subformat:
+          type: string
+          description: Optional subformat, used when a product is available in more than one style.
     ThirdPartyInfo:
       type: object
       description: Information about the data provider for third-party products.
