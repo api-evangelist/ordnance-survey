@@ -369,15 +369,6 @@ paths:
           description: 'The request has timed out. Please check the service availability dashboard: https://osdatahub.os.uk/serviceStatus .'
 components:
   schemas:
-    Coordinate:
-      type: object
-      properties:
-        x:
-          type: number
-          format: double
-        y:
-          type: number
-          format: double
     Link:
       type: object
       properties:
@@ -390,6 +381,24 @@ components:
           type: string
         title:
           type: string
+    Geometry:
+      type: object
+      properties:
+        type:
+          type: string
+        coordinates:
+          type: array
+          items:
+            $ref: '#/components/schemas/Coordinate'
+    Coordinate:
+      type: object
+      properties:
+        x:
+          type: number
+          format: double
+        y:
+          type: number
+          format: double
     Feature:
       type: object
       properties:
@@ -403,15 +412,6 @@ components:
           type: object
           additionalProperties:
             type: object
-    Geometry:
-      type: object
-      properties:
-        type:
-          type: string
-        coordinates:
-          type: array
-          items:
-            $ref: '#/components/schemas/Coordinate'
     FeatureCollectionResponse:
       type: object
       properties:

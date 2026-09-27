@@ -17,7 +17,7 @@ paths:
       tags:
       - Rinex
       description: Get RINEX v3 files for a specific station
-      operationId: Get station data
+      operationId: GetStationData
       parameters:
       - $ref: '#/components/parameters/stationId'
       - $ref: '#/components/parameters/RequiredTemporalParameters'
@@ -45,6 +45,8 @@ paths:
                 type: object
       summary: Get station data
       x-summary-source: derived
+      x-operation-id-source: normalized
+      x-operation-id-original: Get station data
   /rinex:
     get:
       security:
@@ -54,7 +56,7 @@ paths:
       tags:
       - Rinex
       description: List the years that have RINEX data available
-      operationId: Get Rinex Data Years
+      operationId: GetRinexDataYears
       responses:
         '200':
           description: List the years that have RINEX data available
@@ -78,6 +80,8 @@ paths:
                   description: List RINEX data days for 2024
       summary: Get rinex data years
       x-summary-source: derived
+      x-operation-id-source: normalized
+      x-operation-id-original: Get Rinex Data Years
   /rinex/{year}:
     get:
       security:
@@ -87,7 +91,7 @@ paths:
       tags:
       - Rinex
       description: List the days that have RINEX data available, for the given year
-      operationId: Get Rinex Data Days
+      operationId: GetRinexDataDays
       parameters:
       - $ref: '#/components/parameters/year'
       responses:
@@ -118,6 +122,8 @@ paths:
                   description: List RINEX data files for 2024 day 2
       summary: Get rinex data days
       x-summary-source: derived
+      x-operation-id-source: normalized
+      x-operation-id-original: Get Rinex Data Days
   /rinex/{year}/{dayOfYear}:
     get:
       security:
@@ -127,7 +133,7 @@ paths:
       tags:
       - Rinex
       description: List the files available via this service, for the given year and day
-      operationId: Get Rinex Data Files
+      operationId: GetRinexDataFiles
       parameters:
       - $ref: '#/components/parameters/year'
       - $ref: '#/components/parameters/dayOfYear'
@@ -162,6 +168,8 @@ paths:
                 type: object
       summary: Get rinex data files
       x-summary-source: derived
+      x-operation-id-source: normalized
+      x-operation-id-original: Get Rinex Data Files
   /rinex/{year}/{dayOfYear}/{filename}:
     get:
       security:
@@ -221,67 +229,53 @@ paths:
       summary: Get rinex file
       x-summary-source: derived
 components:
-  parameters:
-    dayOfYear:
-      name: dayOfYear
-      in: path
-      description: The day to be queried, within the given year
-      required: true
-      schema:
-        maximum: 366
-        minimum: 1
-        type: integer
-    stationId:
-      name: stationId
-      in: path
-      description: Specific station ID.
-      required: true
-      schema:
-        maxLength: 4
-        minLength: 4
-        pattern: ^[a-zA-Z0-9]*$
-        type: string
-      example: ABEP
-    RequiredTemporalParameters:
-      name: RequiredTemporalParameters
-      in: query
-      description: Parameters that provide a temporal window (from start to end) for a query. These parameters can be used to restrict the query to a specific time range. Please note that the start time should be within the last 45 days, and the end should be no more than 24 hours after the start.
-      required: true
-      explode: true
-      schema:
-        $ref: '#/components/schemas/RequiredTemporalParameters'
-    dataFrequency:
-      name: dataFrequency
-      in: query
-      description: Parameter that selects the data frequency for a query. If the parameter is omitted then the query will proceed as if 30S data has been requested. Ephemeris files do not have a data frequency, and will be returned regardless of the dataFrequency parameter. Every organisation has access to 30S data. Access to 01S data is restricted to organisations on the Public Sector Plan.
-      required: false
-      schema:
-        type: string
-      examples:
-        30S:
-          summary: Data every 30 seconds
-          value: 30S
-        01S:
-          summary: Data every second
-          value: 01S
-    filename:
-      name: filename
-      in: path
-      description: Name of the file
-      required: true
-      schema:
-        type: string
-        example: ABEP00GBR_S_20243550100_01H_30S_MO.rnx
-    year:
-      name: year
-      in: path
-      description: The year to be queried
-      required: true
-      schema:
-        minimum: 2024
-        type: integer
-        format: int32
   schemas:
+    RequiredTemporalParameters:
+      required:
+      - end
+      - start
+      type: object
+      properties:
+        start:
+          type: string
+          description: Start date-time for the search window
+          format: date-time
+          example: 2024-12-31 01:00:00+00:00
+        end:
+          type: string
+          description: End date-time for the search window
+          format: date-time
+          example: 2024-12-31 02:00:00+00:00
+      description: Parameters that provide a temporal window (from start to end) for a query. Please note that the start time should be within the last 45 days, and the end should be no more than 24 hours after the start.
+    RinexFile:
+      title: RinexFile
+      description: Metadata about a rinex file that is available for download
+      allOf:
+      - $ref: '#/components/schemas/OSNetDownload'
+      - type: object
+        properties:
+          station:
+            maxLength: 4
+            minLength: 4
+            type: string
+            example: ABEP
+          start:
+            type: string
+            format: date-time
+            example: 2024-12-31 01:00:00
+          duration:
+            type: string
+            description: The duration that this file covers, using RINEX filename conventions.
+            example: 01H
+          dataFrequency:
+            type: string
+            description: The data frequency of this file, using RINEX filename conventions.
+            example: 30S
+          percentageComplete:
+            maximum: 100
+            minimum: 0
+            type: integer
+            description: Health percentage, based on expected and actual data in the file
     Link:
       title: Link
       required:
@@ -304,23 +298,6 @@ components:
         description:
           type: string
       description: Provides a link leading to further information about a resource
-    RequiredTemporalParameters:
-      required:
-      - end
-      - start
-      type: object
-      properties:
-        start:
-          type: string
-          description: Start date-time for the search window
-          format: date-time
-          example: 2024-12-31 01:00:00+00:00
-        end:
-          type: string
-          description: End date-time for the search window
-          format: date-time
-          example: 2024-12-31 02:00:00+00:00
-      description: Parameters that provide a temporal window (from start to end) for a query. Please note that the start time should be within the last 45 days, and the end should be no more than 24 hours after the start.
     MetaData:
       required:
       - description
@@ -371,35 +348,66 @@ components:
       description: 'Information about a specific download file that is made available through this API.
 
         '
-    RinexFile:
-      title: RinexFile
-      description: Metadata about a rinex file that is available for download
-      allOf:
-      - $ref: '#/components/schemas/OSNetDownload'
-      - type: object
-        properties:
-          station:
-            maxLength: 4
-            minLength: 4
-            type: string
-            example: ABEP
-          start:
-            type: string
-            format: date-time
-            example: 2024-12-31 01:00:00
-          duration:
-            type: string
-            description: The duration that this file covers, using RINEX filename conventions.
-            example: 01H
-          dataFrequency:
-            type: string
-            description: The data frequency of this file, using RINEX filename conventions.
-            example: 30S
-          percentageComplete:
-            maximum: 100
-            minimum: 0
-            type: integer
-            description: Health percentage, based on expected and actual data in the file
+  parameters:
+    stationId:
+      name: stationId
+      in: path
+      description: Specific station ID.
+      required: true
+      schema:
+        maxLength: 4
+        minLength: 4
+        pattern: ^[a-zA-Z0-9]*$
+        type: string
+      example: ABEP
+    RequiredTemporalParameters:
+      name: RequiredTemporalParameters
+      in: query
+      description: Parameters that provide a temporal window (from start to end) for a query. These parameters can be used to restrict the query to a specific time range. Please note that the start time should be within the last 45 days, and the end should be no more than 24 hours after the start.
+      required: true
+      explode: true
+      schema:
+        $ref: '#/components/schemas/RequiredTemporalParameters'
+    filename:
+      name: filename
+      in: path
+      description: Name of the file
+      required: true
+      schema:
+        type: string
+        example: ABEP00GBR_S_20243550100_01H_30S_MO.rnx
+    year:
+      name: year
+      in: path
+      description: The year to be queried
+      required: true
+      schema:
+        minimum: 2024
+        type: integer
+        format: int32
+    dayOfYear:
+      name: dayOfYear
+      in: path
+      description: The day to be queried, within the given year
+      required: true
+      schema:
+        maximum: 366
+        minimum: 1
+        type: integer
+    dataFrequency:
+      name: dataFrequency
+      in: query
+      description: Parameter that selects the data frequency for a query. If the parameter is omitted then the query will proceed as if 30S data has been requested. Ephemeris files do not have a data frequency, and will be returned regardless of the dataFrequency parameter. Every organisation has access to 30S data. Access to 01S data is restricted to organisations on the Public Sector Plan.
+      required: false
+      schema:
+        type: string
+      examples:
+        30S:
+          summary: Data every 30 seconds
+          value: 30S
+        01S:
+          summary: Data every second
+          value: 01S
   securitySchemes:
     OAuth2:
       type: oauth2

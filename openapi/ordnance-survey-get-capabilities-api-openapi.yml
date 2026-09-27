@@ -358,24 +358,15 @@ paths:
                 $ref: '#/components/schemas/FeatureCollection'
 components:
   schemas:
-    Geometry:
+    FeatureCollection:
       type: object
       properties:
         type:
           type: string
-        coordinates:
+        features:
           type: array
           items:
-            $ref: '#/components/schemas/Coordinate'
-    Coordinate:
-      type: object
-      properties:
-        x:
-          type: number
-          format: double
-        y:
-          type: number
-          format: double
+            $ref: '#/components/schemas/Feature'
     Feature:
       type: object
       properties:
@@ -387,15 +378,24 @@ components:
           type: object
           additionalProperties:
             type: object
-    FeatureCollection:
+    Coordinate:
+      type: object
+      properties:
+        x:
+          type: number
+          format: double
+        y:
+          type: number
+          format: double
+    Geometry:
       type: object
       properties:
         type:
           type: string
-        features:
+        coordinates:
           type: array
           items:
-            $ref: '#/components/schemas/Feature'
+            $ref: '#/components/schemas/Coordinate'
   securitySchemes:
     api-key:
       type: apiKey

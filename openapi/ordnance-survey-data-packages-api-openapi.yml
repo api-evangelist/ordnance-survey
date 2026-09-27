@@ -153,48 +153,6 @@ paths:
       x-operation-id-source: derived
 components:
   schemas:
-    DataPackage:
-      type: object
-      description: 'A data package provides access to OS products that are not OpenData. If you have access to to products that
-
-        are available as data packages then you can create new data packages using the OS Data Hub. Once you have set
-
-        up your data packages you can use this API to access them.
-
-        '
-      required:
-      - id
-      - name
-      - url
-      - createdOn
-      - productId
-      - productName
-      - versions
-      properties:
-        id:
-          type: string
-          example: 0040046952
-        name:
-          type: string
-          example: Southampton Addresses
-        url:
-          type: string
-          format: uri
-          example: https://api.os.uk/downloads/v1/dataPackages/0040046952
-        createdOn:
-          type: string
-          format: date
-          example: '2021-01-20'
-        productId:
-          type: string
-          example: ABPOSTSLA
-        productName:
-          type: string
-          example: AddressBase
-        versions:
-          type: array
-          items:
-            $ref: '#/components/schemas/DataPackageVersionSummary'
     Download:
       type: object
       description: 'Information about a specific download file that is made available through this API.
@@ -292,6 +250,48 @@ components:
           type: string
           format: uri
           example: https://api.os.uk/downloads/v1/dataPackages/0040046952
+    DataPackage:
+      type: object
+      description: 'A data package provides access to OS products that are not OpenData. If you have access to to products that
+
+        are available as data packages then you can create new data packages using the OS Data Hub. Once you have set
+
+        up your data packages you can use this API to access them.
+
+        '
+      required:
+      - id
+      - name
+      - url
+      - createdOn
+      - productId
+      - productName
+      - versions
+      properties:
+        id:
+          type: string
+          example: 0040046952
+        name:
+          type: string
+          example: Southampton Addresses
+        url:
+          type: string
+          format: uri
+          example: https://api.os.uk/downloads/v1/dataPackages/0040046952
+        createdOn:
+          type: string
+          format: date
+          example: '2021-01-20'
+        productId:
+          type: string
+          example: ABPOSTSLA
+        productName:
+          type: string
+          example: AddressBase
+        versions:
+          type: array
+          items:
+            $ref: '#/components/schemas/DataPackageVersionSummary'
   parameters:
     dataPackageId:
       name: dataPackageId

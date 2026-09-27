@@ -184,6 +184,20 @@ paths:
       - Data Collections
 components:
   schemas:
+    collections:
+      properties:
+        links:
+          items:
+            $ref: '#/components/schemas/link'
+          type: array
+        collections:
+          items:
+            $ref: '#/components/schemas/collectionInfo'
+          type: array
+      required:
+      - collections
+      - links
+      type: object
     extent_spatial:
       description: The spatial extent of the data in the collection.
       properties:
@@ -348,14 +362,6 @@ components:
       - type
       title: Exception Schema
       type: object
-    AllCollections:
-      enum:
-      - ngd-base
-      - asu-bdy
-      - wtr-ctch
-      - trn-ntwk-railway
-      - wtr-tidalboundary
-      type: string
     extent:
       description: 'The extent of the data in the collection. In the Core only spatial and temporal
 
@@ -377,28 +383,6 @@ components:
         spatial:
           $ref: '#/components/schemas/extent_spatial'
       type: object
-    collections:
-      properties:
-        links:
-          items:
-            $ref: '#/components/schemas/link'
-          type: array
-        collections:
-          items:
-            $ref: '#/components/schemas/collectionInfo'
-          type: array
-      required:
-      - collections
-      - links
-      type: object
-    extent-uad:
-      allOf:
-      - $ref: '#/components/schemas/extent'
-      - type: object
-      description: 'The extent module only addresses spatial and temporal extents. This module extends extent by specifying how
-
-        intervals and crs properties can be used to specify additional geometries.'
-      title: Extent with Uniform Additional Dimensions Schema
     collectionInfo:
       properties:
         id:
@@ -428,6 +412,22 @@ components:
       - id
       - links
       type: object
+    AllCollections:
+      enum:
+      - ngd-base
+      - asu-bdy
+      - wtr-ctch
+      - trn-ntwk-railway
+      - wtr-tidalboundary
+      type: string
+    extent-uad:
+      allOf:
+      - $ref: '#/components/schemas/extent'
+      - type: object
+      description: 'The extent module only addresses spatial and temporal extents. This module extends extent by specifying how
+
+        intervals and crs properties can be used to specify additional geometries.'
+      title: Extent with Uniform Additional Dimensions Schema
   securitySchemes:
     api-key:
       type: apiKey

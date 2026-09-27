@@ -17,7 +17,7 @@ paths:
       tags:
       - Stations
       description: Get a list of the current GPS stations over the specified time period. The info is derived from https://www.ordnancesurvey.co.uk/documents/resources/osnet-coordinates-file.txt. Note that if the start and end date are omitted then the response will not contain the percentageComplete property. The dataFrequency parameter is only relevant if the start and end date are supplied.
-      operationId: Get Stations
+      operationId: GetStations
       parameters:
       - $ref: '#/components/parameters/SpatialParameters'
       - $ref: '#/components/parameters/TemporalParameters'
@@ -63,6 +63,8 @@ paths:
                 type: object
       summary: Get stations
       x-summary-source: derived
+      x-operation-id-source: normalized
+      x-operation-id-original: Get Stations
   /stations/health:
     get:
       security:
@@ -72,7 +74,7 @@ paths:
       tags:
       - Stations
       description: Get an hour-by-hour breakdown of the OS Net network health for a specific date.
-      operationId: Get Network Health
+      operationId: GetNetworkHealth
       parameters:
       - $ref: '#/components/parameters/date'
       - $ref: '#/components/parameters/dataFrequency'
@@ -85,6 +87,8 @@ paths:
                 $ref: '#/components/schemas/StationNetworkHealth'
       summary: Get network health
       x-summary-source: derived
+      x-operation-id-source: normalized
+      x-operation-id-original: Get Network Health
   /stations/{stationId}:
     get:
       security:
@@ -94,7 +98,7 @@ paths:
       tags:
       - Stations
       description: Get info on specified station over a specified time period. Note that if the start and end date are omitted then the response will not contain the percentageComplete property. The dataFrequency parameter is only relevant if the start and end date are supplied.
-      operationId: Get Station
+      operationId: GetStation
       parameters:
       - $ref: '#/components/parameters/stationId'
       - $ref: '#/components/parameters/TemporalParameters'
@@ -137,6 +141,8 @@ paths:
                 type: object
       summary: Get station
       x-summary-source: derived
+      x-operation-id-source: normalized
+      x-operation-id-original: Get Station
   /stations/{stationId}/health:
     get:
       security:
@@ -146,7 +152,7 @@ paths:
       tags:
       - Stations
       description: Get health information about a specific station
-      operationId: Get Station Health
+      operationId: GetStationHealth
       parameters:
       - $ref: '#/components/parameters/stationId'
       - $ref: '#/components/parameters/dataFrequency'
@@ -159,6 +165,8 @@ paths:
                 $ref: '#/components/schemas/HealthByDate'
       summary: Get station health
       x-summary-source: derived
+      x-operation-id-source: normalized
+      x-operation-id-original: Get Station Health
   /stations/{stationId}/log:
     get:
       security:
@@ -168,7 +176,7 @@ paths:
       tags:
       - Stations
       description: Get logs for specified station
-      operationId: Get Station Logs
+      operationId: GetStationLogs
       parameters:
       - $ref: '#/components/parameters/stationId'
       responses:
@@ -195,8 +203,27 @@ paths:
                 type: object
       summary: Get station logs
       x-summary-source: derived
+      x-operation-id-source: normalized
+      x-operation-id-original: Get Station Logs
 components:
   parameters:
+    TemporalParameters:
+      name: TemporalParameters
+      in: query
+      description: Parameters that provide an optional temporal window (from start to end) for a query. These parameters can be used to restrict the query to a specific time range. When using start and end, please note that start should be within the last 45 days, and the end should be no more than 24 hours after the start.
+      required: false
+      explode: true
+      schema:
+        $ref: '#/components/schemas/TemporalParameters'
+    date:
+      name: date
+      in: query
+      description: Date for the network health search. Please note that the date should be within the last 45 days.
+      required: true
+      schema:
+        type: string
+        format: date
+        example: 2024-11-30
     stationId:
       name: stationId
       in: path
@@ -230,34 +257,7 @@ components:
         01S:
           summary: Data every second
           value: 01S
-    date:
-      name: date
-      in: query
-      description: Date for the network health search. Please note that the date should be within the last 45 days.
-      required: true
-      schema:
-        type: string
-        format: date
-        example: 2024-11-30
-    TemporalParameters:
-      name: TemporalParameters
-      in: query
-      description: Parameters that provide an optional temporal window (from start to end) for a query. These parameters can be used to restrict the query to a specific time range. When using start and end, please note that start should be within the last 45 days, and the end should be no more than 24 hours after the start.
-      required: false
-      explode: true
-      schema:
-        $ref: '#/components/schemas/TemporalParameters'
   schemas:
-    StationNetworkHealth:
-      type: array
-      items:
-        type: object
-        properties:
-          stationId:
-            type: string
-            example: ABEP
-          hourlyData:
-            $ref: '#/components/schemas/HourlyData'
     HourlyData:
       type: array
       items:
@@ -275,6 +275,65 @@ components:
             type: string
             description: Gives the data frequency that the percentage complete describes.
             example: 30S
+    Link:
+      title: Link
+      required:
+      - description
+      - href
+      - rel
+      - title
+      - type
+      type: object
+      properties:
+        href:
+          type: string
+          format: uri
+        rel:
+          type: string
+        type:
+          type: string
+        title:
+          type: string
+        description:
+          type: string
+      description: Provides a link leading to further information about a resource
+    SpatialParameters:
+      type: object
+      properties:
+        location:
+          type: string
+          description: 'Optional. A point location for the search. Will reorder the results by distance from this point. Supports: National Grid eastings and northings (space separated), ETRS89 in Cartesian XYZ, decimal degrees (including degrees and decimal minutes / degrees, minutes, and decimal seconds), postcodes (including partial postcodes). More information: https://www.ordnancesurvey.co.uk/geodesy-positioning/coordinate-transformations/tool/formats.'
+        radius:
+          type: integer
+          description: Optional, limits the search to the given radius. 'location' must also be provided.
+        stationCount:
+          type: integer
+          description: Optional, limits the result to a fixed number of stations. 'location' must also be provided.
+      description: Spatial parameters for the /stations endpoint
+    TemporalParameters:
+      type: object
+      properties:
+        start:
+          type: string
+          description: Optional start date-time for the search window
+          format: date-time
+          example: 2024-12-31 01:00:00+00:00
+        end:
+          type: string
+          description: Optional end date-time for the search window
+          format: date-time
+          example: 2024-12-31 02:00:00+00:00
+      description: Parameters that provide an optional temporal window (from start to end) for a query. When using start and end, please note that start should be within the last 45 days, and the end should be no more than 24 hours after the start.
+    StationNetworkHealth:
+      type: array
+      items:
+        type: object
+        properties:
+          stationId:
+            type: string
+            example: ABEP
+          hourlyData:
+            $ref: '#/components/schemas/HourlyData'
     HealthByDate:
       type: array
       items:
@@ -379,55 +438,6 @@ components:
           items:
             $ref: '#/components/schemas/Link'
       description: Information about a GPS station.
-    Link:
-      title: Link
-      required:
-      - description
-      - href
-      - rel
-      - title
-      - type
-      type: object
-      properties:
-        href:
-          type: string
-          format: uri
-        rel:
-          type: string
-        type:
-          type: string
-        title:
-          type: string
-        description:
-          type: string
-      description: Provides a link leading to further information about a resource
-    SpatialParameters:
-      type: object
-      properties:
-        location:
-          type: string
-          description: 'Optional. A point location for the search. Will reorder the results by distance from this point. Supports: National Grid eastings and northings (space separated), ETRS89 in Cartesian XYZ, decimal degrees (including degrees and decimal minutes / degrees, minutes, and decimal seconds), postcodes (including partial postcodes). More information: https://www.ordnancesurvey.co.uk/geodesy-positioning/coordinate-transformations/tool/formats.'
-        radius:
-          type: integer
-          description: Optional, limits the search to the given radius. 'location' must also be provided.
-        stationCount:
-          type: integer
-          description: Optional, limits the result to a fixed number of stations. 'location' must also be provided.
-      description: Spatial parameters for the /stations endpoint
-    TemporalParameters:
-      type: object
-      properties:
-        start:
-          type: string
-          description: Optional start date-time for the search window
-          format: date-time
-          example: 2024-12-31 01:00:00+00:00
-        end:
-          type: string
-          description: Optional end date-time for the search window
-          format: date-time
-          example: 2024-12-31 02:00:00+00:00
-      description: Parameters that provide an optional temporal window (from start to end) for a query. When using start and end, please note that start should be within the last 45 days, and the end should be no more than 24 hours after the start.
   securitySchemes:
     OAuth2:
       type: oauth2

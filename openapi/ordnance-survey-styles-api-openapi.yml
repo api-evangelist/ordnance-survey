@@ -293,42 +293,6 @@ components:
       - blackwhite-27700
       - blackwhite-3857
       type: string
-    getStylesList_200_response:
-      properties:
-        links:
-          items:
-            $ref: '#/components/schemas/link'
-          type: array
-        styles:
-          items:
-            $ref: '#/components/schemas/style-item'
-          type: array
-      required:
-      - styles
-      type: object
-    exceptionDto:
-      description: JSON schema for exceptions based on RFC 7807
-      properties:
-        type:
-          type: string
-        title:
-          type: string
-        status:
-          type: integer
-        detail:
-          type: string
-        instance:
-          type: string
-        code:
-          type: integer
-        description:
-          type: string
-        help:
-          type: string
-      required:
-      - type
-      title: Exception Schema
-      type: object
     link:
       properties:
         href:
@@ -364,14 +328,19 @@ components:
       - href
       - rel
       type: object
-    AllCollections:
-      enum:
-      - ngd-base
-      - asu-bdy
-      - wtr-ctch
-      - trn-ntwk-railway
-      - wtr-tidalboundary
-      type: string
+    getStylesList_200_response:
+      properties:
+        links:
+          items:
+            $ref: '#/components/schemas/link'
+          type: array
+        styles:
+          items:
+            $ref: '#/components/schemas/style-item'
+          type: array
+      required:
+      - styles
+      type: object
     style-item:
       properties:
         id:
@@ -386,6 +355,37 @@ components:
       - id
       - links
       type: object
+    exceptionDto:
+      description: JSON schema for exceptions based on RFC 7807
+      properties:
+        type:
+          type: string
+        title:
+          type: string
+        status:
+          type: integer
+        detail:
+          type: string
+        instance:
+          type: string
+        code:
+          type: integer
+        description:
+          type: string
+        help:
+          type: string
+      required:
+      - type
+      title: Exception Schema
+      type: object
+    AllCollections:
+      enum:
+      - ngd-base
+      - asu-bdy
+      - wtr-ctch
+      - trn-ntwk-railway
+      - wtr-tidalboundary
+      type: string
     StylesResponse:
       type: object
       properties:

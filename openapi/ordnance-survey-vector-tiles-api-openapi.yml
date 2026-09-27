@@ -185,10 +185,13 @@ paths:
       - Vector Tiles
 components:
   schemas:
-    TileSets:
+    AllCollections:
       enum:
-      - '3857'
-      - '27700'
+      - ngd-base
+      - asu-bdy
+      - wtr-ctch
+      - trn-ntwk-railway
+      - wtr-tidalboundary
       type: string
     exceptionDto:
       description: JSON schema for exceptions based on RFC 7807
@@ -213,13 +216,10 @@ components:
       - type
       title: Exception Schema
       type: object
-    AllCollections:
+    TileSets:
       enum:
-      - ngd-base
-      - asu-bdy
-      - wtr-ctch
-      - trn-ntwk-railway
-      - wtr-tidalboundary
+      - '3857'
+      - '27700'
       type: string
   securitySchemes:
     api-key:

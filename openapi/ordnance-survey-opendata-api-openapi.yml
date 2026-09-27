@@ -162,6 +162,31 @@ paths:
       x-operation-id-source: derived
 components:
   schemas:
+    Download:
+      type: object
+      description: 'Information about a specific download file that is made available through this API.
+
+        '
+      required:
+      - url
+      - fileName
+      properties:
+        url:
+          description: Getting this URL will return a HTTP redirect to the actual data.
+          type: string
+          format: uri
+        fileName:
+          description: The name of the file.
+          type: string
+          example: data.zip
+        size:
+          description: The file size, in bytes.
+          type: integer
+          example: 1234
+        md5:
+          description: A MD5 checksum of the file data. This can be used to verify the integrity of the data once you have downloaded it.
+          type: string
+          example: 2f9dd13abd56140afa3b5621e8864f59
     Area:
       type: string
       description: 'This describes the geographical area that a download covers.
@@ -247,43 +272,6 @@ components:
             description: This describes the subformat of the data.
             type: string
             example: '3'
-    Download:
-      type: object
-      description: 'Information about a specific download file that is made available through this API.
-
-        '
-      required:
-      - url
-      - fileName
-      properties:
-        url:
-          description: Getting this URL will return a HTTP redirect to the actual data.
-          type: string
-          format: uri
-        fileName:
-          description: The name of the file.
-          type: string
-          example: data.zip
-        size:
-          description: The file size, in bytes.
-          type: integer
-          example: 1234
-        md5:
-          description: A MD5 checksum of the file data. This can be used to verify the integrity of the data once you have downloaded it.
-          type: string
-          example: 2f9dd13abd56140afa3b5621e8864f59
-    Format:
-      type: object
-      description: Information about the format that a download is available in.
-      required:
-      - format
-      properties:
-        format:
-          type: string
-          description: File format used for the download.
-        subformat:
-          type: string
-          description: Optional subformat, used when a product is available in more than one style.
     ThirdPartyInfo:
       type: object
       description: Information about the data provider for third-party products.
@@ -341,6 +329,18 @@ components:
         supportEmail:
           type: string
           format: email
+    Format:
+      type: object
+      description: Information about the format that a download is available in.
+      required:
+      - format
+      properties:
+        format:
+          type: string
+          description: File format used for the download.
+        subformat:
+          type: string
+          description: Optional subformat, used when a product is available in more than one style.
     Product:
       type: object
       description: Information about a product made available through this API.
