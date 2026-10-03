@@ -203,24 +203,14 @@ paths:
       operationId: getProductVersionInfoByCorrelationMethod
       x-operation-id-source: derived
 components:
-  responses:
-    NotFound:
-      description: The server has not found anything matching the Request-URI.
-    ServiceUnavailable:
-      description: Temporary outage due to overloading or maintenance.
-    Unauthorized:
-      description: The client has not provided authentication or incorrect authentication.
-    MethodNotAllowed:
-      description: Request used an unsupported HTTP method, e.g. DELETE or PUT.
-    InternalServerError:
-      description: Generic internal server error.
-    BadRequest:
-      description: E.g. missing query parameter, malformed syntax.
-    TooManyRequests:
-      description: Exceeded the number of requests per minute (rate-limit).
-    Forbidden:
-      description: The client has authenticated its access but does not have sufficient rights to complete the request.
   schemas:
+    identifierType:
+      type: string
+      enum:
+      - GUID
+      - TOID
+      - UPRN
+      - USRN
     linkedIdentifier:
       type: object
       required:
@@ -285,37 +275,6 @@ components:
                       type: string
                     correlationIdentifier:
                       type: string
-    correlationMethodIdentifier:
-      type: string
-      enum:
-      - RoadLink_TOID_TopographicArea_TOID_2
-      - Road_TOID_TopographicArea_TOID_3
-      - Street_USRN_TopographicArea_TOID_4
-      - BLPU_UPRN_TopographicArea_TOID_5
-      - RoadLink_TOID_Road_TOID_7
-      - RoadLink_TOID_Street_USRN_8
-      - BLPU_UPRN_RoadLink_TOID_9
-      - Road_TOID_Street_USRN_10
-      - BLPU_UPRN_Street_USRN_11
-      - ORRoadLink_GUID_RoadLink_TOID_12
-      - ORRoadNode_GUID_RoadLink_TOID_13
-    identifierType:
-      type: string
-      enum:
-      - GUID
-      - TOID
-      - UPRN
-      - USRN
-    featureType:
-      type: string
-      enum:
-      - BLPU
-      - ORRoadNode
-      - ORRoadLink
-      - Road
-      - RoadLink
-      - Street
-      - TopographicArea
     correlationMethodInformation:
       type: object
       required:
@@ -370,6 +329,47 @@ components:
           $ref: '#/components/schemas/featureType'
         identifierType:
           $ref: '#/components/schemas/identifierType'
+    featureType:
+      type: string
+      enum:
+      - BLPU
+      - ORRoadNode
+      - ORRoadLink
+      - Road
+      - RoadLink
+      - Street
+      - TopographicArea
+    correlationMethodIdentifier:
+      type: string
+      enum:
+      - RoadLink_TOID_TopographicArea_TOID_2
+      - Road_TOID_TopographicArea_TOID_3
+      - Street_USRN_TopographicArea_TOID_4
+      - BLPU_UPRN_TopographicArea_TOID_5
+      - RoadLink_TOID_Road_TOID_7
+      - RoadLink_TOID_Street_USRN_8
+      - BLPU_UPRN_RoadLink_TOID_9
+      - Road_TOID_Street_USRN_10
+      - BLPU_UPRN_Street_USRN_11
+      - ORRoadLink_GUID_RoadLink_TOID_12
+      - ORRoadNode_GUID_RoadLink_TOID_13
+  responses:
+    BadRequest:
+      description: E.g. missing query parameter, malformed syntax.
+    Forbidden:
+      description: The client has authenticated its access but does not have sufficient rights to complete the request.
+    ServiceUnavailable:
+      description: Temporary outage due to overloading or maintenance.
+    TooManyRequests:
+      description: Exceeded the number of requests per minute (rate-limit).
+    InternalServerError:
+      description: Generic internal server error.
+    MethodNotAllowed:
+      description: Request used an unsupported HTTP method, e.g. DELETE or PUT.
+    Unauthorized:
+      description: The client has not provided authentication or incorrect authentication.
+    NotFound:
+      description: The server has not found anything matching the Request-URI.
   parameters:
     featureIdentifier:
       name: id

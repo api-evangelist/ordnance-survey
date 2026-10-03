@@ -341,20 +341,6 @@ components:
       required:
       - styles
       type: object
-    style-item:
-      properties:
-        id:
-          type: string
-        title:
-          type: string
-        links:
-          items:
-            $ref: '#/components/schemas/link'
-          type: array
-      required:
-      - id
-      - links
-      type: object
     exceptionDto:
       description: JSON schema for exceptions based on RFC 7807
       properties:
@@ -386,6 +372,20 @@ components:
       - trn-ntwk-railway
       - wtr-tidalboundary
       type: string
+    style-item:
+      properties:
+        id:
+          type: string
+        title:
+          type: string
+        links:
+          items:
+            $ref: '#/components/schemas/link'
+          type: array
+      required:
+      - id
+      - links
+      type: object
     StylesResponse:
       type: object
       properties:

@@ -185,6 +185,11 @@ paths:
       - Vector Tiles
 components:
   schemas:
+    TileSets:
+      enum:
+      - '3857'
+      - '27700'
+      type: string
     AllCollections:
       enum:
       - ngd-base
@@ -216,11 +221,6 @@ components:
       - type
       title: Exception Schema
       type: object
-    TileSets:
-      enum:
-      - '3857'
-      - '27700'
-      type: string
   securitySchemes:
     api-key:
       type: apiKey

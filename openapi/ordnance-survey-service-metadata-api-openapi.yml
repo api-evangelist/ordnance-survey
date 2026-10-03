@@ -47,48 +47,6 @@ paths:
                 $ref: '#/components/schemas/ServiceMetadata'
 components:
   schemas:
-    Extent:
-      type: object
-      properties:
-        xmin:
-          type: number
-        ymin:
-          type: number
-        xmax:
-          type: number
-        ymax:
-          type: number
-        spatialReference:
-          type: object
-          properties:
-            wkid:
-              type: integer
-            latestWkid:
-              type: integer
-    TileInfo:
-      type: object
-      properties:
-        rows:
-          type: integer
-        cols:
-          type: integer
-        dpi:
-          type: integer
-        format:
-          type: string
-        origin:
-          type: object
-          properties:
-            x:
-              type: number
-            y:
-              type: number
-        spatialReference:
-          $ref: '#/components/schemas/Extent'
-        lods:
-          type: array
-          items:
-            $ref: '#/components/schemas/Lod'
     ServiceMetadata:
       type: object
       properties:
@@ -154,6 +112,48 @@ components:
           type: number
         scale:
           type: number
+    TileInfo:
+      type: object
+      properties:
+        rows:
+          type: integer
+        cols:
+          type: integer
+        dpi:
+          type: integer
+        format:
+          type: string
+        origin:
+          type: object
+          properties:
+            x:
+              type: number
+            y:
+              type: number
+        spatialReference:
+          $ref: '#/components/schemas/Extent'
+        lods:
+          type: array
+          items:
+            $ref: '#/components/schemas/Lod'
+    Extent:
+      type: object
+      properties:
+        xmin:
+          type: number
+        ymin:
+          type: number
+        xmax:
+          type: number
+        ymax:
+          type: number
+        spatialReference:
+          type: object
+          properties:
+            wkid:
+              type: integer
+            latestWkid:
+              type: integer
   securitySchemes:
     api-key:
       type: apiKey

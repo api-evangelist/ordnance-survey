@@ -153,6 +153,72 @@ paths:
       x-operation-id-source: derived
 components:
   schemas:
+    DataPackage:
+      type: object
+      description: 'A data package provides access to OS products that are not OpenData. If you have access to to products that
+
+        are available as data packages then you can create new data packages using the OS Data Hub. Once you have set
+
+        up your data packages you can use this API to access them.
+
+        '
+      required:
+      - id
+      - name
+      - url
+      - createdOn
+      - productId
+      - productName
+      - versions
+      properties:
+        id:
+          type: string
+          example: 0040046952
+        name:
+          type: string
+          example: Southampton Addresses
+        url:
+          type: string
+          format: uri
+          example: https://api.os.uk/downloads/v1/dataPackages/0040046952
+        createdOn:
+          type: string
+          format: date
+          example: '2021-01-20'
+        productId:
+          type: string
+          example: ABPOSTSLA
+        productName:
+          type: string
+          example: AddressBase
+        versions:
+          type: array
+          items:
+            $ref: '#/components/schemas/DataPackageVersionSummary'
+    DataPackageVersion:
+      description: 'Detailed information about a data package version, including a list of the files available to download.
+
+        '
+      allOf:
+      - $ref: '#/components/schemas/DataPackageVersionSummary'
+      - type: object
+        required:
+        - downloads
+        properties:
+          nextVersionUrl:
+            description: Only populated if there is a newer version of the data package.
+            type: string
+            format: uri
+            example: https://api.os.uk/downloads/v1/dataPackages/0040046952/versions/110013
+          previousVersionUrl:
+            description: Only populated if there is an older version of the data package.
+            type: string
+            format: uri
+            example: https://api.os.uk/downloads/v1/dataPackages/0040046952/versions/110011
+          downloads:
+            type: array
+            items:
+              $ref: '#/components/schemas/Download'
     Download:
       type: object
       description: 'Information about a specific download file that is made available through this API.
@@ -178,30 +244,6 @@ components:
           description: A MD5 checksum of the file data. This can be used to verify the integrity of the data once you have downloaded it.
           type: string
           example: 2f9dd13abd56140afa3b5621e8864f59
-    DataPackageVersion:
-      description: 'Detailed information about a data package version, including a list of the files available to download.
-
-        '
-      allOf:
-      - $ref: '#/components/schemas/DataPackageVersionSummary'
-      - type: object
-        required:
-        - downloads
-        properties:
-          nextVersionUrl:
-            description: Only populated if there is a newer version of the data package.
-            type: string
-            format: uri
-            example: https://api.os.uk/downloads/v1/dataPackages/0040046952/versions/110013
-          previousVersionUrl:
-            description: Only populated if there is an older version of the data package.
-            type: string
-            format: uri
-            example: https://api.os.uk/downloads/v1/dataPackages/0040046952/versions/110011
-          downloads:
-            type: array
-            items:
-              $ref: '#/components/schemas/Download'
     DataPackageVersionSummary:
       type: object
       description: 'Summary information about a data package version.
@@ -250,56 +292,6 @@ components:
           type: string
           format: uri
           example: https://api.os.uk/downloads/v1/dataPackages/0040046952
-    DataPackage:
-      type: object
-      description: 'A data package provides access to OS products that are not OpenData. If you have access to to products that
-
-        are available as data packages then you can create new data packages using the OS Data Hub. Once you have set
-
-        up your data packages you can use this API to access them.
-
-        '
-      required:
-      - id
-      - name
-      - url
-      - createdOn
-      - productId
-      - productName
-      - versions
-      properties:
-        id:
-          type: string
-          example: 0040046952
-        name:
-          type: string
-          example: Southampton Addresses
-        url:
-          type: string
-          format: uri
-          example: https://api.os.uk/downloads/v1/dataPackages/0040046952
-        createdOn:
-          type: string
-          format: date
-          example: '2021-01-20'
-        productId:
-          type: string
-          example: ABPOSTSLA
-        productName:
-          type: string
-          example: AddressBase
-        versions:
-          type: array
-          items:
-            $ref: '#/components/schemas/DataPackageVersionSummary'
-  parameters:
-    dataPackageId:
-      name: dataPackageId
-      in: path
-      description: The id of the data package.
-      required: true
-      schema:
-        type: string
   responses:
     NotFoundError:
       description: 'The request does not match any known content.
@@ -342,6 +334,14 @@ components:
               message:
                 type: string
                 example: Invalid APIKey
+  parameters:
+    dataPackageId:
+      name: dataPackageId
+      in: path
+      description: The id of the data package.
+      required: true
+      schema:
+        type: string
   securitySchemes:
     OAuth2:
       type: oauth2

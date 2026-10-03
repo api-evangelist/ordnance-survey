@@ -55,17 +55,6 @@ paths:
     - url: https://api.os.uk/features/ngd/ofa/v1
 components:
   schemas:
-    LandingPageResponse:
-      type: object
-      properties:
-        title:
-          type: string
-        description:
-          type: string
-        links:
-          type: array
-          items:
-            $ref: '#/components/schemas/Link'
     ConformanceResponse:
       type: object
       properties:
@@ -85,6 +74,26 @@ components:
           type: string
         title:
           type: string
+    LandingPageResponse:
+      type: object
+      properties:
+        title:
+          type: string
+        description:
+          type: string
+        links:
+          type: array
+          items:
+            $ref: '#/components/schemas/Link'
+    confClasses:
+      properties:
+        conformsTo:
+          items:
+            type: string
+          type: array
+      required:
+      - conformsTo
+      type: object
     link:
       properties:
         href:
@@ -120,15 +129,28 @@ components:
       - href
       - rel
       type: object
-    confClasses:
-      properties:
+    getConformance_200_response:
+      allOf:
+      - $ref: '#/components/schemas/confClasses'
+      example:
         conformsTo:
-          items:
-            type: string
-          type: array
-      required:
-      - conformsTo
-      type: object
+        - http://www.opengis.net/spec/ogcapi-common-1/1.0/conf/core
+        - http://www.opengis.net/spec/ogcapi-common-1/1.0/conf/json
+        - http://www.opengis.net/spec/ogcapi-common-1/1.0/conf/html
+        - http://www.opengis.net/spec/ogcapi-common-1/1.0/conf/oas30
+        - http://www.opengis.net/spec/ogcapi-common-2/1.0/conf/collections
+        - http://www.opengis.net/spec/ogcapi-tiles-1/1.0/conf/core
+        - http://www.opengis.net/spec/ogcapi-tiles-1/1.0/conf/tileset
+        - http://www.opengis.net/spec/ogcapi-tiles-1/1.0/conf/tilesets-list
+        - http://www.opengis.net/spec/ogcapi-tiles-1/1.0/conf/geodata-tilesets
+        - http://www.opengis.net/spec/ogcapi-tiles-1/1.0/conf/dataset-tilesets
+        - http://www.opengis.net/spec/ogcapi-tiles-1/1.0/conf/geodata-selection
+        - http://www.opengis.net/spec/ogcapi-tiles-1/1.0/conf/jpeg
+        - http://www.opengis.net/spec/ogcapi-tiles-1/1.0/conf/png
+        - http://www.opengis.net/spec/ogcapi-tiles-1/1.0/conf/mvt
+        - http://www.opengis.net/spec/ogcapi-tiles-1/1.0/conf/geojson
+        - http://www.opengis.net/spec/ogcapi-tiles-1/1.0/conf/tiff
+        - http://www.opengis.net/spec/ogcapi-tiles-1/1.0/conf/netcdf
     exceptionDto:
       description: JSON schema for exceptions based on RFC 7807
       properties:
@@ -173,28 +195,6 @@ components:
       required:
       - links
       type: object
-    getConformance_200_response:
-      allOf:
-      - $ref: '#/components/schemas/confClasses'
-      example:
-        conformsTo:
-        - http://www.opengis.net/spec/ogcapi-common-1/1.0/conf/core
-        - http://www.opengis.net/spec/ogcapi-common-1/1.0/conf/json
-        - http://www.opengis.net/spec/ogcapi-common-1/1.0/conf/html
-        - http://www.opengis.net/spec/ogcapi-common-1/1.0/conf/oas30
-        - http://www.opengis.net/spec/ogcapi-common-2/1.0/conf/collections
-        - http://www.opengis.net/spec/ogcapi-tiles-1/1.0/conf/core
-        - http://www.opengis.net/spec/ogcapi-tiles-1/1.0/conf/tileset
-        - http://www.opengis.net/spec/ogcapi-tiles-1/1.0/conf/tilesets-list
-        - http://www.opengis.net/spec/ogcapi-tiles-1/1.0/conf/geodata-tilesets
-        - http://www.opengis.net/spec/ogcapi-tiles-1/1.0/conf/dataset-tilesets
-        - http://www.opengis.net/spec/ogcapi-tiles-1/1.0/conf/geodata-selection
-        - http://www.opengis.net/spec/ogcapi-tiles-1/1.0/conf/jpeg
-        - http://www.opengis.net/spec/ogcapi-tiles-1/1.0/conf/png
-        - http://www.opengis.net/spec/ogcapi-tiles-1/1.0/conf/mvt
-        - http://www.opengis.net/spec/ogcapi-tiles-1/1.0/conf/geojson
-        - http://www.opengis.net/spec/ogcapi-tiles-1/1.0/conf/tiff
-        - http://www.opengis.net/spec/ogcapi-tiles-1/1.0/conf/netcdf
   securitySchemes:
     api-key:
       type: apiKey

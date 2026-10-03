@@ -184,19 +184,121 @@ paths:
       - Data Collections
 components:
   schemas:
-    collections:
+    link:
       properties:
+        href:
+          description: Supplies the URI to a remote resource (or resource fragment).
+          example: http://data.example.com/buildingpart/123
+          type: string
+        rel:
+          description: The type or semantics of the relation.
+          example: alternate
+          type: string
+        type:
+          description: A hint indicating what the media type of the result of dereferencing the link should be.
+          example: application/geo+json
+          type: string
+        templated:
+          description: This flag set to true if the link is a URL template.
+          type: boolean
+        varBase:
+          description: A base path to retrieve semantic information about the variables used in URL template.
+          example: /ogcapi/vars/
+          type: string
+        hreflang:
+          description: A hint indicating what the language of the result of dereferencing the link should be.
+          example: en
+          type: string
+        title:
+          description: Used to label the destination of a link such that it can be used as a human-readable identifier.
+          example: Building Part
+          type: string
+        length:
+          type: integer
+      required:
+      - href
+      - rel
+      type: object
+    extent-uad:
+      allOf:
+      - $ref: '#/components/schemas/extent'
+      - type: object
+      description: 'The extent module only addresses spatial and temporal extents. This module extends extent by specifying how
+
+        intervals and crs properties can be used to specify additional geometries.'
+      title: Extent with Uniform Additional Dimensions Schema
+    collectionInfo:
+      properties:
+        id:
+          description: identifier of the collection used, for example, in URIs
+          example: buildingpart
+          type: string
+        title:
+          description: human readable title of the collection
+          example: Building Part
+          type: string
+        description:
+          description: a description of the data in the collection
+          example: Polygon feature representing a building.
+          type: string
         links:
+          example:
+          - href: http://data.example.org/collections/buildingpart
+            rel: self
+            type: application/json
+            title: Building Part
           items:
             $ref: '#/components/schemas/link'
           type: array
-        collections:
-          items:
-            $ref: '#/components/schemas/collectionInfo'
-          type: array
+        extent:
+          $ref: '#/components/schemas/extent-uad'
       required:
-      - collections
+      - id
       - links
+      type: object
+    extent:
+      description: 'The extent of the data in the collection. In the Core only spatial and temporal
+
+        extents are specified. Extensions may add additional members to represent other
+
+        extents, for example, thermal or pressure ranges.
+
+
+        The first item in the array describes the overall extent of
+
+        the data. All subsequent items describe more precise extents,
+
+        e.g., to identify clusters of data.
+
+        Clients only interested in the overall extent will only need to
+
+        access the first item in each array.'
+      properties:
+        spatial:
+          $ref: '#/components/schemas/extent_spatial'
+      type: object
+    exceptionDto:
+      description: JSON schema for exceptions based on RFC 7807
+      properties:
+        type:
+          type: string
+        title:
+          type: string
+        status:
+          type: integer
+        detail:
+          type: string
+        instance:
+          type: string
+        code:
+          type: integer
+        description:
+          type: string
+        help:
+          type: string
+      required:
+      - type
+      title: Exception Schema
       type: object
     extent_spatial:
       description: The spatial extent of the data in the collection.
@@ -304,114 +406,6 @@ components:
           - http://www.opengis.net/def/crs/OGC/0/CRS84h
           type: string
       type: object
-    link:
-      properties:
-        href:
-          description: Supplies the URI to a remote resource (or resource fragment).
-          example: http://data.example.com/buildingpart/123
-          type: string
-        rel:
-          description: The type or semantics of the relation.
-          example: alternate
-          type: string
-        type:
-          description: A hint indicating what the media type of the result of dereferencing the link should be.
-          example: application/geo+json
-          type: string
-        templated:
-          description: This flag set to true if the link is a URL template.
-          type: boolean
-        varBase:
-          description: A base path to retrieve semantic information about the variables used in URL template.
-          example: /ogcapi/vars/
-          type: string
-        hreflang:
-          description: A hint indicating what the language of the result of dereferencing the link should be.
-          example: en
-          type: string
-        title:
-          description: Used to label the destination of a link such that it can be used as a human-readable identifier.
-          example: Building Part
-          type: string
-        length:
-          type: integer
-      required:
-      - href
-      - rel
-      type: object
-    exceptionDto:
-      description: JSON schema for exceptions based on RFC 7807
-      properties:
-        type:
-          type: string
-        title:
-          type: string
-        status:
-          type: integer
-        detail:
-          type: string
-        instance:
-          type: string
-        code:
-          type: integer
-        description:
-          type: string
-        help:
-          type: string
-      required:
-      - type
-      title: Exception Schema
-      type: object
-    extent:
-      description: 'The extent of the data in the collection. In the Core only spatial and temporal
-
-        extents are specified. Extensions may add additional members to represent other
-
-        extents, for example, thermal or pressure ranges.
-
-
-        The first item in the array describes the overall extent of
-
-        the data. All subsequent items describe more precise extents,
-
-        e.g., to identify clusters of data.
-
-        Clients only interested in the overall extent will only need to
-
-        access the first item in each array.'
-      properties:
-        spatial:
-          $ref: '#/components/schemas/extent_spatial'
-      type: object
-    collectionInfo:
-      properties:
-        id:
-          description: identifier of the collection used, for example, in URIs
-          example: buildingpart
-          type: string
-        title:
-          description: human readable title of the collection
-          example: Building Part
-          type: string
-        description:
-          description: a description of the data in the collection
-          example: Polygon feature representing a building.
-          type: string
-        links:
-          example:
-          - href: http://data.example.org/collections/buildingpart
-            rel: self
-            type: application/json
-            title: Building Part
-          items:
-            $ref: '#/components/schemas/link'
-          type: array
-        extent:
-          $ref: '#/components/schemas/extent-uad'
-      required:
-      - id
-      - links
-      type: object
     AllCollections:
       enum:
       - ngd-base
@@ -420,14 +414,20 @@ components:
       - trn-ntwk-railway
       - wtr-tidalboundary
       type: string
-    extent-uad:
-      allOf:
-      - $ref: '#/components/schemas/extent'
-      - type: object
-      description: 'The extent module only addresses spatial and temporal extents. This module extends extent by specifying how
-
-        intervals and crs properties can be used to specify additional geometries.'
-      title: Extent with Uniform Additional Dimensions Schema
+    collections:
+      properties:
+        links:
+          items:
+            $ref: '#/components/schemas/link'
+          type: array
+        collections:
+          items:
+            $ref: '#/components/schemas/collectionInfo'
+          type: array
+      required:
+      - collections
+      - links
+      type: object
   securitySchemes:
     api-key:
       type: apiKey
