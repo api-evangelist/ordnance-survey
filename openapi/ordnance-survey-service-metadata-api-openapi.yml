@@ -47,6 +47,24 @@ paths:
                 $ref: '#/components/schemas/ServiceMetadata'
 components:
   schemas:
+    Extent:
+      type: object
+      properties:
+        xmin:
+          type: number
+        ymin:
+          type: number
+        xmax:
+          type: number
+        ymax:
+          type: number
+        spatialReference:
+          type: object
+          properties:
+            wkid:
+              type: integer
+            latestWkid:
+              type: integer
     ServiceMetadata:
       type: object
       properties:
@@ -136,24 +154,6 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/Lod'
-    Extent:
-      type: object
-      properties:
-        xmin:
-          type: number
-        ymin:
-          type: number
-        xmax:
-          type: number
-        ymax:
-          type: number
-        spatialReference:
-          type: object
-          properties:
-            wkid:
-              type: integer
-            latestWkid:
-              type: integer
   securitySchemes:
     api-key:
       type: apiKey

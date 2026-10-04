@@ -358,33 +358,6 @@ paths:
                 $ref: '#/components/schemas/FeatureCollection'
 components:
   schemas:
-    FeatureCollection:
-      type: object
-      properties:
-        type:
-          type: string
-        features:
-          type: array
-          items:
-            $ref: '#/components/schemas/Feature'
-    Coordinate:
-      type: object
-      properties:
-        x:
-          type: number
-          format: double
-        y:
-          type: number
-          format: double
-    Geometry:
-      type: object
-      properties:
-        type:
-          type: string
-        coordinates:
-          type: array
-          items:
-            $ref: '#/components/schemas/Coordinate'
     Feature:
       type: object
       properties:
@@ -396,6 +369,33 @@ components:
           type: object
           additionalProperties:
             type: object
+    Coordinate:
+      type: object
+      properties:
+        x:
+          type: number
+          format: double
+        y:
+          type: number
+          format: double
+    FeatureCollection:
+      type: object
+      properties:
+        type:
+          type: string
+        features:
+          type: array
+          items:
+            $ref: '#/components/schemas/Feature'
+    Geometry:
+      type: object
+      properties:
+        type:
+          type: string
+        coordinates:
+          type: array
+          items:
+            $ref: '#/components/schemas/Coordinate'
   securitySchemes:
     api-key:
       type: apiKey

@@ -190,14 +190,6 @@ components:
       - '3857'
       - '27700'
       type: string
-    AllCollections:
-      enum:
-      - ngd-base
-      - asu-bdy
-      - wtr-ctch
-      - trn-ntwk-railway
-      - wtr-tidalboundary
-      type: string
     exceptionDto:
       description: JSON schema for exceptions based on RFC 7807
       properties:
@@ -221,6 +213,14 @@ components:
       - type
       title: Exception Schema
       type: object
+    AllCollections:
+      enum:
+      - ngd-base
+      - asu-bdy
+      - wtr-ctch
+      - trn-ntwk-railway
+      - wtr-tidalboundary
+      type: string
   securitySchemes:
     api-key:
       type: apiKey

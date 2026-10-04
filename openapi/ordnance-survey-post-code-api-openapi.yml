@@ -169,6 +169,95 @@ components:
                 $ref: '#/components/schemas/DPA'
               LPI:
                 $ref: '#/components/schemas/LPI'
+    DPA:
+      type: object
+      properties:
+        UPRN:
+          type: string
+        UDPRN:
+          type: string
+        ADDRESS:
+          type: string
+        ORGANISATION_NAME:
+          type: string
+        DEPARTMENT_NAME:
+          type: string
+        SUB_BUILDING_NAME:
+          type: string
+        BUILDING_NAME:
+          type: string
+        BUILDING_NUMBER:
+          type: string
+        DEPENDENT_THOROUGHFARE_NAME:
+          type: string
+        THOROUGHFARE_NAME:
+          type: string
+        DOUBLE_DEPENDENT_LOCALITY:
+          type: string
+        DEPENDENT_LOCALITY:
+          type: string
+        POST_TOWN:
+          type: string
+        POSTCODE:
+          type: string
+        RPC:
+          type: string
+        X_COORDINATE:
+          type: number
+        Y_COORDINATE:
+          type: number
+        LNG:
+          type: number
+        LAT:
+          type: number
+        STATUS:
+          type: string
+        LOGICAL_STATUS_CODE:
+          type: string
+        CLASSIFICATION_CODE:
+          type: string
+        CLASSIFICATION_CODE_DESCRIPTION:
+          type: string
+        LOCAL_CUSTODIAN_CODE:
+          type: integer
+        LOCAL_CUSTODIAN_CODE_DESCRIPTION:
+          type: string
+        COUNTRY_CODE:
+          type: string
+        COUNTRY_CODE_DESCRIPTION:
+          type: string
+        POSTAL_ADDRESS_CODE:
+          type: string
+        POSTAL_ADDRESS_CODE_DESCRIPTION:
+          type: string
+        BLPU_STATE_CODE:
+          type: string
+        BLPU_STATE_CODE_DESCRIPTION:
+          type: string
+        TOPOGRAPHY_LAYER_TOID:
+          type: string
+        WARD_CODE:
+          type: string
+        PARISH_CODE:
+          type: string
+        PARENT_UPRN:
+          type: string
+        LAST_UPDATE_DATE:
+          type: string
+        ENTRY_DATE:
+          type: string
+        LEGAL_NAME:
+          type: string
+        BLPU_STATE_DATE:
+          type: string
+        LANGUAGE:
+          type: string
+        MATCH:
+          type: number
+        MATCH_DESCRIPTION:
+          type: string
+        DELIVERY_POINT_SUFFIX:
+          type: string
     LPI:
       type: object
       properties:
@@ -281,95 +370,6 @@ components:
         MATCH:
           type: number
         MATCH_DESCRIPTION:
-          type: string
-    DPA:
-      type: object
-      properties:
-        UPRN:
-          type: string
-        UDPRN:
-          type: string
-        ADDRESS:
-          type: string
-        ORGANISATION_NAME:
-          type: string
-        DEPARTMENT_NAME:
-          type: string
-        SUB_BUILDING_NAME:
-          type: string
-        BUILDING_NAME:
-          type: string
-        BUILDING_NUMBER:
-          type: string
-        DEPENDENT_THOROUGHFARE_NAME:
-          type: string
-        THOROUGHFARE_NAME:
-          type: string
-        DOUBLE_DEPENDENT_LOCALITY:
-          type: string
-        DEPENDENT_LOCALITY:
-          type: string
-        POST_TOWN:
-          type: string
-        POSTCODE:
-          type: string
-        RPC:
-          type: string
-        X_COORDINATE:
-          type: number
-        Y_COORDINATE:
-          type: number
-        LNG:
-          type: number
-        LAT:
-          type: number
-        STATUS:
-          type: string
-        LOGICAL_STATUS_CODE:
-          type: string
-        CLASSIFICATION_CODE:
-          type: string
-        CLASSIFICATION_CODE_DESCRIPTION:
-          type: string
-        LOCAL_CUSTODIAN_CODE:
-          type: integer
-        LOCAL_CUSTODIAN_CODE_DESCRIPTION:
-          type: string
-        COUNTRY_CODE:
-          type: string
-        COUNTRY_CODE_DESCRIPTION:
-          type: string
-        POSTAL_ADDRESS_CODE:
-          type: string
-        POSTAL_ADDRESS_CODE_DESCRIPTION:
-          type: string
-        BLPU_STATE_CODE:
-          type: string
-        BLPU_STATE_CODE_DESCRIPTION:
-          type: string
-        TOPOGRAPHY_LAYER_TOID:
-          type: string
-        WARD_CODE:
-          type: string
-        PARISH_CODE:
-          type: string
-        PARENT_UPRN:
-          type: string
-        LAST_UPDATE_DATE:
-          type: string
-        ENTRY_DATE:
-          type: string
-        LEGAL_NAME:
-          type: string
-        BLPU_STATE_DATE:
-          type: string
-        LANGUAGE:
-          type: string
-        MATCH:
-          type: number
-        MATCH_DESCRIPTION:
-          type: string
-        DELIVERY_POINT_SUFFIX:
           type: string
   securitySchemes:
     api-key:

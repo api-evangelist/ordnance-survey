@@ -230,14 +230,6 @@ paths:
       x-summary-source: derived
 components:
   parameters:
-    filename:
-      name: filename
-      in: path
-      description: Name of the file
-      required: true
-      schema:
-        type: string
-        example: ABEP00GBR_S_20243550100_01H_30S_MO.rnx
     dataFrequency:
       name: dataFrequency
       in: query
@@ -252,14 +244,6 @@ components:
         01S:
           summary: Data every second
           value: 01S
-    RequiredTemporalParameters:
-      name: RequiredTemporalParameters
-      in: query
-      description: Parameters that provide a temporal window (from start to end) for a query. These parameters can be used to restrict the query to a specific time range. Please note that the start time should be within the last 45 days, and the end should be no more than 24 hours after the start.
-      required: true
-      explode: true
-      schema:
-        $ref: '#/components/schemas/RequiredTemporalParameters'
     stationId:
       name: stationId
       in: path
@@ -289,6 +273,22 @@ components:
         minimum: 2024
         type: integer
         format: int32
+    filename:
+      name: filename
+      in: path
+      description: Name of the file
+      required: true
+      schema:
+        type: string
+        example: ABEP00GBR_S_20243550100_01H_30S_MO.rnx
+    RequiredTemporalParameters:
+      name: RequiredTemporalParameters
+      in: query
+      description: Parameters that provide a temporal window (from start to end) for a query. These parameters can be used to restrict the query to a specific time range. Please note that the start time should be within the last 45 days, and the end should be no more than 24 hours after the start.
+      required: true
+      explode: true
+      schema:
+        $ref: '#/components/schemas/RequiredTemporalParameters'
   schemas:
     RequiredTemporalParameters:
       required:
@@ -307,43 +307,6 @@ components:
           format: date-time
           example: 2024-12-31 02:00:00+00:00
       description: Parameters that provide a temporal window (from start to end) for a query. Please note that the start time should be within the last 45 days, and the end should be no more than 24 hours after the start.
-    MetaData:
-      required:
-      - description
-      - links
-      - title
-      type: object
-      properties:
-        title:
-          type: string
-        description:
-          type: string
-        links:
-          type: array
-          items:
-            $ref: '#/components/schemas/Link'
-    Link:
-      title: Link
-      required:
-      - description
-      - href
-      - rel
-      - title
-      - type
-      type: object
-      properties:
-        href:
-          type: string
-          format: uri
-        rel:
-          type: string
-        type:
-          type: string
-        title:
-          type: string
-        description:
-          type: string
-      description: Provides a link leading to further information about a resource
     OSNetDownload:
       required:
       - fileName
@@ -408,6 +371,43 @@ components:
             minimum: 0
             type: integer
             description: Health percentage, based on expected and actual data in the file
+    Link:
+      title: Link
+      required:
+      - description
+      - href
+      - rel
+      - title
+      - type
+      type: object
+      properties:
+        href:
+          type: string
+          format: uri
+        rel:
+          type: string
+        type:
+          type: string
+        title:
+          type: string
+        description:
+          type: string
+      description: Provides a link leading to further information about a resource
+    MetaData:
+      required:
+      - description
+      - links
+      - title
+      type: object
+      properties:
+        title:
+          type: string
+        description:
+          type: string
+        links:
+          type: array
+          items:
+            $ref: '#/components/schemas/Link'
   securitySchemes:
     OAuth2:
       type: oauth2

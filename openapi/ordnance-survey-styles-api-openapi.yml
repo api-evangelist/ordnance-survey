@@ -282,17 +282,6 @@ paths:
     - url: https://api.os.uk/maps/vector/v1
 components:
   schemas:
-    Styles:
-      enum:
-      - '3857'
-      - '27700'
-      - road-27700
-      - road-3857
-      - light-27700
-      - light-3857
-      - blackwhite-27700
-      - blackwhite-3857
-      type: string
     link:
       properties:
         href:
@@ -371,6 +360,17 @@ components:
       - wtr-ctch
       - trn-ntwk-railway
       - wtr-tidalboundary
+      type: string
+    Styles:
+      enum:
+      - '3857'
+      - '27700'
+      - road-27700
+      - road-3857
+      - light-27700
+      - light-3857
+      - blackwhite-27700
+      - blackwhite-3857
       type: string
     style-item:
       properties:

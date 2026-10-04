@@ -55,13 +55,6 @@ paths:
     - url: https://api.os.uk/features/ngd/ofa/v1
 components:
   schemas:
-    ConformanceResponse:
-      type: object
-      properties:
-        conformsTo:
-          type: array
-          items:
-            type: string
     Link:
       type: object
       properties:
@@ -85,50 +78,13 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/Link'
-    confClasses:
+    ConformanceResponse:
+      type: object
       properties:
         conformsTo:
+          type: array
           items:
             type: string
-          type: array
-      required:
-      - conformsTo
-      type: object
-    link:
-      properties:
-        href:
-          description: Supplies the URI to a remote resource (or resource fragment).
-          example: http://data.example.com/buildingpart/123
-          type: string
-        rel:
-          description: The type or semantics of the relation.
-          example: alternate
-          type: string
-        type:
-          description: A hint indicating what the media type of the result of dereferencing the link should be.
-          example: application/geo+json
-          type: string
-        templated:
-          description: This flag set to true if the link is a URL template.
-          type: boolean
-        varBase:
-          description: A base path to retrieve semantic information about the variables used in URL template.
-          example: /ogcapi/vars/
-          type: string
-        hreflang:
-          description: A hint indicating what the language of the result of dereferencing the link should be.
-          example: en
-          type: string
-        title:
-          description: Used to label the destination of a link such that it can be used as a human-readable identifier.
-          example: Building Part
-          type: string
-        length:
-          type: integer
-      required:
-      - href
-      - rel
-      type: object
     getConformance_200_response:
       allOf:
       - $ref: '#/components/schemas/confClasses'
@@ -174,6 +130,41 @@ components:
       - type
       title: Exception Schema
       type: object
+    link:
+      properties:
+        href:
+          description: Supplies the URI to a remote resource (or resource fragment).
+          example: http://data.example.com/buildingpart/123
+          type: string
+        rel:
+          description: The type or semantics of the relation.
+          example: alternate
+          type: string
+        type:
+          description: A hint indicating what the media type of the result of dereferencing the link should be.
+          example: application/geo+json
+          type: string
+        templated:
+          description: This flag set to true if the link is a URL template.
+          type: boolean
+        varBase:
+          description: A base path to retrieve semantic information about the variables used in URL template.
+          example: /ogcapi/vars/
+          type: string
+        hreflang:
+          description: A hint indicating what the language of the result of dereferencing the link should be.
+          example: en
+          type: string
+        title:
+          description: Used to label the destination of a link such that it can be used as a human-readable identifier.
+          example: Building Part
+          type: string
+        length:
+          type: integer
+      required:
+      - href
+      - rel
+      type: object
     landingPage:
       properties:
         title:
@@ -194,6 +185,15 @@ components:
           type: array
       required:
       - links
+      type: object
+    confClasses:
+      properties:
+        conformsTo:
+          items:
+            type: string
+          type: array
+      required:
+      - conformsTo
       type: object
   securitySchemes:
     api-key:

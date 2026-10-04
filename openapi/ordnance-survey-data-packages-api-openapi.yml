@@ -152,7 +152,74 @@ paths:
       operationId: getDataPackagesByDataPackageIdVersionsByVersionIdDownloads
       x-operation-id-source: derived
 components:
+  responses:
+    UnauthorizedError:
+      description: The API key or OAuth 2 access token is missing or invalid.
+      content:
+        application/json:
+          schema:
+            type: object
+            required:
+            - message
+            properties:
+              message:
+                type: string
+                example: Invalid APIKey
+    NotFoundError:
+      description: 'The request does not match any known content.
+
+        The response will contain a human readable message, and may also contain links to help you
+
+        navigate to other API endpoints.
+
+        '
+      content:
+        application/json:
+          schema:
+            type: object
+            required:
+            - message
+            properties:
+              message:
+                type: string
+              dataPackagesUrl:
+                type: string
+                format: uri
+              downloadCatalogueUrl:
+                type: string
+                format: uri
+              productUrl:
+                type: string
+                format: uri
+              productDownloadsUrl:
+                type: string
+                format: uri
   schemas:
+    Download:
+      type: object
+      description: 'Information about a specific download file that is made available through this API.
+
+        '
+      required:
+      - url
+      - fileName
+      properties:
+        url:
+          description: Getting this URL will return a HTTP redirect to the actual data.
+          type: string
+          format: uri
+        fileName:
+          description: The name of the file.
+          type: string
+          example: data.zip
+        size:
+          description: The file size, in bytes.
+          type: integer
+          example: 1234
+        md5:
+          description: A MD5 checksum of the file data. This can be used to verify the integrity of the data once you have downloaded it.
+          type: string
+          example: 2f9dd13abd56140afa3b5621e8864f59
     DataPackage:
       type: object
       description: 'A data package provides access to OS products that are not OpenData. If you have access to to products that
@@ -219,31 +286,6 @@ components:
             type: array
             items:
               $ref: '#/components/schemas/Download'
-    Download:
-      type: object
-      description: 'Information about a specific download file that is made available through this API.
-
-        '
-      required:
-      - url
-      - fileName
-      properties:
-        url:
-          description: Getting this URL will return a HTTP redirect to the actual data.
-          type: string
-          format: uri
-        fileName:
-          description: The name of the file.
-          type: string
-          example: data.zip
-        size:
-          description: The file size, in bytes.
-          type: integer
-          example: 1234
-        md5:
-          description: A MD5 checksum of the file data. This can be used to verify the integrity of the data once you have downloaded it.
-          type: string
-          example: 2f9dd13abd56140afa3b5621e8864f59
     DataPackageVersionSummary:
       type: object
       description: 'Summary information about a data package version.
@@ -292,48 +334,6 @@ components:
           type: string
           format: uri
           example: https://api.os.uk/downloads/v1/dataPackages/0040046952
-  responses:
-    NotFoundError:
-      description: 'The request does not match any known content.
-
-        The response will contain a human readable message, and may also contain links to help you
-
-        navigate to other API endpoints.
-
-        '
-      content:
-        application/json:
-          schema:
-            type: object
-            required:
-            - message
-            properties:
-              message:
-                type: string
-              dataPackagesUrl:
-                type: string
-                format: uri
-              downloadCatalogueUrl:
-                type: string
-                format: uri
-              productUrl:
-                type: string
-                format: uri
-              productDownloadsUrl:
-                type: string
-                format: uri
-    UnauthorizedError:
-      description: The API key or OAuth 2 access token is missing or invalid.
-      content:
-        application/json:
-          schema:
-            type: object
-            required:
-            - message
-            properties:
-              message:
-                type: string
-                example: Invalid APIKey
   parameters:
     dataPackageId:
       name: dataPackageId

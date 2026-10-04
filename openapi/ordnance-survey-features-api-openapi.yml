@@ -369,6 +369,19 @@ paths:
           description: 'The request has timed out. Please check the service availability dashboard: https://osdatahub.os.uk/serviceStatus .'
 components:
   schemas:
+    Feature:
+      type: object
+      properties:
+        id:
+          type: string
+        type:
+          type: string
+        geometry:
+          $ref: '#/components/schemas/Geometry'
+        properties:
+          type: object
+          additionalProperties:
+            type: object
     Geometry:
       type: object
       properties:
@@ -387,19 +400,6 @@ components:
         y:
           type: number
           format: double
-    Feature:
-      type: object
-      properties:
-        id:
-          type: string
-        type:
-          type: string
-        geometry:
-          $ref: '#/components/schemas/Geometry'
-        properties:
-          type: object
-          additionalProperties:
-            type: object
     Link:
       type: object
       properties:

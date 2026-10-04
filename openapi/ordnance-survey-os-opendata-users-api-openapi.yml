@@ -203,14 +203,45 @@ paths:
       operationId: getProductVersionInfoByCorrelationMethod
       x-operation-id-source: derived
 components:
+  responses:
+    Unauthorized:
+      description: The client has not provided authentication or incorrect authentication.
+    InternalServerError:
+      description: Generic internal server error.
+    NotFound:
+      description: The server has not found anything matching the Request-URI.
+    BadRequest:
+      description: E.g. missing query parameter, malformed syntax.
+    Forbidden:
+      description: The client has authenticated its access but does not have sufficient rights to complete the request.
+    TooManyRequests:
+      description: Exceeded the number of requests per minute (rate-limit).
+    ServiceUnavailable:
+      description: Temporary outage due to overloading or maintenance.
+    MethodNotAllowed:
+      description: Request used an unsupported HTTP method, e.g. DELETE or PUT.
+  parameters:
+    featureIdentifier:
+      name: id
+      in: path
+      description: ID of the feature that is being matched
+      required: true
+      schema:
+        type: string
+        minLength: 1
+        maxLength: 36
   schemas:
-    identifierType:
-      type: string
-      enum:
-      - GUID
-      - TOID
-      - UPRN
-      - USRN
+    linkedIdentifierSet:
+      type: object
+      required:
+      - linkedIdentifiers
+      additionalProperties: false
+      properties:
+        linkedIdentifiers:
+          type: array
+          title: linkedIdentifiers
+          items:
+            $ref: '#/components/schemas/linkedIdentifier'
     linkedIdentifier:
       type: object
       required:
@@ -275,60 +306,6 @@ components:
                       type: string
                     correlationIdentifier:
                       type: string
-    correlationMethodInformation:
-      type: object
-      required:
-      - methodIdentfier
-      - productCreationDate
-      - identifier1Source
-      - identifier2Source
-      additionalProperties: false
-      properties:
-        methodIdentifier:
-          $ref: '#/components/schemas/correlationMethodIdentifier'
-        productCreationDate:
-          type: string
-        productPublicationName:
-          type: string
-        identifier1Source:
-          $ref: '#/components/schemas/identifierSource'
-        identifier2Source:
-          $ref: '#/components/schemas/identifierSource'
-    linkedIdentifierSet:
-      type: object
-      required:
-      - linkedIdentifiers
-      additionalProperties: false
-      properties:
-        linkedIdentifiers:
-          type: array
-          title: linkedIdentifiers
-          items:
-            $ref: '#/components/schemas/linkedIdentifier'
-    identifierSource:
-      type: object
-      required:
-      - productName
-      - productPublicationDate
-      - featureType
-      - identifierType
-      additionalProperties: false
-      properties:
-        productName:
-          type: string
-          enum:
-          - AddressBase Premium
-          - OS MasterMap Highways Network - Roads
-          - OS MasterMap Topography Layer
-          - OS Open Roads
-        productPublicationDate:
-          type: string
-        productPublicationName:
-          type: string
-        featureType:
-          $ref: '#/components/schemas/featureType'
-        identifierType:
-          $ref: '#/components/schemas/identifierType'
     featureType:
       type: string
       enum:
@@ -353,33 +330,56 @@ components:
       - BLPU_UPRN_Street_USRN_11
       - ORRoadLink_GUID_RoadLink_TOID_12
       - ORRoadNode_GUID_RoadLink_TOID_13
-  responses:
-    BadRequest:
-      description: E.g. missing query parameter, malformed syntax.
-    Forbidden:
-      description: The client has authenticated its access but does not have sufficient rights to complete the request.
-    ServiceUnavailable:
-      description: Temporary outage due to overloading or maintenance.
-    TooManyRequests:
-      description: Exceeded the number of requests per minute (rate-limit).
-    InternalServerError:
-      description: Generic internal server error.
-    MethodNotAllowed:
-      description: Request used an unsupported HTTP method, e.g. DELETE or PUT.
-    Unauthorized:
-      description: The client has not provided authentication or incorrect authentication.
-    NotFound:
-      description: The server has not found anything matching the Request-URI.
-  parameters:
-    featureIdentifier:
-      name: id
-      in: path
-      description: ID of the feature that is being matched
-      required: true
-      schema:
-        type: string
-        minLength: 1
-        maxLength: 36
+    correlationMethodInformation:
+      type: object
+      required:
+      - methodIdentfier
+      - productCreationDate
+      - identifier1Source
+      - identifier2Source
+      additionalProperties: false
+      properties:
+        methodIdentifier:
+          $ref: '#/components/schemas/correlationMethodIdentifier'
+        productCreationDate:
+          type: string
+        productPublicationName:
+          type: string
+        identifier1Source:
+          $ref: '#/components/schemas/identifierSource'
+        identifier2Source:
+          $ref: '#/components/schemas/identifierSource'
+    identifierType:
+      type: string
+      enum:
+      - GUID
+      - TOID
+      - UPRN
+      - USRN
+    identifierSource:
+      type: object
+      required:
+      - productName
+      - productPublicationDate
+      - featureType
+      - identifierType
+      additionalProperties: false
+      properties:
+        productName:
+          type: string
+          enum:
+          - AddressBase Premium
+          - OS MasterMap Highways Network - Roads
+          - OS MasterMap Topography Layer
+          - OS Open Roads
+        productPublicationDate:
+          type: string
+        productPublicationName:
+          type: string
+        featureType:
+          $ref: '#/components/schemas/featureType'
+        identifierType:
+          $ref: '#/components/schemas/identifierType'
   securitySchemes:
     ApiKeyAuth:
       type: apiKey

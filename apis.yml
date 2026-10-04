@@ -1227,8 +1227,6 @@ apis:
   humanURL: https://docs.os.uk/os-apis/accessing-os-apis/os-match-and-cleanse-api
   baseURL: https://api.os.uk/search/match/v1
   tags:
-  - Postcode
-  tags_raw:
   - Post Code
   properties:
   - type: OpenAPI

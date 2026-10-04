@@ -207,22 +207,17 @@ paths:
       x-operation-id-original: Get Station Logs
 components:
   parameters:
-    TemporalParameters:
-      name: TemporalParameters
-      in: query
-      description: Parameters that provide an optional temporal window (from start to end) for a query. These parameters can be used to restrict the query to a specific time range. When using start and end, please note that start should be within the last 45 days, and the end should be no more than 24 hours after the start.
-      required: false
-      explode: true
+    stationId:
+      name: stationId
+      in: path
+      description: Specific station ID.
+      required: true
       schema:
-        $ref: '#/components/schemas/TemporalParameters'
-    SpatialParameters:
-      name: SpatialParameters
-      in: query
-      description: Spatial parameters for the /stations endpoint. These parameters can be used to restrict the station search to a specific geographic area.
-      required: false
-      explode: true
-      schema:
-        $ref: '#/components/schemas/SpatialParameters'
+        maxLength: 4
+        minLength: 4
+        pattern: ^[a-zA-Z0-9]*$
+        type: string
+      example: ABEP
     dataFrequency:
       name: dataFrequency
       in: query
@@ -237,17 +232,14 @@ components:
         01S:
           summary: Data every second
           value: 01S
-    stationId:
-      name: stationId
-      in: path
-      description: Specific station ID.
-      required: true
+    SpatialParameters:
+      name: SpatialParameters
+      in: query
+      description: Spatial parameters for the /stations endpoint. These parameters can be used to restrict the station search to a specific geographic area.
+      required: false
+      explode: true
       schema:
-        maxLength: 4
-        minLength: 4
-        pattern: ^[a-zA-Z0-9]*$
-        type: string
-      example: ABEP
+        $ref: '#/components/schemas/SpatialParameters'
     date:
       name: date
       in: query
@@ -257,20 +249,15 @@ components:
         type: string
         format: date
         example: 2024-11-30
+    TemporalParameters:
+      name: TemporalParameters
+      in: query
+      description: Parameters that provide an optional temporal window (from start to end) for a query. These parameters can be used to restrict the query to a specific time range. When using start and end, please note that start should be within the last 45 days, and the end should be no more than 24 hours after the start.
+      required: false
+      explode: true
+      schema:
+        $ref: '#/components/schemas/TemporalParameters'
   schemas:
-    SpatialParameters:
-      type: object
-      properties:
-        location:
-          type: string
-          description: 'Optional. A point location for the search. Will reorder the results by distance from this point. Supports: National Grid eastings and northings (space separated), ETRS89 in Cartesian XYZ, decimal degrees (including degrees and decimal minutes / degrees, minutes, and decimal seconds), postcodes (including partial postcodes). More information: https://www.ordnancesurvey.co.uk/geodesy-positioning/coordinate-transformations/tool/formats.'
-        radius:
-          type: integer
-          description: Optional, limits the search to the given radius. 'location' must also be provided.
-        stationCount:
-          type: integer
-          description: Optional, limits the result to a fixed number of stations. 'location' must also be provided.
-      description: Spatial parameters for the /stations endpoint
     HealthByDate:
       type: array
       items:
@@ -280,16 +267,6 @@ components:
             type: string
             format: date
             example: 2024-11-30
-          hourlyData:
-            $ref: '#/components/schemas/HourlyData'
-    StationNetworkHealth:
-      type: array
-      items:
-        type: object
-        properties:
-          stationId:
-            type: string
-            example: ABEP
           hourlyData:
             $ref: '#/components/schemas/HourlyData'
     TemporalParameters:
@@ -306,45 +283,6 @@ components:
           format: date-time
           example: 2024-12-31 02:00:00+00:00
       description: Parameters that provide an optional temporal window (from start to end) for a query. When using start and end, please note that start should be within the last 45 days, and the end should be no more than 24 hours after the start.
-    HourlyData:
-      type: array
-      items:
-        type: object
-        properties:
-          hour:
-            maximum: 23
-            minimum: 0
-            type: integer
-          percentageComplete:
-            maximum: 100
-            minimum: 0
-            type: integer
-          dataFrequency:
-            type: string
-            description: Gives the data frequency that the percentage complete describes.
-            example: 30S
-    Link:
-      title: Link
-      required:
-      - description
-      - href
-      - rel
-      - title
-      - type
-      type: object
-      properties:
-        href:
-          type: string
-          format: uri
-        rel:
-          type: string
-        type:
-          type: string
-        title:
-          type: string
-        description:
-          type: string
-      description: Provides a link leading to further information about a resource
     Station:
       required:
       - ETRS89_H
@@ -438,6 +376,68 @@ components:
           items:
             $ref: '#/components/schemas/Link'
       description: Information about a GPS station.
+    StationNetworkHealth:
+      type: array
+      items:
+        type: object
+        properties:
+          stationId:
+            type: string
+            example: ABEP
+          hourlyData:
+            $ref: '#/components/schemas/HourlyData'
+    Link:
+      title: Link
+      required:
+      - description
+      - href
+      - rel
+      - title
+      - type
+      type: object
+      properties:
+        href:
+          type: string
+          format: uri
+        rel:
+          type: string
+        type:
+          type: string
+        title:
+          type: string
+        description:
+          type: string
+      description: Provides a link leading to further information about a resource
+    SpatialParameters:
+      type: object
+      properties:
+        location:
+          type: string
+          description: 'Optional. A point location for the search. Will reorder the results by distance from this point. Supports: National Grid eastings and northings (space separated), ETRS89 in Cartesian XYZ, decimal degrees (including degrees and decimal minutes / degrees, minutes, and decimal seconds), postcodes (including partial postcodes). More information: https://www.ordnancesurvey.co.uk/geodesy-positioning/coordinate-transformations/tool/formats.'
+        radius:
+          type: integer
+          description: Optional, limits the search to the given radius. 'location' must also be provided.
+        stationCount:
+          type: integer
+          description: Optional, limits the result to a fixed number of stations. 'location' must also be provided.
+      description: Spatial parameters for the /stations endpoint
+    HourlyData:
+      type: array
+      items:
+        type: object
+        properties:
+          hour:
+            maximum: 23
+            minimum: 0
+            type: integer
+          percentageComplete:
+            maximum: 100
+            minimum: 0
+            type: integer
+          dataFrequency:
+            type: string
+            description: Gives the data frequency that the percentage complete describes.
+            example: 30S
   securitySchemes:
     OAuth2:
       type: oauth2
