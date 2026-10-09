@@ -92,3 +92,28 @@ gaps:
   - No machine-readable or server-rendered pricing page; the plans page is a client-side app.
   - No published free monthly allowance or overage rate in the developer documentation.
   - No self-serve upgrade path documented in the API docs - plan changes route through the OS Data Hub account.
+x-canonical:
+  generated: '2026-10-08'
+  vocabulary: all/0-working/economics/plans-canonical.yml
+  models:
+  - prepaid
+  units: []
+  plans:
+  - name: OS OpenData Plan
+    access: free
+    model: unstated
+    model_how: derived
+    units: []
+    periods: []
+  - name: Premium Plan
+    access: paid
+    model: unstated
+    model_how: derived
+    units: []
+    periods: []
+  - name: Public Sector Plan
+    access: other
+    model: prepaid
+    model_how: stated
+    units: []
+    periods: []
