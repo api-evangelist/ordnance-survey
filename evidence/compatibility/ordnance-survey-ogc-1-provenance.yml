@@ -1,0 +1,16 @@
+fetched: '2026-10-14'
+method: fetched
+source: https://docs.os.uk/os-apis/accessing-os-apis/os-ngd-api-features
+page: https://docs.os.uk/os-apis/accessing-os-apis/os-ngd-api-features
+file: ordnance-survey-ogc-1.md
+bytes: 5666
+sha256: e3f39894743a785a9e9c9c3e7b1855f403bd681251be2ca0a2e831a97f18c7b3
+anchor: ogc
+shape: ogc
+shapes_declared:
+- ogc-api-features
+classification: declares-compatibility
+quote: Based on the latest OGC API – Features standard, this API can help accelerate your time-to-value by making
+  it easier to build awesome things with our trusted geospatial data. You can use it to reduce your data management
+  overheads, automate your workflows, and innovate at pace.
+note: text extracted from the provider's own page (tags stripped), saved for evidence

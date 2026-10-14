@@ -1,0 +1,15 @@
+fetched: '2026-10-14'
+method: fetched
+source: https://docs.os.uk/os-apis/accessing-os-apis/os-maps-api
+page: https://docs.os.uk/os-apis/accessing-os-apis/os-maps-api
+file: ordnance-survey-ogc-2.md
+bytes: 5486
+sha256: 61d3adfdc4d7e626bfd7c739b1938c4acbbb1b05d38bc6fbf4e351e48177f898
+anchor: ogc
+shape: ogc
+shapes_declared:
+- ogc-wmts
+classification: declares-compatibility
+quote: You can request the maps using the Open Geospatial Consortium Web Map Tile Service ( WMTS ) standard or RESTful
+  ZXY . WMTS is supported by most GIS software and ZXY is efficient for web mapping.
+note: text extracted from the provider's own page (tags stripped), saved for evidence

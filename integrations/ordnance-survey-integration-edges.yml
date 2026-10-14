@@ -1,0 +1,50 @@
+edges:
+- partner_name: Open Geospatial Consortium
+  partner: ogc
+  detected_by: sweep-geospatial.py
+  first_seen: '2026-10-14'
+  partner_match: shape-anchor
+  type: docs
+  direction: provider-built
+  channel: provider-built
+  relationship: compatible
+  shape: ogc-api-features
+  evidence_kind: own-docs
+  evidence: https://docs.os.uk/os-apis/accessing-os-apis/os-ngd-api-features
+  degree: declared-unqualified
+  quote: Based on the latest OGC API – Features standard, this API can help accelerate your time-to-value by making
+    it easier to build awesome things with our trusted geospatial data. You can use it to reduce your data management
+    overheads, automate
+  evidence_file: https://github.com/api-evangelist/ordnance-survey/blob/main/evidence/compatibility/ordnance-survey-ogc-1.md
+- partner_name: Open Geospatial Consortium
+  partner: ogc
+  detected_by: sweep-geospatial.py
+  first_seen: '2026-10-14'
+  partner_match: shape-anchor
+  type: docs
+  direction: provider-built
+  channel: provider-built
+  relationship: compatible
+  shape: ogc-wmts
+  evidence_kind: own-docs
+  evidence: https://docs.os.uk/os-apis/accessing-os-apis/os-maps-api
+  degree: declared-unqualified
+  quote: You can request the maps using the Open Geospatial Consortium Web Map Tile Service ( WMTS ) standard or
+    RESTful ZXY . WMTS is supported by most GIS software and ZXY is efficient for web mapping.
+  evidence_file: https://github.com/api-evangelist/ordnance-survey/blob/main/evidence/compatibility/ordnance-survey-ogc-2.md
+- partner_name: Open Geospatial Consortium
+  partner: ogc
+  detected_by: sweep-geospatial.py
+  first_seen: '2026-10-14'
+  partner_match: shape-anchor
+  type: contract
+  direction: provider-built
+  channel: provider-built
+  relationship: compatible
+  shape: ogc-api-tiles
+  evidence_kind: own-contract
+  evidence: https://github.com/api-evangelist/ordnance-survey/blob/main/openapi/ordnance-survey-data-collections-api-openapi.yml#L6
+  degree: declared-unqualified
+  quote: '- description: NGD OGC API - Tiles server'
+generated: '2026-10-14'
+method: searched
