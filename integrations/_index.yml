@@ -14,3 +14,22 @@
   relationship: compatible
   status: not-a-workflow
   arazzo: null
+- slug: ordnance-survey-uk-government-api-catalogue-cddo
+  label: UK Government API Catalogue (CDDO)
+  partner_name: UK Government API Catalogue (CDDO)
+  type: register
+  channel: standard-directory
+  evidence: https://raw.githubusercontent.com/co-cddo/api-catalogue/main/data/catalogue.csv
+  source: edge
+  relationship: standard-participant
+  contract_reference:
+    register: co-cddo/api-catalogue (UK Government API Catalogue, CDDO)
+    spec_file: null
+    role: public-sector-api-publisher
+    registered_name: ordnance-survey
+    register_id: ordnance-survey
+    matched_domain: os.uk
+    detected_by: sweep-gov-open-data.py
+    detected: '2026-10-15'
+  status: not-a-workflow
+  arazzo: null

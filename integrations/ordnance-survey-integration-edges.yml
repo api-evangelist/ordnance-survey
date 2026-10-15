@@ -46,5 +46,85 @@ edges:
   evidence: https://github.com/api-evangelist/ordnance-survey/blob/main/openapi/ordnance-survey-data-collections-api-openapi.yml#L6
   degree: declared-unqualified
   quote: '- description: NGD OGC API - Tiles server'
+- partner_name: UK Government API Catalogue (CDDO)
+  partner: null
+  partner_match: register
+  type: register
+  direction: partner-built
+  channel: standard-directory
+  relationship: standard-participant
+  evidence: https://raw.githubusercontent.com/co-cddo/api-catalogue/main/data/catalogue.csv
+  match:
+    method: domain+verified
+    domains:
+    - os.uk
+  register_listing:
+    publisher: ordnance-survey
+    apis:
+    - name: OS Maps API
+      url: https://api.os.uk/maps/raster/v1
+      documentation: https://osdatahub.os.uk/docs/wmts/overview
+      license: https://osdatahub.os.uk/legal/termsConditions
+      date_updated: '2020-08-24'
+      matched_on: url
+    - name: OS Vector Tile API
+      url: https://api.os.uk/maps/vector/v1/
+      documentation: https://osdatahub.os.uk/docs/vts/overview
+      license: https://osdatahub.os.uk/legal/termsConditions
+      date_updated: '2020-08-24'
+      matched_on: url
+    - name: OS Names API
+      url: https://api.os.uk/search/names/v1
+      documentation: https://osdatahub.os.uk/docs/names/overview
+      license: https://osdatahub.os.uk/legal/termsConditions
+      date_updated: '2020-08-24'
+      matched_on: url
+    - name: OS Features API
+      url: https://api.os.uk/features/v1
+      documentation: https://osdatahub.os.uk/docs/wfs/overview
+      license: https://osdatahub.os.uk/legal/termsConditions
+      date_updated: '2020-08-24'
+      matched_on: url
+    - name: OS Linked Identifiers API
+      url: https://api.os.uk/search/links/v1
+      documentation: https://osdatahub.os.uk/docs/linkedIdentifiers/overview
+      license: https://osdatahub.os.uk/legal/termsConditions
+      date_updated: '2020-08-24'
+      matched_on: url
+    - name: OS Download API
+      url: https://api.os.uk/downloads/v1
+      documentation: https://osdatahub.os.uk/docs/downloads/overview
+      license: https://osdatahub.os.uk/legal/termsConditions
+      date_updated: '2020-08-24'
+      matched_on: url
+    - name: OS OAuth 2 API
+      url: https://api.os.uk/oauth2/token/v1
+      documentation: https://osdatahub.os.uk/docs/oauth2/overview
+      license: https://osdatahub.os.uk/legal/termsConditions
+      date_updated: '2020-08-24'
+      matched_on: url
+    - name: OS Places API
+      url: https://api.os.uk/search/places/v1
+      documentation: https://osdatahub.os.uk/docs/places/overview
+      license: https://osdatahub.os.uk/legal/termsConditions
+      date_updated: '2020-08-24'
+      matched_on: url
+  contract_reference:
+    register: co-cddo/api-catalogue (UK Government API Catalogue, CDDO)
+    spec_file: null
+    role: public-sector-api-publisher
+    registered_name: ordnance-survey
+    register_id: ordnance-survey
+    matched_domain: os.uk
+    detected_by: sweep-gov-open-data.py
+    detected: '2026-10-15'
+  detected_by: sweep-gov-open-data.py
+  first_seen: '2026-10-15'
 generated: '2026-10-14'
 method: searched
+checked:
+- 'https://api.gouv.fr/api/v1/apis (200 text/html: not machine-readable)'
+- 'https://catalog.data.gov/api/3/action/package_search (404; GSA mirror keyed: 403 API_KEY_MISSING)'
+- https://raw.githubusercontent.com/co-cddo/api-catalogue/main/data/catalogue.csv
+source:
+- https://raw.githubusercontent.com/co-cddo/api-catalogue/main/data/catalogue.csv
