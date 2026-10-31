@@ -1,4 +1,4 @@
-# Ordnance Survey (ordnance-survey)
+# Ordnance Survey
 
 <!-- API-EVANGELIST-PROVENANCE:BEGIN -->
 > ### About this repository
@@ -64,269 +64,192 @@
 > Full detail: **[Where this data comes from](https://apievangelist.com/about/where-our-data-comes-from)**
 <!-- API-EVANGELIST-PROVENANCE:END -->
 
-Ordnance Survey is Great Britain's national mapping agency, a government-owned company that maintains the addressing and mapping layer the UK property market runs on — the Unique Property Reference Number (UPRN), the TOID, AddressBase, and the OS National Geographic Database. The UK has no MLS; residential listings sit behind the Rightmove/Zoopla duopoly and agency CRM software, so the open layer in this market is public-sector rather than private, and OS is one half of it alongside HM Land Registry. Its API posture is unusually honest for this sector: the OS Data Hub is a self-serve developer portal with real machine-readable contracts — OGC-conformant OpenAPI 3.0 documents served live and anonymously at api.os.uk for OS NGD API - Features and Tiles, plus published OpenAPI for the OS Downloads and OS Net APIs. The split that matters is licensing, not reachability: OS OpenData products are free and downloadable with no API key at all through the OS Downloads API, while the premium addressing and mapping products require a paid Premium plan or Public Sector Geospatial Agreement (PSGA) membership. RESO plays no part here — the Real Estate Standards Organization standards are a US MLS construct and appear nowhere in the OS estate. Home market is the United Kingdom.
+Ordnance Survey is Great Britain's national mapping agency, a government-owned company that maintains the addressing and mapping layer the UK property market runs on - the Unique Property Reference Number (UPRN), the TOID, AddressBase, and the OS National Geographic Database. The UK has no MLS; residential listings sit behind the Rightmove/Zoopla duopoly and agency CRM software, so the open layer in this market is public-sector rather than private, and OS is one half of it alongside HM Land Registry. Its API posture is unusually honest for this sector - the OS Data Hub is a self-serve developer portal with real machine-readable contracts, including OGC-conformant OpenAPI 3.0 documents served live and anonymously at api.os.uk for OS NGD API - Features and Tiles, plus published OpenAPI for the OS Downloads and OS Net APIs. The split that matters is licensing, not reachability: OS OpenData products (OS Open UPRN, OS Open TOID, Code-Point Open, OS Open Names, Boundary-Line, OS Open Linked Identifiers) are free and downloadable with no API key at all through the OS Downloads API, while the premium addressing and mapping products behind OS Places API, OS Features API, and the NGD collections require a paid Premium plan or Public Sector Geospatial Agreement (PSGA) membership. RESO plays no part here - the Real Estate Standards Organization standards are a US MLS construct and appear nowhere in the OS estate. Home market is the United Kingdom.
+
+**Areas:** Real Estate · United Kingdom · Land Registry · Geospatial · Addressing · Open Data · Property Data · PropTech · Government · Mapping · OGC · UPRN
+
+## Ordnance Survey on APIs.io
+
+Everything profiled for Ordnance Survey is published on APIs.io rather than in this repository. Start at the provider page — **[apis.io/providers/ordnance-survey/](https://apis.io/providers/ordnance-survey/)** — or go straight to one of the APIs or properties below.
 
-**APIs.json:** [https://raw.githubusercontent.com/api-evangelist/ordnance-survey/refs/heads/main/apis.yml](https://raw.githubusercontent.com/api-evangelist/ordnance-survey/refs/heads/main/apis.yml)
+### APIs (25)
 
-## Tags
+- [OS Match & Cleanse API (withdrawn)](https://apis.io/apis/ordnance-survey/os-match-and-cleanse-api/) — Matched and cleansed supplied address strings against OS authoritative addressing data, returning a matched AddressBase record and confidence score.…
+- [OS OAuth 2 API](https://apis.io/apis/ordnance-survey/os-oauth2-api/) — OAuth 2.0 client credentials token service issuing time-limited access tokens for OS Data Hub APIs, so project API keys need not be embedded in browser…
+- [Ordnance Survey Bounding box API](https://apis.io/apis/ordnance-survey/ordnance-survey-bounding-box-api/) — Find all addresses inside a bounding box.
+- [Ordnance Survey Collections API](https://apis.io/apis/ordnance-survey/ordnance-survey-collections-api/) — Retrieve information about collections
+- [Ordnance Survey Data Collections API](https://apis.io/apis/ordnance-survey/ordnance-survey-data-collections-api/) — The Data Collections API from Ordnance Survey — 2 operation(s) for data collections.
+- [Ordnance Survey Data Packages API](https://apis.io/apis/ordnance-survey/ordnance-survey-data-packages-api/) — Operations providing access to data packages. To access data packages you must supply a valid API key or OAuth 2 access token.
+- [Ordnance Survey Features API](https://apis.io/apis/ordnance-survey/ordnance-survey-features-api/) — Retrieve features
+- [Ordnance Survey Find API](https://apis.io/apis/ordnance-survey/ordnance-survey-find-api/) — A free string text search of OS Names, intended to be an ambiguous/fuzzy search.
+- [Ordnance Survey Landing Page API](https://apis.io/apis/ordnance-survey/ordnance-survey-landing-page-api/) — Ordnance Survey NGD API – Features
+- [Ordnance Survey Nearest API](https://apis.io/apis/ordnance-survey/ordnance-survey-nearest-api/) — Find the features closest to a given point.
+- [Ordnance Survey Open Data API](https://apis.io/apis/ordnance-survey/ordnance-survey-opendata-api/) — Operations providing access to OpenData products.
+- [Ordnance Survey OS OpenData Users API](https://apis.io/apis/ordnance-survey/ordnance-survey-os-opendata-users-api/) — Operations available to customers using the OpenData plan
+- [Ordnance Survey Polygon API](https://apis.io/apis/ordnance-survey/ordnance-survey-polygon-api/) — Find all addresses in a polygon or multi-polygon object.
+- [Ordnance Survey Radius API](https://apis.io/apis/ordnance-survey/ordnance-survey-radius-api/) — Find all addresses that intersect a given circle.
+- [Ordnance Survey Rinex API](https://apis.io/apis/ordnance-survey/ordnance-survey-rinex-api/) — The Rinex API from Ordnance Survey — 5 operation(s) for rinex.
+- [Ordnance Survey Service Metadata API](https://apis.io/apis/ordnance-survey/ordnance-survey-service-metadata-api/) — Service Metadata for OS Vector Tiles API
+- [Ordnance Survey Stations API](https://apis.io/apis/ordnance-survey/ordnance-survey-stations-api/) — The Stations API from Ordnance Survey — 5 operation(s) for stations.
+- [Ordnance Survey Styles API](https://apis.io/apis/ordnance-survey/ordnance-survey-styles-api/) — The Styles API from Ordnance Survey — 5 operation(s) for styles.
+- [Ordnance Survey Tile Request API](https://apis.io/apis/ordnance-survey/ordnance-survey-tile-request-api/) — Access and download data for a specific tile
+- [Ordnance Survey Tiling Schemes API](https://apis.io/apis/ordnance-survey/ordnance-survey-tiling-schemes-api/) — The Tiling Schemes API from Ordnance Survey — 2 operation(s) for tiling schemes.
+- [Ordnance Survey UPRN API](https://apis.io/apis/ordnance-survey/ordnance-survey-uprn-api/) — A search that takes a UPRN as the search parameter.
+- [Ordnance Survey Vector Tiles API](https://apis.io/apis/ordnance-survey/ordnance-survey-vector-tiles-api/) — The Vector Tiles API from Ordnance Survey — 2 operation(s) for vector tiles.
+- [Ordnance Survey Get Capabilities API](https://apis.io/apis/ordnance-survey/ordnance-survey-get-capabilities-api/) — Returns a metadata document describing the WFS service provided by the server as well as valid WFS operations and parameters.
+- [Ordnance Survey Post Code API](https://apis.io/apis/ordnance-survey/ordnance-survey-post-code-api/) — A search based on a property’s postcode
+- [Ordnance Survey Tilesets API](https://apis.io/apis/ordnance-survey/ordnance-survey-tilesets-api/) — The Tilesets API from Ordnance Survey — 2 operation(s) for tilesets.
 
-- Real Estate
-- United Kingdom
-- Land Registry
-- Geospatial
-- Addressing
-- Open Data
-- Property Data
-- PropTech
-- Government
-- Mapping
+### Published properties
 
-## Timestamps
+Each property below is a page on APIs.io carrying the machine-readable artifact and what it says.
 
-- **Created:** 2026-07-26
-- **Modified:** 2026-07-26
+#### MCP servers (1)
 
-## APIs
+Model Context Protocol servers that expose the API to agents.
 
-### OS NGD API - Features
+- [ordnance-survey](https://apis.io/servers/ordnance-survey/ordnance-survey/)
 
-OGC API – Features conformant access to the OS National Geographic Database, serving building, land, address, and transport feature collections as GeoJSON. The OpenAPI 3.0.1 description is served live and anonymously at /api.
+#### Agentic access (1)
 
-- **Human URL:** [https://docs.os.uk/os-apis/accessing-os-apis/os-ngd-api-features](https://docs.os.uk/os-apis/accessing-os-apis/os-ngd-api-features)
-- **Base URL:** `https://api.os.uk/features/ngd/ofa/v1`
+Which operations an agent can call, which act, and which need a human in the loop.
 
-#### Tags
+- [Ordnance Survey Agentic Access](https://apis.io/agentic-access/ordnance-survey/ordnance-survey-agentic-access/)
 
-- Features
-- OGC API
-- Geospatial
-- Property Data
+#### Collections (18)
 
-#### Properties
+Postman and Open Collection request collections.
 
-- [OpenAPI](openapi/ordnance-survey-ngd-features-openapi.json) — [OpenAPI Specification](https://spec.openapis.org/oas/latest.html)
-- [Documentation](https://docs.os.uk/os-apis/accessing-os-apis/os-ngd-api-features)
-- [API Reference](https://api.os.uk/features/ngd/ofa/v1/api)
+- [OS Features API](https://apis.io/collections/ordnance-survey/open-ordnance-survey-features-wfs/)
+- [OS Linked Identifiers API](https://apis.io/collections/ordnance-survey/open-ordnance-survey-linked-identifiers/)
+- [OS Maps API](https://apis.io/collections/ordnance-survey/open-ordnance-survey-maps/)
+- [OS Names API](https://apis.io/collections/ordnance-survey/open-ordnance-survey-names/)
+- [OS NGD API – Features](https://apis.io/collections/ordnance-survey/open-ordnance-survey-ngd-features/)
+- [OS NGD API - Tiles](https://apis.io/collections/ordnance-survey/open-ordnance-survey-ngd-tiles/)
+- [OS Places API](https://apis.io/collections/ordnance-survey/open-ordnance-survey-places/)
+- [OS Vector Tiles API](https://apis.io/collections/ordnance-survey/open-ordnance-survey-vector-tile/)
+- [Ordnance Survey Download API](https://apis.io/collections/ordnance-survey/postman-ordnance-survey-downloads/)
+- [OS Features API](https://apis.io/collections/ordnance-survey/postman-ordnance-survey-features-wfs-openapi/)
+- [OS Linked Identifiers API](https://apis.io/collections/ordnance-survey/postman-ordnance-survey-linked-identifiers-openapi/)
+- [OS Maps API](https://apis.io/collections/ordnance-survey/postman-ordnance-survey-maps-openapi/)
+- [OS Names API](https://apis.io/collections/ordnance-survey/postman-ordnance-survey-names-openapi/)
+- [OS NGD API – Features](https://apis.io/collections/ordnance-survey/postman-ordnance-survey-ngd-features-openapi/)
+- [OS NGD API - Tiles](https://apis.io/collections/ordnance-survey/postman-ordnance-survey-ngd-tiles-openapi/)
+- [OS Net API](https://apis.io/collections/ordnance-survey/postman-ordnance-survey-osnet/)
+- [OS Places API](https://apis.io/collections/ordnance-survey/postman-ordnance-survey-places-openapi/)
+- [OS Vector Tiles API](https://apis.io/collections/ordnance-survey/postman-ordnance-survey-vector-tile-openapi/)
 
-### OS NGD API - Tiles
+#### Overlays (10)
 
-OGC API – Tiles conformant vector tile service over the OS National Geographic Database, including tile matrix sets and styles. The OpenAPI 3.0.1 description is served live and anonymously at /api.
+OpenAPI overlays, including conversational phrasing for each operation.
 
-- **Human URL:** [https://docs.os.uk/os-apis/accessing-os-apis/os-ngd-api-tiles](https://docs.os.uk/os-apis/accessing-os-apis/os-ngd-api-tiles)
-- **Base URL:** `https://api.os.uk/maps/vector/ngd/ota/v1`
+- [Ordnance Survey Downloads Overlay](https://apis.io/overlays/ordnance-survey/ordnance-survey-downloads-overlay/)
+- [Ordnance Survey Features Wfs Overlay](https://apis.io/overlays/ordnance-survey/ordnance-survey-features-wfs-overlay/)
+- [Ordnance Survey Linked Identifiers Overlay](https://apis.io/overlays/ordnance-survey/ordnance-survey-linked-identifiers-overlay/)
+- [Ordnance Survey Maps Overlay](https://apis.io/overlays/ordnance-survey/ordnance-survey-maps-overlay/)
+- [Ordnance Survey Names Overlay](https://apis.io/overlays/ordnance-survey/ordnance-survey-names-overlay/)
+- [Ordnance Survey Ngd Features Overlay](https://apis.io/overlays/ordnance-survey/ordnance-survey-ngd-features-overlay/)
+- [Ordnance Survey Ngd Tiles Overlay](https://apis.io/overlays/ordnance-survey/ordnance-survey-ngd-tiles-overlay/)
+- [Ordnance Survey Osnet Overlay](https://apis.io/overlays/ordnance-survey/ordnance-survey-osnet-overlay/)
+- [Ordnance Survey Places Overlay](https://apis.io/overlays/ordnance-survey/ordnance-survey-places-overlay/)
+- [Ordnance Survey Vector Tile Overlay](https://apis.io/overlays/ordnance-survey/ordnance-survey-vector-tile-overlay/)
 
-#### Tags
+#### Security (3)
 
-- Tiles
-- OGC API
-- Vector Tiles
-- Mapping
+Authentication, trust centre, and vulnerability disclosure.
 
-#### Properties
+- [Ordnance Survey Authentication](https://apis.io/security/ordnance-survey/ordnance-survey-authentication/)
+- [Ordnance Survey Domain Security](https://apis.io/security/ordnance-survey/ordnance-survey-domain-security/)
+- [Ordnance Survey Vulnerability Disclosure](https://apis.io/security/ordnance-survey/ordnance-survey-vulnerability-disclosure/)
 
-- [OpenAPI](openapi/ordnance-survey-ngd-tiles-openapi.json) — [OpenAPI Specification](https://spec.openapis.org/oas/latest.html)
-- [Documentation](https://docs.os.uk/os-apis/accessing-os-apis/os-ngd-api-tiles)
-- [API Reference](https://api.os.uk/maps/vector/ngd/ota/v1/api)
+#### OAuth scopes (1)
 
-### OS Downloads API
+The permissions the API asks for.
 
-Automated bulk download of OS OpenData and OS Premium datasets. The OpenData half of this API answers anonymously with no key — 26 open products including OS Open UPRN, OS Open TOID, Code-Point Open, OS Open Names, and Boundary-Line, each with direct zip download URLs.
+- [Ordnance Survey Scopes](https://apis.io/scopes/ordnance-survey/ordnance-survey-scopes/)
 
-- **Human URL:** [https://docs.os.uk/os-apis/accessing-os-apis/os-downloads-api](https://docs.os.uk/os-apis/accessing-os-apis/os-downloads-api)
-- **Base URL:** `https://api.os.uk/downloads/v1`
+#### Plans and pricing (1)
 
-#### Tags
+Published plans, tiers and prices.
 
-- Downloads
-- Open Data
-- Bulk Data
-- Addressing
+- [Ordnance Survey Plans](https://apis.io/plans/ordnance-survey/ordnance-survey-plans/)
 
-#### Properties
+#### Rate limits (1)
 
-- [OpenAPI](openapi/ordnance-survey-downloads-openapi.yaml) — [OpenAPI Specification](https://spec.openapis.org/oas/latest.html)
-- [Documentation](https://docs.os.uk/os-apis/accessing-os-apis/os-downloads-api)
-- [API Reference](https://api.os.uk/downloads/v1/openapi.yaml)
+Published request limits.
 
-### OS Net API
+- [Ordnance Survey Rate Limits](https://apis.io/rate-limits/ordnance-survey/ordnance-survey-rate-limits/)
 
-High-precision GNSS data from the OS Net network of continuously operating reference stations across Great Britain, including station metadata, health, and RINEX observation files.
+## Where to find this API
 
-- **Human URL:** [https://docs.os.uk/os-apis/accessing-os-apis/os-net-api](https://docs.os.uk/os-apis/accessing-os-apis/os-net-api)
-- **Base URL:** `https://api.os.uk/positioning/osnet/v1`
-
-#### Tags
-
-- Positioning
-- GNSS
-- Surveying
-
-#### Properties
-
-- [OpenAPI](openapi/ordnance-survey-osnet-openapi.yaml) — [OpenAPI Specification](https://spec.openapis.org/oas/latest.html)
-- [Documentation](https://docs.os.uk/os-apis/accessing-os-apis/os-net-api)
-- [API Reference](https://api.os.uk/positioning/osnet/v1/openapi.yaml)
-
-### OS Places API
-
-Address search and geocoding over AddressBase Premium — every UPRN in the United Kingdom, Jersey, Guernsey, and the Isle of Man, with current, provisional, and historic address records and TOID cross-references. Premium or PSGA licensed; no OpenAPI is published.
-
-- **Human URL:** [https://docs.os.uk/os-apis/accessing-os-apis/os-places-api](https://docs.os.uk/os-apis/accessing-os-apis/os-places-api)
-- **Base URL:** `https://api.os.uk/search/places/v1`
-
-#### Tags
-
-- Addressing
-- Geocoding
-- UPRN
-- Property Data
-
-#### Properties
-
-- [Documentation](https://docs.os.uk/os-apis/accessing-os-apis/os-places-api)
-
-### OS Names API
-
-A geographic directory of identifiable places, roads, and settlements in Great Britain, with find and nearest operations.
-
-- **Human URL:** [https://docs.os.uk/os-apis/accessing-os-apis/os-names-api](https://docs.os.uk/os-apis/accessing-os-apis/os-names-api)
-- **Base URL:** `https://api.os.uk/search/names/v1`
-
-#### Tags
-
-- Search
-- Gazetteer
-- Geospatial
-
-#### Properties
-
-- [Documentation](https://docs.os.uk/os-apis/accessing-os-apis/os-names-api)
-
-### OS Linked Identifiers API
-
-Resolves the relationships between properties, streets, and OS MasterMap identifiers — UPRN to TOID to USRN — which is the join key between OS data, HM Land Registry records, and local authority property data.
-
-- **Human URL:** [https://docs.os.uk/os-apis/accessing-os-apis/os-linked-identifiers-api](https://docs.os.uk/os-apis/accessing-os-apis/os-linked-identifiers-api)
-- **Base URL:** `https://api.os.uk/search/links/v1`
-
-#### Tags
-
-- Identifiers
-- UPRN
-- TOID
-- Property Data
-
-#### Properties
-
-- [Documentation](https://docs.os.uk/os-apis/accessing-os-apis/os-linked-identifiers-api)
-
-### OS Match & Cleanse API
-
-Matches and cleanses supplied address strings against OS authoritative addressing data, returning a matched AddressBase record and confidence score.
-
-- **Human URL:** [https://docs.os.uk/os-apis/accessing-os-apis/os-match-and-cleanse-api](https://docs.os.uk/os-apis/accessing-os-apis/os-match-and-cleanse-api)
-- **Base URL:** `https://api.os.uk/search/match/v1`
-
-#### Tags
-
-- Addressing
-- Data Quality
-- Matching
-
-#### Properties
-
-- [Documentation](https://docs.os.uk/os-apis/accessing-os-apis/os-match-and-cleanse-api)
-
-### OS Features API
-
-OGC Web Feature Service (WFS 2.0.0) over OS MasterMap and premium feature data, with getCapabilities, describeFeatureType, and getFeature operations plus a product archive. XML/WFS rather than OpenAPI.
-
-- **Human URL:** [https://docs.os.uk/os-apis/accessing-os-apis/os-features-api](https://docs.os.uk/os-apis/accessing-os-apis/os-features-api)
-- **Base URL:** `https://api.os.uk/features/v1/wfs`
-
-#### Tags
-
-- WFS
-- OGC
-- Features
-- Geospatial
-
-#### Properties
-
-- [Documentation](https://docs.os.uk/os-apis/accessing-os-apis/os-features-api)
-
-### OS Maps API
-
-Pre-rendered raster map tiles in multiple OS styles, served as OGC WMTS and as ZXY tiles.
-
-- **Human URL:** [https://docs.os.uk/os-apis/accessing-os-apis/os-maps-api](https://docs.os.uk/os-apis/accessing-os-apis/os-maps-api)
-- **Base URL:** `https://api.os.uk/maps/raster/v1`
-
-#### Tags
-
-- Mapping
-- Raster Tiles
-- WMTS
-
-#### Properties
-
-- [Documentation](https://docs.os.uk/os-apis/accessing-os-apis/os-maps-api)
-
-### OS Vector Tile API
-
-Vector tile service delivering detailed OS MasterMap data as styleable vector tiles.
-
-- **Human URL:** [https://docs.os.uk/os-apis/accessing-os-apis/os-vector-tile-api](https://docs.os.uk/os-apis/accessing-os-apis/os-vector-tile-api)
-- **Base URL:** `https://api.os.uk/maps/vector/v1/vts`
-
-#### Tags
-
-- Mapping
-- Vector Tiles
-
-#### Properties
-
-- [Documentation](https://docs.os.uk/os-apis/accessing-os-apis/os-vector-tile-api)
-
-### OS OAuth 2 API
-
-OAuth 2.0 client credentials token service issuing time-limited access tokens for OS Data Hub APIs, so project API keys need not be embedded in browser code. Token URL is https://api.os.uk/oauth2/token/v1.
-
-- **Human URL:** [https://docs.os.uk/os-apis/accessing-os-apis/oauth-2-api](https://docs.os.uk/os-apis/accessing-os-apis/oauth-2-api)
-- **Base URL:** `https://api.os.uk/oauth2/token/v1`
-
-#### Tags
-
-- Authentication
-- OAuth2
-
-#### Properties
-
-- [Documentation](https://docs.os.uk/os-apis/accessing-os-apis/oauth-2-api)
-- [Authentication](https://docs.os.uk/os-apis/core-concepts/authentication)
-
-## Common Properties
+Links to the company's own pages. This repository publishes no copy of their specifications — the canonical document is theirs and lives at the URLs below.
 
 - [Website](https://www.ordnancesurvey.co.uk/)
-- [Developer Portal](https://osdatahub.os.uk/)
 - [Documentation](https://docs.os.uk/os-apis)
-- [Authentication](https://docs.os.uk/os-apis/core-concepts/authentication)
-- [Getting Started](https://docs.os.uk/os-apis/core-concepts/getting-started-with-an-api-project)
-- [Rate Limits](https://docs.os.uk/os-apis/core-concepts/rate-limiting-policy)
-- [Plans](https://osdatahub.os.uk/plans)
-- [Open Data](https://api.os.uk/downloads/v1/products)
-- [GitHub Organization](https://github.com/OrdnanceSurvey)
-- [SDK](https://github.com/OrdnanceSurvey/osdatahub)
-- [llms.txt](https://docs.os.uk/os-apis/llms.txt)
+- [Getting started](https://docs.os.uk/os-apis/core-concepts/getting-started-with-an-api-project)
+- [API reference](https://docs.os.uk/os-apis/accessing-os-apis)
+- [Pricing](https://osdatahub.os.uk/plans)
+- [Sign up](https://osdatahub.os.uk/register)
+- [Support](https://osdatahub.os.uk/support)
+- [Changelog](https://docs.os.uk/os-apis/service-and-data-status/change-log)
+- [Blog](https://www.ordnancesurvey.co.uk/blog)
+- [Security](https://www.ordnancesurvey.co.uk/governance/policies/vulnerability-disclosure)
+- [Terms of service](https://osdatahub.os.uk/legal/termsConditions)
+- [Privacy policy](https://www.ordnancesurvey.co.uk/governance/policies/privacy)
+- [GitHub](https://github.com/OrdnanceSurvey)
+- [Status](https://osdatahub.os.uk/support/status)
 
-## Access Notes
+## API Evangelist rating
 
-- **Access gate:** self-serve. Free OS Data Hub account, project, and API key. The OS OpenData Plan is free and unlimited; the Premium Plan is self-serve with a free allowance of premium transactions up to £1,000 per month; the Public Sector Plan is restricted to Public Sector Geospatial Agreement (PSGA) members.
-- **Auth model:** API key as `key` in query or header, or OAuth 2.0 client credentials against `https://api.os.uk/oauth2/token/v1` (no named scopes published). No OpenID Connect discovery document is served.
-- **Open data:** yes. `https://api.os.uk/downloads/v1/products` answers anonymously with 26 open products, including OS Open UPRN, OS Open TOID, OS Open USRN, Code-Point Open, and Boundary-Line, with direct download URLs.
-- **RESO:** no RESO reference found anywhere in the OS estate — no Web API or Data Dictionary certification, no OData `$metadata`, no UPI. The UK's universal property identifier is OS's own UPRN.
-- **Webhooks/events:** none documented.
+**Kin Score 54.4** — strong · rubric 0.25.0 · scored 2026-10-23
 
-## Maintainers
+| Facet | Score |
+|---|---|
+| Discoverability | 75.0 |
+| Contract quality | 41.6 |
+| Contract governance | 18.2 |
+| Operational transparency | 68.4 |
+| Developer ergonomics | 64.9 |
+| Access clarity | 48.7 |
 
-- Kin Lane — kin@apievangelist.com
+**Agent readiness 30.4** — agent-ready
+
+| Agent-readiness dimension | Result |
+|---|---|
+| Spec Presence | yes |
+| Agentic Access | derived (partial credit) |
+| Reversibility Documented | — |
+| MCP Server | — |
+| Auth Clarity | bearer (partial credit) |
+| Idempotency | — |
+| Error Semantics | verified |
+| OpenAPI Examples | partial |
+| Rate Limit Signal | documented (partial credit) |
+| Event Surface Described | — |
+| Agent Skills | derived (partial credit) |
+| Well Known Catalog | — |
+| Consent Identity | yes |
+| Agent Card | — |
+| Dry Run Mode | — |
+| Delegated Identity | — |
+| Protected Resource Metadata | — |
+| Dynamic Client Registration | — |
+| Agentic Commerce | — |
+| Pagination Ratio | — |
+| Operation Distinctiveness | mostly |
+
+**Regulatory alignment 36.3** — Government & Public Sector
+
+The rubric is published at [github.com/api-evangelist/kin-score](https://github.com/api-evangelist/kin-score). The per-check breakdown behind these numbers — which checks were earned, partial or missed — along with score history and how this provider compares to its peers, is available at [apis.io/providers/ordnance-survey/](https://apis.io/providers/ordnance-survey/).
+
+## How this profile is made
+
+API Evangelist profiles a company's public API surface the way a developer would find it: the website, developer portal and documentation, the specifications it publishes, its public repositories, and its pricing, status and changelog pages. From that it derives the properties above — contracts split per API, workflows, schemas, collections, governance rules, plans and rate limits — and scores them against the published [Kin Score rubric](https://github.com/api-evangelist/kin-score).
+
+The artifacts are published on [APIs.io](https://apis.io), not in this repository. This repository is the public record for Ordnance Survey: the place to say something is wrong, missing or out of date, and to ask for a re-score or a removal.
+
+## Open an issue
+
+- **Something about this listing** — a wrong description, a missing API, a stale artifact or a question about the rating: [open an issue on this repository](https://github.com/api-evangelist/ordnance-survey/issues/new).
+- **A new API, or one that is not in the catalog yet** — [submit it on APIs.io](https://apis.io/add/).
+- **Anything else** — [the APIs.io inbox](https://github.com/api-search/inbox/issues/new) or [info@apievangelist.com](mailto:info@apievangelist.com).
